@@ -1,7 +1,5 @@
 'use strict';
 
-let host = 'http://localhost:8080';
-
 async function apiLogin(email, password) {
     function apiFetchLogin(email, password) {
         let myHeaders = new Headers();
@@ -18,7 +16,7 @@ async function apiLogin(email, password) {
             headers: myHeaders,
             body: raw,
         };
-        const response = fetch(`${host}/auth/login`, requestOptions);
+        const response = fetch(`/auth/login`, requestOptions);
         return response.then(res => res.json());
     }
 

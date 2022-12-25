@@ -1,0 +1,19 @@
+.alert {
+    position: fixed;
+    z-index: 1060;
+    bottom: 100px;
+    left: 50%;
+    padding: 16px 20px;
+    font-size: var(--font-20);
+    transform: translate(-50%, 0);
+    margin-bottom: 0;
+    border: none;
+    text-align: center;
+    background-color: #000000 !important;
+    color: white !important;
+}
+
+.alert.alert-failed {
+    background-color: red;
+    color: white;
+}

@@ -1,3 +1,6 @@
+/*Reset.css
+1. Bootstrap Component css를 초기화 하는 파일
+*/
 input.form-control {
     height: auto;
 }

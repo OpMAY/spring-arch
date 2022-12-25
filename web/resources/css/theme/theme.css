@@ -1,18 +1,16 @@
 /*변수 지정*/
 :root {
     /* Sample Theme Color */
-    --basic: #F2F2F2;
-    --basic-white: #F2F2F2;
-    --basic-black: #F2F2F2;
-
-    --brand-primary: #F2F2F2;
-    --brand-secondary: #F2F2F2;
-
-    --impact-primary: #F2F2F2;
-    --impact-secondary: #F2F2F2;
+    --basic-white: #FFFFFF;
+    --basic-black: #000;
+    --brand-primary: #410CA8;
+    --brand-secondary: #5f36a9;
+    --impact-primary: red;
+    --impact-secondary: #ff7e7e;
 
     /* Sample Shadow */
-    --shadow: 10px 5px 5px red;
+    --shadow-primary: 10px 5px 5px var(--brand-primary);
+    --shadow-impact: 10px 5px 5px var(--impact-primary);
     --shadow-black: 10px 5px 5px rgba(0, 0, 0, 0.5);
     --shadow-white: 10px 5px 5px rgba(255, 255, 255, 0.5);
     /* Sample Transform */
@@ -22,51 +20,64 @@
     /* Sample Border */
     --border-1px: 1px solid;
     --border-2px: 2px solid;
+    --border-3px: 3px solid;
+    --border-4px: 4px solid;
     /* Sample Radius */
     --input-radius: 5px;
     --button-radius: 5px;
-    --plugin-radius: 5px;
+    --textarea-radius: 5px;
+    --layout-radius: 10px;
+    --card-radius: 8px;
+
     /* Sample Font Variables */
+    --font-8: 8px;
     --font-10: 10px;
     --font-12: 12px;
     --font-14: 14px;
     --font-16: 16px;
-    --font-17: 17px;
     --font-18: 18px;
-    --font-19: 19px;
     --font-20: 20px;
-    --font-21: 21px;
     --font-22: 22px;
-    --font-23: 23px;
     --font-24: 24px;
-    --font-25: 25px;
     --font-26: 26px;
-    --font-27: 27px;
     --font-28: 28px;
-    --font-29: 29px;
     --font-30: 30px;
-    --font-31: 31px;
     --font-32: 32px;
-    --font-33: 33px;
     --font-34: 34px;
-    --font-35: 35px;
     --font-36: 36px;
-    --font-37: 37px;
+    --font-38: 38px;
     --font-40: 40px;
+    --font-42: 42px;
+    --font-44: 44px;
+    --font-46: 46px;
     --font-48: 48px;
+    --font-50: 50px;
 
     /* Sample Font Line Height Variables */
     --line-12: 12px;
+    --line-14: 14px;
     --line-16: 16px;
+    --line-18: 18px;
     --line-20: 20px;
+    --line-22: 22px;
     --line-24: 24px;
+    --line-26: 26px;
     --line-28: 28px;
+    --line-30: 30px;
     --line-32: 32px;
+    --line-34: 34px;
     --line-36: 36px;
+    --line-38: 38px;
     --line-40: 40px;
+    --line-42: 42px;
+    --line-44: 44px;
+    --line-46: 46px;
     --line-48: 48px;
+    --line-50: 50px;
     --line-52: 52px;
+    --line-54: 54px;
     --line-56: 56px;
+    --line-58: 58px;
     --line-1x: 1;
     --line-1_5x: 1.5;
     --line-2x: 2;
@@ -352,18 +363,8 @@ b {
 }
 
 /* Bold Set */
-.bold-h1, .bold-h2, .bold-h3, .bold-h4, .bold-h5, .bold-h6, .bold-p1, .bold-d1, .bold-d2 {
+.bold-h1, .bold-h2, .bold-h3, .bold-h4, .bold-h5, .bold-h6, .bold-p1 {
     font-weight: 700;
-}
-
-.bold-d1 {
-    line-height: var(--line-52);
-    font-size: var(--font-48);
-}
-
-.bold-d2 {
-    line-height: var(--line-52);
-    font-size: var(--font-40);
 }
 
 .bold-h1 {
@@ -403,6 +404,14 @@ b {
 
 /* Color Class */
 /* Suffix c- */
+.c-brand-primary {
+    color: var(--brand-primary);
+}
+
+.c-brand-secondary {
+    color: var(--brand-secondary);
+}
+
 .c-impact-primary {
     color: var(--impact-primary);
 }
@@ -419,4 +428,12 @@ b {
 
 .bg-brand-secondary {
     background-color: var(--brand-secondary);
+}
+
+.bg-impact-primary {
+    background-color: var(--impact-primary);
+}
+
+.bg-impact-secondary {
+    background-color: var(--impact-secondary);
 }

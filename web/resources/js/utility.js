@@ -19,7 +19,7 @@ function checkImageType(file_name) {
         return result;
     }
     ext = ext.toLocaleLowerCase();
-    ['gif', 'jpg', 'jpeg', 'png', 'bmp', 'ico', 'apng'].forEach(function (element) {
+    ['gif', 'jpg', 'jpeg', 'png', 'bmp', 'ico', 'apng', 'svg'].forEach(function (element) {
         if (ext == element) {
             result = true;
         }
@@ -108,7 +108,11 @@ function replaceAll(str, search, replace) {
  * tokenGenerator(10);
  * */
 const tokenGenerator = (length = 11) => {
-    return Math.random().toString(36).substring(2, length); // "twozs5xfni"
+    if (length > 2) {
+        return Math.random().toString(36).substring(0, length);
+    } else {
+        return Math.random().toString(36).substring(0, length);
+    }
 };
 
 /**
@@ -131,33 +135,6 @@ function fetchGetURLBuilder(baseUrl, object) {
 }
 
 /**
- * FocusInputLastCarret,
- * Input을 클릭시 생성되는 케럿을 맨 뒤로 이동시켜주는 함수
- *
- * @param {string} id 엘리먼트의 아이디, default = undefined
- * @param {string} selector 엘리먼트의 셀렉터, default = undefined
- * @param {Document | HTMLElement | Element} root 부모 엘리먼트, default = document.getElementsByTagName('body')[0]
- * */
-function focusInputLastCarret({id = undefined, selector = undefined, root = document.getElementsByTagName('body')[0]}) {
-    const inputField = id !== undefined ? root.getElementById(id) : root.querySelector(selector);
-    if (inputField != null && inputField.value.length != 0) {
-        if (inputField.createTextRange) {
-            const FieldRange = inputField.createTextRange();
-            FieldRange.moveStart('character', inputField.value.length);
-            FieldRange.collapse();
-            FieldRange.select();
-        } else if (inputField.selectionStart || inputField.selectionStart == '0') {
-            const elemLen = inputField.value.length;
-            inputField.selectionStart = elemLen;
-            inputField.selectionEnd = elemLen;
-            inputField.focus();
-        }
-    } else {
-        inputField.focus();
-    }
-}
-
-/**
  * DeleteChild,
  * 엘리먼트 안에 모든 하위 엘리먼트 제거하는 함수
  *
@@ -165,18 +142,22 @@ function focusInputLastCarret({id = undefined, selector = undefined, root = docu
  * @sample deleteChild(document.querySelector('.test'));
  * */
 const deleteChild = (element) => {
-    element.innerHTML = '';
+    if (element) {
+        element.innerHTML = '';
+        return;
+    }
+    throw new Error('element is undefined, please element check before execute this function');
 };
 
 /**
  * ToFileSizeString,
- * 파일 사이즈를 [KB, MB]로 바꿔주는 함수
+ * 파일 사이즈를 [KB, MB, B]로 바꿔주는 함수
  *
  * @param {number} size Byte 단위 크기
  * @return {string}
  * @sample toFileSizeString(10000);
  * */
-function toFileSizeString(size) {
+function changeFileSize(size) {
     let file_size = size / 1024 / 1024;
     if (file_size < 1) {
         file_size *= 1024;
@@ -281,39 +262,39 @@ function toNumberToMoneyString(number) {
 }
 
 /**
- * PhoneValueFormatter,
+ * phoneNumFormatter,
  * 특정 값을 휴대폰 번호 형식에 맞춰서 반환해주는 함수,
  * @param {string} value 휴대폰 번호, 00000000000
  * @return {string} 010-0000-0000
  * @sample
  * autoDashPhoneNumber('00000000000');
  * */
-const phoneValueFormatter = (value) => {
+const phoneNumFormatter = (str) => {
     let RegNotNum = /[^0-9]/g;
     let RegPhoneNum = "";
     let DataForm = "";
 
     // return blank
 
-    if (value === "" || value == null) return "";
+    if (str === "" || str == null) return "";
 
     // delete not number
-    value = value.replace(RegNotNum, '');
+    str = str.replace(RegNotNum, '');
 
     /* 4자리 이하일 경우 아무런 액션도 취하지 않음. */
 
-    if (value.length < 4) return value;
+    if (str.length < 4) return str;
 
-    if (value.substring(0, 2) === "02" && value.length > 10) {
+    if (str.substring(0, 2) === "02" && str.length > 10) {
         /* 지역번호 02일 경우 10자리 이상입력 못하도록 제어함. */
-        value = value.substring(0, 10);
+        str = str.substring(0, 10);
     } else {
         /* 그 외의 경우 11자리 이상입력 못하도록 제어함. */
-        value = value.substring(0, 11);
+        str = str.substring(0, 11);
     }
 
-    if (value.length > 3 && value.length < 7) {
-        if (value.substring(0, 2) === "02") {
+    if (str.length > 3 && str.length < 7) {
+        if (str.substring(0, 2) === "02") {
             DataForm = "$1-$2";
 
             RegPhoneNum = /([0-9]{2})([0-9]+)/;
@@ -323,8 +304,8 @@ const phoneValueFormatter = (value) => {
 
             RegPhoneNum = /([0-9]{3})([0-9]+)/;
         }
-    } else if (value.length === 7) {
-        if (value.substring(0, 2) === "02") {
+    } else if (str.length === 7) {
+        if (str.substring(0, 2) === "02") {
             DataForm = "$1-$2-$3";
 
             RegPhoneNum = /([0-9]{2})([0-9]{3})([0-9]+)/;
@@ -333,8 +314,8 @@ const phoneValueFormatter = (value) => {
 
             RegPhoneNum = /([0-9]{3})([0-9]{4})/;
         }
-    } else if (value.length === 9) {
-        if (value.substring(0, 2) === "02") {
+    } else if (str.length === 9) {
+        if (str.substring(0, 2) === "02") {
             DataForm = "$1-$2-$3";
 
             RegPhoneNum = /([0-9]{2})([0-9]{3})([0-9]+)/;
@@ -343,8 +324,8 @@ const phoneValueFormatter = (value) => {
 
             RegPhoneNum = /([0-9]{3})([0-9]{3})([0-9]+)/;
         }
-    } else if (value.length === 10) {
-        if (value.substring(0, 2) === "02") {
+    } else if (str.length === 10) {
+        if (str.substring(0, 2) === "02") {
             DataForm = "$1-$2-$3";
 
             RegPhoneNum = /([0-9]{2})([0-9]{4})([0-9]+)/;
@@ -353,8 +334,8 @@ const phoneValueFormatter = (value) => {
 
             RegPhoneNum = /([0-9]{3})([0-9]{3})([0-9]+)/;
         }
-    } else if (value.length > 10) {
-        if (value.substring(0, 2) === "02") {
+    } else if (str.length > 10) {
+        if (str.substring(0, 2) === "02") {
             DataForm = "$1-$2-$3";
 
             RegPhoneNum = /([0-9]{2})([0-9]{4})([0-9]+)/;
@@ -364,7 +345,7 @@ const phoneValueFormatter = (value) => {
             RegPhoneNum = /([0-9]{3})([0-9]{4})([0-9]+)/;
         }
     } else {
-        if (value.substring(0, 2) === "02") {
+        if (str.substring(0, 2) === "02") {
             DataForm = "$1-$2-$3";
 
             RegPhoneNum = /([0-9]{2})([0-9]{3})([0-9]+)/;
@@ -375,11 +356,11 @@ const phoneValueFormatter = (value) => {
         }
     }
 
-    while (RegPhoneNum.test(value)) {
-        value = value.replace(RegPhoneNum, DataForm);
+    while (RegPhoneNum.test(str)) {
+        str = str.replace(RegPhoneNum, DataForm);
     }
 
-    return value;
+    return str;
 }
 
 /**
@@ -491,78 +472,7 @@ function isEmpty(value) {
 }
 
 class Time {
-    static formatLocalDatetime(datetime) {
-        if (datetime === undefined) return this.get_yyyy_mm_dd();
-        try {
-            const year = datetime.year;
-            const month = datetime.monthValue > 9 ? datetime.monthValue : '0' + datetime.monthValue;
-            const day = datetime.dayOfMonth > 9 ? datetime.dayOfMonth : '0' + datetime.dayOfMonth;
-            const hour = datetime.hour > 9 ? datetime.hour : '0' + datetime.hour;
-            const minute = datetime.minute > 9 ? datetime.minute : '0' + datetime.minute;
-            const second = datetime.second > 9 ? datetime.second : '0' + datetime.second;
 
-            return `${year}.${month}.${day} ${hour}:${minute}`;
-        } catch (e) {
-            console.error(e);
-            return '';
-        }
-    }
-
-    static formatLocalDate(datetime) {
-        if (datetime === undefined) return this.get_yyyy_mm_dd();
-        try {
-            const year = datetime.year;
-            const month = datetime.monthValue > 9 ? datetime.monthValue : '0' + datetime.monthValue;
-            const day = datetime.dayOfMonth > 9 ? datetime.dayOfMonth : '0' + datetime.dayOfMonth;
-
-            return `${year}.${month}.${day}`;
-        } catch (e) {
-            console.error(e);
-            return '';
-        }
-    }
-
-    static formatChatDateTime(datetime) {
-        if (datetime === undefined || datetime === null) return '방금 전';
-        try {
-            const time_gap = new Date().getTime() - this.getLocalDateTime(datetime);
-            if (time_gap < 1000 * 60) { // 1분 이내
-                return Math.floor(time_gap / (1000)) + '초전';
-            } else if (time_gap < 1000 * 60 * 60) { // 60분 이내
-                return Math.floor(time_gap / (1000 * 60)) + '분 전';
-            } else if (time_gap < 1000 * 60 * 60 * 24) { // 24시간 이내
-                return Math.floor(time_gap / (1000 * 60 * 60)) + '시간 전';
-            } else if (time_gap < 1000 * 60 * 60 * 24 * datetime.dayOfMonth) { //한달 이내
-                return Math.floor(time_gap / (1000 * 60 * 60 * 24)) + '일 전';
-            } else if (time_gap < 1000 * 60 * 60 * 24 * 365) {
-                return Math.floor(time_gap / (1000 * 60 * 60 * 24 * 30)) + '개월 전';
-            } else if (time_gap < 1000 * 60 * 60 * 24 * 365 * 10) {
-                return Math.floor(time_gap / (1000 * 60 * 60 * 24 * 365)) + '년 전';
-            } else {
-                return this.formatLocalDate(datetime);
-            }
-        } catch (e) {
-            console.error(e);
-            return '';
-        }
-    }
-
-    static getLocalDateTime(datetime) {
-        const year = datetime.year;
-        const month = datetime.monthValue - 1;
-        const day = datetime.dayOfMonth;
-        const hour = datetime.hour;
-        const minute = datetime.minute;
-        const second = datetime.second;
-        return new Date(year, month, day, hour, minute, second).getTime();
-    }
-
-    static get_yyyy_mm_dd(target_date) {
-        if (!target_date)
-            target_date = new Date();
-        const [year, month, date] = target_date.toLocaleDateString().replace(/\s/g, '').split('.');
-        return `${year}.${month > 9 ? month : '0' + month}.${date > 9 ? date : '0' + date}`;
-    }
 }
 
 function copyText(target, callback) {
@@ -588,4 +498,26 @@ function copyText(target, callback) {
 const getURLParamByPrevAndNext = (find_first_slash_string, find_last_slash_string) => {
     let path_name = location.pathname;
     return path_name.substring(path_name.indexOf(find_first_slash_string) + (find_first_slash_string.length + 1), path_name.lastIndexOf(find_last_slash_string) - 1);
+}
+
+function debounce(callback, limit = 100) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            callback.apply(this, args);
+        }, limit);
+    };
+}
+
+function downloadFileFromUrl(url, filename) {
+    fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+        })
+        .catch(console.error);
 }
