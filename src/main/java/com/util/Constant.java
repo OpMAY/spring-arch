@@ -6,17 +6,16 @@ public class Constant {
      *
      * @Date 2022-07-27
      * @Author kimwoosik
-     * @Description
-     * Server Token Life Time
+     * @Description Server Token Life Time
      */
     public static final int TOKEN_END_MINUTES = 30;
+
     /**
      * PR
      *
      * @Date 2022-07-26
      * @Author kimwoosik
-     * @Description
-     * Database Setting Static Class
+     * @Description Database Setting Static Class
      */
     public static class DatabaseSetting {
         public static final String DATABASE_SOURCE = "LOCAL1";
@@ -48,19 +47,8 @@ public class Constant {
      * @Description LogInterceptor Logging
      */
     public static class LogSetting {
-        public static final boolean HEADER_LOG = true;
-        public static final boolean PARAMETER_LOG = true;
-        public static final boolean PAYLOAD_LOG = true;
-        public static final boolean REQUEST_BODY_LOG = true;
-        public static final boolean RESPONSE_BODY_LOG = true;
+        public static final boolean HEADER_LOG = Boolean.FALSE;
+        public static final boolean PARAMETER_LOG = Boolean.TRUE;
+        public static final boolean REQUEST_BODY_LOG = Boolean.TRUE;
     }
-
-    /**
-     * Time Constant
-     */
-    public static final int SEC = 60;
-    public static final int MIN = 60;
-    public static final int HOUR = 24;
-    public static final int DAY = 30;
-    public static final int MONTH = 12;
 }

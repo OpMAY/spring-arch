@@ -61,9 +61,8 @@ public class JsonArrayObjectTypeHandler<T> extends BaseTypeHandler<T> {
                 return (T) new ArrayList<T>();
             }
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
             log.error("JsonArrayObjectTypeHandler failed to casting jsonString to List<Object>, JSON String : " + jsonString, e);
+            return (T) new ArrayList<T>();
         }
-        return (T) new ArrayList<T>();
     }
 }

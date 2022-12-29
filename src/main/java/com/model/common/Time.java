@@ -1,7 +1,6 @@
 package com.model.common;
 
 import lombok.Data;
-import lombok.Getter;
 
 import java.time.LocalDateTime;
 
@@ -12,10 +11,11 @@ public abstract class Time {
     private LocalDateTime updated_datetime;
 
     public Time() {
+
     }
 
-    public Time(LocalDateTime reg_datetime, LocalDateTime updated_datetime) {
+    public Time(LocalDateTime reg_datetime, LocalDateTime update_datetime) {
         this.reg_datetime = reg_datetime;
-        this.updated_datetime = updated_datetime;
+        this.updated_datetime = update_datetime;
     }
 }

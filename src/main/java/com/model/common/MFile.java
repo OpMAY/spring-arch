@@ -15,17 +15,4 @@ public class MFile {
 
     public MFile() {
     }
-
-    public MFile(MultipartFile multipartFile) {
-        this.size = multipartFile.getSize();
-        this.name = multipartFile.getOriginalFilename();
-        this.type = multipartFile.getContentType();
-    }
-
-    public MFile(MultipartFile multipartFile, String url) {
-        this.size = multipartFile.getSize();
-        this.name = multipartFile.getOriginalFilename();
-        this.type = multipartFile.getContentType();
-        this.url = url;
-    }
 }

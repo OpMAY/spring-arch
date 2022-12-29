@@ -2,7 +2,7 @@ package com.service;
 
 import com.model.queue.Token;
 import com.util.Constant;
-import com.util.TokenGenerator;
+import com.util.Utility;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ public class ServerTokenService {
      * */
     public String put(String key, Token buildToken) {
         if (exist(key)) {
-            key = TokenGenerator.RandomToken(8);
+            key = Utility.RandomToken(8);
         }
         TokenQueue.put(key, buildToken);
         return key;

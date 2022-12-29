@@ -1,0 +1,21 @@
+.multi-level-dropdown > .dropdown-menu {
+    display: block;
+}
+
+.multi-level-dropdown .dropdown-menu,
+.multi-level-dropdown .dropdown-submenu {
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none;
+    margin-top: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    float: none;
+}
+
+.multi-level-dropdown a.multi-level {
+    display: block;
+    width: 100%;
+}

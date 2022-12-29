@@ -13,4 +13,9 @@ public class GrantAccessDeniedException extends RuntimeException {
         super(exceptionType.getErrorMessage());
         this.exceptionType = exceptionType;
     }
+
+    public GrantAccessDeniedException(BaseExceptionType exceptionType, Exception e) {
+        super(exceptionType.getErrorMessage(), e.getCause());
+        this.exceptionType = exceptionType;
+    }
 }

@@ -122,7 +122,7 @@ public class ProtocolBuilder {
 
         if (responseCode == 200) {
             if (logging) {
-                log.info(result);
+                log.info("Success Request -> Result : {}", result);
             }
             if (class_type == String.class) {
                 return (T) result;
@@ -131,7 +131,7 @@ public class ProtocolBuilder {
             }
         } else {
             if (logging) {
-                log.info("failed request : {}", result);
+                log.info("Failed Request -> Result : {}", result);
             }
             return null;
         }
@@ -167,14 +167,14 @@ public class ProtocolBuilder {
 
         if (responseCode == HttpURLConnection.HTTP_OK) {
             if (logging) {
-                log.info(result);
+                log.info("Success Request -> Result : {}", result);
             }
             return new Gson().fromJson(result, new TypeToken<ArrayList<T>>() {
             }.getType());
 
         } else {
             if (logging) {
-                log.info("failed request : {}", result);
+                log.info("Failed Request -> Result : {}", result);
             }
             return (ArrayList<T>) Collections.emptyList();
         }
@@ -207,12 +207,12 @@ public class ProtocolBuilder {
 
         if (responseCode == HttpURLConnection.HTTP_OK) {
             if (logging) {
-                log.info(result);
+                log.info("Success Request -> Result : {}", result);
             }
             return result;
         } else {
             if (logging) {
-                log.info("failed request : {}", result);
+                log.info("Failed Request -> Result : {}", result);
             }
             return null;
         }

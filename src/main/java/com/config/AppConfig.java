@@ -56,8 +56,6 @@ public class AppConfig implements WebApplicationInitializer, SchedulingConfigure
 
     @Override
     public void onStartup(ServletContext container) {
-        log.info("WebInitializer : starting");
-
         // init properties
         container.setInitParameter("contextInitializerClasses", "com.config.PropertyConfig");
 
@@ -103,23 +101,21 @@ public class AppConfig implements WebApplicationInitializer, SchedulingConfigure
         /*HttpConstraintElement httpConstraintElement = new HttpConstraintElement(ServletSecurity.TransportGuarantee.CONFIDENTIAL);
         ServletSecurityElement servletSecurityElement = new ServletSecurityElement(httpConstraintElement);
         dispatcher.setServletSecurity(servletSecurityElement);*/
-        log.info("WebInitializer : finished");
+        log.info("WebInitializer Finished");
     }
 
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
-        log.info("Schedule initializing");
         ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
         threadPoolTaskScheduler.setPoolSize(Constant.DatabaseSetting.POOL_SIZE);
         threadPoolTaskScheduler.setThreadNamePrefix("scheduled-task-pool-");
         threadPoolTaskScheduler.initialize();
         scheduledTaskRegistrar.setTaskScheduler(threadPoolTaskScheduler);
-        log.info("Schedule initialized");
+        log.info("Schedule initialized -> POOL_SIZE : {}, NamePrefix : {}", Constant.DatabaseSetting.POOL_SIZE, "scheduled-task-pool-");
     }
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        log.info("configureMessageConverters");
         StringHttpMessageConverter stringConverter = new StringHttpMessageConverter();
         stringConverter.setWriteAcceptCharset(true);
         MediaType mediaType = new MediaType("text", "html", StandardCharsets.UTF_8);
@@ -134,45 +130,42 @@ public class AppConfig implements WebApplicationInitializer, SchedulingConfigure
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         converter.setPrettyPrint(true);
         converters.add(converter);
+        log.info("configureMessageConverters Initialized -> MappingJackson2HttpMessageConverter, StringHttpMessageConverter");
     }
 
     @Bean // view resolver
     public ViewResolver configureViewResolvers() {
-        log.info("configureViewResolvers : initializing");
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/view/");
         viewResolver.setSuffix(".jsp");
-        log.info("configureViewResolvers : initialized");
+        log.info("ConfigureViewResolvers Initialized -> Prefix : {}, Suffix : {}", "/WEB-INF/view/", ".jsp");
         return viewResolver;
     }
 
     @Bean // custom view: view가 없을 경우 커스텀 지정한 class를 찾도록 설정
     public ViewResolver beanNameViewResolver() {
-        log.info("beanNameViewResolver : initializing");
         BeanNameViewResolver resolver = new BeanNameViewResolver();
         resolver.setOrder(0);
-        log.info("beanNameViewResolver : initialized");
+        log.info("BeanNameViewResolver Initialized");
         return resolver;
     }
 
     @Bean // 파일 업로드 설정
     public CommonsMultipartResolver multipartResolver() {
-        log.info("multipartResolver : initializing");
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         multipartResolver.setDefaultEncoding("utf-8");
         multipartResolver.setMaxUploadSize(40_212_354_720L); // 전체 최대 45GB
         multipartResolver.setMaxUploadSizePerFile(13_737_418_240L); // 각 최대 15GB
-        log.info("multipartResolver : initialized");
+        log.info("MultipartResolver Initialized -> MaxUploadSize : {}, MaxUploadSizePerFile", 40_212_354_720L, 13_737_418_240L);
         return multipartResolver;
     }
 
     @Override // 정적 리소스 매핑
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        log.info("addResourceHandlers : initializing");
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
         registry.addResourceHandler("/files/**").addResourceLocations("/files/");
         registry.addResourceHandler("/favicon.ico").addResourceLocations("/resources/assets/meta/favicon.ico");
-        log.info("addResourceHandlers : initialized");
+        log.info("AddResourceHandlers Initialized -> {} to {}, {} to {}, {} to {}", "/resources/**", "/resources/", "/files/**", "/files/", "/favicon.ico", "/resources/assets/meta/favicon.ico");
     }
 
     /**
@@ -191,6 +184,7 @@ public class AppConfig implements WebApplicationInitializer, SchedulingConfigure
     private BaseInterceptor baseInterceptor;
     @Autowired
     private RecoverInterceptor recoverInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(logInterceptor).order(0)

@@ -41,19 +41,16 @@ public class LogInterceptor extends HandlerInterceptorAdapter implements Logging
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.debug("Log Interceptor preHandle");
         return super.preHandle(request, response, handler);
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        log.debug("Log Interceptor postHandle");
         super.postHandle(request, response, handler, modelAndView);
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        log.debug("Log Interceptor afterCompletion");
         try {
             ContentCachingRequestWrapper requestWrapper = (ContentCachingRequestWrapper) request;
             if (Constant.LogSetting.HEADER_LOG)
@@ -72,7 +69,6 @@ public class LogInterceptor extends HandlerInterceptorAdapter implements Logging
 
     @Override
     public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.debug("Log Interceptor afterConcurrentHandlingStarted");
         super.afterConcurrentHandlingStarted(request, response, handler);
     }
 
@@ -86,22 +82,6 @@ public class LogInterceptor extends HandlerInterceptorAdapter implements Logging
             headerMap.put(headerName, request.getHeader(headerName));
         }
         return headerMap;
-    }
-
-    @Override
-    public String getPayload(String contentType, InputStream inputStream) throws IOException {
-        boolean visible = isVisible(MediaType.valueOf(contentType == null ? "application/json" : contentType));
-        if (visible) {
-            byte[] content = StreamUtils.copyToByteArray(inputStream);
-            if (content.length > 0) {
-                String contentString = new String(content);
-                return contentString;
-            } else {
-                return "false";
-            }
-        } else {
-            return "false";
-        }
     }
 
     @Override
@@ -124,20 +104,6 @@ public class LogInterceptor extends HandlerInterceptorAdapter implements Logging
             }
         }
         return " - ";
-    }
-
-    @Override
-    public String getResponseBody(ContentCachingResponseWrapper response) throws IOException {
-        String payload = null;
-        if (response != null) {
-            response.setCharacterEncoding("UTF-8");
-            byte[] buf = response.getContentAsByteArray();
-            if (buf.length > 0) {
-                payload = new String(buf, 0, buf.length, response.getCharacterEncoding());
-                response.copyBodyToResponse();
-            }
-        }
-        return null == payload ? " - " : payload;
     }
 
     @Override

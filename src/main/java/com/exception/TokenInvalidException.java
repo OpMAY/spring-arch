@@ -1,19 +1,19 @@
 package com.exception;
 
+import com.exception.enums.BaseExceptionType;
+import lombok.Getter;
+
 public class TokenInvalidException extends RuntimeException {
-    public TokenInvalidException() {
-        super();
+    @Getter
+    private BaseExceptionType exceptionType;
+
+    public TokenInvalidException(BaseExceptionType exceptionType) {
+        super(exceptionType.getErrorMessage());
+        this.exceptionType = exceptionType;
     }
 
-    public TokenInvalidException(String message) {
-        super(message);
-    }
-
-    public TokenInvalidException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public TokenInvalidException(Throwable cause) {
-        super(cause);
+    public TokenInvalidException(BaseExceptionType exceptionType, Exception e) {
+        super(exceptionType.getErrorMessage(), e.getCause());
+        this.exceptionType = exceptionType;
     }
 }

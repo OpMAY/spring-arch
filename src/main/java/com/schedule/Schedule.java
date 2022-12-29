@@ -10,13 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @EnableScheduling
 public class Schedule {
-    @Scheduled(cron = "*/600 * * * * *")
-    public void Schedule() throws InterruptedException {
-    }
-
-    @Scheduled(fixedRate = 30 * 1000)
-    @CacheEvict(value = "IG", allEntries = true)
-    public void evictCache() {
-        /** System Scheduling or Database Scheduling Develop here*/
-    }
+//    @Scheduled(cron = "*/600 * * * * *")
+//    public void Schedule() throws InterruptedException {
+//    }
 }

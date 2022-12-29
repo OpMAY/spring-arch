@@ -1,7 +1,7 @@
 'use strict';
 
 async function apiLogin(email, password) {
-    function apiFetchLogin(email, password) {
+    function apiFetch(email, password) {
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", 'application/json');
         myHeaders.append("Content-Api", tokenGenerator(8));
@@ -22,7 +22,7 @@ async function apiLogin(email, password) {
 
     let result;
     try {
-        result = await apiFetchLogin(email, password);
+        result = await apiFetch(email, password);
         return result;
     } catch (error) {
         console.log(error);

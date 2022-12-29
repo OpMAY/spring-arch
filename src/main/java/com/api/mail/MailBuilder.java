@@ -1,9 +1,10 @@
 package com.api.mail;
 
 
-import com.response.ResponseEnum;
+import com.exception.MailException;
+import com.exception.enums.GlobalExceptionType;
 import com.util.Encryption.EncryptionService;
-import com.util.Time;
+import com.util.TimeFormatter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,6 @@ import java.util.Properties;
 public class MailBuilder {
     @Autowired
     private Mail mail;
-    private Session session;
     private MimeMessage message;
 
     public MailBuilder() {
@@ -67,21 +67,19 @@ public class MailBuilder {
         } else if (type == MailType.WITHDRAWAL) {
             message.setContent(content, "text/html;charset=UTF-8");
         } else {
-            throw new MessagingException();
+            throw new MailException(GlobalExceptionType.MAIL_EXCEPTION);
         }
         return this;
     }
 
-    public ResponseEnum send() {
+    public void send() {
         try {
             Transport.send(message);
         } catch (SendFailedException e) {
-            return ResponseEnum.INVALID_ADDRESS;
+            throw new MailException(GlobalExceptionType.MAIL_EXCEPTION);
         } catch (MessagingException e) {
-            e.printStackTrace();
-            return ResponseEnum.FAIL;
+            throw new MailException(GlobalExceptionType.MAIL_EXCEPTION);
         }
-        return ResponseEnum.SUCCESS;
     }
 
 
@@ -89,73 +87,68 @@ public class MailBuilder {
      * @param : MailType(Enum), MailLogo(Object), MailFooter(Object), MailUser(Object, Optional), code(String, optional)
      * @return : String (String)
      * Description : 전송할 메일 컨텐츠를 만드는 함수
-     *               MailType 에 맞춰 보내면 되며
-     *               MailUser를 쓸 땐 무조건 MailType.REGISTER
-     *               code를 쓸 땐 MailType.WITHDRAWAL or MailType.PASSWORD를 사용
+     * MailType 에 맞춰 보내면 되며
+     * MailUser를 쓸 땐 무조건 MailType.REGISTER
+     * code를 쓸 땐 MailType.WITHDRAWAL or MailType.PASSWORD를 사용
      * Date : 2022-07-27
      */
     public String getMailHTML(MailType type, MailLogo mailLogo, MailFooter mailFooter, MailUser mailUser) {
-        try {
-            if(!Objects.equals(type, MailType.REGISTER)) {
-                // paramter 에 MailUser를 넣을 경우
-                throw new MessagingException();
-            }
-            return "<!DOCTYPE html>\n" +
-                    "<html lang=\"en\">\n" +
-                    "<head>\n" +
-                    "  <meta charset=\"UTF-8\">\n" +
-                    "</head>\n" +
-                    "<body>\n" +
-                    "<table align=\"center\"\n" +
-                    "       width=\"100%\"\n" +
-                    "       cellspacing=\"0\"\n" +
-                    "       cellpadding=\"0\"\n" +
-                    "       border=\"0\"\n" +
-                    "       bgcolor=\"#ffffff\"\n" +
-                    "       style=\"max-width:600px;margin:0 auto\">\n" +
-                    "\n" +
-                    "  <tbody>\n" +
-                    "  <tr>\n" +
-                    "    <td height=\"45\"\n" +
-                    "        colspan=\"3 \"\n" +
-                    "        bgcolor=\"#FFF\"></td>\n" +
-                    "  </tr>\n" +
-                    "  <tr>\n" +
-                    "    <td width=\"5\"\n" +
-                    "        height=\"25\"\n" +
-                    "        bgcolor=\"#FFF\"></td>\n" +
-                    "    <td height=\"25\"\n" +
-                    "        colspan=\"2\"\n" +
-                    "        bgcolor=\"#FFF\">\n" +
-                    // LOGO IMAGE DIV
-                    makeImageLogo(mailLogo) +
-                    "    </td>\n" +
-                    "  </tr>\n" +
-                    "  <tr>\n" +
-                    "    <td height=\"45\"\n" +
-                    "        colspan=\"3\"\n" +
-                    "        bgcolor=\"#FFF\"></td>\n" +
-                    "  </tr>\n" +
-                    "  <tr>\n" +
-                    "    <td height=\"40\"\n" +
-                    "        colspan=\"3\"></td>\n" +
-                    "  </tr>\n" +
-                    // CONTENT
-                    makeFooterHTML(mailFooter) +
-                    makeRegisterHtml(mailUser) +
-                    "  <!--[if (gte mso 9)|(IE)]>\n" +
-                    "\n" +
-                    "\n" +
-                    "  </table></td></tr></tbody>\n" +
-                    "  <![endif]-->\n" +
-                    "  </tbody>\n" +
-                    "</table>\n" +
-                    "</body>\n" +
-                    "</html>";
-        } catch (MessagingException e) {
-            e.printStackTrace();
-            return null;
+        if (!Objects.equals(type, MailType.REGISTER)) {
+            // paramter 에 MailUser를 넣을 경우
+            throw new MailException(GlobalExceptionType.MAIL_EXCEPTION);
         }
+        return "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "<head>\n" +
+                "  <meta charset=\"UTF-8\">\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<table align=\"center\"\n" +
+                "       width=\"100%\"\n" +
+                "       cellspacing=\"0\"\n" +
+                "       cellpadding=\"0\"\n" +
+                "       border=\"0\"\n" +
+                "       bgcolor=\"#ffffff\"\n" +
+                "       style=\"max-width:600px;margin:0 auto\">\n" +
+                "\n" +
+                "  <tbody>\n" +
+                "  <tr>\n" +
+                "    <td height=\"45\"\n" +
+                "        colspan=\"3 \"\n" +
+                "        bgcolor=\"#FFF\"></td>\n" +
+                "  </tr>\n" +
+                "  <tr>\n" +
+                "    <td width=\"5\"\n" +
+                "        height=\"25\"\n" +
+                "        bgcolor=\"#FFF\"></td>\n" +
+                "    <td height=\"25\"\n" +
+                "        colspan=\"2\"\n" +
+                "        bgcolor=\"#FFF\">\n" +
+                // LOGO IMAGE DIV
+                makeImageLogo(mailLogo) +
+                "    </td>\n" +
+                "  </tr>\n" +
+                "  <tr>\n" +
+                "    <td height=\"45\"\n" +
+                "        colspan=\"3\"\n" +
+                "        bgcolor=\"#FFF\"></td>\n" +
+                "  </tr>\n" +
+                "  <tr>\n" +
+                "    <td height=\"40\"\n" +
+                "        colspan=\"3\"></td>\n" +
+                "  </tr>\n" +
+                // CONTENT
+                makeFooterHTML(mailFooter) +
+                makeRegisterHtml(mailUser) +
+                "  <!--[if (gte mso 9)|(IE)]>\n" +
+                "\n" +
+                "\n" +
+                "  </table></td></tr></tbody>\n" +
+                "  <![endif]-->\n" +
+                "  </tbody>\n" +
+                "</table>\n" +
+                "</body>\n" +
+                "</html>";
     }
 
     public String getMailHTML(MailType type, MailLogo mailLogo, MailFooter mailFooter, String code) {
@@ -216,7 +209,7 @@ public class MailBuilder {
 
 
     /**
-     * @param :  MailLogo(Object)
+     * @param : MailLogo(Object)
      * @return : String (String)
      * Description : 메일 컨텐츠 내에 이미지 로고를 만드는 함수 (이미지 URL, alt)
      * Date : 2022-07-27
@@ -232,14 +225,14 @@ public class MailBuilder {
     }
 
     /**
-     * @param :  MailFooter(Object)
+     * @param : MailFooter(Object)
      * @return : String (String)
      * Description : 메일 컨텐츠 내에 Footer를 만드는 함수
-     *      (Footer 요소 :    회사명
-     *                        회사 영어명
-     *                        대표자명
-     *                        사업자 등록번호
-     *                        회사 주소 )
+     * (Footer 요소 :    회사명
+     * 회사 영어명
+     * 대표자명
+     * 사업자 등록번호
+     * 회사 주소 )
      * Date : 2022-07-27
      */
     private String makeFooterHTML(MailFooter mailFooter) {
@@ -262,7 +255,7 @@ public class MailBuilder {
                 "    <td style=\"font-size:12px;line-height:18px;font-family:Apple SD Gothic Neo,sans-serif,'맑은고딕',Malgun Gothic,'돋움',Dotum;color:#7F7F7F\">\n" +
                 "      본 메일은 발신전용입니다. 본 메일로 회신할 경우 답변이 되지 않습니다.<br>\n" +
                 "      서비스 이용 및 법적 의무 고지사항 안내메일로써 수신동의 여부와 관계없이 발송드립니다.<br/>\n" +
-                "      Copyrights ⓒ " + Time.TimeFormatCurrent("yyyy") + " " + mailFooter.getCompanyEngName() + " INC. ALL RIGHTS RESERVED.\n" +
+                "      Copyrights ⓒ " + TimeFormatter.TimeFormatCurrent("yyyy") + " " + mailFooter.getCompanyEngName() + " INC. ALL RIGHTS RESERVED.\n" +
                 "    </td>\n" +
                 "    <td width=\"5\"></td>\n" +
                 "  </tr>\n" +
@@ -327,12 +320,12 @@ public class MailBuilder {
     }
 
     /**
-     * @param :  MailUser(Object)
+     * @param : MailUser(Object)
      * @return : String (String)
      * Description : 메일 컨텐츠 내에 회원가입 html를 만드는 함수
-     *      (User 요소 :    이름
-     *                      아이디
-     *                      등록일자 )
+     * (User 요소 :    이름
+     * 아이디
+     * 등록일자 )
      * Date : 2022-07-27
      */
     private String makeRegisterHtml(MailUser mailUser) {
@@ -436,13 +429,13 @@ public class MailBuilder {
     }
 
     /**
-     * @param :  code(String)
+     * @param : code(String)
      * @return : String (String)
      * Description : 메일 컨텐츠 내에 비밀번호 인증 html를 만드는 함수
      * Date : 2022-07-27
      */
     private String makePasswordHTML(String code) {
-        return  "  <tr>\n" +
+        return "  <tr>\n" +
                 "    <td width=\"5\"></td>\n" +
                 "    <td style=\"font-size:24px;line-height:32px;font-family:'Apple SD Gothic Neo','맑은고딕','Malgun Gothic','돋움',Dotum,'굴림',gulim,sans-serif;font-weight:bold;color:#191919\">\n" +
                 "      비밀번호 찾기\n" +
@@ -546,13 +539,13 @@ public class MailBuilder {
     }
 
     /**
-     * @param :  code(String)
+     * @param : code(String)
      * @return : String (String)
      * Description : 메일 컨텐츠 내에 회원탈퇴 인증 html를 만드는 함수
      * Date : 2022-07-27
      */
     private String makeWithDrawalHTML(String code) {
-        return  "  <tr>\n" +
+        return "  <tr>\n" +
                 "    <td width=\"5\"></td>\n" +
                 "    <td style=\"font-size:24px;line-height:32px;font-family:'Apple SD Gothic Neo','맑은고딕','Malgun Gothic','돋움',Dotum,'굴림',gulim,sans-serif;font-weight:bold;color:#191919\">\n" +
                 "      회원탈퇴 인증\n" +

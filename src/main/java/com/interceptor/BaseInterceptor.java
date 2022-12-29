@@ -1,6 +1,6 @@
 package com.interceptor;
 
-import com.util.TokenGenerator;
+import com.util.Utility;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -42,7 +42,6 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.debug("Base Interceptor preHandle");
         /**
          * Clear Setting
          * @Date 2022-07-20
@@ -53,25 +52,22 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
          * ../../../resources/css/theme/theme.css?vc=${RESOURCES_VERSION}
          *../../../resources/js/theme/theme.js?vc=${RESOURCES_VERSION}
          * */
-        request.setAttribute("RESOURCES_VERSION", TokenGenerator.RandomIntegerToken(7));
+        request.setAttribute("RESOURCES_VERSION", Utility.RandomIntegerToken(7));
         return super.preHandle(request, response, handler);
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        log.debug("Base Interceptor postHandle");
         super.postHandle(request, response, handler, modelAndView);
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        log.debug("Base Interceptor afterCompletion");
         super.afterCompletion(request, response, handler, ex);
     }
 
     @Override
     public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.debug("Base Interceptor afterConcurrentHandlingStarted");
         super.afterConcurrentHandlingStarted(request, response, handler);
     }
 }

@@ -1,5 +1,7 @@
 package com.api.sns.google;
 
+import com.exception.LoginAPIException;
+import com.exception.enums.GlobalExceptionType;
 import com.transfer.ProtocolBuilder;
 import com.transfer.ProtocolBuilderHelper;
 import lombok.extern.slf4j.Slf4j;
@@ -50,17 +52,13 @@ public class GoogleAPI {
             googleAccess = (GoogleAccess) protocolBuilder.openReader("UTF-8", GoogleAccess.class, true);
             return googleAccess;
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         } catch (ProtocolException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         }
     }
 
@@ -76,17 +74,13 @@ public class GoogleAPI {
             googleInfo = (GoogleInfo) protocolBuilder.openReader("UTF-8", GoogleInfo.class, true);
             return googleInfo;
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         } catch (ProtocolException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         }
     }
 
@@ -102,14 +96,11 @@ public class GoogleAPI {
             String result = protocolBuilder.openReader("UTF-8", true);
             return result;
         } catch (ProtocolException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.GOOGLE_API_EXCEPTION);
         }
     }
 }

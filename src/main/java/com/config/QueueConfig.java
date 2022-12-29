@@ -23,7 +23,7 @@ public class QueueConfig {
 
     @Bean
     public synchronized HashMap<String, Token> TokenQueue() {
-        log.info("SplitFileStorage initialized");
+        log.info("SplitFileStorage Initialized");
         return new HashMap<>();
     }
 }

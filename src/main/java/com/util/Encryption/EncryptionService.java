@@ -4,10 +4,9 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.exception.TokenInvalidException;
 import com.model.jwt.RootUser;
 import com.util.Constant;
-import com.util.Time;
+import com.util.TimeFormatter;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.Cipher;
@@ -22,6 +21,10 @@ import java.util.HashMap;
 @Service
 public class EncryptionService implements Encrypt {
     private final static String SECRET_KEY = "secret";
+    private static final String ALG = "AES/CBC/PKCS5Padding";
+    private static final String KEY = "0123456789012345";
+    private final String IV = KEY.substring(0, 16); // 16byte
+
     @Override
     public <T> T getSessionParameter(String token, String key) {
         if (token != null) {
@@ -68,7 +71,7 @@ public class EncryptionService implements Encrypt {
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
             return JWT.create()
-                    .withExpiresAt(Time.LongTimeStamp(1))
+                    .withExpiresAt(TimeFormatter.LongTimeStamp(1))
                     .withClaim(JWTEnum.VERSION.name(), Constant.VERSION)
                     .withClaim(JWTEnum.GRANT.name(), user.getGrant().name())
                     .withClaim(JWTEnum.TOKEN.name(), user.getAccess_token())
@@ -103,15 +106,13 @@ public class EncryptionService implements Encrypt {
     /**
      * AES256 Encrypt Algorithm
      */
-    private static final String alg = "AES/CBC/PKCS5Padding";
-    private static final String key = "0123456789012345";
-    private final String iv = key.substring(0, 16); // 16byte
+
 
     @Override
     public String encryptAES(String text, boolean isSlashIncludedString) throws Exception {
-        Cipher cipher = Cipher.getInstance(alg);
-        SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), "AES");
-        IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
+        Cipher cipher = Cipher.getInstance(ALG);
+        SecretKeySpec keySpec = new SecretKeySpec(KEY.getBytes(), "AES");
+        IvParameterSpec ivParamSpec = new IvParameterSpec(IV.getBytes());
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParamSpec);
 
         byte[] encrypted = cipher.doFinal(text.getBytes(StandardCharsets.UTF_8));
@@ -124,9 +125,9 @@ public class EncryptionService implements Encrypt {
 
     @Override
     public String decryptAES(String cipherText) throws Exception {
-        Cipher cipher = Cipher.getInstance(alg);
-        SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), "AES");
-        IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
+        Cipher cipher = Cipher.getInstance(ALG);
+        SecretKeySpec keySpec = new SecretKeySpec(KEY.getBytes(), "AES");
+        IvParameterSpec ivParamSpec = new IvParameterSpec(IV.getBytes());
         cipher.init(Cipher.DECRYPT_MODE, keySpec, ivParamSpec);
 
         byte[] decodedBytes = Base64.getDecoder().decode(cipherText);
@@ -136,9 +137,9 @@ public class EncryptionService implements Encrypt {
 
     public String decryptAESWithSlash(String cipherText) throws Exception {
         cipherText = cipherText.replaceAll("_", "/");
-        Cipher cipher = Cipher.getInstance(alg);
-        SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), "AES");
-        IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
+        Cipher cipher = Cipher.getInstance(ALG);
+        SecretKeySpec keySpec = new SecretKeySpec(KEY.getBytes(), "AES");
+        IvParameterSpec ivParamSpec = new IvParameterSpec(IV.getBytes());
         cipher.init(Cipher.DECRYPT_MODE, keySpec, ivParamSpec);
 
         byte[] decodedBytes = Base64.getDecoder().decode(cipherText);

@@ -1,4 +1,4 @@
-/* !
+/*!
  *
  * Super simple wysiwyg editor v0.8.18
  * https://summernote.org
@@ -7,216 +7,131 @@
  * Copyright 2013- Alan Hong. and other contributors
  * summernote may be freely distributed under the MIT license.
  *
- * Date: 2020-05-20T18:09Z
+ * Date: 2020-05-20T16:47Z
  *
  */
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === 'object' && typeof module === 'object') {
-        module.exports = factory(require('jquery'));
-    } else if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else {
-        const a = typeof exports === 'object' ? factory(require('jquery')) : factory(root['jQuery']);
-        for (const i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+    if(typeof exports === 'object' && typeof module === 'object')
+        module.exports = factory(require("jquery"));
+    else if(typeof define === 'function' && define.amd)
+        define(["jquery"], factory);
+    else {
+        var a = typeof exports === 'object' ? factory(require("jquery")) : factory(root["jQuery"]);
+        for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
     }
-})(window, function (__WEBPACK_EXTERNAL_MODULE__0__) {
-    return /** ****/ (function (modules) { // webpackBootstrap
-        /** ****/ 	// The module cache
-        /** ****/
-        const installedModules = {};
-        /** ****/
-        /** ****/ 	// The require function
-        /** ****/
-        function __webpack_require__(moduleId) {
-            /** ****/
-            /** ****/ 		// Check if module is in cache
-            /** ****/
-            if (installedModules[moduleId]) {
-                /** ****/
-                return installedModules[moduleId].exports;
-                /** ****/
-            }
-            /** ****/ 		// Create a new module (and put it into the cache)
-            /** ****/
-            const module = installedModules[moduleId] = {
-                /** ****/ i: moduleId,
-                /** ****/ l: false,
-                /** ****/ exports: {},
-                /** ****/
-            };
-            /** ****/
-            /** ****/ 		// Execute the module function
-            /** ****/
-            modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-            /** ****/
-            /** ****/ 		// Flag the module as loaded
-            /** ****/
-            module.l = true;
-            /** ****/
-            /** ****/ 		// Return the exports of the module
-            /** ****/
-            return module.exports;
-            /** ****/
-        }
-
-        /** ****/
-        /** ****/
-        /** ****/ 	// expose the modules object (__webpack_modules__)
-        /** ****/
-        __webpack_require__.m = modules;
-        /** ****/
-        /** ****/ 	// expose the module cache
-        /** ****/
-        __webpack_require__.c = installedModules;
-        /** ****/
-        /** ****/ 	// define getter function for harmony exports
-        /** ****/
-        __webpack_require__.d = function (exports, name, getter) {
-            /** ****/
-            if (!__webpack_require__.o(exports, name)) {
-                /** ****/
-                Object.defineProperty(exports, name, {enumerable: true, get: getter});
-                /** ****/
-            }
-            /** ****/
-        };
-        /** ****/
-        /** ****/ 	// define __esModule on exports
-        /** ****/
-        __webpack_require__.r = function (exports) {
-            /** ****/
-            if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-                /** ****/
-                Object.defineProperty(exports, Symbol.toStringTag, {value: 'Module'});
-                /** ****/
-            }
-            /** ****/
-            Object.defineProperty(exports, '__esModule', {value: true});
-            /** ****/
-        };
-        /** ****/
-        /** ****/ 	// create a fake namespace object
-        /** ****/ 	// mode & 1: value is a module id, require it
-        /** ****/ 	// mode & 2: merge all properties of value into the ns
-        /** ****/ 	// mode & 4: return value when already ns object
-        /** ****/ 	// mode & 8|1: behave like require
-        /** ****/
-        __webpack_require__.t = function (value, mode) {
-            /** ****/
-            if (mode & 1) value = __webpack_require__(value);
-            /** ****/
-            if (mode & 8) return value;
-            /** ****/
-            if ((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-            /** ****/
-            const ns = Object.create(null);
-            /** ****/
-            __webpack_require__.r(ns);
-            /** ****/
-            Object.defineProperty(ns, 'default', {enumerable: true, value: value});
-            /** ****/
-            if (mode & 2 && typeof value != 'string') {
-                for (const key in value) {
-                    __webpack_require__.d(ns, key, function (key) {
-                        return value[key];
-                    }.bind(null, key));
-                }
-            }
-            /** ****/
-            return ns;
-            /** ****/
-        };
-        /** ****/
-        /** ****/ 	// getDefaultExport function for compatibility with non-harmony modules
-        /** ****/
-        __webpack_require__.n = function (module) {
-            /** ****/
-            const getter = module && module.__esModule ?
-                /** ****/ function getDefault() {
-                    return module['default'];
-                } :
-                /** ****/ function getModuleExports() {
-                    return module;
-                };
-            /** ****/
-            __webpack_require__.d(getter, 'a', getter);
-            /** ****/
-            return getter;
-            /** ****/
-        };
-        /** ****/
-        /** ****/ 	// Object.prototype.hasOwnProperty.call
-        /** ****/
-        __webpack_require__.o = function (object, property) {
-            return Object.prototype.hasOwnProperty.call(object, property);
-        };
-        /** ****/
-        /** ****/ 	// __webpack_public_path__
-        /** ****/
-        __webpack_require__.p = '';
-        /** ****/
-        /** ****/
-        /** ****/ 	// Load entry module and return exports
-        /** ****/
-        return __webpack_require__(__webpack_require__.s = 53);
-        /** ****/
-    })
-        /** **********************************************************************/
-        /** ****/({
+})(window, function(__WEBPACK_EXTERNAL_MODULE__0__) {
+    return /******/ (function(modules) { // webpackBootstrap
+        /******/ 	// The module cache
+        /******/ 	var installedModules = {};
+        /******/
+        /******/ 	// The require function
+        /******/ 	function __webpack_require__(moduleId) {
+            /******/
+            /******/ 		// Check if module is in cache
+            /******/ 		if(installedModules[moduleId]) {
+                /******/ 			return installedModules[moduleId].exports;
+                /******/ 		}
+            /******/ 		// Create a new module (and put it into the cache)
+            /******/ 		var module = installedModules[moduleId] = {
+                /******/ 			i: moduleId,
+                /******/ 			l: false,
+                /******/ 			exports: {}
+                /******/ 		};
+            /******/
+            /******/ 		// Execute the module function
+            /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+            /******/
+            /******/ 		// Flag the module as loaded
+            /******/ 		module.l = true;
+            /******/
+            /******/ 		// Return the exports of the module
+            /******/ 		return module.exports;
+            /******/ 	}
+        /******/
+        /******/
+        /******/ 	// expose the modules object (__webpack_modules__)
+        /******/ 	__webpack_require__.m = modules;
+        /******/
+        /******/ 	// expose the module cache
+        /******/ 	__webpack_require__.c = installedModules;
+        /******/
+        /******/ 	// define getter function for harmony exports
+        /******/ 	__webpack_require__.d = function(exports, name, getter) {
+            /******/ 		if(!__webpack_require__.o(exports, name)) {
+                /******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+                /******/ 		}
+            /******/ 	};
+        /******/
+        /******/ 	// define __esModule on exports
+        /******/ 	__webpack_require__.r = function(exports) {
+            /******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+                /******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+                /******/ 		}
+            /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+            /******/ 	};
+        /******/
+        /******/ 	// create a fake namespace object
+        /******/ 	// mode & 1: value is a module id, require it
+        /******/ 	// mode & 2: merge all properties of value into the ns
+        /******/ 	// mode & 4: return value when already ns object
+        /******/ 	// mode & 8|1: behave like require
+        /******/ 	__webpack_require__.t = function(value, mode) {
+            /******/ 		if(mode & 1) value = __webpack_require__(value);
+            /******/ 		if(mode & 8) return value;
+            /******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+            /******/ 		var ns = Object.create(null);
+            /******/ 		__webpack_require__.r(ns);
+            /******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+            /******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+            /******/ 		return ns;
+            /******/ 	};
+        /******/
+        /******/ 	// getDefaultExport function for compatibility with non-harmony modules
+        /******/ 	__webpack_require__.n = function(module) {
+            /******/ 		var getter = module && module.__esModule ?
+                /******/ 			function getDefault() { return module['default']; } :
+                /******/ 			function getModuleExports() { return module; };
+            /******/ 		__webpack_require__.d(getter, 'a', getter);
+            /******/ 		return getter;
+            /******/ 	};
+        /******/
+        /******/ 	// Object.prototype.hasOwnProperty.call
+        /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+        /******/
+        /******/ 	// __webpack_public_path__
+        /******/ 	__webpack_require__.p = "";
+        /******/
+        /******/
+        /******/ 	// Load entry module and return exports
+        /******/ 	return __webpack_require__(__webpack_require__.s = 53);
+        /******/ })
+        /************************************************************************/
+        /******/ ({
 
             /***/ 0:
-            /***/ (function (module, exports) {
+            /***/ (function(module, exports) {
+
                 module.exports = __WEBPACK_EXTERNAL_MODULE__0__;
 
-                /***/
-            }),
+                /***/ }),
 
             /***/ 1:
-            /***/ (function (module, __webpack_exports__, __webpack_require__) {
-                'use strict';
-                /* harmony import */
-                const jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-                /* harmony import */
-                const jquery__WEBPACK_IMPORTED_MODULE_0___default = /* #__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+            /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-                function _typeof(obj) {
-                    '@babel/helpers - typeof';
-                    if (typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol') {
-                        _typeof = function _typeof(obj) {
-                            return typeof obj;
-                        };
-                    } else {
-                        _typeof = function _typeof(obj) {
-                            return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj;
-                        };
-                    }
-                    return _typeof(obj);
-                }
+                "use strict";
+                /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+                /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+                function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-                function _classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+                function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function _defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function _createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) _defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Renderer = /* #__PURE__*/function () {
+
+                var Renderer = /*#__PURE__*/function () {
                     function Renderer(markup, children, options, callback) {
                         _classCallCheck(this, Renderer);
 
@@ -227,9 +142,9 @@
                     }
 
                     _createClass(Renderer, [{
-                        key: 'render',
+                        key: "render",
                         value: function render($parent) {
-                            const $node = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.markup);
+                            var $node = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.markup);
 
                             if (this.options && this.options.contents) {
                                 $node.html(this.options.contents);
@@ -250,7 +165,7 @@
                             }
 
                             if (this.children) {
-                                const $container = $node.find('.note-children-container');
+                                var $container = $node.find('.note-children-container');
                                 this.children.forEach(function (child) {
                                     child.render($container.length ? $container : $node);
                                 });
@@ -269,18 +184,17 @@
                             }
 
                             return $node;
-                        },
+                        }
                     }]);
 
                     return Renderer;
                 }();
 
-                /* harmony default export */
-                __webpack_exports__['a'] = ({
+                /* harmony default export */ __webpack_exports__["a"] = ({
                     create: function create(markup, callback) {
                         return function () {
-                            const options = _typeof(arguments[1]) === 'object' ? arguments[1] : arguments[0];
-                            let children = Array.isArray(arguments[0]) ? arguments[0] : [];
+                            var options = _typeof(arguments[1]) === 'object' ? arguments[1] : arguments[0];
+                            var children = Array.isArray(arguments[0]) ? arguments[0] : [];
 
                             if (options && options.children) {
                                 children = options.children;
@@ -288,36 +202,34 @@
 
                             return new Renderer(markup, children, options, callback);
                         };
-                    },
+                    }
                 });
 
-                /***/
-            }),
+                /***/ }),
 
             /***/ 2:
-            /***/ (function (module, exports) {
-                /* WEBPACK VAR INJECTION */
-                (function (__webpack_amd_options__) {/* globals __webpack_amd_options__ */
+            /***/ (function(module, exports) {
+
+                /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
                     module.exports = __webpack_amd_options__;
 
-                    /* WEBPACK VAR INJECTION */
-                }.call(this, {}));
+                    /* WEBPACK VAR INJECTION */}.call(this, {}))
 
-                /***/
-            }),
+                /***/ }),
 
             /***/ 3:
-            /***/ (function (module, __webpack_exports__, __webpack_require__) {
-                'use strict';
+            /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-                // EXTERNAL MODULE: external {"root":"jQuery","commonjs2":"jquery","commonjs":"jquery","amd":"jquery"}
-                const external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_ = __webpack_require__(0);
-                const external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default = /* #__PURE__*/__webpack_require__.n(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_);
+                "use strict";
 
-                // CONCATENATED MODULE: ./src/js/base/summernote-en-US.js
+// EXTERNAL MODULE: external {"root":"jQuery","commonjs2":"jquery","commonjs":"jquery","amd":"jquery"}
+                var external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_ = __webpack_require__(0);
+                var external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default = /*#__PURE__*/__webpack_require__.n(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_);
+
+// CONCATENATED MODULE: ./src/js/base/summernote-en-US.js
 
                 external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote || {
-                    lang: {},
+                    lang: {}
                 };
                 external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote.lang, {
                     'en-US': {
@@ -332,7 +244,7 @@
                             subscript: 'Subscript',
                             superscript: 'Superscript',
                             size: 'Font Size',
-                            sizeunit: 'Font Size Unit',
+                            sizeunit: 'Font Size Unit'
                         },
                         image: {
                             image: 'Picture',
@@ -355,14 +267,14 @@
                             maximumFileSizeError: 'Maximum file size exceeded.',
                             url: 'Image URL',
                             remove: 'Remove Image',
-                            original: 'Original',
+                            original: 'Original'
                         },
                         video: {
                             video: 'Video',
                             videoLink: 'Video Link',
                             insert: 'Insert Video',
                             url: 'Video URL',
-                            providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion or Youku)',
+                            providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion or Youku)'
                         },
                         link: {
                             link: 'Link',
@@ -372,7 +284,7 @@
                             textToDisplay: 'Text to display',
                             url: 'To what URL should this link go?',
                             openInNewWindow: 'Open in new window',
-                            useProtocol: 'Use default protocol',
+                            useProtocol: 'Use default protocol'
                         },
                         table: {
                             table: 'Table',
@@ -382,10 +294,10 @@
                             addColRight: 'Add column right',
                             delRow: 'Delete row',
                             delCol: 'Delete column',
-                            delTable: 'Delete table',
+                            delTable: 'Delete table'
                         },
                         hr: {
-                            insert: 'Insert Horizontal Rule',
+                            insert: 'Insert Horizontal Rule'
                         },
                         style: {
                             style: 'Style',
@@ -397,16 +309,16 @@
                             h3: 'Header 3',
                             h4: 'Header 4',
                             h5: 'Header 5',
-                            h6: 'Header 6',
+                            h6: 'Header 6'
                         },
                         lists: {
                             unordered: 'Unordered list',
-                            ordered: 'Ordered list',
+                            ordered: 'Ordered list'
                         },
                         options: {
                             help: 'Help',
                             fullscreen: 'Full Screen',
-                            codeview: 'Code View',
+                            codeview: 'Code View'
                         },
                         paragraph: {
                             paragraph: 'Paragraph',
@@ -415,7 +327,7 @@
                             left: 'Align left',
                             center: 'Align center',
                             right: 'Align right',
-                            justify: 'Justify full',
+                            justify: 'Justify full'
                         },
                         color: {
                             recent: 'Recent Color',
@@ -426,7 +338,7 @@
                             setTransparent: 'Set transparent',
                             reset: 'Reset',
                             resetToDefault: 'Reset to default',
-                            cpSelect: 'Select',
+                            cpSelect: 'Select'
                         },
                         shortcut: {
                             shortcuts: 'Keyboard shortcuts',
@@ -435,7 +347,7 @@
                             action: 'Action',
                             paragraphFormatting: 'Paragraph formatting',
                             documentStyle: 'Document Style',
-                            extraKeys: 'Extra keys',
+                            extraKeys: 'Extra keys'
                         },
                         help: {
                             'escape': 'Escape',
@@ -465,22 +377,22 @@
                             'formatH5': 'Change current block\'s format as H5',
                             'formatH6': 'Change current block\'s format as H6',
                             'insertHorizontalRule': 'Insert horizontal rule',
-                            'linkDialog.show': 'Show Link Dialog',
+                            'linkDialog.show': 'Show Link Dialog'
                         },
                         history: {
                             undo: 'Undo',
-                            redo: 'Redo',
+                            redo: 'Redo'
                         },
                         specialChar: {
                             specialChar: 'SPECIAL CHARACTERS',
-                            select: 'Select Special characters',
+                            select: 'Select Special characters'
                         },
                         output: {
-                            noSelection: 'No Selection Made!',
-                        },
-                    },
+                            noSelection: 'No Selection Made!'
+                        }
+                    }
                 });
-                // CONCATENATED MODULE: ./src/js/base/core/env.js
+// CONCATENATED MODULE: ./src/js/base/core/env.js
 
                 var isSupportAmd = typeof define === 'function' && __webpack_require__(2); // eslint-disable-line
 
@@ -491,31 +403,31 @@
                  * @return {Boolean}
                  */
 
-                const genericFontFamilies = ['sans-serif', 'serif', 'monospace', 'cursive', 'fantasy'];
+                var genericFontFamilies = ['sans-serif', 'serif', 'monospace', 'cursive', 'fantasy'];
 
                 function validFontName(fontName) {
-                    return external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.inArray(fontName.toLowerCase(), genericFontFamilies) === -1 ? '\''.concat(fontName, '\'') : fontName;
+                    return external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.inArray(fontName.toLowerCase(), genericFontFamilies) === -1 ? "'".concat(fontName, "'") : fontName;
                 }
 
                 function env_isFontInstalled(fontName) {
-                    const testFontName = fontName === 'Comic Sans MS' ? 'Courier New' : 'Comic Sans MS';
-                    const testText = 'mmmmmmmmmmwwwww';
-                    const testSize = '200px';
-                    const canvas = document.createElement('canvas');
-                    const context = canvas.getContext('2d');
-                    context.font = testSize + ' \'' + testFontName + '\'';
-                    const originalWidth = context.measureText(testText).width;
+                    var testFontName = fontName === 'Comic Sans MS' ? 'Courier New' : 'Comic Sans MS';
+                    var testText = 'mmmmmmmmmmwwwww';
+                    var testSize = '200px';
+                    var canvas = document.createElement('canvas');
+                    var context = canvas.getContext('2d');
+                    context.font = testSize + " '" + testFontName + "'";
+                    var originalWidth = context.measureText(testText).width;
                     context.font = testSize + ' ' + validFontName(fontName) + ', "' + testFontName + '"';
-                    const width = context.measureText(testText).width;
+                    var width = context.measureText(testText).width;
                     return originalWidth !== width;
                 }
 
-                const userAgent = navigator.userAgent;
-                const isMSIE = /MSIE|Trident/i.test(userAgent);
-                let browserVersion;
+                var userAgent = navigator.userAgent;
+                var isMSIE = /MSIE|Trident/i.test(userAgent);
+                var browserVersion;
 
                 if (isMSIE) {
-                    let matches = /MSIE (\d+[.]\d+)/.exec(userAgent);
+                    var matches = /MSIE (\d+[.]\d+)/.exec(userAgent);
 
                     if (matches) {
                         browserVersion = parseFloat(matches[1]);
@@ -528,11 +440,11 @@
                     }
                 }
 
-                const isEdge = /Edge\/\d+/.test(userAgent);
-                const isSupportTouch = 'ontouchstart' in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0; // [workaround] IE doesn't have input events for contentEditable
-                // - see: https://goo.gl/4bfIvA
+                var isEdge = /Edge\/\d+/.test(userAgent);
+                var isSupportTouch = 'ontouchstart' in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0; // [workaround] IE doesn't have input events for contentEditable
+// - see: https://goo.gl/4bfIvA
 
-                const inputEventName = isMSIE ? 'DOMCharacterDataModified DOMSubtreeModified DOMNodeInserted' : 'input';
+                var inputEventName = isMSIE ? 'DOMCharacterDataModified DOMSubtreeModified DOMNodeInserted' : 'input';
                 /**
                  * @class core.env
                  *
@@ -542,8 +454,7 @@
                  * @alternateClassName env
                  */
 
-                /* harmony default export */
-                const env = ({
+                /* harmony default export */ var env = ({
                     isMac: navigator.appVersion.indexOf('Mac') > -1,
                     isMSIE: isMSIE,
                     isEdge: isEdge,
@@ -560,10 +471,9 @@
                     isW3CRangeSupport: !!document.createRange,
                     inputEventName: inputEventName,
                     genericFontFamilies: genericFontFamilies,
-                    validFontName: validFontName,
+                    validFontName: validFontName
                 });
-
-                // CONCATENATED MODULE: ./src/js/base/core/func.js
+// CONCATENATED MODULE: ./src/js/base/core/func.js
 
                 /**
                  * @class core.func
@@ -620,8 +530,7 @@
                     };
                 }
 
-                let idCounter = 0;
-
+                var idCounter = 0;
                 /**
                  * reset globally-unique id
                  *
@@ -630,7 +539,6 @@
                 function resetUniqueId() {
                     idCounter = 0;
                 }
-
                 /**
                  * generate a globally-unique id
                  *
@@ -639,10 +547,9 @@
 
 
                 function uniqueId(prefix) {
-                    const id = ++idCounter + '';
+                    var id = ++idCounter + '';
                     return prefix ? prefix + id : id;
                 }
-
                 /**
                  * returns bnd (bounds) from rect
                  *
@@ -659,15 +566,14 @@
 
 
                 function rect2bnd(rect) {
-                    const $document = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(document);
+                    var $document = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(document);
                     return {
                         top: rect.top + $document.scrollTop(),
                         left: rect.left + $document.scrollLeft(),
                         width: rect.right - rect.left,
-                        height: rect.bottom - rect.top,
+                        height: rect.bottom - rect.top
                     };
                 }
-
                 /**
                  * returns a copy of the object where the keys have become the values and the values the keys.
                  * @param {Object} obj
@@ -676,9 +582,9 @@
 
 
                 function invertObject(obj) {
-                    const inverted = {};
+                    var inverted = {};
 
-                    for (const key in obj) {
+                    for (var key in obj) {
                         if (Object.prototype.hasOwnProperty.call(obj, key)) {
                             inverted[obj[key]] = key;
                         }
@@ -686,7 +592,6 @@
 
                     return inverted;
                 }
-
                 /**
                  * @param {String} namespace
                  * @param {String} [prefix]
@@ -700,7 +605,6 @@
                         return name.substring(0, 1).toUpperCase() + name.substring(1);
                     }).join('');
                 }
-
                 /**
                  * Returns a function, that, as long as it continues to be invoked, will not
                  * be triggered. The function will be called after it stops being called for
@@ -714,12 +618,12 @@
 
 
                 function debounce(func, wait, immediate) {
-                    let timeout;
+                    var timeout;
                     return function () {
-                        const context = this;
-                        const args = arguments;
+                        var context = this;
+                        var args = arguments;
 
-                        const later = function later() {
+                        var later = function later() {
                             timeout = null;
 
                             if (!immediate) {
@@ -727,7 +631,7 @@
                             }
                         };
 
-                        const callNow = immediate && !timeout;
+                        var callNow = immediate && !timeout;
                         clearTimeout(timeout);
                         timeout = setTimeout(later, wait);
 
@@ -736,7 +640,6 @@
                         }
                     };
                 }
-
                 /**
                  *
                  * @param {String} url
@@ -745,12 +648,11 @@
 
 
                 function isValidUrl(url) {
-                    const expression = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
+                    var expression = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
                     return expression.test(url);
                 }
 
-                /* harmony default export */
-                const func = ({
+                /* harmony default export */ var func = ({
                     eq: eq,
                     eq2: eq2,
                     peq2: peq2,
@@ -766,10 +668,9 @@
                     invertObject: invertObject,
                     namespaceToCamel: namespaceToCamel,
                     debounce: debounce,
-                    isValidUrl: isValidUrl,
+                    isValidUrl: isValidUrl
                 });
-
-                // CONCATENATED MODULE: ./src/js/base/core/lists.js
+// CONCATENATED MODULE: ./src/js/base/core/lists.js
 
                 /**
                  * returns the first item of an array.
@@ -780,7 +681,6 @@
                 function lists_head(array) {
                     return array[0];
                 }
-
                 /**
                  * returns the last item of an array.
                  *
@@ -791,7 +691,6 @@
                 function lists_last(array) {
                     return array[array.length - 1];
                 }
-
                 /**
                  * returns everything but the last entry of the array.
                  *
@@ -802,7 +701,6 @@
                 function initial(array) {
                     return array.slice(0, array.length - 1);
                 }
-
                 /**
                  * returns the rest of the items in an array.
                  *
@@ -813,29 +711,27 @@
                 function tail(array) {
                     return array.slice(1);
                 }
-
                 /**
                  * returns item of array
                  */
 
 
                 function find(array, pred) {
-                    for (let idx = 0, len = array.length; idx < len; idx++) {
-                        const item = array[idx];
+                    for (var idx = 0, len = array.length; idx < len; idx++) {
+                        var item = array[idx];
 
                         if (pred(item)) {
                             return item;
                         }
                     }
                 }
-
                 /**
                  * returns true if all of the values in the array pass the predicate truth test.
                  */
 
 
                 function lists_all(array, pred) {
-                    for (let idx = 0, len = array.length; idx < len; idx++) {
+                    for (var idx = 0, len = array.length; idx < len; idx++) {
                         if (!pred(array[idx])) {
                             return false;
                         }
@@ -843,7 +739,6 @@
 
                     return true;
                 }
-
                 /**
                  * returns true if the value is present in the list.
                  */
@@ -861,7 +756,6 @@
 
                     return false;
                 }
-
                 /**
                  * get sum from a list
                  *
@@ -876,7 +770,6 @@
                         return memo + fn(v);
                     }, 0);
                 }
-
                 /**
                  * returns a copy of the collection with array type.
                  * @param {Collection} collection - collection eg) node.childNodes, ...
@@ -884,9 +777,9 @@
 
 
                 function from(collection) {
-                    const result = [];
-                    const length = collection.length;
-                    let idx = -1;
+                    var result = [];
+                    var length = collection.length;
+                    var idx = -1;
 
                     while (++idx < length) {
                         result[idx] = collection[idx];
@@ -894,7 +787,6 @@
 
                     return result;
                 }
-
                 /**
                  * returns whether list is empty or not
                  */
@@ -903,7 +795,6 @@
                 function lists_isEmpty(array) {
                     return !array || !array.length;
                 }
-
                 /**
                  * cluster elements by predicate function.
                  *
@@ -918,9 +809,9 @@
                         return [];
                     }
 
-                    const aTail = tail(array);
+                    var aTail = tail(array);
                     return aTail.reduce(function (memo, v) {
-                        const aLast = lists_last(memo);
+                        var aLast = lists_last(memo);
 
                         if (fn(lists_last(aLast), v)) {
                             aLast[aLast.length] = v;
@@ -931,7 +822,6 @@
                         return memo;
                     }, [[lists_head(array)]]);
                 }
-
                 /**
                  * returns a copy of the array with all false values removed
                  *
@@ -941,9 +831,9 @@
 
 
                 function compact(array) {
-                    const aResult = [];
+                    var aResult = [];
 
-                    for (let idx = 0, len = array.length; idx < len; idx++) {
+                    for (var idx = 0, len = array.length; idx < len; idx++) {
                         if (array[idx]) {
                             aResult.push(array[idx]);
                         }
@@ -951,7 +841,6 @@
 
                     return aResult;
                 }
-
                 /**
                  * produces a duplicate-free version of the array
                  *
@@ -960,9 +849,9 @@
 
 
                 function unique(array) {
-                    const results = [];
+                    var results = [];
 
-                    for (let idx = 0, len = array.length; idx < len; idx++) {
+                    for (var idx = 0, len = array.length; idx < len; idx++) {
                         if (!contains(results, array[idx])) {
                             results.push(array[idx]);
                         }
@@ -970,7 +859,6 @@
 
                     return results;
                 }
-
                 /**
                  * returns next item.
                  * @param {Array} array
@@ -979,13 +867,12 @@
 
                 function lists_next(array, item) {
                     if (array && array.length && item) {
-                        const idx = array.indexOf(item);
+                        var idx = array.indexOf(item);
                         return idx === -1 ? null : array[idx + 1];
                     }
 
                     return null;
                 }
-
                 /**
                  * returns prev item.
                  * @param {Array} array
@@ -994,13 +881,12 @@
 
                 function prev(array, item) {
                     if (array && array.length && item) {
-                        const idx = array.indexOf(item);
+                        var idx = array.indexOf(item);
                         return idx === -1 ? null : array[idx - 1];
                     }
 
                     return null;
                 }
-
                 /**
                  * @class core.list
                  *
@@ -1011,8 +897,7 @@
                  */
 
 
-                /* harmony default export */
-                const lists = ({
+                /* harmony default export */ var lists = ({
                     head: lists_head,
                     last: lists_last,
                     initial: initial,
@@ -1027,14 +912,15 @@
                     isEmpty: lists_isEmpty,
                     clusterBy: clusterBy,
                     compact: compact,
-                    unique: unique,
+                    unique: unique
                 });
-                // CONCATENATED MODULE: ./src/js/base/core/dom.js
+// CONCATENATED MODULE: ./src/js/base/core/dom.js
 
 
-                const NBSP_CHAR = String.fromCharCode(160);
-                const ZERO_WIDTH_NBSP_CHAR = '\uFEFF';
 
+
+                var NBSP_CHAR = String.fromCharCode(160);
+                var ZERO_WIDTH_NBSP_CHAR = "\uFEFF";
                 /**
                  * @method isEditable
                  *
@@ -1047,7 +933,6 @@
                 function isEditable(node) {
                     return node && external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(node).hasClass('note-editable');
                 }
-
                 /**
                  * @method isControlSizing
                  *
@@ -1061,7 +946,6 @@
                 function isControlSizing(node) {
                     return node && external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(node).hasClass('note-control-sizing');
                 }
-
                 /**
                  * @method makePredByNodeName
                  *
@@ -1078,7 +962,6 @@
                         return node && node.nodeName.toUpperCase() === nodeName;
                     };
                 }
-
                 /**
                  * @method isText
                  *
@@ -1092,7 +975,6 @@
                 function isText(node) {
                     return node && node.nodeType === 3;
                 }
-
                 /**
                  * @method isElement
                  *
@@ -1106,7 +988,6 @@
                 function isElement(node) {
                     return node && node.nodeType === 1;
                 }
-
                 /**
                  * ex) br, col, embed, hr, img, input, ...
                  * @see http://www.w3.org/html/wg/drafts/html/master/syntax.html#void-elements
@@ -1130,15 +1011,15 @@
                     return node && /^H[1-7]/.test(node.nodeName.toUpperCase());
                 }
 
-                const isPre = makePredByNodeName('PRE');
-                const isLi = makePredByNodeName('LI');
+                var isPre = makePredByNodeName('PRE');
+                var isLi = makePredByNodeName('LI');
 
                 function isPurePara(node) {
                     return isPara(node) && !isLi(node);
                 }
 
-                const isTable = makePredByNodeName('TABLE');
-                const isData = makePredByNodeName('DATA');
+                var isTable = makePredByNodeName('TABLE');
+                var isData = makePredByNodeName('DATA');
 
                 function dom_isInline(node) {
                     return !isBodyContainer(node) && !isList(node) && !isHr(node) && !isPara(node) && !isTable(node) && !isBlockquote(node) && !isData(node);
@@ -1160,7 +1041,7 @@
                     return dom_isCell(node) || isBlockquote(node) || isEditable(node);
                 }
 
-                const isAnchor = makePredByNodeName('A');
+                var isAnchor = makePredByNodeName('A');
 
                 function isParaInline(node) {
                     return dom_isInline(node) && !!dom_ancestor(node, isPara);
@@ -1170,8 +1051,7 @@
                     return dom_isInline(node) && !dom_ancestor(node, isPara);
                 }
 
-                const isBody = makePredByNodeName('BODY');
-
+                var isBody = makePredByNodeName('BODY');
                 /**
                  * returns whether nodeB is closest sibling of nodeA
                  *
@@ -1183,7 +1063,6 @@
                 function isClosestSibling(nodeA, nodeB) {
                     return nodeA.nextSibling === nodeB || nodeA.previousSibling === nodeB;
                 }
-
                 /**
                  * returns array of closest siblings with node
                  *
@@ -1195,7 +1074,7 @@
 
                 function withClosestSiblings(node, pred) {
                     pred = pred || func.ok;
-                    const siblings = [];
+                    var siblings = [];
 
                     if (node.previousSibling && pred(node.previousSibling)) {
                         siblings.push(node.previousSibling);
@@ -1209,7 +1088,6 @@
 
                     return siblings;
                 }
-
                 /**
                  * blank HTML for cursor position
                  * - [workaround] old IE only works with &nbsp;
@@ -1217,8 +1095,7 @@
                  */
 
 
-                const blankHTML = env.isMSIE && env.browserVersion < 11 ? '&nbsp;' : '<br>';
-
+                var blankHTML = env.isMSIE && env.browserVersion < 11 ? '&nbsp;' : '<br>';
                 /**
                  * @method nodeLength
                  *
@@ -1238,7 +1115,6 @@
 
                     return 0;
                 }
-
                 /**
                  * returns whether deepest child node is empty or not.
                  *
@@ -1254,7 +1130,6 @@
 
                     return dom_isEmpty(node);
                 }
-
                 /**
                  * returns whether node is empty or not.
                  *
@@ -1264,7 +1139,7 @@
 
 
                 function dom_isEmpty(node) {
-                    const len = nodeLength(node);
+                    var len = nodeLength(node);
 
                     if (len === 0) {
                         return true;
@@ -1278,7 +1153,6 @@
 
                     return false;
                 }
-
                 /**
                  * padding blankHTML if node is empty (for cursor position)
                  */
@@ -1289,7 +1163,6 @@
                         node.innerHTML = blankHTML;
                     }
                 }
-
                 /**
                  * find nearest ancestor predicate hit
                  *
@@ -1313,7 +1186,6 @@
 
                     return null;
                 }
-
                 /**
                  * find nearest ancestor only single child blood line and predicate hit
                  *
@@ -1343,7 +1215,6 @@
 
                     return null;
                 }
-
                 /**
                  * returns new array of ancestor nodes (until predicate hit).
                  *
@@ -1354,7 +1225,7 @@
 
                 function listAncestor(node, pred) {
                     pred = pred || func.fail;
-                    const ancestors = [];
+                    var ancestors = [];
                     dom_ancestor(node, function (el) {
                         if (!isEditable(el)) {
                             ancestors.push(el);
@@ -1364,17 +1235,15 @@
                     });
                     return ancestors;
                 }
-
                 /**
                  * find farthest ancestor predicate hit
                  */
 
 
                 function lastAncestor(node, pred) {
-                    const ancestors = listAncestor(node);
+                    var ancestors = listAncestor(node);
                     return lists.last(ancestors.filter(pred));
                 }
-
                 /**
                  * returns common ancestor node between two nodes.
                  *
@@ -1384,15 +1253,14 @@
 
 
                 function dom_commonAncestor(nodeA, nodeB) {
-                    const ancestors = listAncestor(nodeA);
+                    var ancestors = listAncestor(nodeA);
 
-                    for (let n = nodeB; n; n = n.parentNode) {
+                    for (var n = nodeB; n; n = n.parentNode) {
                         if (ancestors.indexOf(n) > -1) return n;
                     }
 
                     return null; // difference document area
                 }
-
                 /**
                  * listing all previous siblings (until predicate hit).
                  *
@@ -1403,7 +1271,7 @@
 
                 function listPrev(node, pred) {
                     pred = pred || func.fail;
-                    const nodes = [];
+                    var nodes = [];
 
                     while (node) {
                         if (pred(node)) {
@@ -1416,7 +1284,6 @@
 
                     return nodes;
                 }
-
                 /**
                  * listing next siblings (until predicate hit).
                  *
@@ -1427,7 +1294,7 @@
 
                 function listNext(node, pred) {
                     pred = pred || func.fail;
-                    const nodes = [];
+                    var nodes = [];
 
                     while (node) {
                         if (pred(node)) {
@@ -1440,7 +1307,6 @@
 
                     return nodes;
                 }
-
                 /**
                  * listing descendant nodes
                  *
@@ -1450,7 +1316,7 @@
 
 
                 function listDescendant(node, pred) {
-                    const descendants = [];
+                    var descendants = [];
                     pred = pred || func.ok; // start DFS(depth first search) with node
 
                     (function fnWalk(current) {
@@ -1458,14 +1324,13 @@
                             descendants.push(current);
                         }
 
-                        for (let idx = 0, len = current.childNodes.length; idx < len; idx++) {
+                        for (var idx = 0, len = current.childNodes.length; idx < len; idx++) {
                             fnWalk(current.childNodes[idx]);
                         }
                     })(node);
 
                     return descendants;
                 }
-
                 /**
                  * wrap node with new tag.
                  *
@@ -1476,13 +1341,12 @@
 
 
                 function wrap(node, wrapperName) {
-                    const parent = node.parentNode;
-                    const wrapper = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<' + wrapperName + '>')[0];
+                    var parent = node.parentNode;
+                    var wrapper = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<' + wrapperName + '>')[0];
                     parent.insertBefore(wrapper, node);
                     wrapper.appendChild(node);
                     return wrapper;
                 }
-
                 /**
                  * insert node after preceding
                  *
@@ -1492,8 +1356,8 @@
 
 
                 function insertAfter(node, preceding) {
-                    const next = preceding.nextSibling;
-                    const parent = preceding.parentNode;
+                    var next = preceding.nextSibling;
+                    var parent = preceding.parentNode;
 
                     if (next) {
                         parent.insertBefore(node, next);
@@ -1503,7 +1367,6 @@
 
                     return node;
                 }
-
                 /**
                  * append elements.
                  *
@@ -1518,7 +1381,6 @@
                     });
                     return node;
                 }
-
                 /**
                  * returns whether boundaryPoint is left edge or not.
                  *
@@ -1530,7 +1392,6 @@
                 function isLeftEdgePoint(point) {
                     return point.offset === 0;
                 }
-
                 /**
                  * returns whether boundaryPoint is right edge or not.
                  *
@@ -1542,7 +1403,6 @@
                 function isRightEdgePoint(point) {
                     return point.offset === nodeLength(point.node);
                 }
-
                 /**
                  * returns whether boundaryPoint is edge or not.
                  *
@@ -1554,7 +1414,6 @@
                 function isEdgePoint(point) {
                     return isLeftEdgePoint(point) || isRightEdgePoint(point);
                 }
-
                 /**
                  * returns whether node is left edge of ancestor or not.
                  *
@@ -1575,7 +1434,6 @@
 
                     return true;
                 }
-
                 /**
                  * returns whether node is right edge of ancestor or not.
                  *
@@ -1600,7 +1458,6 @@
 
                     return true;
                 }
-
                 /**
                  * returns whether point is left edge of ancestor or not.
                  * @param {BoundaryPoint} point
@@ -1612,7 +1469,6 @@
                 function isLeftEdgePointOf(point, ancestor) {
                     return isLeftEdgePoint(point) && dom_isLeftEdgeOf(point.node, ancestor);
                 }
-
                 /**
                  * returns whether point is right edge of ancestor or not.
                  * @param {BoundaryPoint} point
@@ -1624,7 +1480,6 @@
                 function isRightEdgePointOf(point, ancestor) {
                     return isRightEdgePoint(point) && isRightEdgeOf(point.node, ancestor);
                 }
-
                 /**
                  * returns offset from parent.
                  *
@@ -1633,7 +1488,7 @@
 
 
                 function dom_position(node) {
-                    let offset = 0;
+                    var offset = 0;
 
                     while (node = node.previousSibling) {
                         offset += 1;
@@ -1645,7 +1500,6 @@
                 function hasChildren(node) {
                     return !!(node && node.childNodes && node.childNodes.length);
                 }
-
                 /**
                  * returns previous boundaryPoint
                  *
@@ -1656,8 +1510,8 @@
 
 
                 function dom_prevPoint(point, isSkipInnerOffset) {
-                    let node;
-                    let offset;
+                    var node;
+                    var offset;
 
                     if (point.offset === 0) {
                         if (isEditable(point.node)) {
@@ -1676,10 +1530,9 @@
 
                     return {
                         node: node,
-                        offset: offset,
+                        offset: offset
                     };
                 }
-
                 /**
                  * returns next boundaryPoint
                  *
@@ -1690,15 +1543,14 @@
 
 
                 function dom_nextPoint(point, isSkipInnerOffset) {
-                    let node;
-                    let offset;
+                    var node, offset;
 
                     if (nodeLength(point.node) === point.offset) {
                         if (isEditable(point.node)) {
                             return null;
                         }
 
-                        const nextTextNode = getNextTextNode(point.node);
+                        var nextTextNode = getNextTextNode(point.node);
 
                         if (nextTextNode) {
                             node = nextTextNode;
@@ -1717,10 +1569,9 @@
 
                     return {
                         node: node,
-                        offset: offset,
+                        offset: offset
                     };
                 }
-
                 /**
                  * returns next boundaryPoint with empty node
                  *
@@ -1731,15 +1582,14 @@
 
 
                 function nextPointWithEmptyNode(point, isSkipInnerOffset) {
-                    let node;
-                    let offset; // if node is empty string node, return current node's sibling.
+                    var node, offset; // if node is empty string node, return current node's sibling.
 
                     if (dom_isEmpty(point.node)) {
                         node = point.node.nextSibling;
                         offset = 0;
                         return {
                             node: node,
-                            offset: offset,
+                            offset: offset
                         };
                     }
 
@@ -1748,7 +1598,7 @@
                             return null;
                         }
 
-                        const nextTextNode = getNextTextNode(point.node);
+                        var nextTextNode = getNextTextNode(point.node);
 
                         if (nextTextNode) {
                             node = nextTextNode;
@@ -1781,10 +1631,9 @@
 
                     return {
                         node: node,
-                        offset: offset,
+                        offset: offset
                     };
                 }
-
                 /*
 * returns the next Text node index or 0 if not found.
 */
@@ -1796,7 +1645,6 @@
                     if (isText(actual.nextSibling)) return actual.nextSibling;
                     return getNextTextNode(actual.nextSibling);
                 }
-
                 /**
                  * returns whether pointA and pointB is same or not.
                  *
@@ -1809,7 +1657,6 @@
                 function isSamePoint(pointA, pointB) {
                     return pointA.node === pointB.node && pointA.offset === pointB.offset;
                 }
-
                 /**
                  * returns whether point is visible (can set cursor) or not.
                  *
@@ -1823,8 +1670,8 @@
                         return true;
                     }
 
-                    const leftNode = point.node.childNodes[point.offset - 1];
-                    const rightNode = point.node.childNodes[point.offset];
+                    var leftNode = point.node.childNodes[point.offset - 1];
+                    var rightNode = point.node.childNodes[point.offset];
 
                     if ((!leftNode || isVoid(leftNode)) && (!rightNode || isVoid(rightNode))) {
                         return true;
@@ -1832,7 +1679,6 @@
 
                     return false;
                 }
-
                 /**
                  * @method prevPointUtil
                  *
@@ -1853,7 +1699,6 @@
 
                     return null;
                 }
-
                 /**
                  * @method nextPointUntil
                  *
@@ -1874,7 +1719,6 @@
 
                     return null;
                 }
-
                 /**
                  * returns whether point has character or not.
                  *
@@ -1888,10 +1732,9 @@
                         return false;
                     }
 
-                    const ch = point.node.nodeValue.charAt(point.offset - 1);
+                    var ch = point.node.nodeValue.charAt(point.offset - 1);
                     return ch && ch !== ' ' && ch !== NBSP_CHAR;
                 }
-
                 /**
                  * returns whether point has space or not.
                  *
@@ -1905,10 +1748,9 @@
                         return false;
                     }
 
-                    const ch = point.node.nodeValue.charAt(point.offset - 1);
+                    var ch = point.node.nodeValue.charAt(point.offset - 1);
                     return ch === ' ' || ch === NBSP_CHAR;
                 }
-
                 /**
                  * @method walkPoint
                  *
@@ -1920,7 +1762,7 @@
 
 
                 function walkPoint(startPoint, endPoint, handler, isSkipInnerOffset) {
-                    let point = startPoint;
+                    var point = startPoint;
 
                     while (point) {
                         handler(point);
@@ -1929,11 +1771,10 @@
                             break;
                         }
 
-                        const isSkipOffset = isSkipInnerOffset && startPoint.node !== point.node && endPoint.node !== point.node;
+                        var isSkipOffset = isSkipInnerOffset && startPoint.node !== point.node && endPoint.node !== point.node;
                         point = nextPointWithEmptyNode(point, isSkipOffset);
                     }
                 }
-
                 /**
                  * @method makeOffsetPath
                  *
@@ -1945,10 +1786,9 @@
 
 
                 function makeOffsetPath(ancestor, node) {
-                    const ancestors = listAncestor(node, func.eq(ancestor));
+                    var ancestors = listAncestor(node, func.eq(ancestor));
                     return ancestors.map(dom_position).reverse();
                 }
-
                 /**
                  * @method fromOffsetPath
                  *
@@ -1960,9 +1800,9 @@
 
 
                 function fromOffsetPath(ancestor, offsets) {
-                    let current = ancestor;
+                    var current = ancestor;
 
-                    for (let i = 0, len = offsets.length; i < len; i++) {
+                    for (var i = 0, len = offsets.length; i < len; i++) {
                         if (current.childNodes.length <= offsets[i]) {
                             current = current.childNodes[current.childNodes.length - 1];
                         } else {
@@ -1972,7 +1812,6 @@
 
                     return current;
                 }
-
                 /**
                  * @method splitNode
                  *
@@ -1988,9 +1827,9 @@
 
 
                 function splitNode(point, options) {
-                    let isSkipPaddingBlankHTML = options && options.isSkipPaddingBlankHTML;
-                    const isNotSplitEdgePoint = options && options.isNotSplitEdgePoint;
-                    const isDiscardEmptySplits = options && options.isDiscardEmptySplits;
+                    var isSkipPaddingBlankHTML = options && options.isSkipPaddingBlankHTML;
+                    var isNotSplitEdgePoint = options && options.isNotSplitEdgePoint;
+                    var isDiscardEmptySplits = options && options.isDiscardEmptySplits;
 
                     if (isDiscardEmptySplits) {
                         isSkipPaddingBlankHTML = true;
@@ -2009,8 +1848,8 @@
                     if (isText(point.node)) {
                         return point.node.splitText(point.offset);
                     } else {
-                        const childNode = point.node.childNodes[point.offset];
-                        const clone = insertAfter(point.node.cloneNode(false), point.node);
+                        var childNode = point.node.childNodes[point.offset];
+                        var clone = insertAfter(point.node.cloneNode(false), point.node);
                         appendChildNodes(clone, listNext(childNode));
 
                         if (!isSkipPaddingBlankHTML) {
@@ -2032,7 +1871,6 @@
                         return clone;
                     }
                 }
-
                 /**
                  * @method splitTree
                  *
@@ -2049,7 +1887,7 @@
 
                 function splitTree(root, point, options) {
                     // ex) [#text, <span>, <p>]
-                    const ancestors = listAncestor(point.node, func.eq(root));
+                    var ancestors = listAncestor(point.node, func.eq(root));
 
                     if (!ancestors.length) {
                         return null;
@@ -2064,11 +1902,10 @@
 
                         return splitNode({
                             node: parent,
-                            offset: node ? dom_position(node) : nodeLength(parent),
+                            offset: node ? dom_position(node) : nodeLength(parent)
                         }, options);
                     });
                 }
-
                 /**
                  * split point
                  *
@@ -2082,11 +1919,10 @@
                     // find splitRoot, container
                     //  - inline: splitRoot is a child of paragraph
                     //  - block: splitRoot is a child of bodyContainer
-                    const pred = isInline ? isPara : isBodyContainer;
-                    const ancestors = listAncestor(point.node, pred);
-                    const topAncestor = lists.last(ancestors) || point.node;
-                    let splitRoot;
-                    let container;
+                    var pred = isInline ? isPara : isBodyContainer;
+                    var ancestors = listAncestor(point.node, pred);
+                    var topAncestor = lists.last(ancestors) || point.node;
+                    var splitRoot, container;
 
                     if (pred(topAncestor)) {
                         splitRoot = ancestors[ancestors.length - 2];
@@ -2097,9 +1933,9 @@
                     } // if splitRoot is exists, split with splitTree
 
 
-                    let pivot = splitRoot && splitTree(splitRoot, point, {
+                    var pivot = splitRoot && splitTree(splitRoot, point, {
                         isSkipPaddingBlankHTML: isInline,
-                        isNotSplitEdgePoint: isInline,
+                        isNotSplitEdgePoint: isInline
                     }); // if container is point.node, find pivot with point.offset
 
                     if (!pivot && container === point.node) {
@@ -2108,7 +1944,7 @@
 
                     return {
                         rightNode: pivot,
-                        container: container,
+                        container: container
                     };
                 }
 
@@ -2119,7 +1955,6 @@
                 function createText(text) {
                     return document.createTextNode(text);
                 }
-
                 /**
                  * @method remove
                  *
@@ -2139,23 +1974,22 @@
                         return node.removeNode(isRemoveChild);
                     }
 
-                    const parent = node.parentNode;
+                    var parent = node.parentNode;
 
                     if (!isRemoveChild) {
-                        const nodes = [];
+                        var nodes = [];
 
-                        for (let i = 0, len = node.childNodes.length; i < len; i++) {
+                        for (var i = 0, len = node.childNodes.length; i < len; i++) {
                             nodes.push(node.childNodes[i]);
                         }
 
-                        for (let _i = 0, _len = nodes.length; _i < _len; _i++) {
+                        for (var _i = 0, _len = nodes.length; _i < _len; _i++) {
                             parent.insertBefore(nodes[_i], node);
                         }
                     }
 
                     parent.removeChild(node);
                 }
-
                 /**
                  * @method removeWhile
                  *
@@ -2170,12 +2004,11 @@
                             break;
                         }
 
-                        const parent = node.parentNode;
+                        var parent = node.parentNode;
                         remove(node);
                         node = parent;
                     }
                 }
-
                 /**
                  * @method replace
                  *
@@ -2192,7 +2025,7 @@
                         return node;
                     }
 
-                    const newNode = dom_create(nodeName);
+                    var newNode = dom_create(nodeName);
 
                     if (node.style.cssText) {
                         newNode.style.cssText = node.style.cssText;
@@ -2204,15 +2037,14 @@
                     return newNode;
                 }
 
-                const isTextarea = makePredByNodeName('TEXTAREA');
-
+                var isTextarea = makePredByNodeName('TEXTAREA');
                 /**
                  * @param {jQuery} $node
                  * @param {Boolean} [stripLinebreaks] - default: false
                  */
 
                 function dom_value($node, stripLinebreaks) {
-                    const val = isTextarea($node[0]) ? $node.val() : $node.html();
+                    var val = isTextarea($node[0]) ? $node.val() : $node.html();
 
                     if (stripLinebreaks) {
                         return val.replace(/[\n\r]/g, '');
@@ -2220,7 +2052,6 @@
 
                     return val;
                 }
-
                 /**
                  * @method html
                  *
@@ -2232,14 +2063,14 @@
 
 
                 function dom_html($node, isNewlineOnBlock) {
-                    let markup = dom_value($node);
+                    var markup = dom_value($node);
 
                     if (isNewlineOnBlock) {
-                        const regexTag = /<(\/?)(\b(?!!)[^>\s]*)(.*?)(\s*\/?>)/g;
+                        var regexTag = /<(\/?)(\b(?!!)[^>\s]*)(.*?)(\s*\/?>)/g;
                         markup = markup.replace(regexTag, function (match, endSlash, name) {
                             name = name.toUpperCase();
-                            const isEndOfInlineContainer = /^DIV|^TD|^TH|^P|^LI|^H[1-7]/.test(name) && !!endSlash;
-                            const isBlockNode = /^BLOCKQUOTE|^TABLE|^TBODY|^TR|^HR|^UL|^OL/.test(name);
+                            var isEndOfInlineContainer = /^DIV|^TD|^TH|^P|^LI|^H[1-7]/.test(name) && !!endSlash;
+                            var isBlockNode = /^BLOCKQUOTE|^TABLE|^TBODY|^TR|^HR|^UL|^OL/.test(name);
                             return match + (isEndOfInlineContainer || isBlockNode ? '\n' : '');
                         });
                         markup = markup.trim();
@@ -2249,13 +2080,13 @@
                 }
 
                 function posFromPlaceholder(placeholder) {
-                    const $placeholder = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(placeholder);
-                    const pos = $placeholder.offset();
-                    const height = $placeholder.outerHeight(true); // include margin
+                    var $placeholder = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(placeholder);
+                    var pos = $placeholder.offset();
+                    var height = $placeholder.outerHeight(true); // include margin
 
                     return {
                         left: pos.left,
-                        top: pos.top + height,
+                        top: pos.top + height
                     };
                 }
 
@@ -2270,7 +2101,6 @@
                         $node.off(key, events[key]);
                     });
                 }
-
                 /**
                  * @method isCustomStyleTag
                  *
@@ -2285,8 +2115,7 @@
                     return node && !isText(node) && lists.contains(node.classList, 'note-styletag');
                 }
 
-                /* harmony default export */
-                const dom = ({
+                /* harmony default export */ var dom = ({
                     /** @property {String} NBSP_CHAR */
                     NBSP_CHAR: NBSP_CHAR,
 
@@ -2297,7 +2126,7 @@
                     blank: blankHTML,
 
                     /** @property {String} emptyPara */
-                    emptyPara: '<p>'.concat(blankHTML, '</p>'),
+                    emptyPara: "<p>".concat(blankHTML, "</p>"),
                     makePredByNodeName: makePredByNodeName,
                     isEditable: isEditable,
                     isControlSizing: isControlSizing,
@@ -2380,34 +2209,21 @@
                     posFromPlaceholder: posFromPlaceholder,
                     attachEvents: attachEvents,
                     detachEvents: detachEvents,
-                    isCustomStyleTag: isCustomStyleTag,
+                    isCustomStyleTag: isCustomStyleTag
                 });
+// CONCATENATED MODULE: ./src/js/base/Context.js
+                function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                // CONCATENATED MODULE: ./src/js/base/Context.js
-                function _classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+                function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function _defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
-
-                function _createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) _defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Context_Context = /* #__PURE__*/function () {
+
+
+
+
+                var Context_Context = /*#__PURE__*/function () {
                     /**
                      * @param {jQuery} $note
                      * @param {Object} options
@@ -2425,14 +2241,13 @@
                         this.ui = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote.ui;
                         this.initialize();
                     }
-
                     /**
                      * create layout and initialize modules and other resources
                      */
 
 
                     _createClass(Context, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
                             this.layoutInfo = this.ui.createLayout(this.$note);
 
@@ -2440,27 +2255,27 @@
 
                             this.$note.hide();
                             return this;
-                        },
+                        }
                         /**
                          * destroy modules and other resources and remove layout
                          */
 
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this._destroy();
 
                             this.$note.removeData('summernote');
                             this.ui.removeLayout(this.$note, this.layoutInfo);
-                        },
+                        }
                         /**
                          * destory modules and other resources and initialize it again
                          */
 
                     }, {
-                        key: 'reset',
+                        key: "reset",
                         value: function reset() {
-                            const disabled = this.isDisabled();
+                            var disabled = this.isDisabled();
                             this.code(dom.emptyPara);
 
                             this._destroy();
@@ -2470,22 +2285,22 @@
                             if (disabled) {
                                 this.disable();
                             }
-                        },
+                        }
                     }, {
-                        key: '_initialize',
+                        key: "_initialize",
                         value: function _initialize() {
-                            const _this = this;
+                            var _this = this;
 
                             // set own id
                             this.options.id = func.uniqueId(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.now()); // set default container for tooltips, popovers, and dialogs
 
                             this.options.container = this.options.container || this.layoutInfo.editor; // add optional buttons
 
-                            const buttons = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend({}, this.options.buttons);
+                            var buttons = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend({}, this.options.buttons);
                             Object.keys(buttons).forEach(function (key) {
                                 _this.memo('button.' + key, buttons[key]);
                             });
-                            const modules = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend({}, this.options.modules, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote.plugins || {}); // add and initialize modules
+                            var modules = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend({}, this.options.modules, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote.plugins || {}); // add and initialize modules
 
                             Object.keys(modules).forEach(function (key) {
                                 _this.module(key, modules[key], true);
@@ -2493,11 +2308,11 @@
                             Object.keys(this.modules).forEach(function (key) {
                                 _this.initializeModule(key);
                             });
-                        },
+                        }
                     }, {
-                        key: '_destroy',
+                        key: "_destroy",
                         value: function _destroy() {
-                            const _this2 = this;
+                            var _this2 = this;
 
                             // destroy modules with reversed order
                             Object.keys(this.modules).reverse().forEach(function (key) {
@@ -2508,11 +2323,11 @@
                             }); // trigger custom onDestroy callback
 
                             this.triggerEvent('destroy', this);
-                        },
+                        }
                     }, {
-                        key: 'code',
+                        key: "code",
                         value: function code(html) {
-                            const isActivated = this.invoke('codeview.isActivated');
+                            var isActivated = this.invoke('codeview.isActivated');
 
                             if (html === undefined) {
                                 this.invoke('codeview.sync');
@@ -2527,22 +2342,22 @@
                                 this.$note.val(html);
                                 this.triggerEvent('change', html, this.layoutInfo.editable);
                             }
-                        },
+                        }
                     }, {
-                        key: 'isDisabled',
+                        key: "isDisabled",
                         value: function isDisabled() {
                             return this.layoutInfo.editable.attr('contenteditable') === 'false';
-                        },
+                        }
                     }, {
-                        key: 'enable',
+                        key: "enable",
                         value: function enable() {
                             this.layoutInfo.editable.attr('contenteditable', true);
                             this.invoke('toolbar.activate', true);
                             this.triggerEvent('disable', false);
                             this.options.editing = true;
-                        },
+                        }
                     }, {
-                        key: 'disable',
+                        key: "disable",
                         value: function disable() {
                             // close codeview if codeview is opend
                             if (this.invoke('codeview.isActivated')) {
@@ -2553,24 +2368,24 @@
                             this.options.editing = false;
                             this.invoke('toolbar.deactivate', true);
                             this.triggerEvent('disable', true);
-                        },
+                        }
                     }, {
-                        key: 'triggerEvent',
+                        key: "triggerEvent",
                         value: function triggerEvent() {
-                            const namespace = lists.head(arguments);
-                            const args = lists.tail(lists.from(arguments));
-                            const callback = this.options.callbacks[func.namespaceToCamel(namespace, 'on')];
+                            var namespace = lists.head(arguments);
+                            var args = lists.tail(lists.from(arguments));
+                            var callback = this.options.callbacks[func.namespaceToCamel(namespace, 'on')];
 
                             if (callback) {
                                 callback.apply(this.$note[0], args);
                             }
 
                             this.$note.trigger('summernote.' + namespace, args);
-                        },
+                        }
                     }, {
-                        key: 'initializeModule',
+                        key: "initializeModule",
                         value: function initializeModule(key) {
-                            const module = this.modules[key];
+                            var module = this.modules[key];
                             module.shouldInitialize = module.shouldInitialize || func.ok;
 
                             if (!module.shouldInitialize()) {
@@ -2586,9 +2401,9 @@
                             if (module.events) {
                                 dom.attachEvents(this.$note, module.events);
                             }
-                        },
+                        }
                     }, {
-                        key: 'module',
+                        key: "module",
                         value: function module(key, ModuleClass, withoutIntialize) {
                             if (arguments.length === 1) {
                                 return this.modules[key];
@@ -2599,11 +2414,11 @@
                             if (!withoutIntialize) {
                                 this.initializeModule(key);
                             }
-                        },
+                        }
                     }, {
-                        key: 'removeModule',
+                        key: "removeModule",
                         value: function removeModule(key) {
-                            const module = this.modules[key];
+                            var module = this.modules[key];
 
                             if (module.shouldInitialize()) {
                                 if (module.events) {
@@ -2616,76 +2431,78 @@
                             }
 
                             delete this.modules[key];
-                        },
+                        }
                     }, {
-                        key: 'memo',
+                        key: "memo",
                         value: function memo(key, obj) {
                             if (arguments.length === 1) {
                                 return this.memos[key];
                             }
 
                             this.memos[key] = obj;
-                        },
+                        }
                     }, {
-                        key: 'removeMemo',
+                        key: "removeMemo",
                         value: function removeMemo(key) {
                             if (this.memos[key] && this.memos[key].destroy) {
                                 this.memos[key].destroy();
                             }
 
                             delete this.memos[key];
-                        },
+                        }
                         /**
                          * Some buttons need to change their visual style immediately once they get pressed
                          */
 
                     }, {
-                        key: 'createInvokeHandlerAndUpdateState',
+                        key: "createInvokeHandlerAndUpdateState",
                         value: function createInvokeHandlerAndUpdateState(namespace, value) {
-                            const _this3 = this;
+                            var _this3 = this;
 
                             return function (event) {
                                 _this3.createInvokeHandler(namespace, value)(event);
 
                                 _this3.invoke('buttons.updateCurrentStyle');
                             };
-                        },
+                        }
                     }, {
-                        key: 'createInvokeHandler',
+                        key: "createInvokeHandler",
                         value: function createInvokeHandler(namespace, value) {
-                            const _this4 = this;
+                            var _this4 = this;
 
                             return function (event) {
                                 event.preventDefault();
-                                const $target = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(event.target);
+                                var $target = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(event.target);
 
                                 _this4.invoke(namespace, value || $target.closest('[data-value]').data('value'), $target);
                             };
-                        },
+                        }
                     }, {
-                        key: 'invoke',
+                        key: "invoke",
                         value: function invoke() {
-                            const namespace = lists.head(arguments);
-                            const args = lists.tail(lists.from(arguments));
-                            const splits = namespace.split('.');
-                            const hasSeparator = splits.length > 1;
-                            const moduleName = hasSeparator && lists.head(splits);
-                            const methodName = hasSeparator ? lists.last(splits) : lists.head(splits);
-                            const module = this.modules[moduleName || 'editor'];
+                            var namespace = lists.head(arguments);
+                            var args = lists.tail(lists.from(arguments));
+                            var splits = namespace.split('.');
+                            var hasSeparator = splits.length > 1;
+                            var moduleName = hasSeparator && lists.head(splits);
+                            var methodName = hasSeparator ? lists.last(splits) : lists.head(splits);
+                            var module = this.modules[moduleName || 'editor'];
 
                             if (!moduleName && this[methodName]) {
                                 return this[methodName].apply(this, args);
                             } else if (module && module[methodName] && module.shouldInitialize()) {
                                 return module[methodName].apply(module, args);
                             }
-                        },
+                        }
                     }]);
 
                     return Context;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/summernote.js
+// CONCATENATED MODULE: ./src/js/summernote.js
+
+
 
 
                 external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.fn.extend({
@@ -2696,27 +2513,27 @@
                      * @return {this}
                      */
                     summernote: function summernote() {
-                        const type = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.type(lists.head(arguments));
-                        const isExternalAPICalled = type === 'string';
-                        const hasInitOptions = type === 'object';
-                        const options = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend({}, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote.options, hasInitOptions ? lists.head(arguments) : {}); // Update options
+                        var type = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.type(lists.head(arguments));
+                        var isExternalAPICalled = type === 'string';
+                        var hasInitOptions = type === 'object';
+                        var options = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend({}, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote.options, hasInitOptions ? lists.head(arguments) : {}); // Update options
 
                         options.langInfo = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend(true, {}, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote.lang['en-US'], external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote.lang[options.lang]);
                         options.icons = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend(true, {}, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote.options.icons, options.icons);
                         options.tooltip = options.tooltip === 'auto' ? !env.isSupportTouch : options.tooltip;
                         this.each(function (idx, note) {
-                            const $note = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(note);
+                            var $note = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(note);
 
                             if (!$note.data('summernote')) {
-                                const context = new Context_Context($note, options);
+                                var context = new Context_Context($note, options);
                                 $note.data('summernote', context);
                                 $note.data('summernote').triggerEvent('init', context.layoutInfo);
                             }
                         });
-                        const $note = this.first();
+                        var $note = this.first();
 
                         if ($note.length) {
-                            const context = $note.data('summernote');
+                            var context = $note.data('summernote');
 
                             if (isExternalAPICalled) {
                                 return context.invoke.apply(context, lists.from(arguments));
@@ -2726,31 +2543,18 @@
                         }
 
                         return this;
-                    },
+                    }
                 });
+// CONCATENATED MODULE: ./src/js/base/core/range.js
+                function range_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                // CONCATENATED MODULE: ./src/js/base/core/range.js
-                function range_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+                function range_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function range_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function range_createClass(Constructor, protoProps, staticProps) { if (protoProps) range_defineProperties(Constructor.prototype, protoProps); if (staticProps) range_defineProperties(Constructor, staticProps); return Constructor; }
 
-                function range_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) range_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) range_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+
+
+
 
 
                 /**
@@ -2764,11 +2568,11 @@
                  */
 
                 function textRangeToPoint(textRange, isStart) {
-                    let container = textRange.parentElement();
-                    let offset;
-                    const tester = document.body.createTextRange();
-                    let prevContainer;
-                    const childNodes = lists.from(container.childNodes);
+                    var container = textRange.parentElement();
+                    var offset;
+                    var tester = document.body.createTextRange();
+                    var prevContainer;
+                    var childNodes = lists.from(container.childNodes);
 
                     for (offset = 0; offset < childNodes.length; offset++) {
                         if (dom.isText(childNodes[offset])) {
@@ -2785,14 +2589,14 @@
                     }
 
                     if (offset !== 0 && dom.isText(childNodes[offset - 1])) {
-                        const textRangeStart = document.body.createTextRange();
-                        let curTextNode = null;
+                        var textRangeStart = document.body.createTextRange();
+                        var curTextNode = null;
                         textRangeStart.moveToElementText(prevContainer || container);
                         textRangeStart.collapse(!prevContainer);
                         curTextNode = prevContainer ? prevContainer.nextSibling : container.firstChild;
-                        const pointTester = textRange.duplicate();
+                        var pointTester = textRange.duplicate();
                         pointTester.setEndPoint('StartToStart', textRangeStart);
-                        let textCount = pointTester.text.replace(/[\r\n]/g, '').length;
+                        var textCount = pointTester.text.replace(/[\r\n]/g, '').length;
 
                         while (textCount > curTextNode.nodeValue.length && curTextNode.nextSibling) {
                             textCount -= curTextNode.nodeValue.length;
@@ -2813,10 +2617,9 @@
 
                     return {
                         cont: container,
-                        offset: offset,
+                        offset: offset
                     };
                 }
-
                 /**
                  * return TextRange from boundary point (inspired by google closure-library)
                  * @param {BoundaryPoint} point
@@ -2825,13 +2628,12 @@
 
 
                 function pointToTextRange(point) {
-                    const textRangeInfo = function textRangeInfo(container, offset) {
-                        let node;
-                        let isCollapseToStart;
+                    var textRangeInfo = function textRangeInfo(container, offset) {
+                        var node, isCollapseToStart;
 
                         if (dom.isText(container)) {
-                            const prevTextNodes = dom.listPrev(container, func.not(dom.isText));
-                            const prevContainer = lists.last(prevTextNodes).previousSibling;
+                            var prevTextNodes = dom.listPrev(container, func.not(dom.isText));
+                            var prevContainer = lists.last(prevTextNodes).previousSibling;
                             node = prevContainer || container.parentNode;
                             offset += lists.sum(lists.tail(prevTextNodes), dom.nodeLength);
                             isCollapseToStart = !prevContainer;
@@ -2849,18 +2651,17 @@
                         return {
                             node: node,
                             collapseToStart: isCollapseToStart,
-                            offset: offset,
+                            offset: offset
                         };
                     };
 
-                    const textRange = document.body.createTextRange();
-                    const info = textRangeInfo(point.node, point.offset);
+                    var textRange = document.body.createTextRange();
+                    var info = textRangeInfo(point.node, point.offset);
                     textRange.moveToElementText(info.node);
                     textRange.collapse(info.collapseToStart);
                     textRange.moveStart('character', info.offset);
                     return textRange;
                 }
-
                 /**
                  * Wrapped Range
                  *
@@ -2872,7 +2673,7 @@
                  */
 
 
-                const range_WrappedRange = /* #__PURE__*/function () {
+                var range_WrappedRange = /*#__PURE__*/function () {
                     function WrappedRange(sc, so, ec, eo) {
                         range_classCallCheck(this, WrappedRange);
 
@@ -2894,62 +2695,62 @@
 
 
                     range_createClass(WrappedRange, [{
-                        key: 'nativeRange',
+                        key: "nativeRange",
                         value: function nativeRange() {
                             if (env.isW3CRangeSupport) {
-                                const w3cRange = document.createRange();
+                                var w3cRange = document.createRange();
                                 w3cRange.setStart(this.sc, this.so);
                                 w3cRange.setEnd(this.ec, this.eo);
                                 return w3cRange;
                             } else {
-                                const textRange = pointToTextRange({
+                                var textRange = pointToTextRange({
                                     node: this.sc,
-                                    offset: this.so,
+                                    offset: this.so
                                 });
                                 textRange.setEndPoint('EndToEnd', pointToTextRange({
                                     node: this.ec,
-                                    offset: this.eo,
+                                    offset: this.eo
                                 }));
                                 return textRange;
                             }
-                        },
+                        }
                     }, {
-                        key: 'getPoints',
+                        key: "getPoints",
                         value: function getPoints() {
                             return {
                                 sc: this.sc,
                                 so: this.so,
                                 ec: this.ec,
-                                eo: this.eo,
+                                eo: this.eo
                             };
-                        },
+                        }
                     }, {
-                        key: 'getStartPoint',
+                        key: "getStartPoint",
                         value: function getStartPoint() {
                             return {
                                 node: this.sc,
-                                offset: this.so,
+                                offset: this.so
                             };
-                        },
+                        }
                     }, {
-                        key: 'getEndPoint',
+                        key: "getEndPoint",
                         value: function getEndPoint() {
                             return {
                                 node: this.ec,
-                                offset: this.eo,
+                                offset: this.eo
                             };
-                        },
+                        }
                         /**
                          * select update visible range
                          */
 
                     }, {
-                        key: 'select',
+                        key: "select",
                         value: function select() {
-                            const nativeRng = this.nativeRange();
+                            var nativeRng = this.nativeRange();
 
                             if (env.isW3CRangeSupport) {
-                                const selection = document.getSelection();
+                                var selection = document.getSelection();
 
                                 if (selection.rangeCount > 0) {
                                     selection.removeAllRanges();
@@ -2961,7 +2762,7 @@
                             }
 
                             return this;
-                        },
+                        }
                         /**
                          * Moves the scrollbar to start container(sc) of current range
                          *
@@ -2969,22 +2770,22 @@
                          */
 
                     }, {
-                        key: 'scrollIntoView',
+                        key: "scrollIntoView",
                         value: function scrollIntoView(container) {
-                            const height = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(container).height();
+                            var height = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(container).height();
 
                             if (container.scrollTop + height < this.sc.offsetTop) {
                                 container.scrollTop += Math.abs(container.scrollTop + height - this.sc.offsetTop);
                             }
 
                             return this;
-                        },
+                        }
                         /**
                          * @return {WrappedRange}
                          */
 
                     }, {
-                        key: 'normalize',
+                        key: "normalize",
                         value: function normalize() {
                             /**
                              * @param {BoundaryPoint} point
@@ -2992,7 +2793,7 @@
                              *                                - false: prefer to choose left node
                              * @return {BoundaryPoint}
                              */
-                            const getVisiblePoint = function getVisiblePoint(point, isLeftToRight) {
+                            var getVisiblePoint = function getVisiblePoint(point, isLeftToRight) {
                                 if (!point) {
                                     return point;
                                 } // Just use the given point [XXX:Adhoc]
@@ -3011,21 +2812,21 @@
                                 } // point on block's edge
 
 
-                                const block = dom.ancestor(point.node, dom.isBlock);
-                                let hasRightNode = false;
+                                var block = dom.ancestor(point.node, dom.isBlock);
+                                var hasRightNode = false;
 
                                 if (!hasRightNode) {
-                                    const prevPoint = dom.prevPoint(point) || {
-                                        node: null,
+                                    var prevPoint = dom.prevPoint(point) || {
+                                        node: null
                                     };
                                     hasRightNode = (dom.isLeftEdgePointOf(point, block) || dom.isVoid(prevPoint.node)) && !isLeftToRight;
                                 }
 
-                                let hasLeftNode = false;
+                                var hasLeftNode = false;
 
                                 if (!hasLeftNode) {
-                                    const _nextPoint = dom.nextPoint(point) || {
-                                        node: null,
+                                    var _nextPoint = dom.nextPoint(point) || {
+                                        node: null
                                     };
 
                                     hasLeftNode = (dom.isRightEdgePointOf(point, block) || dom.isVoid(_nextPoint.node)) && isLeftToRight;
@@ -3041,14 +2842,14 @@
                                     isLeftToRight = !isLeftToRight;
                                 }
 
-                                const nextPoint = isLeftToRight ? dom.nextPointUntil(dom.nextPoint(point), dom.isVisiblePoint) : dom.prevPointUntil(dom.prevPoint(point), dom.isVisiblePoint);
+                                var nextPoint = isLeftToRight ? dom.nextPointUntil(dom.nextPoint(point), dom.isVisiblePoint) : dom.prevPointUntil(dom.prevPoint(point), dom.isVisiblePoint);
                                 return nextPoint || point;
                             };
 
-                            const endPoint = getVisiblePoint(this.getEndPoint(), false);
-                            const startPoint = this.isCollapsed() ? endPoint : getVisiblePoint(this.getStartPoint(), true);
+                            var endPoint = getVisiblePoint(this.getEndPoint(), false);
+                            var startPoint = this.isCollapsed() ? endPoint : getVisiblePoint(this.getStartPoint(), true);
                             return new WrappedRange(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
-                        },
+                        }
                         /**
                          * returns matched nodes on range
                          *
@@ -3060,22 +2861,22 @@
                          */
 
                     }, {
-                        key: 'nodes',
+                        key: "nodes",
                         value: function nodes(pred, options) {
                             pred = pred || func.ok;
-                            const includeAncestor = options && options.includeAncestor;
-                            const fullyContains = options && options.fullyContains; // TODO compare points and sort
+                            var includeAncestor = options && options.includeAncestor;
+                            var fullyContains = options && options.fullyContains; // TODO compare points and sort
 
-                            const startPoint = this.getStartPoint();
-                            const endPoint = this.getEndPoint();
-                            const nodes = [];
-                            const leftEdgeNodes = [];
+                            var startPoint = this.getStartPoint();
+                            var endPoint = this.getEndPoint();
+                            var nodes = [];
+                            var leftEdgeNodes = [];
                             dom.walkPoint(startPoint, endPoint, function (point) {
                                 if (dom.isEditable(point.node)) {
                                     return;
                                 }
 
-                                let node;
+                                var node;
 
                                 if (fullyContains) {
                                     if (dom.isLeftEdgePoint(point)) {
@@ -3096,17 +2897,17 @@
                                 }
                             }, true);
                             return lists.unique(nodes);
-                        },
+                        }
                         /**
                          * returns commonAncestor of range
                          * @return {Element} - commonAncestor
                          */
 
                     }, {
-                        key: 'commonAncestor',
+                        key: "commonAncestor",
                         value: function commonAncestor() {
                             return dom.commonAncestor(this.sc, this.ec);
-                        },
+                        }
                         /**
                          * returns expanded range by pred
                          *
@@ -3115,16 +2916,16 @@
                          */
 
                     }, {
-                        key: 'expand',
+                        key: "expand",
                         value: function expand(pred) {
-                            const startAncestor = dom.ancestor(this.sc, pred);
-                            const endAncestor = dom.ancestor(this.ec, pred);
+                            var startAncestor = dom.ancestor(this.sc, pred);
+                            var endAncestor = dom.ancestor(this.ec, pred);
 
                             if (!startAncestor && !endAncestor) {
                                 return new WrappedRange(this.sc, this.so, this.ec, this.eo);
                             }
 
-                            const boundaryPoints = this.getPoints();
+                            var boundaryPoints = this.getPoints();
 
                             if (startAncestor) {
                                 boundaryPoints.sc = startAncestor;
@@ -3137,30 +2938,30 @@
                             }
 
                             return new WrappedRange(boundaryPoints.sc, boundaryPoints.so, boundaryPoints.ec, boundaryPoints.eo);
-                        },
+                        }
                         /**
                          * @param {Boolean} isCollapseToStart
                          * @return {WrappedRange}
                          */
 
                     }, {
-                        key: 'collapse',
+                        key: "collapse",
                         value: function collapse(isCollapseToStart) {
                             if (isCollapseToStart) {
                                 return new WrappedRange(this.sc, this.so, this.sc, this.so);
                             } else {
                                 return new WrappedRange(this.ec, this.eo, this.ec, this.eo);
                             }
-                        },
+                        }
                         /**
                          * splitText on range
                          */
 
                     }, {
-                        key: 'splitText',
+                        key: "splitText",
                         value: function splitText() {
-                            const isSameContainer = this.sc === this.ec;
-                            const boundaryPoints = this.getPoints();
+                            var isSameContainer = this.sc === this.ec;
+                            var boundaryPoints = this.getPoints();
 
                             if (dom.isText(this.ec) && !dom.isEdgePoint(this.getEndPoint())) {
                                 this.ec.splitText(this.eo);
@@ -3177,31 +2978,31 @@
                             }
 
                             return new WrappedRange(boundaryPoints.sc, boundaryPoints.so, boundaryPoints.ec, boundaryPoints.eo);
-                        },
+                        }
                         /**
                          * delete contents on range
                          * @return {WrappedRange}
                          */
 
                     }, {
-                        key: 'deleteContents',
+                        key: "deleteContents",
                         value: function deleteContents() {
                             if (this.isCollapsed()) {
                                 return this;
                             }
 
-                            const rng = this.splitText();
-                            const nodes = rng.nodes(null, {
-                                fullyContains: true,
+                            var rng = this.splitText();
+                            var nodes = rng.nodes(null, {
+                                fullyContains: true
                             }); // find new cursor point
 
-                            const point = dom.prevPointUntil(rng.getStartPoint(), function (point) {
+                            var point = dom.prevPointUntil(rng.getStartPoint(), function (point) {
                                 return !lists.contains(nodes, point.node);
                             });
-                            const emptyParents = [];
+                            var emptyParents = [];
                             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(nodes, function (idx, node) {
                                 // find empty parents
-                                const parent = node.parentNode;
+                                var parent = node.parentNode;
 
                                 if (point.node !== parent && dom.nodeLength(parent) === 1) {
                                     emptyParents.push(parent);
@@ -3214,43 +3015,43 @@
                                 dom.remove(node, false);
                             });
                             return new WrappedRange(point.node, point.offset, point.node, point.offset).normalize();
-                        },
+                        }
                         /**
                          * makeIsOn: return isOn(pred) function
                          */
 
                     }, {
-                        key: 'makeIsOn',
+                        key: "makeIsOn",
                         value: function makeIsOn(pred) {
                             return function () {
-                                const ancestor = dom.ancestor(this.sc, pred);
+                                var ancestor = dom.ancestor(this.sc, pred);
                                 return !!ancestor && ancestor === dom.ancestor(this.ec, pred);
                             };
-                        },
+                        }
                         /**
                          * @param {Function} pred
                          * @return {Boolean}
                          */
 
                     }, {
-                        key: 'isLeftEdgeOf',
+                        key: "isLeftEdgeOf",
                         value: function isLeftEdgeOf(pred) {
                             if (!dom.isLeftEdgePoint(this.getStartPoint())) {
                                 return false;
                             }
 
-                            const node = dom.ancestor(this.sc, pred);
+                            var node = dom.ancestor(this.sc, pred);
                             return node && dom.isLeftEdgeOf(this.sc, node);
-                        },
+                        }
                         /**
                          * returns whether range was collapsed or not
                          */
 
                     }, {
-                        key: 'isCollapsed',
+                        key: "isCollapsed",
                         value: function isCollapsed() {
                             return this.sc === this.ec && this.so === this.eo;
-                        },
+                        }
                         /**
                          * wrap inline nodes which children of body with paragraph
                          *
@@ -3258,7 +3059,7 @@
                          */
 
                     }, {
-                        key: 'wrapBodyInlineWithPara',
+                        key: "wrapBodyInlineWithPara",
                         value: function wrapBodyInlineWithPara() {
                             if (dom.isBodyContainer(this.sc) && dom.isEmpty(this.sc)) {
                                 this.sc.innerHTML = dom.emptyPara;
@@ -3271,17 +3072,17 @@
                              */
 
 
-                            const rng = this.normalize();
+                            var rng = this.normalize();
 
                             if (dom.isParaInline(this.sc) || dom.isPara(this.sc)) {
                                 return rng;
                             } // find inline top ancestor
 
 
-                            let topAncestor;
+                            var topAncestor;
 
                             if (dom.isInline(rng.sc)) {
-                                const ancestors = dom.listAncestor(rng.sc, func.not(dom.isInline));
+                                var ancestors = dom.listAncestor(rng.sc, func.not(dom.isInline));
                                 topAncestor = lists.last(ancestors);
 
                                 if (!dom.isInline(topAncestor)) {
@@ -3293,17 +3094,17 @@
 
                             if (topAncestor) {
                                 // siblings not in paragraph
-                                let inlineSiblings = dom.listPrev(topAncestor, dom.isParaInline).reverse();
+                                var inlineSiblings = dom.listPrev(topAncestor, dom.isParaInline).reverse();
                                 inlineSiblings = inlineSiblings.concat(dom.listNext(topAncestor.nextSibling, dom.isParaInline)); // wrap with paragraph
 
                                 if (inlineSiblings.length) {
-                                    const para = dom.wrap(lists.head(inlineSiblings), 'p');
+                                    var para = dom.wrap(lists.head(inlineSiblings), 'p');
                                     dom.appendChildNodes(para, lists.tail(inlineSiblings));
                                 }
                             }
 
                             return this.normalize();
-                        },
+                        }
                         /**
                          * insert node at current cursor
                          *
@@ -3312,15 +3113,15 @@
                          */
 
                     }, {
-                        key: 'insertNode',
+                        key: "insertNode",
                         value: function insertNode(node) {
-                            let rng = this;
+                            var rng = this;
 
                             if (dom.isText(node) || dom.isInline(node)) {
                                 rng = this.wrapBodyInlineWithPara().deleteContents();
                             }
 
-                            const info = dom.splitPoint(rng.getStartPoint(), dom.isInline(node));
+                            var info = dom.splitPoint(rng.getStartPoint(), dom.isInline(node));
 
                             if (info.rightNode) {
                                 info.rightNode.parentNode.insertBefore(node, info.rightNode);
@@ -3333,20 +3134,20 @@
                             }
 
                             return node;
-                        },
+                        }
                         /**
                          * insert html at current cursor
                          */
 
                     }, {
-                        key: 'pasteHTML',
+                        key: "pasteHTML",
                         value: function pasteHTML(markup) {
                             markup = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.trim(markup);
-                            const contentsContainer = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div></div>').html(markup)[0];
-                            let childNodes = lists.from(contentsContainer.childNodes); // const rng = this.wrapBodyInlineWithPara().deleteContents();
+                            var contentsContainer = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div></div>').html(markup)[0];
+                            var childNodes = lists.from(contentsContainer.childNodes); // const rng = this.wrapBodyInlineWithPara().deleteContents();
 
-                            const rng = this;
-                            let reversed = false;
+                            var rng = this;
+                            var reversed = false;
 
                             if (rng.so >= 0) {
                                 childNodes = childNodes.reverse();
@@ -3362,7 +3163,7 @@
                             }
 
                             return childNodes;
-                        },
+                        }
                         /**
                          * returns text in range
                          *
@@ -3370,11 +3171,11 @@
                          */
 
                     }, {
-                        key: 'toString',
+                        key: "toString",
                         value: function toString() {
-                            const nativeRng = this.nativeRange();
+                            var nativeRng = this.nativeRange();
                             return env.isW3CRangeSupport ? nativeRng.toString() : nativeRng.text;
-                        },
+                        }
                         /**
                          * returns range for word before cursor
                          *
@@ -3383,15 +3184,15 @@
                          */
 
                     }, {
-                        key: 'getWordRange',
+                        key: "getWordRange",
                         value: function getWordRange(findAfter) {
-                            let endPoint = this.getEndPoint();
+                            var endPoint = this.getEndPoint();
 
                             if (!dom.isCharPoint(endPoint)) {
                                 return this;
                             }
 
-                            const startPoint = dom.prevPointUntil(endPoint, function (point) {
+                            var startPoint = dom.prevPointUntil(endPoint, function (point) {
                                 return !dom.isCharPoint(point);
                             });
 
@@ -3402,7 +3203,7 @@
                             }
 
                             return new WrappedRange(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
-                        },
+                        }
                         /**
                          * returns range for words before cursor
                          *
@@ -3411,11 +3212,11 @@
                          */
 
                     }, {
-                        key: 'getWordsRange',
+                        key: "getWordsRange",
                         value: function getWordsRange(findAfter) {
-                            let endPoint = this.getEndPoint();
+                            var endPoint = this.getEndPoint();
 
-                            const isNotTextPoint = function isNotTextPoint(point) {
+                            var isNotTextPoint = function isNotTextPoint(point) {
                                 return !dom.isCharPoint(point) && !dom.isSpacePoint(point);
                             };
 
@@ -3423,14 +3224,14 @@
                                 return this;
                             }
 
-                            const startPoint = dom.prevPointUntil(endPoint, isNotTextPoint);
+                            var startPoint = dom.prevPointUntil(endPoint, isNotTextPoint);
 
                             if (findAfter) {
                                 endPoint = dom.nextPointUntil(endPoint, isNotTextPoint);
                             }
 
                             return new WrappedRange(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
-                        },
+                        }
                         /**
                          * returns range for words before cursor that match with a Regex
                          *
@@ -3444,28 +3245,28 @@
                          */
 
                     }, {
-                        key: 'getWordsMatchRange',
+                        key: "getWordsMatchRange",
                         value: function getWordsMatchRange(regex) {
-                            const endPoint = this.getEndPoint();
-                            const startPoint = dom.prevPointUntil(endPoint, function (point) {
+                            var endPoint = this.getEndPoint();
+                            var startPoint = dom.prevPointUntil(endPoint, function (point) {
                                 if (!dom.isCharPoint(point) && !dom.isSpacePoint(point)) {
                                     return true;
                                 }
 
-                                const rng = new WrappedRange(point.node, point.offset, endPoint.node, endPoint.offset);
-                                const result = regex.exec(rng.toString());
+                                var rng = new WrappedRange(point.node, point.offset, endPoint.node, endPoint.offset);
+                                var result = regex.exec(rng.toString());
                                 return result && result.index === 0;
                             });
-                            const rng = new WrappedRange(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
-                            const text = rng.toString();
-                            const result = regex.exec(text);
+                            var rng = new WrappedRange(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
+                            var text = rng.toString();
+                            var result = regex.exec(text);
 
                             if (result && result[0].length === text.length) {
                                 return rng;
                             } else {
                                 return null;
                             }
-                        },
+                        }
                         /**
                          * create offsetPath bookmark
                          *
@@ -3473,19 +3274,19 @@
                          */
 
                     }, {
-                        key: 'bookmark',
+                        key: "bookmark",
                         value: function bookmark(editable) {
                             return {
                                 s: {
                                     path: dom.makeOffsetPath(editable, this.sc),
-                                    offset: this.so,
+                                    offset: this.so
                                 },
                                 e: {
                                     path: dom.makeOffsetPath(editable, this.ec),
-                                    offset: this.eo,
-                                },
+                                    offset: this.eo
+                                }
                             };
-                        },
+                        }
                         /**
                          * create offsetPath bookmark base on paragraph
                          *
@@ -3493,30 +3294,30 @@
                          */
 
                     }, {
-                        key: 'paraBookmark',
+                        key: "paraBookmark",
                         value: function paraBookmark(paras) {
                             return {
                                 s: {
                                     path: lists.tail(dom.makeOffsetPath(lists.head(paras), this.sc)),
-                                    offset: this.so,
+                                    offset: this.so
                                 },
                                 e: {
                                     path: lists.tail(dom.makeOffsetPath(lists.last(paras), this.ec)),
-                                    offset: this.eo,
-                                },
+                                    offset: this.eo
+                                }
                             };
-                        },
+                        }
                         /**
                          * getClientRects
                          * @return {Rect[]}
                          */
 
                     }, {
-                        key: 'getClientRects',
+                        key: "getClientRects",
                         value: function getClientRects() {
-                            const nativeRng = this.nativeRange();
+                            var nativeRng = this.nativeRange();
                             return nativeRng.getClientRects();
-                        },
+                        }
                     }]);
 
                     return WrappedRange;
@@ -3530,8 +3331,7 @@
                  */
 
 
-                /* harmony default export */
-                const range = ({
+                /* harmony default export */ var range = ({
                     /**
                      * create Range Object From arguments or Browser Selection
                      *
@@ -3550,10 +3350,10 @@
                             eo = so;
                             return new range_WrappedRange(sc, so, ec, eo);
                         } else {
-                            const wrappedRange = this.createFromSelection();
+                            var wrappedRange = this.createFromSelection();
 
                             if (!wrappedRange && arguments.length === 1) {
-                                let bodyElement = arguments[0];
+                                var bodyElement = arguments[0];
 
                                 if (dom.isEditable(bodyElement)) {
                                     bodyElement = bodyElement.lastChild;
@@ -3566,18 +3366,15 @@
                         }
                     },
                     createFromBodyElement: function createFromBodyElement(bodyElement) {
-                        const isCollapseToStart = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-                        const wrappedRange = this.createFromNode(bodyElement);
+                        var isCollapseToStart = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+                        var wrappedRange = this.createFromNode(bodyElement);
                         return wrappedRange.collapse(isCollapseToStart);
                     },
                     createFromSelection: function createFromSelection() {
-                        let sc;
-                        let so;
-                        let ec;
-                        let eo;
+                        var sc, so, ec, eo;
 
                         if (env.isW3CRangeSupport) {
-                            const selection = document.getSelection();
+                            var selection = document.getSelection();
 
                             if (!selection || selection.rangeCount === 0) {
                                 return null;
@@ -3587,20 +3384,20 @@
                                 return null;
                             }
 
-                            const nativeRng = selection.getRangeAt(0);
+                            var nativeRng = selection.getRangeAt(0);
                             sc = nativeRng.startContainer;
                             so = nativeRng.startOffset;
                             ec = nativeRng.endContainer;
                             eo = nativeRng.endOffset;
                         } else {
                             // IE8: TextRange
-                            const textRange = document.selection.createRange();
-                            const textRangeEnd = textRange.duplicate();
+                            var textRange = document.selection.createRange();
+                            var textRangeEnd = textRange.duplicate();
                             textRangeEnd.collapse(false);
-                            const textRangeStart = textRange;
+                            var textRangeStart = textRange;
                             textRangeStart.collapse(true);
-                            let startPoint = textRangeToPoint(textRangeStart, true);
-                            const endPoint = textRangeToPoint(textRangeEnd, false); // same visible point case: range was collapsed.
+                            var startPoint = textRangeToPoint(textRangeStart, true);
+                            var endPoint = textRangeToPoint(textRangeEnd, false); // same visible point case: range was collapsed.
 
                             if (dom.isText(startPoint.node) && dom.isLeftEdgePoint(startPoint) && dom.isTextNode(endPoint.node) && dom.isRightEdgePoint(endPoint) && endPoint.node.nextSibling === startPoint.node) {
                                 startPoint = endPoint;
@@ -3624,10 +3421,10 @@
                      * @return {WrappedRange}
                      */
                     createFromNode: function createFromNode(node) {
-                        let sc = node;
-                        let so = 0;
-                        let ec = node;
-                        let eo = dom.nodeLength(ec); // browsers can't target a picture or void node
+                        var sc = node;
+                        var so = 0;
+                        var ec = node;
+                        var eo = dom.nodeLength(ec); // browsers can't target a picture or void node
 
                         if (dom.isVoid(sc)) {
                             so = dom.listPrev(sc).length - 1;
@@ -3675,10 +3472,10 @@
                      * @return {WrappedRange}
                      */
                     createFromBookmark: function createFromBookmark(editable, bookmark) {
-                        const sc = dom.fromOffsetPath(editable, bookmark.s.path);
-                        const so = bookmark.s.offset;
-                        const ec = dom.fromOffsetPath(editable, bookmark.e.path);
-                        const eo = bookmark.e.offset;
+                        var sc = dom.fromOffsetPath(editable, bookmark.s.path);
+                        var so = bookmark.s.offset;
+                        var ec = dom.fromOffsetPath(editable, bookmark.e.path);
+                        var eo = bookmark.e.offset;
                         return new range_WrappedRange(sc, so, ec, eo);
                     },
 
@@ -3692,17 +3489,17 @@
                      * @return {WrappedRange}
                      */
                     createFromParaBookmark: function createFromParaBookmark(bookmark, paras) {
-                        const so = bookmark.s.offset;
-                        const eo = bookmark.e.offset;
-                        const sc = dom.fromOffsetPath(lists.head(paras), bookmark.s.path);
-                        const ec = dom.fromOffsetPath(lists.last(paras), bookmark.e.path);
+                        var so = bookmark.s.offset;
+                        var eo = bookmark.e.offset;
+                        var sc = dom.fromOffsetPath(lists.head(paras), bookmark.s.path);
+                        var ec = dom.fromOffsetPath(lists.last(paras), bookmark.e.path);
                         return new range_WrappedRange(sc, so, ec, eo);
-                    },
+                    }
                 });
-                // CONCATENATED MODULE: ./src/js/base/core/key.js
+// CONCATENATED MODULE: ./src/js/base/core/key.js
 
 
-                const KEY_MAP = {
+                var KEY_MAP = {
                     'BACKSPACE': 8,
                     'TAB': 9,
                     'ENTER': 13,
@@ -3745,7 +3542,7 @@
                     'HOME': 36,
                     'END': 35,
                     'PAGEUP': 33,
-                    'PAGEDOWN': 34,
+                    'PAGEDOWN': 34
                 };
                 /**
                  * @class core.key
@@ -3756,8 +3553,7 @@
                  * @alternateClassName key
                  */
 
-                /* harmony default export */
-                const core_key = ({
+                /* harmony default export */ var core_key = ({
                     /**
                      * @method isEdit
                      *
@@ -3793,10 +3589,9 @@
                      * @property {String} nameFromCode.8 "BACKSPACE"
                      */
                     nameFromCode: func.invertObject(KEY_MAP),
-                    code: KEY_MAP,
+                    code: KEY_MAP
                 });
-
-                // CONCATENATED MODULE: ./src/js/base/core/async.js
+// CONCATENATED MODULE: ./src/js/base/core/async.js
 
                 /**
                  * @method readFileAsDataURL
@@ -3811,16 +3606,15 @@
                     return external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.Deferred(function (deferred) {
                         external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend(new FileReader(), {
                             onload: function onload(e) {
-                                const dataURL = e.target.result;
+                                var dataURL = e.target.result;
                                 deferred.resolve(dataURL);
                             },
                             onerror: function onerror(err) {
                                 deferred.reject(err);
-                            },
+                            }
                         }).readAsDataURL(file);
                     }).promise();
                 }
-
                 /**
                  * @method createImage
                  *
@@ -3832,7 +3626,7 @@
 
                 function createImage(url) {
                     return external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.Deferred(function (deferred) {
-                        const $img = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<img>');
+                        var $img = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<img>');
                         $img.one('load', function () {
                             $img.off('error abort');
                             deferred.resolve($img);
@@ -3840,36 +3634,20 @@
                             $img.off('load').detach();
                             deferred.reject($img);
                         }).css({
-                            display: 'none',
+                            display: 'none'
                         }).appendTo(document.body).attr('src', url);
                     }).promise();
                 }
+// CONCATENATED MODULE: ./src/js/base/editing/History.js
+                function History_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                // CONCATENATED MODULE: ./src/js/base/editing/History.js
-                function History_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+                function History_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function History_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
-
-                function History_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) History_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) History_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function History_createClass(Constructor, protoProps, staticProps) { if (protoProps) History_defineProperties(Constructor.prototype, protoProps); if (staticProps) History_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const History_History = /* #__PURE__*/function () {
+
+                var History_History = /*#__PURE__*/function () {
                     function History(context) {
                         History_classCallCheck(this, History);
 
@@ -3881,26 +3659,26 @@
                     }
 
                     History_createClass(History, [{
-                        key: 'makeSnapshot',
+                        key: "makeSnapshot",
                         value: function makeSnapshot() {
-                            const rng = range.create(this.editable);
-                            const emptyBookmark = {
+                            var rng = range.create(this.editable);
+                            var emptyBookmark = {
                                 s: {
                                     path: [],
-                                    offset: 0,
+                                    offset: 0
                                 },
                                 e: {
                                     path: [],
-                                    offset: 0,
-                                },
+                                    offset: 0
+                                }
                             };
                             return {
                                 contents: this.$editable.html(),
-                                bookmark: rng && rng.isOnEditable() ? rng.bookmark(this.editable) : emptyBookmark,
+                                bookmark: rng && rng.isOnEditable() ? rng.bookmark(this.editable) : emptyBookmark
                             };
-                        },
+                        }
                     }, {
-                        key: 'applySnapshot',
+                        key: "applySnapshot",
                         value: function applySnapshot(snapshot) {
                             if (snapshot.contents !== null) {
                                 this.$editable.html(snapshot.contents);
@@ -3909,7 +3687,7 @@
                             if (snapshot.bookmark !== null) {
                                 range.createFromBookmark(this.editable, snapshot.bookmark).select();
                             }
-                        },
+                        }
                         /**
                          * @method rewind
                          * Rewinds the history stack back to the first snapshot taken.
@@ -3917,7 +3695,7 @@
                          */
 
                     }, {
-                        key: 'rewind',
+                        key: "rewind",
                         value: function rewind() {
                             // Create snap shot if not yet recorded
                             if (this.$editable.html() !== this.stack[this.stackOffset].contents) {
@@ -3928,14 +3706,14 @@
                             this.stackOffset = 0; // Apply that snapshot.
 
                             this.applySnapshot(this.stack[this.stackOffset]);
-                        },
+                        }
                         /**
                          *  @method commit
                          *  Resets history stack, but keeps current editor's content.
                          */
 
                     }, {
-                        key: 'commit',
+                        key: "commit",
                         value: function commit() {
                             // Clear the stack.
                             this.stack = []; // Restore stackOffset to its original value.
@@ -3943,14 +3721,14 @@
                             this.stackOffset = -1; // Record our first snapshot (of nothing).
 
                             this.recordUndo();
-                        },
+                        }
                         /**
                          * @method reset
                          * Resets the history stack completely; reverting to an empty editor.
                          */
 
                     }, {
-                        key: 'reset',
+                        key: "reset",
                         value: function reset() {
                             // Clear the stack.
                             this.stack = []; // Restore stackOffset to its original value.
@@ -3960,13 +3738,13 @@
                             this.$editable.html(''); // Record our first snapshot (of nothing).
 
                             this.recordUndo();
-                        },
+                        }
                         /**
                          * undo
                          */
 
                     }, {
-                        key: 'undo',
+                        key: "undo",
                         value: function undo() {
                             // Create snap shot if not yet recorded
                             if (this.$editable.html() !== this.stack[this.stackOffset].contents) {
@@ -3977,25 +3755,25 @@
                                 this.stackOffset--;
                                 this.applySnapshot(this.stack[this.stackOffset]);
                             }
-                        },
+                        }
                         /**
                          * redo
                          */
 
                     }, {
-                        key: 'redo',
+                        key: "redo",
                         value: function redo() {
                             if (this.stack.length - 1 > this.stackOffset) {
                                 this.stackOffset++;
                                 this.applySnapshot(this.stack[this.stackOffset]);
                             }
-                        },
+                        }
                         /**
                          * recorded undo
                          */
 
                     }, {
-                        key: 'recordUndo',
+                        key: "recordUndo",
                         value: function recordUndo() {
                             this.stackOffset++; // Wash out stack after stackOffset
 
@@ -4010,44 +3788,33 @@
                                 this.stack.shift();
                                 this.stackOffset -= 1;
                             }
-                        },
+                        }
                     }]);
 
                     return History;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/editing/Style.js
-                function Style_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/editing/Style.js
+                function Style_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Style_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Style_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Style_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Style_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Style_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Style_createClass(Constructor, protoProps, staticProps) { if (protoProps) Style_defineProperties(Constructor.prototype, protoProps); if (staticProps) Style_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Style_Style = /* #__PURE__*/function () {
+
+
+
+
+
+                var Style_Style = /*#__PURE__*/function () {
                     function Style() {
                         Style_classCallCheck(this, Style);
                     }
 
                     Style_createClass(Style, [{
-                        key: 'jQueryCSS',
+                        key: "jQueryCSS",
 
                         /**
                          * @method jQueryCSS
@@ -4064,7 +3831,7 @@
                          */
                         value: function jQueryCSS($obj, propertyNames) {
                             if (env.jqueryVersion < 1.9) {
-                                const result = {};
+                                var result = {};
                                 external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(propertyNames, function (idx, propertyName) {
                                     result[propertyName] = $obj.css(propertyName);
                                 });
@@ -4072,7 +3839,7 @@
                             }
 
                             return $obj.css(propertyNames);
-                        },
+                        }
                         /**
                          * returns style object from node
                          *
@@ -4081,15 +3848,15 @@
                          */
 
                     }, {
-                        key: 'fromNode',
+                        key: "fromNode",
                         value: function fromNode($node) {
-                            const properties = ['font-family', 'font-size', 'text-align', 'list-style-type', 'line-height'];
-                            const styleInfo = this.jQueryCSS($node, properties) || {};
-                            const fontSize = $node[0].style.fontSize || styleInfo['font-size'];
+                            var properties = ['font-family', 'font-size', 'text-align', 'list-style-type', 'line-height'];
+                            var styleInfo = this.jQueryCSS($node, properties) || {};
+                            var fontSize = $node[0].style.fontSize || styleInfo['font-size'];
                             styleInfo['font-size'] = parseInt(fontSize, 10);
                             styleInfo['font-size-unit'] = fontSize.match(/[a-z%]+$/);
                             return styleInfo;
-                        },
+                        }
                         /**
                          * paragraph level style
                          *
@@ -4098,14 +3865,14 @@
                          */
 
                     }, {
-                        key: 'stylePara',
+                        key: "stylePara",
                         value: function stylePara(rng, styleInfo) {
                             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(rng.nodes(dom.isPara, {
-                                includeAncestor: true,
+                                includeAncestor: true
                             }), function (idx, para) {
                                 external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(para).css(styleInfo);
                             });
-                        },
+                        }
                         /**
                          * insert and returns styleNodes on range.
                          *
@@ -4118,27 +3885,27 @@
                          */
 
                     }, {
-                        key: 'styleNodes',
+                        key: "styleNodes",
                         value: function styleNodes(rng, options) {
                             rng = rng.splitText();
-                            const nodeName = options && options.nodeName || 'SPAN';
-                            const expandClosestSibling = !!(options && options.expandClosestSibling);
-                            const onlyPartialContains = !!(options && options.onlyPartialContains);
+                            var nodeName = options && options.nodeName || 'SPAN';
+                            var expandClosestSibling = !!(options && options.expandClosestSibling);
+                            var onlyPartialContains = !!(options && options.onlyPartialContains);
 
                             if (rng.isCollapsed()) {
                                 return [rng.insertNode(dom.create(nodeName))];
                             }
 
-                            let pred = dom.makePredByNodeName(nodeName);
-                            const nodes = rng.nodes(dom.isText, {
-                                fullyContains: true,
+                            var pred = dom.makePredByNodeName(nodeName);
+                            var nodes = rng.nodes(dom.isText, {
+                                fullyContains: true
                             }).map(function (text) {
                                 return dom.singleChildAncestor(text, pred) || dom.wrap(text, nodeName);
                             });
 
                             if (expandClosestSibling) {
                                 if (onlyPartialContains) {
-                                    const nodesInRange = rng.nodes(); // compose with partial contains predication
+                                    var nodesInRange = rng.nodes(); // compose with partial contains predication
 
                                     pred = func.and(pred, function (node) {
                                         return lists.contains(nodesInRange, node);
@@ -4146,9 +3913,9 @@
                                 }
 
                                 return nodes.map(function (node) {
-                                    const siblings = dom.withClosestSiblings(node, pred);
-                                    const head = lists.head(siblings);
-                                    const tails = lists.tail(siblings);
+                                    var siblings = dom.withClosestSiblings(node, pred);
+                                    var head = lists.head(siblings);
+                                    var tails = lists.tail(siblings);
                                     external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(tails, function (idx, elem) {
                                         dom.appendChildNodes(head, elem.childNodes);
                                         dom.remove(elem);
@@ -4158,7 +3925,7 @@
                             } else {
                                 return nodes;
                             }
-                        },
+                        }
                         /**
                          * get current style on cursor
                          *
@@ -4167,10 +3934,10 @@
                          */
 
                     }, {
-                        key: 'current',
+                        key: "current",
                         value: function current(rng) {
-                            const $cont = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(!dom.isElement(rng.sc) ? rng.sc.parentNode : rng.sc);
-                            let styleInfo = this.fromNode($cont); // document.queryCommandState for toggle state
+                            var $cont = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(!dom.isElement(rng.sc) ? rng.sc.parentNode : rng.sc);
+                            var styleInfo = this.fromNode($cont); // document.queryCommandState for toggle state
                             // [workaround] prevent Firefox nsresult: "0x80004005 (NS_ERROR_FAILURE)"
 
                             try {
@@ -4181,27 +3948,26 @@
                                     'font-subscript': document.queryCommandState('subscript') ? 'subscript' : 'normal',
                                     'font-superscript': document.queryCommandState('superscript') ? 'superscript' : 'normal',
                                     'font-strikethrough': document.queryCommandState('strikethrough') ? 'strikethrough' : 'normal',
-                                    'font-family': document.queryCommandValue('fontname') || styleInfo['font-family'],
+                                    'font-family': document.queryCommandValue('fontname') || styleInfo['font-family']
                                 });
-                            } catch (e) {
-                            } // eslint-disable-next-line
+                            } catch (e) {} // eslint-disable-next-line
                             // list-style-type to list-style(unordered, ordered)
 
 
                             if (!rng.isOnList()) {
                                 styleInfo['list-style'] = 'none';
                             } else {
-                                const orderedTypes = ['circle', 'disc', 'disc-leading-zero', 'square'];
-                                const isUnordered = orderedTypes.indexOf(styleInfo['list-style-type']) > -1;
+                                var orderedTypes = ['circle', 'disc', 'disc-leading-zero', 'square'];
+                                var isUnordered = orderedTypes.indexOf(styleInfo['list-style-type']) > -1;
                                 styleInfo['list-style'] = isUnordered ? 'unordered' : 'ordered';
                             }
 
-                            const para = dom.ancestor(rng.sc, dom.isPara);
+                            var para = dom.ancestor(rng.sc, dom.isPara);
 
                             if (para && para.style['line-height']) {
                                 styleInfo['line-height'] = para.style.lineHeight;
                             } else {
-                                const lineHeight = parseInt(styleInfo['line-height'], 10) / parseInt(styleInfo['font-size'], 10);
+                                var lineHeight = parseInt(styleInfo['line-height'], 10) / parseInt(styleInfo['font-size'], 10);
                                 styleInfo['line-height'] = lineHeight.toFixed(1);
                             }
 
@@ -4209,79 +3975,68 @@
                             styleInfo.ancestors = dom.listAncestor(rng.sc, dom.isEditable);
                             styleInfo.range = rng;
                             return styleInfo;
-                        },
+                        }
                     }]);
 
                     return Style;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/editing/Bullet.js
-                function Bullet_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/editing/Bullet.js
+                function Bullet_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Bullet_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Bullet_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Bullet_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Bullet_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Bullet_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Bullet_createClass(Constructor, protoProps, staticProps) { if (protoProps) Bullet_defineProperties(Constructor.prototype, protoProps); if (staticProps) Bullet_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Bullet_Bullet = /* #__PURE__*/function () {
+
+
+
+
+
+                var Bullet_Bullet = /*#__PURE__*/function () {
                     function Bullet() {
                         Bullet_classCallCheck(this, Bullet);
                     }
 
                     Bullet_createClass(Bullet, [{
-                        key: 'insertOrderedList',
+                        key: "insertOrderedList",
 
                         /**
                          * toggle ordered list
                          */
                         value: function insertOrderedList(editable) {
                             this.toggleList('OL', editable);
-                        },
+                        }
                         /**
                          * toggle unordered list
                          */
 
                     }, {
-                        key: 'insertUnorderedList',
+                        key: "insertUnorderedList",
                         value: function insertUnorderedList(editable) {
                             this.toggleList('UL', editable);
-                        },
+                        }
                         /**
                          * indent
                          */
 
                     }, {
-                        key: 'indent',
+                        key: "indent",
                         value: function indent(editable) {
-                            const _this = this;
+                            var _this = this;
 
-                            const rng = range.create(editable).wrapBodyInlineWithPara();
-                            const paras = rng.nodes(dom.isPara, {
-                                includeAncestor: true,
+                            var rng = range.create(editable).wrapBodyInlineWithPara();
+                            var paras = rng.nodes(dom.isPara, {
+                                includeAncestor: true
                             });
-                            const clustereds = lists.clusterBy(paras, func.peq2('parentNode'));
+                            var clustereds = lists.clusterBy(paras, func.peq2('parentNode'));
                             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(clustereds, function (idx, paras) {
-                                const head = lists.head(paras);
+                                var head = lists.head(paras);
 
                                 if (dom.isLi(head)) {
-                                    const previousList = _this.findList(head.previousSibling);
+                                    var previousList = _this.findList(head.previousSibling);
 
                                     if (previousList) {
                                         paras.map(function (para) {
@@ -4305,23 +4060,23 @@
                                 }
                             });
                             rng.select();
-                        },
+                        }
                         /**
                          * outdent
                          */
 
                     }, {
-                        key: 'outdent',
+                        key: "outdent",
                         value: function outdent(editable) {
-                            const _this2 = this;
+                            var _this2 = this;
 
-                            const rng = range.create(editable).wrapBodyInlineWithPara();
-                            const paras = rng.nodes(dom.isPara, {
-                                includeAncestor: true,
+                            var rng = range.create(editable).wrapBodyInlineWithPara();
+                            var paras = rng.nodes(dom.isPara, {
+                                includeAncestor: true
                             });
-                            const clustereds = lists.clusterBy(paras, func.peq2('parentNode'));
+                            var clustereds = lists.clusterBy(paras, func.peq2('parentNode'));
                             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(clustereds, function (idx, paras) {
-                                const head = lists.head(paras);
+                                var head = lists.head(paras);
 
                                 if (dom.isLi(head)) {
                                     _this2.releaseList([paras]);
@@ -4335,7 +4090,7 @@
                                 }
                             });
                             rng.select();
-                        },
+                        }
                         /**
                          * toggle list
                          *
@@ -4343,26 +4098,26 @@
                          */
 
                     }, {
-                        key: 'toggleList',
+                        key: "toggleList",
                         value: function toggleList(listName, editable) {
-                            const _this3 = this;
+                            var _this3 = this;
 
-                            const rng = range.create(editable).wrapBodyInlineWithPara();
-                            let paras = rng.nodes(dom.isPara, {
-                                includeAncestor: true,
+                            var rng = range.create(editable).wrapBodyInlineWithPara();
+                            var paras = rng.nodes(dom.isPara, {
+                                includeAncestor: true
                             });
-                            const bookmark = rng.paraBookmark(paras);
-                            const clustereds = lists.clusterBy(paras, func.peq2('parentNode')); // paragraph to list
+                            var bookmark = rng.paraBookmark(paras);
+                            var clustereds = lists.clusterBy(paras, func.peq2('parentNode')); // paragraph to list
 
                             if (lists.find(paras, dom.isPurePara)) {
-                                let wrappedParas = [];
+                                var wrappedParas = [];
                                 external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(clustereds, function (idx, paras) {
                                     wrappedParas = wrappedParas.concat(_this3.wrapList(paras, listName));
                                 });
                                 paras = wrappedParas; // list to paragraph or change list style
                             } else {
-                                const diffLists = rng.nodes(dom.isList, {
-                                    includeAncestor: true,
+                                var diffLists = rng.nodes(dom.isList, {
+                                    includeAncestor: true
                                 }).filter(function (listNode) {
                                     return !external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.nodeName(listNode, listName);
                                 });
@@ -4377,7 +4132,7 @@
                             }
 
                             range.createFromParaBookmark(bookmark, paras).select();
-                        },
+                        }
                         /**
                          * @param {Node[]} paras
                          * @param {String} listName
@@ -4385,13 +4140,13 @@
                          */
 
                     }, {
-                        key: 'wrapList',
+                        key: "wrapList",
                         value: function wrapList(paras, listName) {
-                            const head = lists.head(paras);
-                            const last = lists.last(paras);
-                            const prevList = dom.isList(head.previousSibling) && head.previousSibling;
-                            const nextList = dom.isList(last.nextSibling) && last.nextSibling;
-                            const listNode = prevList || dom.insertAfter(dom.create(listName || 'UL'), last); // P to LI
+                            var head = lists.head(paras);
+                            var last = lists.last(paras);
+                            var prevList = dom.isList(head.previousSibling) && head.previousSibling;
+                            var nextList = dom.isList(last.nextSibling) && last.nextSibling;
+                            var listNode = prevList || dom.insertAfter(dom.create(listName || 'UL'), last); // P to LI
 
                             paras = paras.map(function (para) {
                                 return dom.isPurePara(para) ? dom.replace(para, 'LI') : para;
@@ -4405,7 +4160,7 @@
                             }
 
                             return paras;
-                        },
+                        }
                         /**
                          * @method releaseList
                          *
@@ -4415,20 +4170,20 @@
                          */
 
                     }, {
-                        key: 'releaseList',
+                        key: "releaseList",
                         value: function releaseList(clustereds, isEscapseToBody) {
-                            const _this4 = this;
+                            var _this4 = this;
 
-                            let releasedParas = [];
+                            var releasedParas = [];
                             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(clustereds, function (idx, paras) {
-                                const head = lists.head(paras);
-                                const last = lists.last(paras);
-                                const headList = isEscapseToBody ? dom.lastAncestor(head, dom.isList) : head.parentNode;
-                                const parentItem = headList.parentNode;
+                                var head = lists.head(paras);
+                                var last = lists.last(paras);
+                                var headList = isEscapseToBody ? dom.lastAncestor(head, dom.isList) : head.parentNode;
+                                var parentItem = headList.parentNode;
 
                                 if (headList.parentNode.nodeName === 'LI') {
                                     paras.map(function (para) {
-                                        const newList = _this4.findNextSiblings(para);
+                                        var newList = _this4.findNextSiblings(para);
 
                                         if (parentItem.nextSibling) {
                                             parentItem.parentNode.insertBefore(para, parentItem.nextSibling);
@@ -4451,17 +4206,17 @@
                                         parentItem.parentNode.removeChild(parentItem);
                                     }
                                 } else {
-                                    const lastList = headList.childNodes.length > 1 ? dom.splitTree(headList, {
+                                    var lastList = headList.childNodes.length > 1 ? dom.splitTree(headList, {
                                         node: last.parentNode,
-                                        offset: dom.position(last) + 1,
+                                        offset: dom.position(last) + 1
                                     }, {
-                                        isSkipPaddingBlankHTML: true,
+                                        isSkipPaddingBlankHTML: true
                                     }) : null;
-                                    const middleList = dom.splitTree(headList, {
+                                    var middleList = dom.splitTree(headList, {
                                         node: head.parentNode,
-                                        offset: dom.position(head),
+                                        offset: dom.position(head)
                                     }, {
-                                        isSkipPaddingBlankHTML: true,
+                                        isSkipPaddingBlankHTML: true
                                     });
                                     paras = isEscapseToBody ? dom.listDescendant(middleList, dom.isLi) : lists.from(middleList.childNodes).filter(dom.isLi); // LI to P
 
@@ -4475,9 +4230,9 @@
                                         dom.insertAfter(para, headList);
                                     }); // remove empty lists
 
-                                    const rootLists = lists.compact([headList, middleList, lastList]);
+                                    var rootLists = lists.compact([headList, middleList, lastList]);
                                     external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(rootLists, function (idx, rootList) {
-                                        const listNodes = [rootList].concat(dom.listDescendant(rootList, dom.isList));
+                                        var listNodes = [rootList].concat(dom.listDescendant(rootList, dom.isList));
                                         external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(listNodes.reverse(), function (idx, listNode) {
                                             if (!dom.nodeLength(listNode)) {
                                                 dom.remove(listNode, true);
@@ -4489,7 +4244,7 @@
                                 releasedParas = releasedParas.concat(paras);
                             });
                             return releasedParas;
-                        },
+                        }
                         /**
                          * @method appendToPrevious
                          *
@@ -4501,10 +4256,10 @@
                          */
 
                     }, {
-                        key: 'appendToPrevious',
+                        key: "appendToPrevious",
                         value: function appendToPrevious(node) {
                             return node.previousSibling ? dom.appendChildNodes(node.previousSibling, [node]) : this.wrapList([node], 'LI');
-                        },
+                        }
                         /**
                          * @method findList
                          *
@@ -4515,12 +4270,12 @@
                          */
 
                     }, {
-                        key: 'findList',
+                        key: "findList",
                         value: function findList(node) {
                             return node ? lists.find(node.children, function (child) {
                                 return ['OL', 'UL'].indexOf(child.nodeName) > -1;
                             }) : null;
-                        },
+                        }
                         /**
                          * @method findNextSiblings
                          *
@@ -4531,9 +4286,9 @@
                          */
 
                     }, {
-                        key: 'findNextSiblings',
+                        key: "findNextSiblings",
                         value: function findNextSiblings(node) {
-                            const siblings = [];
+                            var siblings = [];
 
                             while (node.nextSibling) {
                                 siblings.push(node.nextSibling);
@@ -4541,35 +4296,22 @@
                             }
 
                             return siblings;
-                        },
+                        }
                     }]);
 
                     return Bullet;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/editing/Typing.js
-                function Typing_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/editing/Typing.js
+                function Typing_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Typing_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Typing_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Typing_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Typing_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Typing_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Typing_createClass(Constructor, protoProps, staticProps) { if (protoProps) Typing_defineProperties(Constructor.prototype, protoProps); if (staticProps) Typing_defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
 
 
                 /**
@@ -4579,7 +4321,7 @@
                  *
                  */
 
-                const Typing_Typing = /* #__PURE__*/function () {
+                var Typing_Typing = /*#__PURE__*/function () {
                     function Typing(context) {
                         Typing_classCallCheck(this, Typing);
 
@@ -4587,7 +4329,6 @@
                         this.bullet = new Bullet_Bullet();
                         this.options = context.options;
                     }
-
                     /**
                      * insert tab
                      *
@@ -4597,14 +4338,14 @@
 
 
                     Typing_createClass(Typing, [{
-                        key: 'insertTab',
+                        key: "insertTab",
                         value: function insertTab(rng, tabsize) {
-                            const tab = dom.createText(new Array(tabsize + 1).join(dom.NBSP_CHAR));
+                            var tab = dom.createText(new Array(tabsize + 1).join(dom.NBSP_CHAR));
                             rng = rng.deleteContents();
                             rng.insertNode(tab, true);
                             rng = range.create(tab, tabsize);
                             rng.select();
-                        },
+                        }
                         /**
                          * insert paragraph
                          *
@@ -4618,7 +4359,7 @@
                          */
 
                     }, {
-                        key: 'insertParagraph',
+                        key: "insertParagraph",
                         value: function insertParagraph(editable, rng) {
                             rng = rng || range.create(editable); // deleteContents on range.
 
@@ -4626,8 +4367,8 @@
 
                             rng = rng.wrapBodyInlineWithPara(); // finding paragraph
 
-                            const splitRoot = dom.ancestor(rng.sc, dom.isPara);
-                            let nextPara; // on paragraph: split paragraph
+                            var splitRoot = dom.ancestor(rng.sc, dom.isPara);
+                            var nextPara; // on paragraph: split paragraph
 
                             if (splitRoot) {
                                 // if it is an empty line with li
@@ -4636,7 +4377,7 @@
                                     this.bullet.toggleList(splitRoot.parentNode.nodeName);
                                     return;
                                 } else {
-                                    let blockquote = null;
+                                    var blockquote = null;
 
                                     if (this.options.blockquoteBreakingLevel === 1) {
                                         blockquote = dom.ancestor(splitRoot, dom.isBlockquote);
@@ -4653,8 +4394,8 @@
                                             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(rng.sc.nextSibling).remove();
                                         }
 
-                                        const split = dom.splitTree(blockquote, rng.getStartPoint(), {
-                                            isDiscardEmptySplits: true,
+                                        var split = dom.splitTree(blockquote, rng.getStartPoint(), {
+                                            isDiscardEmptySplits: true
                                         });
 
                                         if (split) {
@@ -4665,7 +4406,7 @@
                                     } else {
                                         nextPara = dom.splitTree(splitRoot, rng.getStartPoint()); // not a blockquote, just insert the paragraph
 
-                                        let emptyAnchors = dom.listDescendant(splitRoot, dom.isEmptyAnchor);
+                                        var emptyAnchors = dom.listDescendant(splitRoot, dom.isEmptyAnchor);
                                         emptyAnchors = emptyAnchors.concat(dom.listDescendant(nextPara, dom.isEmptyAnchor));
                                         external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(emptyAnchors, function (idx, anchor) {
                                             dom.remove(anchor);
@@ -4676,8 +4417,9 @@
                                         }
                                     }
                                 } // no paragraph: insert empty paragraph
+
                             } else {
-                                const next = rng.sc.childNodes[rng.so];
+                                var next = rng.sc.childNodes[rng.so];
                                 nextPara = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(dom.emptyPara)[0];
 
                                 if (next) {
@@ -4688,35 +4430,22 @@
                             }
 
                             range.create(nextPara, 0).normalize().select().scrollIntoView(editable);
-                        },
+                        }
                     }]);
 
                     return Typing;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/editing/Table.js
-                function Table_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/editing/Table.js
+                function Table_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Table_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Table_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Table_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Table_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Table_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Table_createClass(Constructor, protoProps, staticProps) { if (protoProps) Table_defineProperties(Constructor.prototype, protoProps); if (staticProps) Table_defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
 
 
                 /**
@@ -4727,15 +4456,15 @@
                  * @param {object} domTable Dom element of table to make changes.
                  */
 
-                const TableResultAction = function TableResultAction(startPoint, where, action, domTable) {
-                    const _startPoint = {
+                var TableResultAction = function TableResultAction(startPoint, where, action, domTable) {
+                    var _startPoint = {
                         'colPos': 0,
-                        'rowPos': 0,
+                        'rowPos': 0
                     };
-                    const _virtualTable = [];
-                    const _actionCellList = []; // / ///////////////////////////////////////////
+                    var _virtualTable = [];
+                    var _actionCellList = []; /// ///////////////////////////////////////////
                     // Private functions
-                    // / ///////////////////////////////////////////
+                    /// ///////////////////////////////////////////
 
                     /**
                      * Set the startPoint of action.
@@ -4756,7 +4485,6 @@
 
                         _startPoint.rowPos = startPoint.parentElement.rowIndex;
                     }
-
                     /**
                      * Define virtual table position info object.
                      *
@@ -4769,12 +4497,12 @@
 
 
                     function setVirtualTablePosition(rowIndex, cellIndex, baseRow, baseCell, isRowSpan, isColSpan, isVirtualCell) {
-                        const objPosition = {
+                        var objPosition = {
                             'baseRow': baseRow,
                             'baseCell': baseCell,
                             'isRowSpan': isRowSpan,
                             'isColSpan': isColSpan,
-                            'isVirtual': isVirtualCell,
+                            'isVirtual': isVirtualCell
                         };
 
                         if (!_virtualTable[rowIndex]) {
@@ -4783,7 +4511,6 @@
 
                         _virtualTable[rowIndex][cellIndex] = objPosition;
                     }
-
                     /**
                      * Create action cell object.
                      *
@@ -4798,11 +4525,10 @@
                             'action': resultAction,
                             'virtualTable': {
                                 'rowIndex': virtualRowPosition,
-                                'cellIndex': virtualColPosition,
-                            },
+                                'cellIndex': virtualColPosition
+                            }
                         };
                     }
-
                     /**
                      * Recover free index of row to append Cell.
                      *
@@ -4820,7 +4546,7 @@
                             return cellIndex;
                         }
 
-                        let newCellIndex = cellIndex;
+                        var newCellIndex = cellIndex;
 
                         while (_virtualTable[rowIndex][newCellIndex]) {
                             newCellIndex++;
@@ -4830,7 +4556,6 @@
                             }
                         }
                     }
-
                     /**
                      * Recover info about row and cell and add information to virtual table.
                      *
@@ -4840,34 +4565,33 @@
 
 
                     function addCellInfoToVirtual(row, cell) {
-                        const cellIndex = recoverCellIndex(row.rowIndex, cell.cellIndex);
-                        const cellHasColspan = cell.colSpan > 1;
-                        const cellHasRowspan = cell.rowSpan > 1;
-                        const isThisSelectedCell = row.rowIndex === _startPoint.rowPos && cell.cellIndex === _startPoint.colPos;
+                        var cellIndex = recoverCellIndex(row.rowIndex, cell.cellIndex);
+                        var cellHasColspan = cell.colSpan > 1;
+                        var cellHasRowspan = cell.rowSpan > 1;
+                        var isThisSelectedCell = row.rowIndex === _startPoint.rowPos && cell.cellIndex === _startPoint.colPos;
                         setVirtualTablePosition(row.rowIndex, cellIndex, row, cell, cellHasRowspan, cellHasColspan, false); // Add span rows to virtual Table.
 
-                        const rowspanNumber = cell.attributes.rowSpan ? parseInt(cell.attributes.rowSpan.value, 10) : 0;
+                        var rowspanNumber = cell.attributes.rowSpan ? parseInt(cell.attributes.rowSpan.value, 10) : 0;
 
                         if (rowspanNumber > 1) {
-                            for (let rp = 1; rp < rowspanNumber; rp++) {
-                                const rowspanIndex = row.rowIndex + rp;
+                            for (var rp = 1; rp < rowspanNumber; rp++) {
+                                var rowspanIndex = row.rowIndex + rp;
                                 adjustStartPoint(rowspanIndex, cellIndex, cell, isThisSelectedCell);
                                 setVirtualTablePosition(rowspanIndex, cellIndex, row, cell, true, cellHasColspan, true);
                             }
                         } // Add span cols to virtual table.
 
 
-                        const colspanNumber = cell.attributes.colSpan ? parseInt(cell.attributes.colSpan.value, 10) : 0;
+                        var colspanNumber = cell.attributes.colSpan ? parseInt(cell.attributes.colSpan.value, 10) : 0;
 
                         if (colspanNumber > 1) {
-                            for (let cp = 1; cp < colspanNumber; cp++) {
-                                const cellspanIndex = recoverCellIndex(row.rowIndex, cellIndex + cp);
+                            for (var cp = 1; cp < colspanNumber; cp++) {
+                                var cellspanIndex = recoverCellIndex(row.rowIndex, cellIndex + cp);
                                 adjustStartPoint(row.rowIndex, cellspanIndex, cell, isThisSelectedCell);
                                 setVirtualTablePosition(row.rowIndex, cellspanIndex, row, cell, cellHasRowspan, true, true);
                             }
                         }
                     }
-
                     /**
                      * Process validation and adjust of start point if needed
                      *
@@ -4883,24 +4607,22 @@
                             _startPoint.colPos++;
                         }
                     }
-
                     /**
                      * Create virtual table of cells with all cells, including span cells.
                      */
 
 
                     function createVirtualTable() {
-                        const rows = domTable.rows;
+                        var rows = domTable.rows;
 
-                        for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
-                            const cells = rows[rowIndex].cells;
+                        for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+                            var cells = rows[rowIndex].cells;
 
-                            for (let cellIndex = 0; cellIndex < cells.length; cellIndex++) {
+                            for (var cellIndex = 0; cellIndex < cells.length; cellIndex++) {
                                 addCellInfoToVirtual(rows[rowIndex], cells[cellIndex]);
                             }
                         }
                     }
-
                     /**
                      * Get action to be applied on the cell.
                      *
@@ -4929,7 +4651,6 @@
 
                         return TableResultAction.resultAction.RemoveCell;
                     }
-
                     /**
                      * Get action to be applied on the cell.
                      *
@@ -4964,9 +4685,9 @@
                     function init() {
                         setStartPoint();
                         createVirtualTable();
-                    } // / ///////////////////////////////////////////
+                    } /// ///////////////////////////////////////////
                     // Public functions
-                    // / ///////////////////////////////////////////
+                    /// ///////////////////////////////////////////
 
                     /**
                      * Recover array os what to do in table.
@@ -4974,22 +4695,22 @@
 
 
                     this.getActionList = function () {
-                        const fixedRow = where === TableResultAction.where.Row ? _startPoint.rowPos : -1;
-                        const fixedCol = where === TableResultAction.where.Column ? _startPoint.colPos : -1;
-                        let actualPosition = 0;
-                        let canContinue = true;
+                        var fixedRow = where === TableResultAction.where.Row ? _startPoint.rowPos : -1;
+                        var fixedCol = where === TableResultAction.where.Column ? _startPoint.colPos : -1;
+                        var actualPosition = 0;
+                        var canContinue = true;
 
                         while (canContinue) {
-                            const rowPosition = fixedRow >= 0 ? fixedRow : actualPosition;
-                            const colPosition = fixedCol >= 0 ? fixedCol : actualPosition;
-                            const row = _virtualTable[rowPosition];
+                            var rowPosition = fixedRow >= 0 ? fixedRow : actualPosition;
+                            var colPosition = fixedCol >= 0 ? fixedCol : actualPosition;
+                            var row = _virtualTable[rowPosition];
 
                             if (!row) {
                                 canContinue = false;
                                 return _actionCellList;
                             }
 
-                            const cell = row[colPosition];
+                            var cell = row[colPosition];
 
                             if (!cell) {
                                 canContinue = false;
@@ -4997,7 +4718,7 @@
                             } // Define action to be applied in this cell
 
 
-                            let resultAction = TableResultAction.resultAction.Ignore;
+                            var resultAction = TableResultAction.resultAction.Ignore;
 
                             switch (action) {
                                 case TableResultAction.requestAction.Add:
@@ -5027,7 +4748,7 @@
 
                 TableResultAction.where = {
                     'Row': 0,
-                    'Column': 1,
+                    'Column': 1
                 };
                 /**
                  *
@@ -5036,7 +4757,7 @@
 
                 TableResultAction.requestAction = {
                     'Add': 0,
-                    'Delete': 1,
+                    'Delete': 1
                 };
                 /**
                  *
@@ -5048,7 +4769,7 @@
                     'SubtractSpanCount': 1,
                     'RemoveCell': 2,
                     'AddCell': 3,
-                    'SumSpanCount': 4,
+                    'SumSpanCount': 4
                 };
                 /**
                  *
@@ -5058,13 +4779,13 @@
                  *
                  */
 
-                const Table_Table = /* #__PURE__*/function () {
+                var Table_Table = /*#__PURE__*/function () {
                     function Table() {
                         Table_classCallCheck(this, Table);
                     }
 
                     Table_createClass(Table, [{
-                        key: 'tab',
+                        key: "tab",
 
                         /**
                          * handle tab key
@@ -5073,15 +4794,15 @@
                          * @param {Boolean} isShift
                          */
                         value: function tab(rng, isShift) {
-                            const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-                            const table = dom.ancestor(cell, dom.isTable);
-                            const cells = dom.listDescendant(table, dom.isCell);
-                            const nextCell = lists[isShift ? 'prev' : 'next'](cells, cell);
+                            var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+                            var table = dom.ancestor(cell, dom.isTable);
+                            var cells = dom.listDescendant(table, dom.isCell);
+                            var nextCell = lists[isShift ? 'prev' : 'next'](cells, cell);
 
                             if (nextCell) {
                                 range.create(nextCell, 0).select();
                             }
-                        },
+                        }
                         /**
                          * Add a new row
                          *
@@ -5091,37 +4812,38 @@
                          */
 
                     }, {
-                        key: 'addRow',
+                        key: "addRow",
                         value: function addRow(rng, position) {
-                            const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-                            const currentTr = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell).closest('tr');
-                            const trAttributes = this.recoverAttributes(currentTr);
-                            const html = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<tr' + trAttributes + '></tr>');
-                            const vTable = new TableResultAction(cell, TableResultAction.where.Row, TableResultAction.requestAction.Add, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(currentTr).closest('table')[0]);
-                            const actions = vTable.getActionList();
+                            var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+                            var currentTr = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell).closest('tr');
+                            var trAttributes = this.recoverAttributes(currentTr);
+                            var html = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<tr' + trAttributes + '></tr>');
+                            var vTable = new TableResultAction(cell, TableResultAction.where.Row, TableResultAction.requestAction.Add, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(currentTr).closest('table')[0]);
+                            var actions = vTable.getActionList();
 
-                            for (let idCell = 0; idCell < actions.length; idCell++) {
-                                const currentCell = actions[idCell];
-                                const tdAttributes = this.recoverAttributes(currentCell.baseCell);
+                            for (var idCell = 0; idCell < actions.length; idCell++) {
+                                var currentCell = actions[idCell];
+                                var tdAttributes = this.recoverAttributes(currentCell.baseCell);
 
                                 switch (currentCell.action) {
                                     case TableResultAction.resultAction.AddCell:
                                         html.append('<td' + tdAttributes + '>' + dom.blank + '</td>');
                                         break;
 
-                                    case TableResultAction.resultAction.SumSpanCount: {
+                                    case TableResultAction.resultAction.SumSpanCount:
+                                    {
                                         if (position === 'top') {
-                                            const baseCellTr = currentCell.baseCell.parent;
-                                            const isTopFromRowSpan = (!baseCellTr ? 0 : currentCell.baseCell.closest('tr').rowIndex) <= currentTr[0].rowIndex;
+                                            var baseCellTr = currentCell.baseCell.parent;
+                                            var isTopFromRowSpan = (!baseCellTr ? 0 : currentCell.baseCell.closest('tr').rowIndex) <= currentTr[0].rowIndex;
 
                                             if (isTopFromRowSpan) {
-                                                const newTd = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div></div>').append(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<td' + tdAttributes + '>' + dom.blank + '</td>').removeAttr('rowspan')).html();
+                                                var newTd = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div></div>').append(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<td' + tdAttributes + '>' + dom.blank + '</td>').removeAttr('rowspan')).html();
                                                 html.append(newTd);
                                                 break;
                                             }
                                         }
 
-                                        let rowspanNumber = parseInt(currentCell.baseCell.rowSpan, 10);
+                                        var rowspanNumber = parseInt(currentCell.baseCell.rowSpan, 10);
                                         rowspanNumber++;
                                         currentCell.baseCell.setAttribute('rowSpan', rowspanNumber);
                                     }
@@ -5132,17 +4854,17 @@
                             if (position === 'top') {
                                 currentTr.before(html);
                             } else {
-                                const cellHasRowspan = cell.rowSpan > 1;
+                                var cellHasRowspan = cell.rowSpan > 1;
 
                                 if (cellHasRowspan) {
-                                    const lastTrIndex = currentTr[0].rowIndex + (cell.rowSpan - 2);
+                                    var lastTrIndex = currentTr[0].rowIndex + (cell.rowSpan - 2);
                                     external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(currentTr).parent().find('tr')[lastTrIndex]).after(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(html));
                                     return;
                                 }
 
                                 currentTr.after(html);
                             }
-                        },
+                        }
                         /**
                          * Add a new col
                          *
@@ -5152,18 +4874,18 @@
                          */
 
                     }, {
-                        key: 'addCol',
+                        key: "addCol",
                         value: function addCol(rng, position) {
-                            const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-                            const row = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell).closest('tr');
-                            const rowsGroup = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(row).siblings();
+                            var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+                            var row = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell).closest('tr');
+                            var rowsGroup = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(row).siblings();
                             rowsGroup.push(row);
-                            const vTable = new TableResultAction(cell, TableResultAction.where.Column, TableResultAction.requestAction.Add, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(row).closest('table')[0]);
-                            const actions = vTable.getActionList();
+                            var vTable = new TableResultAction(cell, TableResultAction.where.Column, TableResultAction.requestAction.Add, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(row).closest('table')[0]);
+                            var actions = vTable.getActionList();
 
-                            for (let actionIndex = 0; actionIndex < actions.length; actionIndex++) {
-                                const currentCell = actions[actionIndex];
-                                const tdAttributes = this.recoverAttributes(currentCell.baseCell);
+                            for (var actionIndex = 0; actionIndex < actions.length; actionIndex++) {
+                                var currentCell = actions[actionIndex];
+                                var tdAttributes = this.recoverAttributes(currentCell.baseCell);
 
                                 switch (currentCell.action) {
                                     case TableResultAction.resultAction.AddCell:
@@ -5177,7 +4899,7 @@
 
                                     case TableResultAction.resultAction.SumSpanCount:
                                         if (position === 'right') {
-                                            let colspanNumber = parseInt(currentCell.baseCell.colSpan, 10);
+                                            var colspanNumber = parseInt(currentCell.baseCell.colSpan, 10);
                                             colspanNumber++;
                                             currentCell.baseCell.setAttribute('colSpan', colspanNumber);
                                         } else {
@@ -5187,7 +4909,7 @@
                                         break;
                                 }
                             }
-                        },
+                        }
                         /*
     * Copy attributes from element.
     *
@@ -5196,17 +4918,17 @@
     */
 
                     }, {
-                        key: 'recoverAttributes',
+                        key: "recoverAttributes",
                         value: function recoverAttributes(el) {
-                            let resultStr = '';
+                            var resultStr = '';
 
                             if (!el) {
                                 return resultStr;
                             }
 
-                            const attrList = el.attributes || [];
+                            var attrList = el.attributes || [];
 
-                            for (let i = 0; i < attrList.length; i++) {
+                            for (var i = 0; i < attrList.length; i++) {
                                 if (attrList[i].name.toLowerCase() === 'id') {
                                     continue;
                                 }
@@ -5217,7 +4939,7 @@
                             }
 
                             return resultStr;
-                        },
+                        }
                         /**
                          * Delete current row
                          *
@@ -5226,37 +4948,38 @@
                          */
 
                     }, {
-                        key: 'deleteRow',
+                        key: "deleteRow",
                         value: function deleteRow(rng) {
-                            const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-                            const row = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell).closest('tr');
-                            const cellPos = row.children('td, th').index(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell));
-                            const rowPos = row[0].rowIndex;
-                            const vTable = new TableResultAction(cell, TableResultAction.where.Row, TableResultAction.requestAction.Delete, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(row).closest('table')[0]);
-                            const actions = vTable.getActionList();
+                            var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+                            var row = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell).closest('tr');
+                            var cellPos = row.children('td, th').index(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell));
+                            var rowPos = row[0].rowIndex;
+                            var vTable = new TableResultAction(cell, TableResultAction.where.Row, TableResultAction.requestAction.Delete, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(row).closest('table')[0]);
+                            var actions = vTable.getActionList();
 
-                            for (let actionIndex = 0; actionIndex < actions.length; actionIndex++) {
+                            for (var actionIndex = 0; actionIndex < actions.length; actionIndex++) {
                                 if (!actions[actionIndex]) {
                                     continue;
                                 }
 
-                                const baseCell = actions[actionIndex].baseCell;
-                                const virtualPosition = actions[actionIndex].virtualTable;
-                                const hasRowspan = baseCell.rowSpan && baseCell.rowSpan > 1;
-                                let rowspanNumber = hasRowspan ? parseInt(baseCell.rowSpan, 10) : 0;
+                                var baseCell = actions[actionIndex].baseCell;
+                                var virtualPosition = actions[actionIndex].virtualTable;
+                                var hasRowspan = baseCell.rowSpan && baseCell.rowSpan > 1;
+                                var rowspanNumber = hasRowspan ? parseInt(baseCell.rowSpan, 10) : 0;
 
                                 switch (actions[actionIndex].action) {
                                     case TableResultAction.resultAction.Ignore:
                                         continue;
 
-                                    case TableResultAction.resultAction.AddCell: {
-                                        const nextRow = row.next('tr')[0];
+                                    case TableResultAction.resultAction.AddCell:
+                                    {
+                                        var nextRow = row.next('tr')[0];
 
                                         if (!nextRow) {
                                             continue;
                                         }
 
-                                        const cloneRow = row[0].cells[cellPos];
+                                        var cloneRow = row[0].cells[cellPos];
 
                                         if (hasRowspan) {
                                             if (rowspanNumber > 2) {
@@ -5300,7 +5023,7 @@
                             }
 
                             row.remove();
-                        },
+                        }
                         /**
                          * Delete current col
                          *
@@ -5309,15 +5032,15 @@
                          */
 
                     }, {
-                        key: 'deleteCol',
+                        key: "deleteCol",
                         value: function deleteCol(rng) {
-                            const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-                            const row = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell).closest('tr');
-                            const cellPos = row.children('td, th').index(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell));
-                            const vTable = new TableResultAction(cell, TableResultAction.where.Column, TableResultAction.requestAction.Delete, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(row).closest('table')[0]);
-                            const actions = vTable.getActionList();
+                            var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+                            var row = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell).closest('tr');
+                            var cellPos = row.children('td, th').index(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell));
+                            var vTable = new TableResultAction(cell, TableResultAction.where.Column, TableResultAction.requestAction.Delete, external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(row).closest('table')[0]);
+                            var actions = vTable.getActionList();
 
-                            for (let actionIndex = 0; actionIndex < actions.length; actionIndex++) {
+                            for (var actionIndex = 0; actionIndex < actions.length; actionIndex++) {
                                 if (!actions[actionIndex]) {
                                     continue;
                                 }
@@ -5326,12 +5049,13 @@
                                     case TableResultAction.resultAction.Ignore:
                                         continue;
 
-                                    case TableResultAction.resultAction.SubtractSpanCount: {
-                                        const baseCell = actions[actionIndex].baseCell;
-                                        const hasColspan = baseCell.colSpan && baseCell.colSpan > 1;
+                                    case TableResultAction.resultAction.SubtractSpanCount:
+                                    {
+                                        var baseCell = actions[actionIndex].baseCell;
+                                        var hasColspan = baseCell.colSpan && baseCell.colSpan > 1;
 
                                         if (hasColspan) {
-                                            let colspanNumber = baseCell.colSpan ? parseInt(baseCell.colSpan, 10) : 0;
+                                            var colspanNumber = baseCell.colSpan ? parseInt(baseCell.colSpan, 10) : 0;
 
                                             if (colspanNumber > 2) {
                                                 colspanNumber--;
@@ -5356,7 +5080,7 @@
                                         continue;
                                 }
                             }
-                        },
+                        }
                         /**
                          * create empty table element
                          *
@@ -5366,32 +5090,32 @@
                          */
 
                     }, {
-                        key: 'createTable',
+                        key: "createTable",
                         value: function createTable(colCount, rowCount, options) {
-                            const tds = [];
-                            let tdHTML;
+                            var tds = [];
+                            var tdHTML;
 
-                            for (let idxCol = 0; idxCol < colCount; idxCol++) {
+                            for (var idxCol = 0; idxCol < colCount; idxCol++) {
                                 tds.push('<td>' + dom.blank + '</td>');
                             }
 
                             tdHTML = tds.join('');
-                            const trs = [];
-                            let trHTML;
+                            var trs = [];
+                            var trHTML;
 
-                            for (let idxRow = 0; idxRow < rowCount; idxRow++) {
+                            for (var idxRow = 0; idxRow < rowCount; idxRow++) {
                                 trs.push('<tr>' + tdHTML + '</tr>');
                             }
 
                             trHTML = trs.join('');
-                            const $table = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<table>' + trHTML + '</table>');
+                            var $table = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<table>' + trHTML + '</table>');
 
                             if (options && options.tableClassName) {
                                 $table.addClass(options.tableClassName);
                             }
 
                             return $table[0];
-                        },
+                        }
                         /**
                          * Delete current table
                          *
@@ -5400,49 +5124,45 @@
                          */
 
                     }, {
-                        key: 'deleteTable',
+                        key: "deleteTable",
                         value: function deleteTable(rng) {
-                            const cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+                            var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
                             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(cell).closest('table').remove();
-                        },
+                        }
                     }]);
 
                     return Table;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/Editor.js
-                function Editor_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/Editor.js
+                function Editor_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Editor_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Editor_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Editor_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Editor_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Editor_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Editor_createClass(Constructor, protoProps, staticProps) { if (protoProps) Editor_defineProperties(Constructor.prototype, protoProps); if (staticProps) Editor_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const KEY_BOGUS = 'bogus';
+
+
+
+
+
+
+
+
+
+
+
+
+                var KEY_BOGUS = 'bogus';
                 /**
                  * @class Editor
                  */
 
-                const Editor_Editor = /* #__PURE__*/function () {
+                var Editor_Editor = /*#__PURE__*/function () {
                     function Editor(context) {
-                        const _this = this;
+                        var _this = this;
 
                         Editor_classCallCheck(this, Editor);
 
@@ -5474,9 +5194,9 @@
                         this.context.memo('help.insertHorizontalRule', this.lang.help.insertHorizontalRule);
                         this.context.memo('help.fontName', this.lang.help.fontName); // native commands(with execCommand), generate function for execCommand
 
-                        const commands = ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'formatBlock', 'removeFormat', 'backColor'];
+                        var commands = ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'formatBlock', 'removeFormat', 'backColor'];
 
-                        for (let idx = 0, len = commands.length; idx < len; idx++) {
+                        for (var idx = 0, len = commands.length; idx < len; idx++) {
                             this[commands[idx]] = function (sCmd) {
                                 return function (value) {
                                     _this.beforeCommand();
@@ -5494,17 +5214,17 @@
                             return _this.fontStyling('font-family', env.validFontName(value));
                         });
                         this.fontSize = this.wrapCommand(function (value) {
-                            const unit = _this.currentStyle()['font-size-unit'];
+                            var unit = _this.currentStyle()['font-size-unit'];
 
                             return _this.fontStyling('font-size', value + unit);
                         });
                         this.fontSizeUnit = this.wrapCommand(function (value) {
-                            const size = _this.currentStyle()['font-size'];
+                            var size = _this.currentStyle()['font-size'];
 
                             return _this.fontStyling('font-size', size + value);
                         });
 
-                        for (let _idx = 1; _idx <= 6; _idx++) {
+                        for (var _idx = 1; _idx <= 6; _idx++) {
                             this['formatH' + _idx] = function (idx) {
                                 return function () {
                                     _this.formatBlock('H' + idx);
@@ -5540,7 +5260,7 @@
                                 return;
                             }
 
-                            const rng = _this.getLastRange();
+                            var rng = _this.getLastRange();
 
                             rng.insertNode(node);
 
@@ -5556,9 +5276,9 @@
                                 return;
                             }
 
-                            const rng = _this.getLastRange();
+                            var rng = _this.getLastRange();
 
-                            const textNode = rng.insertNode(dom.createText(text));
+                            var textNode = rng.insertNode(dom.createText(text));
 
                             _this.setLastRange(range.create(textNode, dom.nodeLength(textNode)).select());
                         });
@@ -5574,7 +5294,7 @@
 
                             markup = _this.context.invoke('codeview.purify', markup);
 
-                            const contents = _this.getLastRange().pasteHTML(markup);
+                            var contents = _this.getLastRange().pasteHTML(markup);
 
                             _this.setLastRange(range.createFromNodeAfter(lists.last(contents)).select());
                         });
@@ -5585,7 +5305,7 @@
                          */
 
                         this.formatBlock = this.wrapCommand(function (tagName, $target) {
-                            const onApplyCustomStyle = _this.options.callbacks.onApplyCustomStyle;
+                            var onApplyCustomStyle = _this.options.callbacks.onApplyCustomStyle;
 
                             if (onApplyCustomStyle) {
                                 onApplyCustomStyle.call(_this, $target, _this.context, _this.onFormatBlock);
@@ -5598,7 +5318,7 @@
                          */
 
                         this.insertHorizontalRule = this.wrapCommand(function () {
-                            const hrNode = _this.getLastRange().insertNode(dom.create('HR'));
+                            var hrNode = _this.getLastRange().insertNode(dom.create('HR'));
 
                             if (hrNode.nextSibling) {
                                 _this.setLastRange(range.create(hrNode.nextSibling, 0).normalize().select());
@@ -5611,7 +5331,7 @@
 
                         this.lineHeight = this.wrapCommand(function (value) {
                             _this.style.stylePara(_this.getLastRange(), {
-                                lineHeight: value,
+                                lineHeight: value
                             });
                         });
                         /**
@@ -5621,20 +5341,20 @@
                          */
 
                         this.createLink = this.wrapCommand(function (linkInfo) {
-                            let linkUrl = linkInfo.url;
-                            const linkText = linkInfo.text;
-                            const isNewWindow = linkInfo.isNewWindow;
-                            const checkProtocol = linkInfo.checkProtocol;
+                            var linkUrl = linkInfo.url;
+                            var linkText = linkInfo.text;
+                            var isNewWindow = linkInfo.isNewWindow;
+                            var checkProtocol = linkInfo.checkProtocol;
 
-                            let rng = linkInfo.range || _this.getLastRange();
+                            var rng = linkInfo.range || _this.getLastRange();
 
-                            const additionalTextLength = linkText.length - rng.toString().length;
+                            var additionalTextLength = linkText.length - rng.toString().length;
 
                             if (additionalTextLength > 0 && _this.isLimited(additionalTextLength)) {
                                 return;
                             }
 
-                            const isTextChanged = rng.toString() !== linkText; // handle spaced urls from input
+                            var isTextChanged = rng.toString() !== linkText; // handle spaced urls from input
 
                             if (typeof linkUrl === 'string') {
                                 linkUrl = linkUrl.trim();
@@ -5647,17 +5367,17 @@
                                 linkUrl = /^([A-Za-z][A-Za-z0-9+-.]*\:|#|\/)/.test(linkUrl) ? linkUrl : _this.options.defaultProtocol + linkUrl;
                             }
 
-                            let anchors = [];
+                            var anchors = [];
 
                             if (isTextChanged) {
                                 rng = rng.deleteContents();
-                                const anchor = rng.insertNode(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<A>' + linkText + '</A>')[0]);
+                                var anchor = rng.insertNode(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<A>' + linkText + '</A>')[0]);
                                 anchors.push(anchor);
                             } else {
                                 anchors = _this.style.styleNodes(rng, {
                                     nodeName: 'A',
                                     expandClosestSibling: true,
-                                    onlyPartialContains: true,
+                                    onlyPartialContains: true
                                 });
                             }
 
@@ -5682,8 +5402,8 @@
                          */
 
                         this.color = this.wrapCommand(function (colorInfo) {
-                            const foreColor = colorInfo.foreColor;
-                            const backColor = colorInfo.backColor;
+                            var foreColor = colorInfo.foreColor;
+                            var backColor = colorInfo.backColor;
 
                             if (foreColor) {
                                 document.execCommand('foreColor', false, foreColor);
@@ -5709,9 +5429,9 @@
                          */
 
                         this.insertTable = this.wrapCommand(function (dim) {
-                            const dimension = dim.split('x');
+                            var dimension = dim.split('x');
 
-                            const rng = _this.getLastRange().deleteContents();
+                            var rng = _this.getLastRange().deleteContents();
 
                             rng.insertNode(_this.table.createTable(dimension[0], dimension[1], _this.options));
                         });
@@ -5720,7 +5440,7 @@
                          */
 
                         this.removeMedia = this.wrapCommand(function () {
-                            let $target = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(_this.restoreTarget()).parent();
+                            var $target = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(_this.restoreTarget()).parent();
 
                             if ($target.closest('figure').length) {
                                 $target.closest('figure').remove();
@@ -5737,7 +5457,7 @@
                          */
 
                         this.floatMe = this.wrapCommand(function (value) {
-                            const $target = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(_this.restoreTarget());
+                            var $target = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(_this.restoreTarget());
                             $target.toggleClass('note-float-left', value === 'left');
                             $target.toggleClass('note-float-right', value === 'right');
                             $target.css('float', value === 'none' ? '' : value);
@@ -5748,7 +5468,7 @@
                          */
 
                         this.resize = this.wrapCommand(function (value) {
-                            const $target = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(_this.restoreTarget());
+                            var $target = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(_this.restoreTarget());
                             value = parseFloat(value);
 
                             if (value === 0) {
@@ -5756,16 +5476,16 @@
                             } else {
                                 $target.css({
                                     width: value * 100 + '%',
-                                    height: '',
+                                    height: ''
                                 });
                             }
                         });
                     }
 
                     Editor_createClass(Editor, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const _this2 = this;
+                            var _this2 = this;
 
                             // bind custom events
                             this.$editable.on('keydown', function (event) {
@@ -5788,7 +5508,7 @@
                                 }
 
                                 if (_this2.isLimited(1, event)) {
-                                    const lastRange = _this2.getLastRange();
+                                    var lastRange = _this2.getLastRange();
 
                                     if (lastRange.eo - lastRange.so === 0) {
                                         return false;
@@ -5879,17 +5599,17 @@
 
                             this.history.recordUndo();
                             this.setLastRange();
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.$editable.off();
-                        },
+                        }
                     }, {
-                        key: 'handleKeyMap',
+                        key: "handleKeyMap",
                         value: function handleKeyMap(event) {
-                            const keyMap = this.options.keyMap[env.isMac ? 'mac' : 'pc'];
-                            const keys = [];
+                            var keyMap = this.options.keyMap[env.isMac ? 'mac' : 'pc'];
+                            var keys = [];
 
                             if (event.metaKey) {
                                 keys.push('CMD');
@@ -5903,13 +5623,13 @@
                                 keys.push('SHIFT');
                             }
 
-                            const keyName = core_key.nameFromCode[event.keyCode];
+                            var keyName = core_key.nameFromCode[event.keyCode];
 
                             if (keyName) {
                                 keys.push(keyName);
                             }
 
-                            const eventName = keyMap[keys.join('+')];
+                            var eventName = keyMap[keys.join('+')];
 
                             if (keyName === 'TAB' && !this.options.tabDisable) {
                                 this.afterCommand();
@@ -5924,17 +5644,17 @@
                             }
 
                             return false;
-                        },
+                        }
                     }, {
-                        key: 'preventDefaultEditableShortCuts',
+                        key: "preventDefaultEditableShortCuts",
                         value: function preventDefaultEditableShortCuts(event) {
                             // B(Bold, 66) / I(Italic, 73) / U(Underline, 85)
                             if ((event.ctrlKey || event.metaKey) && lists.contains([66, 73, 85], event.keyCode)) {
                                 event.preventDefault();
                             }
-                        },
+                        }
                     }, {
-                        key: 'isLimited',
+                        key: "isLimited",
                         value: function isLimited(pad, event) {
                             pad = pad || 0;
 
@@ -5951,19 +5671,19 @@
                             }
 
                             return false;
-                        },
+                        }
                         /**
                          * create range
                          * @return {WrappedRange}
                          */
 
                     }, {
-                        key: 'createRange',
+                        key: "createRange",
                         value: function createRange() {
                             this.focus();
                             this.setLastRange();
                             return this.getLastRange();
-                        },
+                        }
                         /**
                          * create a new range from the list of elements
                          *
@@ -5972,14 +5692,14 @@
                          */
 
                     }, {
-                        key: 'createRangeFromList',
+                        key: "createRangeFromList",
                         value: function createRangeFromList(lst) {
-                            const startRange = range.createFromNodeBefore(lists.head(lst));
-                            const startPoint = startRange.getStartPoint();
-                            const endRange = range.createFromNodeAfter(lists.last(lst));
-                            const endPoint = endRange.getEndPoint();
+                            var startRange = range.createFromNodeBefore(lists.head(lst));
+                            var startPoint = startRange.getStartPoint();
+                            var endRange = range.createFromNodeAfter(lists.last(lst));
+                            var endPoint = endRange.getEndPoint();
                             return range.create(startPoint.node, startPoint.offset, endPoint.node, endPoint.offset);
-                        },
+                        }
                         /**
                          * set the last range
                          *
@@ -5990,7 +5710,7 @@
                          */
 
                     }, {
-                        key: 'setLastRange',
+                        key: "setLastRange",
                         value: function setLastRange(rng) {
                             if (rng) {
                                 this.lastRange = rng;
@@ -6001,7 +5721,7 @@
                                     this.lastRange = range.createFromBodyElement(this.editable);
                                 }
                             }
-                        },
+                        }
                         /**
                          * get the last range
                          *
@@ -6012,14 +5732,14 @@
                          */
 
                     }, {
-                        key: 'getLastRange',
+                        key: "getLastRange",
                         value: function getLastRange() {
                             if (!this.lastRange) {
                                 this.setLastRange();
                             }
 
                             return this.lastRange;
-                        },
+                        }
                         /**
                          * saveRange
                          *
@@ -6029,12 +5749,12 @@
                          */
 
                     }, {
-                        key: 'saveRange',
+                        key: "saveRange",
                         value: function saveRange(thenCollapse) {
                             if (thenCollapse) {
                                 this.getLastRange().collapse().select();
                             }
-                        },
+                        }
                         /**
                          * restoreRange
                          *
@@ -6042,28 +5762,28 @@
                          */
 
                     }, {
-                        key: 'restoreRange',
+                        key: "restoreRange",
                         value: function restoreRange() {
                             if (this.lastRange) {
                                 this.lastRange.select();
                                 this.focus();
                             }
-                        },
+                        }
                     }, {
-                        key: 'saveTarget',
+                        key: "saveTarget",
                         value: function saveTarget(node) {
                             this.$editable.data('target', node);
-                        },
+                        }
                     }, {
-                        key: 'clearTarget',
+                        key: "clearTarget",
                         value: function clearTarget() {
                             this.$editable.removeData('target');
-                        },
+                        }
                     }, {
-                        key: 'restoreTarget',
+                        key: "restoreTarget",
                         value: function restoreTarget() {
                             return this.$editable.data('target');
-                        },
+                        }
                         /**
                          * currentStyle
                          *
@@ -6072,16 +5792,16 @@
                          */
 
                     }, {
-                        key: 'currentStyle',
+                        key: "currentStyle",
                         value: function currentStyle() {
-                            let rng = range.create();
+                            var rng = range.create();
 
                             if (rng) {
                                 rng = rng.normalize();
                             }
 
                             return rng ? this.style.current(rng) : this.style.fromNode(this.$editable);
-                        },
+                        }
                         /**
                          * style from node
                          *
@@ -6090,63 +5810,63 @@
                          */
 
                     }, {
-                        key: 'styleFromNode',
+                        key: "styleFromNode",
                         value: function styleFromNode($node) {
                             return this.style.fromNode($node);
-                        },
+                        }
                         /**
                          * undo
                          */
 
                     }, {
-                        key: 'undo',
+                        key: "undo",
                         value: function undo() {
                             this.context.triggerEvent('before.command', this.$editable.html());
                             this.history.undo();
                             this.context.triggerEvent('change', this.$editable.html(), this.$editable);
-                        },
+                        }
                         /*
     * commit
     */
 
                     }, {
-                        key: 'commit',
+                        key: "commit",
                         value: function commit() {
                             this.context.triggerEvent('before.command', this.$editable.html());
                             this.history.commit();
                             this.context.triggerEvent('change', this.$editable.html(), this.$editable);
-                        },
+                        }
                         /**
                          * redo
                          */
 
                     }, {
-                        key: 'redo',
+                        key: "redo",
                         value: function redo() {
                             this.context.triggerEvent('before.command', this.$editable.html());
                             this.history.redo();
                             this.context.triggerEvent('change', this.$editable.html(), this.$editable);
-                        },
+                        }
                         /**
                          * before command
                          */
 
                     }, {
-                        key: 'beforeCommand',
+                        key: "beforeCommand",
                         value: function beforeCommand() {
                             this.context.triggerEvent('before.command', this.$editable.html()); // Set styleWithCSS before run a command
 
                             document.execCommand('styleWithCSS', false, this.options.styleWithCSS); // keep focus on editable before command execution
 
                             this.focus();
-                        },
+                        }
                         /**
                          * after command
                          * @param {Boolean} isPreventTrigger
                          */
 
                     }, {
-                        key: 'afterCommand',
+                        key: "afterCommand",
                         value: function afterCommand(isPreventTrigger) {
                             this.normalizeContent();
                             this.history.recordUndo();
@@ -6154,15 +5874,15 @@
                             if (!isPreventTrigger) {
                                 this.context.triggerEvent('change', this.$editable.html(), this.$editable);
                             }
-                        },
+                        }
                         /**
                          * handle tab key
                          */
 
                     }, {
-                        key: 'tab',
+                        key: "tab",
                         value: function tab() {
-                            const rng = this.getLastRange();
+                            var rng = this.getLastRange();
 
                             if (rng.isCollapsed() && rng.isOnCell()) {
                                 this.table.tab(rng);
@@ -6177,15 +5897,15 @@
                                     this.afterCommand();
                                 }
                             }
-                        },
+                        }
                         /**
                          * handle shift+tab key
                          */
 
                     }, {
-                        key: 'untab',
+                        key: "untab",
                         value: function untab() {
-                            const rng = this.getLastRange();
+                            var rng = this.getLastRange();
 
                             if (rng.isCollapsed() && rng.isOnCell()) {
                                 this.table.tab(rng, true);
@@ -6194,20 +5914,20 @@
                                     return false;
                                 }
                             }
-                        },
+                        }
                         /**
                          * run given function between beforeCommand and afterCommand
                          */
 
                     }, {
-                        key: 'wrapCommand',
+                        key: "wrapCommand",
                         value: function wrapCommand(fn) {
                             return function () {
                                 this.beforeCommand();
                                 fn.apply(this, arguments);
                                 this.afterCommand();
                             };
-                        },
+                        }
                         /**
                          * insert image
                          *
@@ -6217,9 +5937,9 @@
                          */
 
                     }, {
-                        key: 'insertImage',
+                        key: "insertImage",
                         value: function insertImage(src, param) {
-                            const _this3 = this;
+                            var _this3 = this;
 
                             return createImage(src, param).then(function ($image) {
                                 _this3.beforeCommand();
@@ -6244,19 +5964,19 @@
                             }).fail(function (e) {
                                 _this3.context.triggerEvent('image.upload.error', e);
                             });
-                        },
+                        }
                         /**
                          * insertImages
                          * @param {File[]} files
                          */
 
                     }, {
-                        key: 'insertImagesAsDataURL',
+                        key: "insertImagesAsDataURL",
                         value: function insertImagesAsDataURL(files) {
-                            const _this4 = this;
+                            var _this4 = this;
 
                             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(files, function (idx, file) {
-                                const filename = file.name;
+                                var filename = file.name;
 
                                 if (_this4.options.maximumImageFileSize && _this4.options.maximumImageFileSize < file.size) {
                                     _this4.context.triggerEvent('image.upload.error', _this4.lang.image.maximumFileSizeError);
@@ -6268,41 +5988,41 @@
                                     });
                                 }
                             });
-                        },
+                        }
                         /**
                          * insertImagesOrCallback
                          * @param {File[]} files
                          */
 
                     }, {
-                        key: 'insertImagesOrCallback',
+                        key: "insertImagesOrCallback",
                         value: function insertImagesOrCallback(files) {
-                            const callbacks = this.options.callbacks; // If onImageUpload set,
+                            var callbacks = this.options.callbacks; // If onImageUpload set,
 
                             if (callbacks.onImageUpload) {
                                 this.context.triggerEvent('image.upload', files); // else insert Image as dataURL
                             } else {
                                 this.insertImagesAsDataURL(files);
                             }
-                        },
+                        }
                         /**
                          * return selected plain text
                          * @return {String} text
                          */
 
                     }, {
-                        key: 'getSelectedText',
+                        key: "getSelectedText",
                         value: function getSelectedText() {
-                            let rng = this.getLastRange(); // if range on anchor, expand range with anchor
+                            var rng = this.getLastRange(); // if range on anchor, expand range with anchor
 
                             if (rng.isOnAnchor()) {
                                 rng = range.createFromNode(dom.ancestor(rng.sc, dom.isAnchor));
                             }
 
                             return rng.toString();
-                        },
+                        }
                     }, {
-                        key: 'onFormatBlock',
+                        key: "onFormatBlock",
                         value: function onFormatBlock(tagName, $target) {
                             // [workaround] for MSIE, IE need `<`
                             document.execCommand('FormatBlock', false, env.isMSIE ? '<' + tagName + '>' : tagName); // support custom class
@@ -6314,34 +6034,34 @@
                                 }
 
                                 if ($target && $target.length) {
-                                    const className = $target[0].className || '';
+                                    var className = $target[0].className || '';
 
                                     if (className) {
-                                        const currentRange = this.createRange();
-                                        const $parent = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()([currentRange.sc, currentRange.ec]).closest(tagName);
+                                        var currentRange = this.createRange();
+                                        var $parent = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()([currentRange.sc, currentRange.ec]).closest(tagName);
                                         $parent.addClass(className);
                                     }
                                 }
                             }
-                        },
+                        }
                     }, {
-                        key: 'formatPara',
+                        key: "formatPara",
                         value: function formatPara() {
                             this.formatBlock('P');
-                        },
+                        }
                     }, {
-                        key: 'fontStyling',
+                        key: "fontStyling",
                         value: function fontStyling(target, value) {
-                            const rng = this.getLastRange();
+                            var rng = this.getLastRange();
 
                             if (rng !== '') {
-                                const spans = this.style.styleNodes(rng);
+                                var spans = this.style.styleNodes(rng);
                                 this.$editor.find('.note-status-output').html('');
                                 external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(spans).css(target, value); // [workaround] added styled bogus span for style
                                 //  - also bogus character needed for cursor position
 
                                 if (rng.isCollapsed()) {
-                                    const firstSpan = lists.head(spans);
+                                    var firstSpan = lists.head(spans);
 
                                     if (firstSpan && !dom.nodeLength(firstSpan)) {
                                         firstSpan.innerHTML = dom.ZERO_WIDTH_NBSP_CHAR;
@@ -6353,13 +6073,13 @@
                                     this.setLastRange(this.createRangeFromList(spans).select());
                                 }
                             } else {
-                                const noteStatusOutput = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.now();
+                                var noteStatusOutput = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.now();
                                 this.$editor.find('.note-status-output').html('<div id="note-status-output-' + noteStatusOutput + '" class="alert alert-info">' + this.lang.output.noSelection + '</div>');
                                 setTimeout(function () {
                                     external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('#note-status-output-' + noteStatusOutput).remove();
                                 }, 5000);
                             }
-                        },
+                        }
                         /**
                          * unlink
                          *
@@ -6367,12 +6087,12 @@
                          */
 
                     }, {
-                        key: 'unlink',
+                        key: "unlink",
                         value: function unlink() {
-                            let rng = this.getLastRange();
+                            var rng = this.getLastRange();
 
                             if (rng.isOnAnchor()) {
-                                const anchor = dom.ancestor(rng.sc, dom.isAnchor);
+                                var anchor = dom.ancestor(rng.sc, dom.isAnchor);
                                 rng = range.createFromNode(anchor);
                                 rng.select();
                                 this.setLastRange();
@@ -6380,7 +6100,7 @@
                                 document.execCommand('unlink');
                                 this.afterCommand();
                             }
-                        },
+                        }
                         /**
                          * returns link info
                          *
@@ -6392,15 +6112,15 @@
                          */
 
                     }, {
-                        key: 'getLinkInfo',
+                        key: "getLinkInfo",
                         value: function getLinkInfo() {
-                            const rng = this.getLastRange().expand(dom.isAnchor); // Get the first anchor on range(for edit).
+                            var rng = this.getLastRange().expand(dom.isAnchor); // Get the first anchor on range(for edit).
 
-                            const $anchor = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(lists.head(rng.nodes(dom.isAnchor)));
-                            const linkInfo = {
+                            var $anchor = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(lists.head(rng.nodes(dom.isAnchor)));
+                            var linkInfo = {
                                 range: rng,
                                 text: rng.toString(),
-                                url: $anchor.length ? $anchor.attr('href') : '',
+                                url: $anchor.length ? $anchor.attr('href') : ''
                             }; // When anchor exists,
 
                             if ($anchor.length) {
@@ -6409,62 +6129,62 @@
                             }
 
                             return linkInfo;
-                        },
+                        }
                     }, {
-                        key: 'addRow',
+                        key: "addRow",
                         value: function addRow(position) {
-                            const rng = this.getLastRange(this.$editable);
+                            var rng = this.getLastRange(this.$editable);
 
                             if (rng.isCollapsed() && rng.isOnCell()) {
                                 this.beforeCommand();
                                 this.table.addRow(rng, position);
                                 this.afterCommand();
                             }
-                        },
+                        }
                     }, {
-                        key: 'addCol',
+                        key: "addCol",
                         value: function addCol(position) {
-                            const rng = this.getLastRange(this.$editable);
+                            var rng = this.getLastRange(this.$editable);
 
                             if (rng.isCollapsed() && rng.isOnCell()) {
                                 this.beforeCommand();
                                 this.table.addCol(rng, position);
                                 this.afterCommand();
                             }
-                        },
+                        }
                     }, {
-                        key: 'deleteRow',
+                        key: "deleteRow",
                         value: function deleteRow() {
-                            const rng = this.getLastRange(this.$editable);
+                            var rng = this.getLastRange(this.$editable);
 
                             if (rng.isCollapsed() && rng.isOnCell()) {
                                 this.beforeCommand();
                                 this.table.deleteRow(rng);
                                 this.afterCommand();
                             }
-                        },
+                        }
                     }, {
-                        key: 'deleteCol',
+                        key: "deleteCol",
                         value: function deleteCol() {
-                            const rng = this.getLastRange(this.$editable);
+                            var rng = this.getLastRange(this.$editable);
 
                             if (rng.isCollapsed() && rng.isOnCell()) {
                                 this.beforeCommand();
                                 this.table.deleteCol(rng);
                                 this.afterCommand();
                             }
-                        },
+                        }
                     }, {
-                        key: 'deleteTable',
+                        key: "deleteTable",
                         value: function deleteTable() {
-                            const rng = this.getLastRange(this.$editable);
+                            var rng = this.getLastRange(this.$editable);
 
                             if (rng.isCollapsed() && rng.isOnCell()) {
                                 this.beforeCommand();
                                 this.table.deleteTable(rng);
                                 this.afterCommand();
                             }
-                        },
+                        }
                         /**
                          * @param {Position} pos
                          * @param {jQuery} $target - target element
@@ -6472,107 +6192,92 @@
                          */
 
                     }, {
-                        key: 'resizeTo',
+                        key: "resizeTo",
                         value: function resizeTo(pos, $target, bKeepRatio) {
-                            let imageSize;
+                            var imageSize;
 
                             if (bKeepRatio) {
-                                const newRatio = pos.y / pos.x;
-                                const ratio = $target.data('ratio');
+                                var newRatio = pos.y / pos.x;
+                                var ratio = $target.data('ratio');
                                 imageSize = {
                                     width: ratio > newRatio ? pos.x : pos.y / ratio,
-                                    height: ratio > newRatio ? pos.x * ratio : pos.y,
+                                    height: ratio > newRatio ? pos.x * ratio : pos.y
                                 };
                             } else {
                                 imageSize = {
                                     width: pos.x,
-                                    height: pos.y,
+                                    height: pos.y
                                 };
                             }
 
                             $target.css(imageSize);
-                        },
+                        }
                         /**
                          * returns whether editable area has focus or not.
                          */
 
                     }, {
-                        key: 'hasFocus',
+                        key: "hasFocus",
                         value: function hasFocus() {
                             return this.$editable.is(':focus');
-                        },
+                        }
                         /**
                          * set focus
                          */
 
                     }, {
-                        key: 'focus',
+                        key: "focus",
                         value: function focus() {
                             // [workaround] Screen will move when page is scolled in IE.
                             //  - do focus when not focused
                             if (!this.hasFocus()) {
                                 this.$editable.focus();
                             }
-                        },
+                        }
                         /**
                          * returns whether contents is empty or not.
                          * @return {Boolean}
                          */
 
                     }, {
-                        key: 'isEmpty',
+                        key: "isEmpty",
                         value: function isEmpty() {
                             return dom.isEmpty(this.$editable[0]) || dom.emptyPara === this.$editable.html();
-                        },
+                        }
                         /**
                          * Removes all contents and restores the editable instance to an _emptyPara_.
                          */
 
                     }, {
-                        key: 'empty',
+                        key: "empty",
                         value: function empty() {
                             this.context.invoke('code', dom.emptyPara);
-                        },
+                        }
                         /**
                          * normalize content
                          */
 
                     }, {
-                        key: 'normalizeContent',
+                        key: "normalizeContent",
                         value: function normalizeContent() {
                             this.$editable[0].normalize();
-                        },
+                        }
                     }]);
 
                     return Editor;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/Clipboard.js
-                function Clipboard_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/Clipboard.js
+                function Clipboard_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Clipboard_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Clipboard_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Clipboard_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Clipboard_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Clipboard_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Clipboard_createClass(Constructor, protoProps, staticProps) { if (protoProps) Clipboard_defineProperties(Constructor.prototype, protoProps); if (staticProps) Clipboard_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Clipboard_Clipboard = /* #__PURE__*/function () {
+
+                var Clipboard_Clipboard = /*#__PURE__*/function () {
                     function Clipboard(context) {
                         Clipboard_classCallCheck(this, Clipboard);
 
@@ -6581,10 +6286,10 @@
                     }
 
                     Clipboard_createClass(Clipboard, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
                             this.$editable.on('paste', this.pasteByEvent.bind(this));
-                        },
+                        }
                         /**
                          * paste by clipboard event
                          *
@@ -6592,14 +6297,14 @@
                          */
 
                     }, {
-                        key: 'pasteByEvent',
+                        key: "pasteByEvent",
                         value: function pasteByEvent(event) {
-                            const _this = this;
+                            var _this = this;
 
-                            const clipboardData = event.originalEvent.clipboardData;
+                            var clipboardData = event.originalEvent.clipboardData;
 
                             if (clipboardData && clipboardData.items && clipboardData.items.length) {
-                                const item = clipboardData.items.length > 1 ? clipboardData.items[1] : lists.head(clipboardData.items);
+                                var item = clipboardData.items.length > 1 ? clipboardData.items[1] : lists.head(clipboardData.items);
 
                                 if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
                                     // paste img file
@@ -6613,7 +6318,7 @@
                                 }
                             } else if (window.clipboardData) {
                                 // for IE
-                                const text = window.clipboardData.getData('text');
+                                var text = window.clipboardData.getData('text');
 
                                 if (this.context.invoke('editor.isLimited', text.length)) {
                                     event.preventDefault();
@@ -6624,38 +6329,23 @@
                             setTimeout(function () {
                                 _this.context.invoke('editor.afterCommand');
                             }, 10);
-                        },
+                        }
                     }]);
 
                     return Clipboard;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/Dropzone.js
-                function Dropzone_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/Dropzone.js
+                function Dropzone_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Dropzone_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Dropzone_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Dropzone_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Dropzone_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Dropzone_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Dropzone_createClass(Constructor, protoProps, staticProps) { if (protoProps) Dropzone_defineProperties(Constructor.prototype, protoProps); if (staticProps) Dropzone_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Dropzone_Dropzone = /* #__PURE__*/function () {
+
+                var Dropzone_Dropzone = /*#__PURE__*/function () {
                     function Dropzone(context) {
                         Dropzone_classCallCheck(this, Dropzone);
 
@@ -6668,14 +6358,13 @@
                         this.documentEventHandlers = {};
                         this.$dropzone = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(['<div class="note-dropzone">', '<div class="note-dropzone-message"></div>', '</div>'].join('')).prependTo(this.$editor);
                     }
-
                     /**
                      * attach Drag and Drop Events
                      */
 
 
                     Dropzone_createClass(Dropzone, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
                             if (this.options.disableDragAndDrop) {
                                 // prevent default drop event
@@ -6689,23 +6378,23 @@
                             } else {
                                 this.attachDragAndDropEvent();
                             }
-                        },
+                        }
                         /**
                          * attach Drag and Drop Events
                          */
 
                     }, {
-                        key: 'attachDragAndDropEvent',
+                        key: "attachDragAndDropEvent",
                         value: function attachDragAndDropEvent() {
-                            const _this = this;
+                            var _this = this;
 
-                            let collection = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()();
-                            const $dropzoneMessage = this.$dropzone.find('.note-dropzone-message');
+                            var collection = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()();
+                            var $dropzoneMessage = this.$dropzone.find('.note-dropzone-message');
 
                             this.documentEventHandlers.onDragenter = function (e) {
-                                const isCodeview = _this.context.invoke('codeview.isActivated');
+                                var isCodeview = _this.context.invoke('codeview.isActivated');
 
-                                const hasEditorSize = _this.$editor.width() > 0 && _this.$editor.height() > 0;
+                                var hasEditorSize = _this.$editor.width() > 0 && _this.$editor.height() > 0;
 
                                 if (!isCodeview && !collection.length && hasEditorSize) {
                                     _this.$editor.addClass('dragover');
@@ -6751,7 +6440,7 @@
                             }); // attach dropImage
 
                             this.$dropzone.on('drop', function (event) {
-                                const dataTransfer = event.originalEvent.dataTransfer; // stop the browser from opening the dropped content
+                                var dataTransfer = event.originalEvent.dataTransfer; // stop the browser from opening the dropped content
 
                                 event.preventDefault();
 
@@ -6766,7 +6455,7 @@
                                             return;
                                         }
 
-                                        const content = dataTransfer.getData(type);
+                                        var content = dataTransfer.getData(type);
 
                                         if (type.toLowerCase().indexOf('text') > -1) {
                                             _this.context.invoke('editor.pasteHTML', content);
@@ -6778,110 +6467,43 @@
                                     });
                                 }
                             }).on('dragover', false); // prevent default dragover event
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
-                            const _this2 = this;
+                            var _this2 = this;
 
                             Object.keys(this.documentEventHandlers).forEach(function (key) {
                                 _this2.$eventListener.off(key.substr(2).toLowerCase(), _this2.documentEventHandlers[key]);
                             });
                             this.documentEventHandlers = {};
-                        },
+                        }
                     }]);
 
                     return Dropzone;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/Codeview.js
-                function _createForOfIteratorHelper(o) {
-                    if (typeof Symbol === 'undefined' || o[Symbol.iterator] == null) {
-                        if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {
-                            let i = 0;
-                            const F = function F() {
-                            };
-                            return {
-                                s: F, n: function n() {
-                                    if (i >= o.length) return {done: true};
-                                    return {done: false, value: o[i++]};
-                                }, e: function e(_e) {
-                                    throw _e;
-                                }, f: F,
-                            };
-                        }
-                        throw new TypeError('Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.');
-                    }
-                    let it;
-                    let normalCompletion = true;
-                    let didErr = false;
-                    let err;
-                    return {
-                        s: function s() {
-                            it = o[Symbol.iterator]();
-                        }, n: function n() {
-                            const step = it.next();
-                            normalCompletion = step.done;
-                            return step;
-                        }, e: function e(_e2) {
-                            didErr = true;
-                            err = _e2;
-                        }, f: function f() {
-                            try {
-                                if (!normalCompletion && it['return'] != null) it['return']();
-                            } finally {
-                                if (didErr) throw err;
-                            }
-                        },
-                    };
-                }
+// CONCATENATED MODULE: ./src/js/base/module/Codeview.js
+                function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
-                function _unsupportedIterableToArray(o, minLen) {
-                    if (!o) return;
-                    if (typeof o === 'string') return _arrayLikeToArray(o, minLen);
-                    let n = Object.prototype.toString.call(o).slice(8, -1);
-                    if (n === 'Object' && o.constructor) n = o.constructor.name;
-                    if (n === 'Map' || n === 'Set') return Array.from(n);
-                    if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-                }
+                function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-                function _arrayLikeToArray(arr, len) {
-                    if (len == null || len > arr.length) len = arr.length;
-                    for (var i = 0, arr2 = new Array(len); i < len; i++) {
-                        arr2[i] = arr[i];
-                    }
-                    return arr2;
-                }
+                function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-                function Codeview_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+                function Codeview_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Codeview_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Codeview_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Codeview_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Codeview_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Codeview_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Codeview_createClass(Constructor, protoProps, staticProps) { if (protoProps) Codeview_defineProperties(Constructor.prototype, protoProps); if (staticProps) Codeview_defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
                 /**
                  * @class Codeview
                  */
 
-                const Codeview_CodeView = /* #__PURE__*/function () {
+                var Codeview_CodeView = /*#__PURE__*/function () {
                     function CodeView(context) {
                         Codeview_classCallCheck(this, CodeView);
 
@@ -6898,10 +6520,10 @@
                     }
 
                     Codeview_createClass(CodeView, [{
-                        key: 'sync',
+                        key: "sync",
                         value: function sync(html) {
-                            const isCodeview = this.isActivated();
-                            const CodeMirror = this.CodeMirrorConstructor;
+                            var isCodeview = this.isActivated();
+                            var CodeMirror = this.CodeMirrorConstructor;
 
                             if (isCodeview) {
                                 if (html) {
@@ -6916,33 +6538,33 @@
                                     }
                                 }
                             }
-                        },
+                        }
                     }, {
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const _this = this;
+                            var _this = this;
 
                             this.$codable.on('keyup', function (event) {
                                 if (event.keyCode === core_key.code.ESCAPE) {
                                     _this.deactivate();
                                 }
                             });
-                        },
+                        }
                         /**
                          * @return {Boolean}
                          */
 
                     }, {
-                        key: 'isActivated',
+                        key: "isActivated",
                         value: function isActivated() {
                             return this.$editor.hasClass('codeview');
-                        },
+                        }
                         /**
                          * toggle codeview
                          */
 
                     }, {
-                        key: 'toggle',
+                        key: "toggle",
                         value: function toggle() {
                             if (this.isActivated()) {
                                 this.deactivate();
@@ -6951,7 +6573,7 @@
                             }
 
                             this.context.triggerEvent('codeview.toggled');
-                        },
+                        }
                         /**
                          * purify input value
                          * @param value
@@ -6959,26 +6581,26 @@
                          */
 
                     }, {
-                        key: 'purify',
+                        key: "purify",
                         value: function purify(value) {
                             if (this.options.codeviewFilter) {
                                 // filter code view regex
                                 value = value.replace(this.options.codeviewFilterRegex, ''); // allow specific iframe tag
 
                                 if (this.options.codeviewIframeFilter) {
-                                    const whitelist = this.options.codeviewIframeWhitelistSrc.concat(this.options.codeviewIframeWhitelistSrcBase);
+                                    var whitelist = this.options.codeviewIframeWhitelistSrc.concat(this.options.codeviewIframeWhitelistSrcBase);
                                     value = value.replace(/(<iframe.*?>.*?(?:<\/iframe>)?)/gi, function (tag) {
                                         // remove if src attribute is duplicated
                                         if (/<.+src(?==?('|"|\s)?)[\s\S]+src(?=('|"|\s)?)[^>]*?>/i.test(tag)) {
                                             return '';
                                         }
 
-                                        const _iterator = _createForOfIteratorHelper(whitelist);
-                                        let _step;
+                                        var _iterator = _createForOfIteratorHelper(whitelist),
+                                            _step;
 
                                         try {
                                             for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                                                const src = _step.value;
+                                                var src = _step.value;
 
                                                 // pass if src is trusted
                                                 if (new RegExp('src="(https?:)?\/\/' + src.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + '\/(.+)"').test(tag)) {
@@ -6997,17 +6619,17 @@
                             }
 
                             return value;
-                        },
+                        }
                         /**
                          * activate code view
                          */
 
                     }, {
-                        key: 'activate',
+                        key: "activate",
                         value: function activate() {
-                            const _this2 = this;
+                            var _this2 = this;
 
-                            const CodeMirror = this.CodeMirrorConstructor;
+                            var CodeMirror = this.CodeMirrorConstructor;
                             this.$codable.val(dom.html(this.$editable, this.options.prettifyHtml));
                             this.$codable.height(this.$editable.height());
                             this.context.invoke('toolbar.updateCodeview', true);
@@ -7016,10 +6638,10 @@
                             this.$codable.focus(); // activate CodeMirror as codable
 
                             if (CodeMirror) {
-                                const cmEditor = CodeMirror.fromTextArea(this.$codable[0], this.options.codemirror); // CodeMirror TernServer
+                                var cmEditor = CodeMirror.fromTextArea(this.$codable[0], this.options.codemirror); // CodeMirror TernServer
 
                                 if (this.options.codemirror.tern) {
-                                    const server = new CodeMirror.TernServer(this.options.codemirror.tern);
+                                    var server = new CodeMirror.TernServer(this.options.codemirror.tern);
                                     cmEditor.ternServer = server;
                                     cmEditor.on('cursorActivity', function (cm) {
                                         server.updateArgHints(cm);
@@ -7043,24 +6665,24 @@
                                     _this2.context.triggerEvent('change.codeview', _this2.$codable.val(), _this2.$codable);
                                 });
                             }
-                        },
+                        }
                         /**
                          * deactivate code view
                          */
 
                     }, {
-                        key: 'deactivate',
+                        key: "deactivate",
                         value: function deactivate() {
-                            const CodeMirror = this.CodeMirrorConstructor; // deactivate CodeMirror as codable
+                            var CodeMirror = this.CodeMirrorConstructor; // deactivate CodeMirror as codable
 
                             if (CodeMirror) {
-                                const cmEditor = this.$codable.data('cmEditor');
+                                var cmEditor = this.$codable.data('cmEditor');
                                 this.$codable.val(cmEditor.getValue());
                                 cmEditor.toTextArea();
                             }
 
-                            const value = this.purify(dom.value(this.$codable, this.options.prettifyHtml) || dom.emptyPara);
-                            const isChange = this.$editable.html() !== value;
+                            var value = this.purify(dom.value(this.$codable, this.options.prettifyHtml) || dom.emptyPara);
+                            var isChange = this.$editable.html() !== value;
                             this.$editable.html(value);
                             this.$editable.height(this.options.height ? this.$codable.height() : 'auto');
                             this.$editor.removeClass('codeview');
@@ -7072,47 +6694,31 @@
                             this.$editable.focus();
                             this.context.invoke('toolbar.updateCodeview', false);
                             this.context.invoke('airPopover.updateCodeview', false);
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             if (this.isActivated()) {
                                 this.deactivate();
                             }
-                        },
+                        }
                     }]);
 
                     return CodeView;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/Statusbar.js
-                function Statusbar_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/Statusbar.js
+                function Statusbar_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Statusbar_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Statusbar_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Statusbar_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Statusbar_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Statusbar_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Statusbar_createClass(Constructor, protoProps, staticProps) { if (protoProps) Statusbar_defineProperties(Constructor.prototype, protoProps); if (staticProps) Statusbar_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const EDITABLE_PADDING = 24;
+                var EDITABLE_PADDING = 24;
 
-                const Statusbar_Statusbar = /* #__PURE__*/function () {
+                var Statusbar_Statusbar = /*#__PURE__*/function () {
                     function Statusbar(context) {
                         Statusbar_classCallCheck(this, Statusbar);
 
@@ -7123,9 +6729,9 @@
                     }
 
                     Statusbar_createClass(Statusbar, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const _this = this;
+                            var _this = this;
 
                             if (this.options.airMode || this.options.disableResizeEditor) {
                                 this.destroy();
@@ -7136,10 +6742,10 @@
                                 event.preventDefault();
                                 event.stopPropagation();
 
-                                const editableTop = _this.$editable.offset().top - _this.$document.scrollTop();
+                                var editableTop = _this.$editable.offset().top - _this.$document.scrollTop();
 
-                                const onMouseMove = function onMouseMove(event) {
-                                    let height = event.clientY - (editableTop + EDITABLE_PADDING);
+                                var onMouseMove = function onMouseMove(event) {
+                                    var height = event.clientY - (editableTop + EDITABLE_PADDING);
                                     height = _this.options.minheight > 0 ? Math.max(height, _this.options.minheight) : height;
                                     height = _this.options.maxHeight > 0 ? Math.min(height, _this.options.maxHeight) : height;
 
@@ -7150,46 +6756,31 @@
                                     _this.$document.off('mousemove', onMouseMove);
                                 });
                             });
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.$statusbar.off();
                             this.$statusbar.addClass('locked');
-                        },
+                        }
                     }]);
 
                     return Statusbar;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/Fullscreen.js
-                function Fullscreen_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/Fullscreen.js
+                function Fullscreen_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Fullscreen_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Fullscreen_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Fullscreen_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Fullscreen_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Fullscreen_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Fullscreen_createClass(Constructor, protoProps, staticProps) { if (protoProps) Fullscreen_defineProperties(Constructor.prototype, protoProps); if (staticProps) Fullscreen_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Fullscreen_Fullscreen = /* #__PURE__*/function () {
+
+                var Fullscreen_Fullscreen = /*#__PURE__*/function () {
                     function Fullscreen(context) {
-                        const _this = this;
+                        var _this = this;
 
                         Fullscreen_classCallCheck(this, Fullscreen);
 
@@ -7203,13 +6794,13 @@
 
                         this.onResize = function () {
                             _this.resizeTo({
-                                h: _this.$window.height() - _this.$toolbar.outerHeight(),
+                                h: _this.$window.height() - _this.$toolbar.outerHeight()
                             });
                         };
                     }
 
                     Fullscreen_createClass(Fullscreen, [{
-                        key: 'resizeTo',
+                        key: "resizeTo",
                         value: function resizeTo(size) {
                             this.$editable.css('height', size.h);
                             this.$codable.css('height', size.h);
@@ -7217,13 +6808,13 @@
                             if (this.$codable.data('cmeditor')) {
                                 this.$codable.data('cmeditor').setsize(null, size.h);
                             }
-                        },
+                        }
                         /**
                          * toggle fullscreen
                          */
 
                     }, {
-                        key: 'toggle',
+                        key: "toggle",
                         value: function toggle() {
                             this.$editor.toggleClass('fullscreen');
 
@@ -7236,52 +6827,38 @@
                             } else {
                                 this.$window.off('resize', this.onResize);
                                 this.resizeTo({
-                                    h: this.$editable.data('orgHeight'),
+                                    h: this.$editable.data('orgHeight')
                                 });
                                 this.$editable.css('maxHeight', this.$editable.css('orgMaxHeight'));
                                 this.$scrollbar.css('overflow', 'visible');
                             }
 
                             this.context.invoke('toolbar.updateFullscreen', this.isFullscreen());
-                        },
+                        }
                     }, {
-                        key: 'isFullscreen',
+                        key: "isFullscreen",
                         value: function isFullscreen() {
                             return this.$editor.hasClass('fullscreen');
-                        },
+                        }
                     }]);
 
                     return Fullscreen;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/Handle.js
-                function Handle_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/Handle.js
+                function Handle_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Handle_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Handle_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Handle_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Handle_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Handle_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Handle_createClass(Constructor, protoProps, staticProps) { if (protoProps) Handle_defineProperties(Constructor.prototype, protoProps); if (staticProps) Handle_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Handle_Handle = /* #__PURE__*/function () {
+
+
+                var Handle_Handle = /*#__PURE__*/function () {
                     function Handle(context) {
-                        const _this = this;
+                        var _this = this;
 
                         Handle_classCallCheck(this, Handle);
 
@@ -7304,14 +6881,14 @@
                             },
                             'summernote.codeview.toggled': function summernoteCodeviewToggled() {
                                 _this.update();
-                            },
+                            }
                         };
                     }
 
                     Handle_createClass(Handle, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const _this2 = this;
+                            var _this2 = this;
 
                             this.$handle = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(['<div class="note-handle">', '<div class="note-control-selection">', '<div class="note-control-selection-bg"></div>', '<div class="note-control-holder note-control-nw"></div>', '<div class="note-control-holder note-control-ne"></div>', '<div class="note-control-holder note-control-sw"></div>', '<div class="', this.options.disableResizeImage ? 'note-control-holder' : 'note-control-sizing', ' note-control-se"></div>', this.options.disableResizeImage ? '' : '<div class="note-control-selection-info"></div>', '</div>', '</div>'].join('')).prependTo(this.$editingArea);
                             this.$handle.on('mousedown', function (event) {
@@ -7319,16 +6896,16 @@
                                     event.preventDefault();
                                     event.stopPropagation();
 
-                                    const $target = _this2.$handle.find('.note-control-selection').data('target');
+                                    var $target = _this2.$handle.find('.note-control-selection').data('target');
 
-                                    const posStart = $target.offset();
+                                    var posStart = $target.offset();
 
-                                    const scrollTop = _this2.$document.scrollTop();
+                                    var scrollTop = _this2.$document.scrollTop();
 
-                                    const onMouseMove = function onMouseMove(event) {
+                                    var onMouseMove = function onMouseMove(event) {
                                         _this2.context.invoke('editor.resizeTo', {
                                             x: event.clientX - posStart.left,
-                                            y: event.clientY - (posStart.top - scrollTop),
+                                            y: event.clientY - (posStart.top - scrollTop)
                                         }, $target, !event.shiftKey);
 
                                         _this2.update($target[0], event);
@@ -7354,46 +6931,46 @@
 
                                 _this2.update();
                             });
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.$handle.remove();
-                        },
+                        }
                     }, {
-                        key: 'update',
+                        key: "update",
                         value: function update(target, event) {
                             if (this.context.isDisabled()) {
                                 return false;
                             }
 
-                            const isImage = dom.isImg(target);
-                            const $selection = this.$handle.find('.note-control-selection');
+                            var isImage = dom.isImg(target);
+                            var $selection = this.$handle.find('.note-control-selection');
                             this.context.invoke('imagePopover.update', target, event);
 
                             if (isImage) {
-                                const $image = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(target);
-                                const position = $image.position();
-                                const pos = {
+                                var $image = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(target);
+                                var position = $image.position();
+                                var pos = {
                                     left: position.left + parseInt($image.css('marginLeft'), 10),
-                                    top: position.top + parseInt($image.css('marginTop'), 10),
+                                    top: position.top + parseInt($image.css('marginTop'), 10)
                                 }; // exclude margin
 
-                                const imageSize = {
+                                var imageSize = {
                                     w: $image.outerWidth(false),
-                                    h: $image.outerHeight(false),
+                                    h: $image.outerHeight(false)
                                 };
                                 $selection.css({
                                     display: 'block',
                                     left: pos.left,
                                     top: pos.top,
                                     width: imageSize.w,
-                                    height: imageSize.h,
+                                    height: imageSize.h
                                 }).data('target', $image); // save current image element.
 
-                                const origImageObj = new Image();
+                                var origImageObj = new Image();
                                 origImageObj.src = $image.attr('src');
-                                const sizingText = imageSize.w + 'x' + imageSize.h + ' (' + this.lang.image.original + ': ' + origImageObj.width + 'x' + origImageObj.height + ')';
+                                var sizingText = imageSize.w + 'x' + imageSize.h + ' (' + this.lang.image.original + ': ' + origImageObj.width + 'x' + origImageObj.height + ')';
                                 $selection.find('.note-control-selection-info').text(sizingText);
                                 this.context.invoke('editor.saveTarget', target);
                             } else {
@@ -7401,7 +6978,7 @@
                             }
 
                             return isImage;
-                        },
+                        }
                         /**
                          * hide
                          *
@@ -7409,47 +6986,33 @@
                          */
 
                     }, {
-                        key: 'hide',
+                        key: "hide",
                         value: function hide() {
                             this.context.invoke('editor.clearTarget');
                             this.$handle.children().hide();
-                        },
+                        }
                     }]);
 
                     return Handle;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/AutoLink.js
-                function AutoLink_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/AutoLink.js
+                function AutoLink_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function AutoLink_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function AutoLink_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function AutoLink_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) AutoLink_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) AutoLink_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function AutoLink_createClass(Constructor, protoProps, staticProps) { if (protoProps) AutoLink_defineProperties(Constructor.prototype, protoProps); if (staticProps) AutoLink_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const defaultScheme = 'http://';
-                const linkPattern = /^([A-Za-z][A-Za-z0-9+-.]*\:[\/]{2}|tel:|mailto:[A-Z0-9._%+-]+@)?(www\.)?(.+)$/i;
 
-                const AutoLink_AutoLink = /* #__PURE__*/function () {
+
+                var defaultScheme = 'http://';
+                var linkPattern = /^([A-Za-z][A-Za-z0-9+-.]*\:[\/]{2}|tel:|mailto:[A-Z0-9._%+-]+@)?(www\.)?(.+)$/i;
+
+                var AutoLink_AutoLink = /*#__PURE__*/function () {
                     function AutoLink(context) {
-                        const _this = this;
+                        var _this = this;
 
                         AutoLink_classCallCheck(this, AutoLink);
 
@@ -7463,34 +7026,34 @@
                             },
                             'summernote.keydown': function summernoteKeydown(we, e) {
                                 _this.handleKeydown(e);
-                            },
+                            }
                         };
                     }
 
                     AutoLink_createClass(AutoLink, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
                             this.lastWordRange = null;
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.lastWordRange = null;
-                        },
+                        }
                     }, {
-                        key: 'replace',
+                        key: "replace",
                         value: function replace() {
                             if (!this.lastWordRange) {
                                 return;
                             }
 
-                            const keyword = this.lastWordRange.toString();
-                            const match = keyword.match(linkPattern);
+                            var keyword = this.lastWordRange.toString();
+                            var match = keyword.match(linkPattern);
 
                             if (match && (match[1] || match[2])) {
-                                const link = match[1] ? keyword : defaultScheme + keyword;
-                                const urlText = this.options.showDomainOnlyForAutolink ? keyword.replace(/^(?:https?:\/\/)?(?:tel?:?)?(?:mailto?:?)?(?:www\.)?/i, '').split('/')[0] : keyword;
-                                const node = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<a />').html(urlText).attr('href', link)[0];
+                                var link = match[1] ? keyword : defaultScheme + keyword;
+                                var urlText = this.options.showDomainOnlyForAutolink ? keyword.replace(/^(?:https?:\/\/)?(?:tel?:?)?(?:mailto?:?)?(?:www\.)?/i, '').split('/')[0] : keyword;
+                                var node = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<a />').html(urlText).attr('href', link)[0];
 
                                 if (this.context.options.linkTargetBlank) {
                                     external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(node).attr('target', '_blank');
@@ -7500,59 +7063,43 @@
                                 this.lastWordRange = null;
                                 this.context.invoke('editor.focus');
                             }
-                        },
+                        }
                     }, {
-                        key: 'handleKeydown',
+                        key: "handleKeydown",
                         value: function handleKeydown(e) {
                             if (lists.contains([core_key.code.ENTER, core_key.code.SPACE], e.keyCode)) {
-                                const wordRange = this.context.invoke('editor.createRange').getWordRange();
+                                var wordRange = this.context.invoke('editor.createRange').getWordRange();
                                 this.lastWordRange = wordRange;
                             }
-                        },
+                        }
                     }, {
-                        key: 'handleKeyup',
+                        key: "handleKeyup",
                         value: function handleKeyup(e) {
                             if (lists.contains([core_key.code.ENTER, core_key.code.SPACE], e.keyCode)) {
                                 this.replace();
                             }
-                        },
+                        }
                     }]);
 
                     return AutoLink;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/AutoSync.js
-                function AutoSync_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/AutoSync.js
+                function AutoSync_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function AutoSync_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function AutoSync_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function AutoSync_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) AutoSync_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) AutoSync_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function AutoSync_createClass(Constructor, protoProps, staticProps) { if (protoProps) AutoSync_defineProperties(Constructor.prototype, protoProps); if (staticProps) AutoSync_defineProperties(Constructor, staticProps); return Constructor; }
 
 
                 /**
                  * textarea auto sync.
                  */
 
-                const AutoSync_AutoSync = /* #__PURE__*/function () {
+                var AutoSync_AutoSync = /*#__PURE__*/function () {
                     function AutoSync(context) {
-                        const _this = this;
+                        var _this = this;
 
                         AutoSync_classCallCheck(this, AutoSync);
 
@@ -7560,48 +7107,35 @@
                         this.events = {
                             'summernote.change': function summernoteChange() {
                                 _this.$note.val(context.invoke('code'));
-                            },
+                            }
                         };
                     }
 
                     AutoSync_createClass(AutoSync, [{
-                        key: 'shouldInitialize',
+                        key: "shouldInitialize",
                         value: function shouldInitialize() {
                             return dom.isTextarea(this.$note[0]);
-                        },
+                        }
                     }]);
 
                     return AutoSync;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/AutoReplace.js
-                function AutoReplace_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/AutoReplace.js
+                function AutoReplace_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function AutoReplace_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function AutoReplace_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function AutoReplace_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) AutoReplace_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) AutoReplace_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function AutoReplace_createClass(Constructor, protoProps, staticProps) { if (protoProps) AutoReplace_defineProperties(Constructor.prototype, protoProps); if (staticProps) AutoReplace_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const AutoReplace_AutoReplace = /* #__PURE__*/function () {
+
+
+
+                var AutoReplace_AutoReplace = /*#__PURE__*/function () {
                     function AutoReplace(context) {
-                        const _this = this;
+                        var _this = this;
 
                         AutoReplace_classCallCheck(this, AutoReplace);
 
@@ -7617,37 +7151,37 @@
                             },
                             'summernote.keydown': function summernoteKeydown(we, e) {
                                 _this.handleKeydown(e);
-                            },
+                            }
                         };
                     }
 
                     AutoReplace_createClass(AutoReplace, [{
-                        key: 'shouldInitialize',
+                        key: "shouldInitialize",
                         value: function shouldInitialize() {
                             return !!this.options.match;
-                        },
+                        }
                     }, {
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
                             this.lastWord = null;
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.lastWord = null;
-                        },
+                        }
                     }, {
-                        key: 'replace',
+                        key: "replace",
                         value: function replace() {
                             if (!this.lastWord) {
                                 return;
                             }
 
-                            const self = this;
-                            const keyword = this.lastWord.toString();
+                            var self = this;
+                            var keyword = this.lastWord.toString();
                             this.options.match(keyword, function (match) {
                                 if (match) {
-                                    let node = '';
+                                    var node = '';
 
                                     if (typeof match === 'string') {
                                         node = dom.createText(match);
@@ -7663,9 +7197,9 @@
                                     self.context.invoke('editor.focus');
                                 }
                             });
-                        },
+                        }
                     }, {
-                        key: 'handleKeydown',
+                        key: "handleKeydown",
                         value: function handleKeydown(e) {
                             // this forces it to remember the last whole word, even if multiple termination keys are pressed
                             // before the previous key is let go.
@@ -7675,52 +7209,37 @@
                             }
 
                             if (lists.contains(this.keys, e.keyCode)) {
-                                const wordRange = this.context.invoke('editor.createRange').getWordRange();
+                                var wordRange = this.context.invoke('editor.createRange').getWordRange();
                                 this.lastWord = wordRange;
                             }
 
                             this.previousKeydownCode = e.keyCode;
-                        },
+                        }
                     }, {
-                        key: 'handleKeyup',
+                        key: "handleKeyup",
                         value: function handleKeyup(e) {
                             if (lists.contains(this.keys, e.keyCode)) {
                                 this.replace();
                             }
-                        },
+                        }
                     }]);
 
                     return AutoReplace;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/Placeholder.js
-                function Placeholder_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/Placeholder.js
+                function Placeholder_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Placeholder_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Placeholder_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Placeholder_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Placeholder_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Placeholder_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Placeholder_createClass(Constructor, protoProps, staticProps) { if (protoProps) Placeholder_defineProperties(Constructor.prototype, protoProps); if (staticProps) Placeholder_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Placeholder_Placeholder = /* #__PURE__*/function () {
+
+                var Placeholder_Placeholder = /*#__PURE__*/function () {
                     function Placeholder(context) {
-                        const _this = this;
+                        var _this = this;
 
                         Placeholder_classCallCheck(this, Placeholder);
 
@@ -7739,68 +7258,56 @@
                             },
                             'summernote.codeview.toggled': function summernoteCodeviewToggled() {
                                 _this.update();
-                            },
+                            }
                         };
                     }
 
                     Placeholder_createClass(Placeholder, [{
-                        key: 'shouldInitialize',
+                        key: "shouldInitialize",
                         value: function shouldInitialize() {
                             return !!this.options.placeholder;
-                        },
+                        }
                     }, {
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const _this2 = this;
+                            var _this2 = this;
 
                             this.$placeholder = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div class="note-placeholder">');
                             this.$placeholder.on('click', function () {
                                 _this2.context.invoke('focus');
                             }).html(this.options.placeholder).prependTo(this.$editingArea);
                             this.update();
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.$placeholder.remove();
-                        },
+                        }
                     }, {
-                        key: 'update',
+                        key: "update",
                         value: function update() {
-                            const isShow = !this.context.invoke('codeview.isActivated') && this.context.invoke('editor.isEmpty');
+                            var isShow = !this.context.invoke('codeview.isActivated') && this.context.invoke('editor.isEmpty');
                             this.$placeholder.toggle(isShow);
-                        },
+                        }
                     }]);
 
                     return Placeholder;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/Buttons.js
-                function Buttons_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/Buttons.js
+                function Buttons_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Buttons_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Buttons_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Buttons_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Buttons_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Buttons_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Buttons_createClass(Constructor, protoProps, staticProps) { if (protoProps) Buttons_defineProperties(Constructor.prototype, protoProps); if (staticProps) Buttons_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Buttons_Buttons = /* #__PURE__*/function () {
+
+
+
+
+                var Buttons_Buttons = /*#__PURE__*/function () {
                     function Buttons(context) {
                         Buttons_classCallCheck(this, Buttons);
 
@@ -7813,9 +7320,9 @@
                     }
 
                     Buttons_createClass(Buttons, [{
-                        key: 'representShortcut',
+                        key: "representShortcut",
                         value: function representShortcut(editorMethod) {
-                            let shortcut = this.invertedKeyMap[editorMethod];
+                            var shortcut = this.invertedKeyMap[editorMethod];
 
                             if (!this.options.shortcuts || !shortcut) {
                                 return '';
@@ -7827,9 +7334,9 @@
 
                             shortcut = shortcut.replace('BACKSLASH', '\\').replace('SLASH', '/').replace('LEFTBRACKET', '[').replace('RIGHTBRACKET', ']');
                             return ' (' + shortcut + ')';
-                        },
+                        }
                     }, {
-                        key: 'button',
+                        key: "button",
                         value: function button(o) {
                             if (!this.options.tooltip && o.tooltip) {
                                 delete o.tooltip;
@@ -7837,40 +7344,40 @@
 
                             o.container = this.options.container;
                             return this.ui.button(o);
-                        },
+                        }
                     }, {
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
                             this.addToolbarButtons();
                             this.addImagePopoverButtons();
                             this.addLinkPopoverButtons();
                             this.addTablePopoverButtons();
                             this.fontInstalledMap = {};
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             delete this.fontInstalledMap;
-                        },
+                        }
                     }, {
-                        key: 'isFontInstalled',
+                        key: "isFontInstalled",
                         value: function isFontInstalled(name) {
                             if (!Object.prototype.hasOwnProperty.call(this.fontInstalledMap, name)) {
                                 this.fontInstalledMap[name] = env.isFontInstalled(name) || lists.contains(this.options.fontNamesIgnoreCheck, name);
                             }
 
                             return this.fontInstalledMap[name];
-                        },
+                        }
                     }, {
-                        key: 'isFontDeservedToAdd',
+                        key: "isFontDeservedToAdd",
                         value: function isFontDeservedToAdd(name) {
                             name = name.toLowerCase();
                             return name !== '' && this.isFontInstalled(name) && env.genericFontFamilies.indexOf(name) === -1;
-                        },
+                        }
                     }, {
-                        key: 'colorPalette',
+                        key: "colorPalette",
                         value: function colorPalette(className, tooltip, backColor, foreColor) {
-                            const _this = this;
+                            var _this = this;
 
                             return this.ui.buttonGroup({
                                 className: 'note-color ' + className,
@@ -7879,25 +7386,25 @@
                                     contents: this.ui.icon(this.options.icons.font + ' note-recent-color'),
                                     tooltip: tooltip,
                                     click: function click(e) {
-                                        const $button = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(e.currentTarget);
+                                        var $button = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(e.currentTarget);
 
                                         if (backColor && foreColor) {
                                             _this.context.invoke('editor.color', {
                                                 backColor: $button.attr('data-backColor'),
-                                                foreColor: $button.attr('data-foreColor'),
+                                                foreColor: $button.attr('data-foreColor')
                                             });
                                         } else if (backColor) {
                                             _this.context.invoke('editor.color', {
-                                                backColor: $button.attr('data-backColor'),
+                                                backColor: $button.attr('data-backColor')
                                             });
                                         } else if (foreColor) {
                                             _this.context.invoke('editor.color', {
-                                                foreColor: $button.attr('data-foreColor'),
+                                                foreColor: $button.attr('data-foreColor')
                                             });
                                         }
                                     },
                                     callback: function callback($button) {
-                                        const $recentColor = $button.find('.note-recent-color');
+                                        var $recentColor = $button.find('.note-recent-color');
 
                                         if (backColor) {
                                             $recentColor.css('background-color', _this.options.colorButton.backColor);
@@ -7910,45 +7417,45 @@
                                         } else {
                                             $recentColor.css('color', 'transparent');
                                         }
-                                    },
+                                    }
                                 }), this.button({
                                     className: 'dropdown-toggle',
                                     contents: this.ui.dropdownButtonContents('', this.options),
                                     tooltip: this.lang.color.more,
                                     data: {
-                                        toggle: 'dropdown',
-                                    },
+                                        toggle: 'dropdown'
+                                    }
                                 }), this.ui.dropdown({
                                     items: (backColor ? ['<div class="note-palette">', '<div class="note-palette-title">' + this.lang.color.background + '</div>', '<div>', '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="backColor" data-value="transparent">', this.lang.color.transparent, '</button>', '</div>', '<div class="note-holder" data-event="backColor"><!-- back colors --></div>', '<div>', '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="backColorPicker">', this.lang.color.cpSelect, '</button>', '<input type="color" id="backColorPicker" class="note-btn note-color-select-btn" value="' + this.options.colorButton.backColor + '" data-event="backColorPalette">', '</div>', '<div class="note-holder-custom" id="backColorPalette" data-event="backColor"></div>', '</div>'].join('') : '') + (foreColor ? ['<div class="note-palette">', '<div class="note-palette-title">' + this.lang.color.foreground + '</div>', '<div>', '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="removeFormat" data-value="foreColor">', this.lang.color.resetToDefault, '</button>', '</div>', '<div class="note-holder" data-event="foreColor"><!-- fore colors --></div>', '<div>', '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="foreColorPicker">', this.lang.color.cpSelect, '</button>', '<input type="color" id="foreColorPicker" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette">', '</div>', // Fix missing Div, Commented to find easily if it's wrong
                                         '<div class="note-holder-custom" id="foreColorPalette" data-event="foreColor"></div>', '</div>'].join('') : ''),
                                     callback: function callback($dropdown) {
                                         $dropdown.find('.note-holder').each(function (idx, item) {
-                                            const $holder = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item);
+                                            var $holder = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item);
                                             $holder.append(_this.ui.palette({
                                                 colors: _this.options.colors,
                                                 colorsName: _this.options.colorsName,
                                                 eventName: $holder.data('event'),
                                                 container: _this.options.container,
-                                                tooltip: _this.options.tooltip,
+                                                tooltip: _this.options.tooltip
                                             }).render());
                                         });
                                         /* TODO: do we have to record recent custom colors within cookies? */
 
-                                        const customColors = [['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF']];
+                                        var customColors = [['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF']];
                                         $dropdown.find('.note-holder-custom').each(function (idx, item) {
-                                            const $holder = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item);
+                                            var $holder = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item);
                                             $holder.append(_this.ui.palette({
                                                 colors: customColors,
                                                 colorsName: customColors,
                                                 eventName: $holder.data('event'),
                                                 container: _this.options.container,
-                                                tooltip: _this.options.tooltip,
+                                                tooltip: _this.options.tooltip
                                             }).render());
                                         });
                                         $dropdown.find('input[type=color]').each(function (idx, item) {
                                             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item).change(function () {
-                                                const $chip = $dropdown.find('#' + external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this).data('event')).find('.note-color-btn').first();
-                                                const color = this.value.toUpperCase();
+                                                var $chip = $dropdown.find('#' + external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this).data('event')).find('.note-color-btn').first();
+                                                var color = this.value.toUpperCase();
                                                 $chip.css('background-color', color).attr('aria-label', color).attr('data-value', color).attr('data-original-title', color);
                                                 $chip.click();
                                             });
@@ -7956,40 +7463,40 @@
                                     },
                                     click: function click(event) {
                                         event.stopPropagation();
-                                        const $parent = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('.' + className).find('.note-dropdown-menu');
-                                        const $button = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(event.target);
-                                        const eventName = $button.data('event');
-                                        const value = $button.attr('data-value');
+                                        var $parent = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('.' + className).find('.note-dropdown-menu');
+                                        var $button = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(event.target);
+                                        var eventName = $button.data('event');
+                                        var value = $button.attr('data-value');
 
                                         if (eventName === 'openPalette') {
-                                            const $picker = $parent.find('#' + value);
-                                            const $palette = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()($parent.find('#' + $picker.data('event')).find('.note-color-row')[0]); // Shift palette chips
+                                            var $picker = $parent.find('#' + value);
+                                            var $palette = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()($parent.find('#' + $picker.data('event')).find('.note-color-row')[0]); // Shift palette chips
 
-                                            const $chip = $palette.find('.note-color-btn').last().detach(); // Set chip attributes
+                                            var $chip = $palette.find('.note-color-btn').last().detach(); // Set chip attributes
 
-                                            const color = $picker.val();
+                                            var color = $picker.val();
                                             $chip.css('background-color', color).attr('aria-label', color).attr('data-value', color).attr('data-original-title', color);
                                             $palette.prepend($chip);
                                             $picker.click();
                                         } else {
                                             if (lists.contains(['backColor', 'foreColor'], eventName)) {
-                                                const key = eventName === 'backColor' ? 'background-color' : 'color';
-                                                const $color = $button.closest('.note-color').find('.note-recent-color');
-                                                const $currentButton = $button.closest('.note-color').find('.note-current-color-button');
+                                                var key = eventName === 'backColor' ? 'background-color' : 'color';
+                                                var $color = $button.closest('.note-color').find('.note-recent-color');
+                                                var $currentButton = $button.closest('.note-color').find('.note-current-color-button');
                                                 $color.css(key, value);
                                                 $currentButton.attr('data-' + eventName, value);
                                             }
 
                                             _this.context.invoke('editor.' + eventName, value);
                                         }
-                                    },
-                                })],
+                                    }
+                                })]
                             }).render();
-                        },
+                        }
                     }, {
-                        key: 'addToolbarButtons',
+                        key: "addToolbarButtons",
                         value: function addToolbarButtons() {
-                            const _this2 = this;
+                            var _this2 = this;
 
                             this.context.memo('button.style', function () {
                                 return _this2.ui.buttonGroup([_this2.button({
@@ -7997,8 +7504,8 @@
                                     contents: _this2.ui.dropdownButtonContents(_this2.ui.icon(_this2.options.icons.magic), _this2.options),
                                     tooltip: _this2.lang.style.style,
                                     data: {
-                                        toggle: 'dropdown',
-                                    },
+                                        toggle: 'dropdown'
+                                    }
                                 }), _this2.ui.dropdown({
                                     className: 'dropdown-style',
                                     items: _this2.options.styleTags,
@@ -8008,34 +7515,34 @@
                                         if (typeof item === 'string') {
                                             item = {
                                                 tag: item,
-                                                title: Object.prototype.hasOwnProperty.call(_this2.lang.style, item) ? _this2.lang.style[item] : item,
+                                                title: Object.prototype.hasOwnProperty.call(_this2.lang.style, item) ? _this2.lang.style[item] : item
                                             };
                                         }
 
-                                        const tag = item.tag;
-                                        const title = item.title;
-                                        const style = item.style ? ' style="' + item.style + '" ' : '';
-                                        const className = item.className ? ' class="' + item.className + '"' : '';
+                                        var tag = item.tag;
+                                        var title = item.title;
+                                        var style = item.style ? ' style="' + item.style + '" ' : '';
+                                        var className = item.className ? ' class="' + item.className + '"' : '';
                                         return '<' + tag + style + className + '>' + title + '</' + tag + '>';
                                     },
-                                    click: _this2.context.createInvokeHandler('editor.formatBlock'),
+                                    click: _this2.context.createInvokeHandler('editor.formatBlock')
                                 })]).render();
                             });
 
-                            const _loop = function _loop(styleIdx, styleLen) {
-                                const item = _this2.options.styleTags[styleIdx];
+                            var _loop = function _loop(styleIdx, styleLen) {
+                                var item = _this2.options.styleTags[styleIdx];
 
                                 _this2.context.memo('button.style.' + item, function () {
                                     return _this2.button({
                                         className: 'note-btn-style-' + item,
                                         contents: '<div data-value="' + item + '">' + item.toUpperCase() + '</div>',
                                         tooltip: _this2.lang.style[item],
-                                        click: _this2.context.createInvokeHandler('editor.formatBlock'),
+                                        click: _this2.context.createInvokeHandler('editor.formatBlock')
                                     }).render();
                                 });
                             };
 
-                            for (let styleIdx = 0, styleLen = this.options.styleTags.length; styleIdx < styleLen; styleIdx++) {
+                            for (var styleIdx = 0, styleLen = this.options.styleTags.length; styleIdx < styleLen; styleIdx++) {
                                 _loop(styleIdx, styleLen);
                             }
 
@@ -8044,7 +7551,7 @@
                                     className: 'note-btn-bold',
                                     contents: _this2.ui.icon(_this2.options.icons.bold),
                                     tooltip: _this2.lang.font.bold + _this2.representShortcut('bold'),
-                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.bold'),
+                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.bold')
                                 }).render();
                             });
                             this.context.memo('button.italic', function () {
@@ -8052,7 +7559,7 @@
                                     className: 'note-btn-italic',
                                     contents: _this2.ui.icon(_this2.options.icons.italic),
                                     tooltip: _this2.lang.font.italic + _this2.representShortcut('italic'),
-                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.italic'),
+                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.italic')
                                 }).render();
                             });
                             this.context.memo('button.underline', function () {
@@ -8060,14 +7567,14 @@
                                     className: 'note-btn-underline',
                                     contents: _this2.ui.icon(_this2.options.icons.underline),
                                     tooltip: _this2.lang.font.underline + _this2.representShortcut('underline'),
-                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.underline'),
+                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.underline')
                                 }).render();
                             });
                             this.context.memo('button.clear', function () {
                                 return _this2.button({
                                     contents: _this2.ui.icon(_this2.options.icons.eraser),
                                     tooltip: _this2.lang.font.clear + _this2.representShortcut('removeFormat'),
-                                    click: _this2.context.createInvokeHandler('editor.removeFormat'),
+                                    click: _this2.context.createInvokeHandler('editor.removeFormat')
                                 }).render();
                             });
                             this.context.memo('button.strikethrough', function () {
@@ -8075,7 +7582,7 @@
                                     className: 'note-btn-strikethrough',
                                     contents: _this2.ui.icon(_this2.options.icons.strikethrough),
                                     tooltip: _this2.lang.font.strikethrough + _this2.representShortcut('strikethrough'),
-                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.strikethrough'),
+                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.strikethrough')
                                 }).render();
                             });
                             this.context.memo('button.superscript', function () {
@@ -8083,7 +7590,7 @@
                                     className: 'note-btn-superscript',
                                     contents: _this2.ui.icon(_this2.options.icons.superscript),
                                     tooltip: _this2.lang.font.superscript,
-                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.superscript'),
+                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.superscript')
                                 }).render();
                             });
                             this.context.memo('button.subscript', function () {
@@ -8091,11 +7598,11 @@
                                     className: 'note-btn-subscript',
                                     contents: _this2.ui.icon(_this2.options.icons.subscript),
                                     tooltip: _this2.lang.font.subscript,
-                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.subscript'),
+                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.subscript')
                                 }).render();
                             });
                             this.context.memo('button.fontname', function () {
-                                const styleInfo = _this2.context.invoke('editor.currentStyle');
+                                var styleInfo = _this2.context.invoke('editor.currentStyle');
 
                                 if (_this2.options.addDefaultFonts) {
                                     // Add 'default' fonts into the fontnames array if not exist
@@ -8115,8 +7622,8 @@
                                     contents: _this2.ui.dropdownButtonContents('<span class="note-current-fontname"></span>', _this2.options),
                                     tooltip: _this2.lang.font.name,
                                     data: {
-                                        toggle: 'dropdown',
-                                    },
+                                        toggle: 'dropdown'
+                                    }
                                 }), _this2.ui.dropdownCheck({
                                     className: 'dropdown-fontname',
                                     checkClassName: _this2.options.icons.menuCheck,
@@ -8125,7 +7632,7 @@
                                     template: function template(item) {
                                         return '<span style="font-family: ' + env.validFontName(item) + '">' + item + '</span>';
                                     },
-                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.fontName'),
+                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.fontName')
                                 })]).render();
                             });
                             this.context.memo('button.fontsize', function () {
@@ -8134,14 +7641,14 @@
                                     contents: _this2.ui.dropdownButtonContents('<span class="note-current-fontsize"></span>', _this2.options),
                                     tooltip: _this2.lang.font.size,
                                     data: {
-                                        toggle: 'dropdown',
-                                    },
+                                        toggle: 'dropdown'
+                                    }
                                 }), _this2.ui.dropdownCheck({
                                     className: 'dropdown-fontsize',
                                     checkClassName: _this2.options.icons.menuCheck,
                                     items: _this2.options.fontSizes,
                                     title: _this2.lang.font.size,
-                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.fontSize'),
+                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.fontSize')
                                 })]).render();
                             });
                             this.context.memo('button.fontsizeunit', function () {
@@ -8150,14 +7657,14 @@
                                     contents: _this2.ui.dropdownButtonContents('<span class="note-current-fontsizeunit"></span>', _this2.options),
                                     tooltip: _this2.lang.font.sizeunit,
                                     data: {
-                                        toggle: 'dropdown',
-                                    },
+                                        toggle: 'dropdown'
+                                    }
                                 }), _this2.ui.dropdownCheck({
                                     className: 'dropdown-fontsizeunit',
                                     checkClassName: _this2.options.icons.menuCheck,
                                     items: _this2.options.fontSizeUnits,
                                     title: _this2.lang.font.sizeunit,
-                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.fontSizeUnit'),
+                                    click: _this2.context.createInvokeHandlerAndUpdateState('editor.fontSizeUnit')
                                 })]).render();
                             });
                             this.context.memo('button.color', function () {
@@ -8173,45 +7680,45 @@
                                 return _this2.button({
                                     contents: _this2.ui.icon(_this2.options.icons.unorderedlist),
                                     tooltip: _this2.lang.lists.unordered + _this2.representShortcut('insertUnorderedList'),
-                                    click: _this2.context.createInvokeHandler('editor.insertUnorderedList'),
+                                    click: _this2.context.createInvokeHandler('editor.insertUnorderedList')
                                 }).render();
                             });
                             this.context.memo('button.ol', function () {
                                 return _this2.button({
                                     contents: _this2.ui.icon(_this2.options.icons.orderedlist),
                                     tooltip: _this2.lang.lists.ordered + _this2.representShortcut('insertOrderedList'),
-                                    click: _this2.context.createInvokeHandler('editor.insertOrderedList'),
+                                    click: _this2.context.createInvokeHandler('editor.insertOrderedList')
                                 }).render();
                             });
-                            const justifyLeft = this.button({
+                            var justifyLeft = this.button({
                                 contents: this.ui.icon(this.options.icons.alignLeft),
                                 tooltip: this.lang.paragraph.left + this.representShortcut('justifyLeft'),
-                                click: this.context.createInvokeHandler('editor.justifyLeft'),
+                                click: this.context.createInvokeHandler('editor.justifyLeft')
                             });
-                            const justifyCenter = this.button({
+                            var justifyCenter = this.button({
                                 contents: this.ui.icon(this.options.icons.alignCenter),
                                 tooltip: this.lang.paragraph.center + this.representShortcut('justifyCenter'),
-                                click: this.context.createInvokeHandler('editor.justifyCenter'),
+                                click: this.context.createInvokeHandler('editor.justifyCenter')
                             });
-                            const justifyRight = this.button({
+                            var justifyRight = this.button({
                                 contents: this.ui.icon(this.options.icons.alignRight),
                                 tooltip: this.lang.paragraph.right + this.representShortcut('justifyRight'),
-                                click: this.context.createInvokeHandler('editor.justifyRight'),
+                                click: this.context.createInvokeHandler('editor.justifyRight')
                             });
-                            const justifyFull = this.button({
+                            var justifyFull = this.button({
                                 contents: this.ui.icon(this.options.icons.alignJustify),
                                 tooltip: this.lang.paragraph.justify + this.representShortcut('justifyFull'),
-                                click: this.context.createInvokeHandler('editor.justifyFull'),
+                                click: this.context.createInvokeHandler('editor.justifyFull')
                             });
-                            const outdent = this.button({
+                            var outdent = this.button({
                                 contents: this.ui.icon(this.options.icons.outdent),
                                 tooltip: this.lang.paragraph.outdent + this.representShortcut('outdent'),
-                                click: this.context.createInvokeHandler('editor.outdent'),
+                                click: this.context.createInvokeHandler('editor.outdent')
                             });
-                            const indent = this.button({
+                            var indent = this.button({
                                 contents: this.ui.icon(this.options.icons.indent),
                                 tooltip: this.lang.paragraph.indent + this.representShortcut('indent'),
-                                click: this.context.createInvokeHandler('editor.indent'),
+                                click: this.context.createInvokeHandler('editor.indent')
                             });
                             this.context.memo('button.justifyLeft', func.invoke(justifyLeft, 'render'));
                             this.context.memo('button.justifyCenter', func.invoke(justifyCenter, 'render'));
@@ -8225,14 +7732,14 @@
                                     contents: _this2.ui.dropdownButtonContents(_this2.ui.icon(_this2.options.icons.alignLeft), _this2.options),
                                     tooltip: _this2.lang.paragraph.paragraph,
                                     data: {
-                                        toggle: 'dropdown',
-                                    },
+                                        toggle: 'dropdown'
+                                    }
                                 }), _this2.ui.dropdown([_this2.ui.buttonGroup({
                                     className: 'note-align',
-                                    children: [justifyLeft, justifyCenter, justifyRight, justifyFull],
+                                    children: [justifyLeft, justifyCenter, justifyRight, justifyFull]
                                 }), _this2.ui.buttonGroup({
                                     className: 'note-list',
-                                    children: [outdent, indent],
+                                    children: [outdent, indent]
                                 })])]).render();
                             });
                             this.context.memo('button.height', function () {
@@ -8241,14 +7748,14 @@
                                     contents: _this2.ui.dropdownButtonContents(_this2.ui.icon(_this2.options.icons.textHeight), _this2.options),
                                     tooltip: _this2.lang.font.height,
                                     data: {
-                                        toggle: 'dropdown',
-                                    },
+                                        toggle: 'dropdown'
+                                    }
                                 }), _this2.ui.dropdownCheck({
                                     items: _this2.options.lineHeights,
                                     checkClassName: _this2.options.icons.menuCheck,
                                     className: 'dropdown-line-height',
                                     title: _this2.lang.font.height,
-                                    click: _this2.context.createInvokeHandler('editor.lineHeight'),
+                                    click: _this2.context.createInvokeHandler('editor.lineHeight')
                                 })]).render();
                             });
                             this.context.memo('button.table', function () {
@@ -8257,48 +7764,48 @@
                                     contents: _this2.ui.dropdownButtonContents(_this2.ui.icon(_this2.options.icons.table), _this2.options),
                                     tooltip: _this2.lang.table.table,
                                     data: {
-                                        toggle: 'dropdown',
-                                    },
+                                        toggle: 'dropdown'
+                                    }
                                 }), _this2.ui.dropdown({
                                     title: _this2.lang.table.table,
                                     className: 'note-table',
-                                    items: ['<div class="note-dimension-picker">', '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>', '<div class="note-dimension-picker-highlighted"></div>', '<div class="note-dimension-picker-unhighlighted"></div>', '</div>', '<div class="note-dimension-display">1 x 1</div>'].join(''),
+                                    items: ['<div class="note-dimension-picker">', '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>', '<div class="note-dimension-picker-highlighted"></div>', '<div class="note-dimension-picker-unhighlighted"></div>', '</div>', '<div class="note-dimension-display">1 x 1</div>'].join('')
                                 })], {
                                     callback: function callback($node) {
-                                        const $catcher = $node.find('.note-dimension-picker-mousecatcher');
+                                        var $catcher = $node.find('.note-dimension-picker-mousecatcher');
                                         $catcher.css({
                                             width: _this2.options.insertTableMaxSize.col + 'em',
-                                            height: _this2.options.insertTableMaxSize.row + 'em',
+                                            height: _this2.options.insertTableMaxSize.row + 'em'
                                         }).mousedown(_this2.context.createInvokeHandler('editor.insertTable')).on('mousemove', _this2.tableMoveHandler.bind(_this2));
-                                    },
+                                    }
                                 }).render();
                             });
                             this.context.memo('button.link', function () {
                                 return _this2.button({
                                     contents: _this2.ui.icon(_this2.options.icons.link),
                                     tooltip: _this2.lang.link.link + _this2.representShortcut('linkDialog.show'),
-                                    click: _this2.context.createInvokeHandler('linkDialog.show'),
+                                    click: _this2.context.createInvokeHandler('linkDialog.show')
                                 }).render();
                             });
                             this.context.memo('button.picture', function () {
                                 return _this2.button({
                                     contents: _this2.ui.icon(_this2.options.icons.picture),
                                     tooltip: _this2.lang.image.image,
-                                    click: _this2.context.createInvokeHandler('imageDialog.show'),
+                                    click: _this2.context.createInvokeHandler('imageDialog.show')
                                 }).render();
                             });
                             this.context.memo('button.video', function () {
                                 return _this2.button({
                                     contents: _this2.ui.icon(_this2.options.icons.video),
                                     tooltip: _this2.lang.video.video,
-                                    click: _this2.context.createInvokeHandler('videoDialog.show'),
+                                    click: _this2.context.createInvokeHandler('videoDialog.show')
                                 }).render();
                             });
                             this.context.memo('button.hr', function () {
                                 return _this2.button({
                                     contents: _this2.ui.icon(_this2.options.icons.minus),
                                     tooltip: _this2.lang.hr.insert + _this2.representShortcut('insertHorizontalRule'),
-                                    click: _this2.context.createInvokeHandler('editor.insertHorizontalRule'),
+                                    click: _this2.context.createInvokeHandler('editor.insertHorizontalRule')
                                 }).render();
                             });
                             this.context.memo('button.fullscreen', function () {
@@ -8306,7 +7813,7 @@
                                     className: 'btn-fullscreen note-codeview-keep',
                                     contents: _this2.ui.icon(_this2.options.icons.arrowsAlt),
                                     tooltip: _this2.lang.options.fullscreen,
-                                    click: _this2.context.createInvokeHandler('fullscreen.toggle'),
+                                    click: _this2.context.createInvokeHandler('fullscreen.toggle')
                                 }).render();
                             });
                             this.context.memo('button.codeview', function () {
@@ -8314,31 +7821,31 @@
                                     className: 'btn-codeview note-codeview-keep',
                                     contents: _this2.ui.icon(_this2.options.icons.code),
                                     tooltip: _this2.lang.options.codeview,
-                                    click: _this2.context.createInvokeHandler('codeview.toggle'),
+                                    click: _this2.context.createInvokeHandler('codeview.toggle')
                                 }).render();
                             });
                             this.context.memo('button.redo', function () {
                                 return _this2.button({
                                     contents: _this2.ui.icon(_this2.options.icons.redo),
                                     tooltip: _this2.lang.history.redo + _this2.representShortcut('redo'),
-                                    click: _this2.context.createInvokeHandler('editor.redo'),
+                                    click: _this2.context.createInvokeHandler('editor.redo')
                                 }).render();
                             });
                             this.context.memo('button.undo', function () {
                                 return _this2.button({
                                     contents: _this2.ui.icon(_this2.options.icons.undo),
                                     tooltip: _this2.lang.history.undo + _this2.representShortcut('undo'),
-                                    click: _this2.context.createInvokeHandler('editor.undo'),
+                                    click: _this2.context.createInvokeHandler('editor.undo')
                                 }).render();
                             });
                             this.context.memo('button.help', function () {
                                 return _this2.button({
                                     contents: _this2.ui.icon(_this2.options.icons.question),
                                     tooltip: _this2.lang.options.help,
-                                    click: _this2.context.createInvokeHandler('helpDialog.show'),
+                                    click: _this2.context.createInvokeHandler('helpDialog.show')
                                 }).render();
                             });
-                        },
+                        }
                         /**
                          * image: [
                          *   ['imageResize', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
@@ -8348,37 +7855,37 @@
                          */
 
                     }, {
-                        key: 'addImagePopoverButtons',
+                        key: "addImagePopoverButtons",
                         value: function addImagePopoverButtons() {
-                            const _this3 = this;
+                            var _this3 = this;
 
                             // Image Size Buttons
                             this.context.memo('button.resizeFull', function () {
                                 return _this3.button({
                                     contents: '<span class="note-fontsize-10">100%</span>',
                                     tooltip: _this3.lang.image.resizeFull,
-                                    click: _this3.context.createInvokeHandler('editor.resize', '1'),
+                                    click: _this3.context.createInvokeHandler('editor.resize', '1')
                                 }).render();
                             });
                             this.context.memo('button.resizeHalf', function () {
                                 return _this3.button({
                                     contents: '<span class="note-fontsize-10">50%</span>',
                                     tooltip: _this3.lang.image.resizeHalf,
-                                    click: _this3.context.createInvokeHandler('editor.resize', '0.5'),
+                                    click: _this3.context.createInvokeHandler('editor.resize', '0.5')
                                 }).render();
                             });
                             this.context.memo('button.resizeQuarter', function () {
                                 return _this3.button({
                                     contents: '<span class="note-fontsize-10">25%</span>',
                                     tooltip: _this3.lang.image.resizeQuarter,
-                                    click: _this3.context.createInvokeHandler('editor.resize', '0.25'),
+                                    click: _this3.context.createInvokeHandler('editor.resize', '0.25')
                                 }).render();
                             });
                             this.context.memo('button.resizeNone', function () {
                                 return _this3.button({
                                     contents: _this3.ui.icon(_this3.options.icons.rollback),
                                     tooltip: _this3.lang.image.resizeNone,
-                                    click: _this3.context.createInvokeHandler('editor.resize', '0'),
+                                    click: _this3.context.createInvokeHandler('editor.resize', '0')
                                 }).render();
                             }); // Float Buttons
 
@@ -8386,21 +7893,21 @@
                                 return _this3.button({
                                     contents: _this3.ui.icon(_this3.options.icons.floatLeft),
                                     tooltip: _this3.lang.image.floatLeft,
-                                    click: _this3.context.createInvokeHandler('editor.floatMe', 'left'),
+                                    click: _this3.context.createInvokeHandler('editor.floatMe', 'left')
                                 }).render();
                             });
                             this.context.memo('button.floatRight', function () {
                                 return _this3.button({
                                     contents: _this3.ui.icon(_this3.options.icons.floatRight),
                                     tooltip: _this3.lang.image.floatRight,
-                                    click: _this3.context.createInvokeHandler('editor.floatMe', 'right'),
+                                    click: _this3.context.createInvokeHandler('editor.floatMe', 'right')
                                 }).render();
                             });
                             this.context.memo('button.floatNone', function () {
                                 return _this3.button({
                                     contents: _this3.ui.icon(_this3.options.icons.rollback),
                                     tooltip: _this3.lang.image.floatNone,
-                                    click: _this3.context.createInvokeHandler('editor.floatMe', 'none'),
+                                    click: _this3.context.createInvokeHandler('editor.floatMe', 'none')
                                 }).render();
                             }); // Remove Buttons
 
@@ -8408,30 +7915,30 @@
                                 return _this3.button({
                                     contents: _this3.ui.icon(_this3.options.icons.trash),
                                     tooltip: _this3.lang.image.remove,
-                                    click: _this3.context.createInvokeHandler('editor.removeMedia'),
+                                    click: _this3.context.createInvokeHandler('editor.removeMedia')
                                 }).render();
                             });
-                        },
+                        }
                     }, {
-                        key: 'addLinkPopoverButtons',
+                        key: "addLinkPopoverButtons",
                         value: function addLinkPopoverButtons() {
-                            const _this4 = this;
+                            var _this4 = this;
 
                             this.context.memo('button.linkDialogShow', function () {
                                 return _this4.button({
                                     contents: _this4.ui.icon(_this4.options.icons.link),
                                     tooltip: _this4.lang.link.edit,
-                                    click: _this4.context.createInvokeHandler('linkDialog.show'),
+                                    click: _this4.context.createInvokeHandler('linkDialog.show')
                                 }).render();
                             });
                             this.context.memo('button.unlink', function () {
                                 return _this4.button({
                                     contents: _this4.ui.icon(_this4.options.icons.unlink),
                                     tooltip: _this4.lang.link.unlink,
-                                    click: _this4.context.createInvokeHandler('editor.unlink'),
+                                    click: _this4.context.createInvokeHandler('editor.unlink')
                                 }).render();
                             });
-                        },
+                        }
                         /**
                          * table : [
                          *  ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
@@ -8440,16 +7947,16 @@
                          */
 
                     }, {
-                        key: 'addTablePopoverButtons',
+                        key: "addTablePopoverButtons",
                         value: function addTablePopoverButtons() {
-                            const _this5 = this;
+                            var _this5 = this;
 
                             this.context.memo('button.addRowUp', function () {
                                 return _this5.button({
                                     className: 'btn-md',
                                     contents: _this5.ui.icon(_this5.options.icons.rowAbove),
                                     tooltip: _this5.lang.table.addRowAbove,
-                                    click: _this5.context.createInvokeHandler('editor.addRow', 'top'),
+                                    click: _this5.context.createInvokeHandler('editor.addRow', 'top')
                                 }).render();
                             });
                             this.context.memo('button.addRowDown', function () {
@@ -8457,7 +7964,7 @@
                                     className: 'btn-md',
                                     contents: _this5.ui.icon(_this5.options.icons.rowBelow),
                                     tooltip: _this5.lang.table.addRowBelow,
-                                    click: _this5.context.createInvokeHandler('editor.addRow', 'bottom'),
+                                    click: _this5.context.createInvokeHandler('editor.addRow', 'bottom')
                                 }).render();
                             });
                             this.context.memo('button.addColLeft', function () {
@@ -8465,7 +7972,7 @@
                                     className: 'btn-md',
                                     contents: _this5.ui.icon(_this5.options.icons.colBefore),
                                     tooltip: _this5.lang.table.addColLeft,
-                                    click: _this5.context.createInvokeHandler('editor.addCol', 'left'),
+                                    click: _this5.context.createInvokeHandler('editor.addCol', 'left')
                                 }).render();
                             });
                             this.context.memo('button.addColRight', function () {
@@ -8473,7 +7980,7 @@
                                     className: 'btn-md',
                                     contents: _this5.ui.icon(_this5.options.icons.colAfter),
                                     tooltip: _this5.lang.table.addColRight,
-                                    click: _this5.context.createInvokeHandler('editor.addCol', 'right'),
+                                    click: _this5.context.createInvokeHandler('editor.addCol', 'right')
                                 }).render();
                             });
                             this.context.memo('button.deleteRow', function () {
@@ -8481,7 +7988,7 @@
                                     className: 'btn-md',
                                     contents: _this5.ui.icon(_this5.options.icons.rowRemove),
                                     tooltip: _this5.lang.table.delRow,
-                                    click: _this5.context.createInvokeHandler('editor.deleteRow'),
+                                    click: _this5.context.createInvokeHandler('editor.deleteRow')
                                 }).render();
                             });
                             this.context.memo('button.deleteCol', function () {
@@ -8489,7 +7996,7 @@
                                     className: 'btn-md',
                                     contents: _this5.ui.icon(_this5.options.icons.colRemove),
                                     tooltip: _this5.lang.table.delCol,
-                                    click: _this5.context.createInvokeHandler('editor.deleteCol'),
+                                    click: _this5.context.createInvokeHandler('editor.deleteCol')
                                 }).render();
                             });
                             this.context.memo('button.deleteTable', function () {
@@ -8497,23 +8004,23 @@
                                     className: 'btn-md',
                                     contents: _this5.ui.icon(_this5.options.icons.trash),
                                     tooltip: _this5.lang.table.delTable,
-                                    click: _this5.context.createInvokeHandler('editor.deleteTable'),
+                                    click: _this5.context.createInvokeHandler('editor.deleteTable')
                                 }).render();
                             });
-                        },
+                        }
                     }, {
-                        key: 'build',
+                        key: "build",
                         value: function build($container, groups) {
-                            for (let groupIdx = 0, groupLen = groups.length; groupIdx < groupLen; groupIdx++) {
-                                const group = groups[groupIdx];
-                                const groupName = Array.isArray(group) ? group[0] : group;
-                                const buttons = Array.isArray(group) ? group.length === 1 ? [group[0]] : group[1] : [group];
-                                const $group = this.ui.buttonGroup({
-                                    className: 'note-' + groupName,
+                            for (var groupIdx = 0, groupLen = groups.length; groupIdx < groupLen; groupIdx++) {
+                                var group = groups[groupIdx];
+                                var groupName = Array.isArray(group) ? group[0] : group;
+                                var buttons = Array.isArray(group) ? group.length === 1 ? [group[0]] : group[1] : [group];
+                                var $group = this.ui.buttonGroup({
+                                    className: 'note-' + groupName
                                 }).render();
 
-                                for (let idx = 0, len = buttons.length; idx < len; idx++) {
-                                    const btn = this.context.memo('button.' + buttons[idx]);
+                                for (var idx = 0, len = buttons.length; idx < len; idx++) {
+                                    var btn = this.context.memo('button.' + buttons[idx]);
 
                                     if (btn) {
                                         $group.append(typeof btn === 'function' ? btn(this.context) : btn);
@@ -8522,18 +8029,18 @@
 
                                 $group.appendTo($container);
                             }
-                        },
+                        }
                         /**
                          * @param {jQuery} [$container]
                          */
 
                     }, {
-                        key: 'updateCurrentStyle',
+                        key: "updateCurrentStyle",
                         value: function updateCurrentStyle($container) {
-                            const _this6 = this;
+                            var _this6 = this;
 
-                            const $cont = $container || this.$toolbar;
-                            const styleInfo = this.context.invoke('editor.currentStyle');
+                            var $cont = $container || this.$toolbar;
+                            var styleInfo = this.context.invoke('editor.currentStyle');
                             this.updateBtnStates($cont, {
                                 '.note-btn-bold': function noteBtnBold() {
                                     return styleInfo['font-bold'] === 'bold';
@@ -8552,139 +8059,124 @@
                                 },
                                 '.note-btn-strikethrough': function noteBtnStrikethrough() {
                                     return styleInfo['font-strikethrough'] === 'strikethrough';
-                                },
+                                }
                             });
 
                             if (styleInfo['font-family']) {
-                                const fontNames = styleInfo['font-family'].split(',').map(function (name) {
+                                var fontNames = styleInfo['font-family'].split(',').map(function (name) {
                                     return name.replace(/[\'\"]/g, '').replace(/\s+$/, '').replace(/^\s+/, '');
                                 });
-                                const fontName = lists.find(fontNames, this.isFontInstalled.bind(this));
+                                var fontName = lists.find(fontNames, this.isFontInstalled.bind(this));
                                 $cont.find('.dropdown-fontname a').each(function (idx, item) {
-                                    const $item = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item); // always compare string to avoid creating another func.
+                                    var $item = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item); // always compare string to avoid creating another func.
 
-                                    const isChecked = $item.data('value') + '' === fontName + '';
+                                    var isChecked = $item.data('value') + '' === fontName + '';
                                     $item.toggleClass('checked', isChecked);
                                 });
                                 $cont.find('.note-current-fontname').text(fontName).css('font-family', fontName);
                             }
 
                             if (styleInfo['font-size']) {
-                                const fontSize = styleInfo['font-size'];
+                                var fontSize = styleInfo['font-size'];
                                 $cont.find('.dropdown-fontsize a').each(function (idx, item) {
-                                    const $item = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item); // always compare with string to avoid creating another func.
+                                    var $item = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item); // always compare with string to avoid creating another func.
 
-                                    const isChecked = $item.data('value') + '' === fontSize + '';
+                                    var isChecked = $item.data('value') + '' === fontSize + '';
                                     $item.toggleClass('checked', isChecked);
                                 });
                                 $cont.find('.note-current-fontsize').text(fontSize);
-                                const fontSizeUnit = styleInfo['font-size-unit'];
+                                var fontSizeUnit = styleInfo['font-size-unit'];
                                 $cont.find('.dropdown-fontsizeunit a').each(function (idx, item) {
-                                    const $item = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item);
-                                    const isChecked = $item.data('value') + '' === fontSizeUnit + '';
+                                    var $item = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item);
+                                    var isChecked = $item.data('value') + '' === fontSizeUnit + '';
                                     $item.toggleClass('checked', isChecked);
                                 });
                                 $cont.find('.note-current-fontsizeunit').text(fontSizeUnit);
                             }
 
                             if (styleInfo['line-height']) {
-                                const lineHeight = styleInfo['line-height'];
+                                var lineHeight = styleInfo['line-height'];
                                 $cont.find('.dropdown-line-height li a').each(function (idx, item) {
                                     // always compare with string to avoid creating another func.
-                                    const isChecked = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item).data('value') + '' === lineHeight + '';
+                                    var isChecked = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(item).data('value') + '' === lineHeight + '';
                                     _this6.className = isChecked ? 'checked' : '';
                                 });
                             }
-                        },
+                        }
                     }, {
-                        key: 'updateBtnStates',
+                        key: "updateBtnStates",
                         value: function updateBtnStates($container, infos) {
-                            const _this7 = this;
+                            var _this7 = this;
 
                             external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.each(infos, function (selector, pred) {
                                 _this7.ui.toggleBtnActive($container.find(selector), pred());
                             });
-                        },
+                        }
                     }, {
-                        key: 'tableMoveHandler',
+                        key: "tableMoveHandler",
                         value: function tableMoveHandler(event) {
-                            const PX_PER_EM = 18;
-                            const $picker = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(event.target.parentNode); // target is mousecatcher
+                            var PX_PER_EM = 18;
+                            var $picker = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(event.target.parentNode); // target is mousecatcher
 
-                            const $dimensionDisplay = $picker.next();
-                            const $catcher = $picker.find('.note-dimension-picker-mousecatcher');
-                            const $highlighted = $picker.find('.note-dimension-picker-highlighted');
-                            const $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
-                            let posOffset; // HTML5 with jQuery - e.offsetX is undefined in Firefox
+                            var $dimensionDisplay = $picker.next();
+                            var $catcher = $picker.find('.note-dimension-picker-mousecatcher');
+                            var $highlighted = $picker.find('.note-dimension-picker-highlighted');
+                            var $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
+                            var posOffset; // HTML5 with jQuery - e.offsetX is undefined in Firefox
 
                             if (event.offsetX === undefined) {
-                                const posCatcher = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(event.target).offset();
+                                var posCatcher = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(event.target).offset();
                                 posOffset = {
                                     x: event.pageX - posCatcher.left,
-                                    y: event.pageY - posCatcher.top,
+                                    y: event.pageY - posCatcher.top
                                 };
                             } else {
                                 posOffset = {
                                     x: event.offsetX,
-                                    y: event.offsetY,
+                                    y: event.offsetY
                                 };
                             }
 
-                            const dim = {
+                            var dim = {
                                 c: Math.ceil(posOffset.x / PX_PER_EM) || 1,
-                                r: Math.ceil(posOffset.y / PX_PER_EM) || 1,
+                                r: Math.ceil(posOffset.y / PX_PER_EM) || 1
                             };
                             $highlighted.css({
                                 width: dim.c + 'em',
-                                height: dim.r + 'em',
+                                height: dim.r + 'em'
                             });
                             $catcher.data('value', dim.c + 'x' + dim.r);
 
                             if (dim.c > 3 && dim.c < this.options.insertTableMaxSize.col) {
                                 $unhighlighted.css({
-                                    width: dim.c + 1 + 'em',
+                                    width: dim.c + 1 + 'em'
                                 });
                             }
 
                             if (dim.r > 3 && dim.r < this.options.insertTableMaxSize.row) {
                                 $unhighlighted.css({
-                                    height: dim.r + 1 + 'em',
+                                    height: dim.r + 1 + 'em'
                                 });
                             }
 
                             $dimensionDisplay.html(dim.c + ' x ' + dim.r);
-                        },
+                        }
                     }]);
 
                     return Buttons;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/Toolbar.js
-                function Toolbar_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/Toolbar.js
+                function Toolbar_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function Toolbar_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function Toolbar_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function Toolbar_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) Toolbar_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) Toolbar_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function Toolbar_createClass(Constructor, protoProps, staticProps) { if (protoProps) Toolbar_defineProperties(Constructor.prototype, protoProps); if (staticProps) Toolbar_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const Toolbar_Toolbar = /* #__PURE__*/function () {
+
+                var Toolbar_Toolbar = /*#__PURE__*/function () {
                     function Toolbar(context) {
                         Toolbar_classCallCheck(this, Toolbar);
 
@@ -8703,14 +8195,14 @@
                     }
 
                     Toolbar_createClass(Toolbar, [{
-                        key: 'shouldInitialize',
+                        key: "shouldInitialize",
                         value: function shouldInitialize() {
                             return !this.options.airMode;
-                        },
+                        }
                     }, {
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const _this = this;
+                            var _this = this;
 
                             this.options.toolbar = this.options.toolbar || [];
 
@@ -8733,50 +8225,50 @@
                             if (this.options.followingToolbar) {
                                 this.$window.on('scroll resize', this.followScroll);
                             }
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.$toolbar.children().remove();
 
                             if (this.options.followingToolbar) {
                                 this.$window.off('scroll resize', this.followScroll);
                             }
-                        },
+                        }
                     }, {
-                        key: 'followScroll',
+                        key: "followScroll",
                         value: function followScroll() {
                             if (this.$editor.hasClass('fullscreen')) {
                                 return false;
                             }
 
-                            const editorHeight = this.$editor.outerHeight();
-                            const editorWidth = this.$editor.width();
-                            const toolbarHeight = this.$toolbar.height();
-                            const statusbarHeight = this.$statusbar.height(); // check if the web app is currently using another static bar
+                            var editorHeight = this.$editor.outerHeight();
+                            var editorWidth = this.$editor.width();
+                            var toolbarHeight = this.$toolbar.height();
+                            var statusbarHeight = this.$statusbar.height(); // check if the web app is currently using another static bar
 
-                            let otherBarHeight = 0;
+                            var otherBarHeight = 0;
 
                             if (this.options.otherStaticBar) {
                                 otherBarHeight = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.otherStaticBar).outerHeight();
                             }
 
-                            const currentOffset = this.$document.scrollTop();
-                            const editorOffsetTop = this.$editor.offset().top;
-                            const editorOffsetBottom = editorOffsetTop + editorHeight;
-                            const activateOffset = editorOffsetTop - otherBarHeight;
-                            const deactivateOffsetBottom = editorOffsetBottom - otherBarHeight - toolbarHeight - statusbarHeight;
+                            var currentOffset = this.$document.scrollTop();
+                            var editorOffsetTop = this.$editor.offset().top;
+                            var editorOffsetBottom = editorOffsetTop + editorHeight;
+                            var activateOffset = editorOffsetTop - otherBarHeight;
+                            var deactivateOffsetBottom = editorOffsetBottom - otherBarHeight - toolbarHeight - statusbarHeight;
 
                             if (!this.isFollowing && currentOffset > activateOffset && currentOffset < deactivateOffsetBottom - toolbarHeight) {
                                 this.isFollowing = true;
                                 this.$editable.css({
-                                    marginTop: this.$toolbar.outerHeight(),
+                                    marginTop: this.$toolbar.outerHeight()
                                 });
                                 this.$toolbar.css({
                                     position: 'fixed',
                                     top: otherBarHeight,
                                     width: editorWidth,
-                                    zIndex: 1000,
+                                    zIndex: 1000
                                 });
                             } else if (this.isFollowing && (currentOffset < activateOffset || currentOffset > deactivateOffsetBottom)) {
                                 this.isFollowing = false;
@@ -8784,15 +8276,15 @@
                                     position: 'relative',
                                     top: 0,
                                     width: '100%',
-                                    zIndex: 'auto',
+                                    zIndex: 'auto'
                                 });
                                 this.$editable.css({
-                                    marginTop: '',
+                                    marginTop: ''
                                 });
                             }
-                        },
+                        }
                     }, {
-                        key: 'changeContainer',
+                        key: "changeContainer",
                         value: function changeContainer(isFullscreen) {
                             if (isFullscreen) {
                                 this.$toolbar.prependTo(this.$editor);
@@ -8805,15 +8297,15 @@
                             if (this.options.followingToolbar) {
                                 this.followScroll();
                             }
-                        },
+                        }
                     }, {
-                        key: 'updateFullscreen',
+                        key: "updateFullscreen",
                         value: function updateFullscreen(isFullscreen) {
                             this.ui.toggleBtnActive(this.$toolbar.find('.btn-fullscreen'), isFullscreen);
                             this.changeContainer(isFullscreen);
-                        },
+                        }
                     }, {
-                        key: 'updateCodeview',
+                        key: "updateCodeview",
                         value: function updateCodeview(isCodeview) {
                             this.ui.toggleBtnActive(this.$toolbar.find('.btn-codeview'), isCodeview);
 
@@ -8822,60 +8314,48 @@
                             } else {
                                 this.activate();
                             }
-                        },
+                        }
                     }, {
-                        key: 'activate',
+                        key: "activate",
                         value: function activate(isIncludeCodeview) {
-                            let $btn = this.$toolbar.find('button');
+                            var $btn = this.$toolbar.find('button');
 
                             if (!isIncludeCodeview) {
                                 $btn = $btn.not('.note-codeview-keep');
                             }
 
                             this.ui.toggleBtn($btn, true);
-                        },
+                        }
                     }, {
-                        key: 'deactivate',
+                        key: "deactivate",
                         value: function deactivate(isIncludeCodeview) {
-                            let $btn = this.$toolbar.find('button');
+                            var $btn = this.$toolbar.find('button');
 
                             if (!isIncludeCodeview) {
                                 $btn = $btn.not('.note-codeview-keep');
                             }
 
                             this.ui.toggleBtn($btn, false);
-                        },
+                        }
                     }]);
 
                     return Toolbar;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/LinkDialog.js
-                function LinkDialog_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/LinkDialog.js
+                function LinkDialog_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function LinkDialog_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function LinkDialog_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function LinkDialog_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) LinkDialog_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) LinkDialog_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function LinkDialog_createClass(Constructor, protoProps, staticProps) { if (protoProps) LinkDialog_defineProperties(Constructor.prototype, protoProps); if (staticProps) LinkDialog_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const LinkDialog_LinkDialog = /* #__PURE__*/function () {
+
+
+
+
+                var LinkDialog_LinkDialog = /*#__PURE__*/function () {
                     function LinkDialog(context) {
                         LinkDialog_classCallCheck(this, LinkDialog);
 
@@ -8889,36 +8369,36 @@
                     }
 
                     LinkDialog_createClass(LinkDialog, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const $container = this.options.dialogsInBody ? this.$body : this.options.container;
-                            const body = ['<div class="form-group note-form-group">', '<label for="note-dialog-link-txt-'.concat(this.options.id, '" class="note-form-label">').concat(this.lang.link.textToDisplay, '</label>'), '<input id="note-dialog-link-txt-'.concat(this.options.id, '" class="note-link-text form-control note-form-control note-input" type="text"/>'), '</div>', '<div class="form-group note-form-group">', '<label for="note-dialog-link-url-'.concat(this.options.id, '" class="note-form-label">').concat(this.lang.link.url, '</label>'), '<input id="note-dialog-link-url-'.concat(this.options.id, '" class="note-link-url form-control note-form-control note-input" type="text" value="http://"/>'), '</div>', !this.options.disableLinkTarget ? external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div/>').append(this.ui.checkbox({
+                            var $container = this.options.dialogsInBody ? this.$body : this.options.container;
+                            var body = ['<div class="form-group note-form-group">', "<label for=\"note-dialog-link-txt-".concat(this.options.id, "\" class=\"note-form-label\">").concat(this.lang.link.textToDisplay, "</label>"), "<input id=\"note-dialog-link-txt-".concat(this.options.id, "\" class=\"note-link-text form-control note-form-control note-input\" type=\"text\"/>"), '</div>', '<div class="form-group note-form-group">', "<label for=\"note-dialog-link-url-".concat(this.options.id, "\" class=\"note-form-label\">").concat(this.lang.link.url, "</label>"), "<input id=\"note-dialog-link-url-".concat(this.options.id, "\" class=\"note-link-url form-control note-form-control note-input\" type=\"text\" value=\"http://\"/>"), '</div>', !this.options.disableLinkTarget ? external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div/>').append(this.ui.checkbox({
                                 className: 'sn-checkbox-open-in-new-window',
                                 text: this.lang.link.openInNewWindow,
-                                checked: true,
+                                checked: true
                             }).render()).html() : '', external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div/>').append(this.ui.checkbox({
                                 className: 'sn-checkbox-use-protocol',
                                 text: this.lang.link.useProtocol,
-                                checked: true,
+                                checked: true
                             }).render()).html()].join('');
-                            const buttonClass = 'btn btn-primary note-btn note-btn-primary note-link-btn';
-                            const footer = '<input type="button" href="#" class="'.concat(buttonClass, '" value="').concat(this.lang.link.insert, '" disabled>');
+                            var buttonClass = 'btn btn-primary note-btn note-btn-primary note-link-btn';
+                            var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.link.insert, "\" disabled>");
                             this.$dialog = this.ui.dialog({
                                 className: 'link-dialog',
                                 title: this.lang.link.insert,
                                 fade: this.options.dialogsFade,
                                 body: body,
-                                footer: footer,
+                                footer: footer
                             }).render().appendTo($container);
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.ui.hideDialog(this.$dialog);
                             this.$dialog.remove();
-                        },
+                        }
                     }, {
-                        key: 'bindEnterKey',
+                        key: "bindEnterKey",
                         value: function bindEnterKey($input, $btn) {
                             $input.on('keypress', function (event) {
                                 if (event.keyCode === core_key.code.ENTER) {
@@ -8926,16 +8406,16 @@
                                     $btn.trigger('click');
                                 }
                             });
-                        },
+                        }
                         /**
                          * toggle update button
                          */
 
                     }, {
-                        key: 'toggleLinkBtn',
+                        key: "toggleLinkBtn",
                         value: function toggleLinkBtn($linkBtn, $linkText, $linkUrl) {
                             this.ui.toggleBtn($linkBtn, $linkText.val() && $linkUrl.val());
-                        },
+                        }
                         /**
                          * Show link dialog and set event handlers on dialog controls.
                          *
@@ -8944,20 +8424,20 @@
                          */
 
                     }, {
-                        key: 'showLinkDialog',
+                        key: "showLinkDialog",
                         value: function showLinkDialog(linkInfo) {
-                            const _this = this;
+                            var _this = this;
 
                             return external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.Deferred(function (deferred) {
-                                const $linkText = _this.$dialog.find('.note-link-text');
+                                var $linkText = _this.$dialog.find('.note-link-text');
 
-                                const $linkUrl = _this.$dialog.find('.note-link-url');
+                                var $linkUrl = _this.$dialog.find('.note-link-url');
 
-                                const $linkBtn = _this.$dialog.find('.note-link-btn');
+                                var $linkBtn = _this.$dialog.find('.note-link-btn');
 
-                                const $openInNewWindow = _this.$dialog.find('.sn-checkbox-open-in-new-window input[type=checkbox]');
+                                var $openInNewWindow = _this.$dialog.find('.sn-checkbox-open-in-new-window input[type=checkbox]');
 
-                                const $useProtocol = _this.$dialog.find('.sn-checkbox-use-protocol input[type=checkbox]');
+                                var $useProtocol = _this.$dialog.find('.sn-checkbox-use-protocol input[type=checkbox]');
 
                                 _this.ui.onDialogShown(_this.$dialog, function () {
                                     _this.context.triggerEvent('dialog.shown'); // If no url was given and given text is valid URL then copy that into URL Field
@@ -8994,9 +8474,9 @@
 
                                     _this.bindEnterKey($linkText, $linkBtn);
 
-                                    const isNewWindowChecked = linkInfo.isNewWindow !== undefined ? linkInfo.isNewWindow : _this.context.options.linkTargetBlank;
+                                    var isNewWindowChecked = linkInfo.isNewWindow !== undefined ? linkInfo.isNewWindow : _this.context.options.linkTargetBlank;
                                     $openInNewWindow.prop('checked', isNewWindowChecked);
-                                    const useProtocolChecked = linkInfo.url ? false : _this.context.options.useProtocol;
+                                    var useProtocolChecked = linkInfo.url ? false : _this.context.options.useProtocol;
                                     $useProtocol.prop('checked', useProtocolChecked);
                                     $linkBtn.one('click', function (event) {
                                         event.preventDefault();
@@ -9005,7 +8485,7 @@
                                             url: $linkUrl.val(),
                                             text: $linkText.val(),
                                             isNewWindow: $openInNewWindow.is(':checked'),
-                                            checkProtocol: $useProtocol.is(':checked'),
+                                            checkProtocol: $useProtocol.is(':checked')
                                         });
 
                                         _this.ui.hideDialog(_this.$dialog);
@@ -9025,17 +8505,17 @@
 
                                 _this.ui.showDialog(_this.$dialog);
                             }).promise();
-                        },
+                        }
                         /**
                          * @param {Object} layoutInfo
                          */
 
                     }, {
-                        key: 'show',
+                        key: "show",
                         value: function show() {
-                            const _this2 = this;
+                            var _this2 = this;
 
-                            const linkInfo = this.context.invoke('editor.getLinkInfo');
+                            var linkInfo = this.context.invoke('editor.getLinkInfo');
                             this.context.invoke('editor.saveRange');
                             this.showLinkDialog(linkInfo).then(function (linkInfo) {
                                 _this2.context.invoke('editor.restoreRange');
@@ -9044,40 +8524,27 @@
                             }).fail(function () {
                                 _this2.context.invoke('editor.restoreRange');
                             });
-                        },
+                        }
                     }]);
 
                     return LinkDialog;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/LinkPopover.js
-                function LinkPopover_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/LinkPopover.js
+                function LinkPopover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function LinkPopover_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function LinkPopover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function LinkPopover_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) LinkPopover_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) LinkPopover_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function LinkPopover_createClass(Constructor, protoProps, staticProps) { if (protoProps) LinkPopover_defineProperties(Constructor.prototype, protoProps); if (staticProps) LinkPopover_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const LinkPopover_LinkPopover = /* #__PURE__*/function () {
+
+
+
+                var LinkPopover_LinkPopover = /*#__PURE__*/function () {
                     function LinkPopover(context) {
-                        const _this = this;
+                        var _this = this;
 
                         LinkPopover_classCallCheck(this, LinkPopover);
 
@@ -9090,38 +8557,38 @@
                             },
                             'summernote.disable summernote.dialog.shown summernote.blur': function summernoteDisableSummernoteDialogShownSummernoteBlur() {
                                 _this.hide();
-                            },
+                            }
                         };
                     }
 
                     LinkPopover_createClass(LinkPopover, [{
-                        key: 'shouldInitialize',
+                        key: "shouldInitialize",
                         value: function shouldInitialize() {
                             return !lists.isEmpty(this.options.popover.link);
-                        },
+                        }
                     }, {
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
                             this.$popover = this.ui.popover({
                                 className: 'note-link-popover',
                                 callback: function callback($node) {
-                                    const $content = $node.find('.popover-content,.note-popover-content');
+                                    var $content = $node.find('.popover-content,.note-popover-content');
                                     $content.prepend('<span><a target="_blank"></a>&nbsp;</span>');
-                                },
+                                }
                             }).render().appendTo(this.options.container);
-                            const $content = this.$popover.find('.popover-content,.note-popover-content');
+                            var $content = this.$popover.find('.popover-content,.note-popover-content');
                             this.context.invoke('buttons.build', $content, this.options.popover.link);
                             this.$popover.on('mousedown', function (e) {
                                 e.preventDefault();
                             });
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.$popover.remove();
-                        },
+                        }
                     }, {
-                        key: 'update',
+                        key: "update",
                         value: function update() {
                             // Prevent focusing on editable when invoke('code') is executed
                             if (!this.context.invoke('editor.hasFocus')) {
@@ -9129,61 +8596,48 @@
                                 return;
                             }
 
-                            const rng = this.context.invoke('editor.getLastRange');
+                            var rng = this.context.invoke('editor.getLastRange');
 
                             if (rng.isCollapsed() && rng.isOnAnchor()) {
-                                const anchor = dom.ancestor(rng.sc, dom.isAnchor);
-                                const href = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(anchor).attr('href');
+                                var anchor = dom.ancestor(rng.sc, dom.isAnchor);
+                                var href = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(anchor).attr('href');
                                 this.$popover.find('a').attr('href', href).text(href);
-                                const pos = dom.posFromPlaceholder(anchor);
-                                const containerOffset = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.container).offset();
+                                var pos = dom.posFromPlaceholder(anchor);
+                                var containerOffset = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.container).offset();
                                 pos.top -= containerOffset.top;
                                 pos.left -= containerOffset.left;
                                 this.$popover.css({
                                     display: 'block',
                                     left: pos.left,
-                                    top: pos.top,
+                                    top: pos.top
                                 });
                             } else {
                                 this.hide();
                             }
-                        },
+                        }
                     }, {
-                        key: 'hide',
+                        key: "hide",
                         value: function hide() {
                             this.$popover.hide();
-                        },
+                        }
                     }]);
 
                     return LinkPopover;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/ImageDialog.js
-                function ImageDialog_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/ImageDialog.js
+                function ImageDialog_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function ImageDialog_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function ImageDialog_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function ImageDialog_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) ImageDialog_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) ImageDialog_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function ImageDialog_createClass(Constructor, protoProps, staticProps) { if (protoProps) ImageDialog_defineProperties(Constructor.prototype, protoProps); if (staticProps) ImageDialog_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const ImageDialog_ImageDialog = /* #__PURE__*/function () {
+
+
+
+                var ImageDialog_ImageDialog = /*#__PURE__*/function () {
                     function ImageDialog(context) {
                         ImageDialog_classCallCheck(this, ImageDialog);
 
@@ -9196,35 +8650,35 @@
                     }
 
                     ImageDialog_createClass(ImageDialog, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            let imageLimitation = '';
+                            var imageLimitation = '';
 
                             if (this.options.maximumImageFileSize) {
-                                const unit = Math.floor(Math.log(this.options.maximumImageFileSize) / Math.log(1024));
-                                const readableSize = (this.options.maximumImageFileSize / Math.pow(1024, unit)).toFixed(2) * 1 + ' ' + ' KMGTP'[unit] + 'B';
-                                imageLimitation = '<small>'.concat(this.lang.image.maximumFileSize + ' : ' + readableSize, '</small>');
+                                var unit = Math.floor(Math.log(this.options.maximumImageFileSize) / Math.log(1024));
+                                var readableSize = (this.options.maximumImageFileSize / Math.pow(1024, unit)).toFixed(2) * 1 + ' ' + ' KMGTP'[unit] + 'B';
+                                imageLimitation = "<small>".concat(this.lang.image.maximumFileSize + ' : ' + readableSize, "</small>");
                             }
 
-                            const $container = this.options.dialogsInBody ? this.$body : this.options.container;
-                            const body = ['<div class="form-group note-form-group note-group-select-from-files">', '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>', '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input form-control-file note-form-control note-input" ', ' type="file" name="files" accept="image/*" multiple="multiple"/>', imageLimitation, '</div>', '<div class="form-group note-group-image-url">', '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>', '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url form-control note-form-control note-input" type="text"/>', '</div>'].join('');
-                            const buttonClass = 'btn btn-primary note-btn note-btn-primary note-image-btn';
-                            const footer = '<input type="button" href="#" class="'.concat(buttonClass, '" value="').concat(this.lang.image.insert, '" disabled>');
+                            var $container = this.options.dialogsInBody ? this.$body : this.options.container;
+                            var body = ['<div class="form-group note-form-group note-group-select-from-files">', '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>', '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input form-control-file note-form-control note-input" ', ' type="file" name="files" accept="image/*" multiple="multiple"/>', imageLimitation, '</div>', '<div class="form-group note-group-image-url">', '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>', '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url form-control note-form-control note-input" type="text"/>', '</div>'].join('');
+                            var buttonClass = 'btn btn-primary note-btn note-btn-primary note-image-btn';
+                            var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.image.insert, "\" disabled>");
                             this.$dialog = this.ui.dialog({
                                 title: this.lang.image.insert,
                                 fade: this.options.dialogsFade,
                                 body: body,
-                                footer: footer,
+                                footer: footer
                             }).render().appendTo($container);
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.ui.hideDialog(this.$dialog);
                             this.$dialog.remove();
-                        },
+                        }
                     }, {
-                        key: 'bindEnterKey',
+                        key: "bindEnterKey",
                         value: function bindEnterKey($input, $btn) {
                             $input.on('keypress', function (event) {
                                 if (event.keyCode === core_key.code.ENTER) {
@@ -9232,11 +8686,11 @@
                                     $btn.trigger('click');
                                 }
                             });
-                        },
+                        }
                     }, {
-                        key: 'show',
+                        key: "show",
                         value: function show() {
-                            const _this = this;
+                            var _this = this;
 
                             this.context.invoke('editor.saveRange');
                             this.showImageDialog().then(function (data) {
@@ -9260,7 +8714,7 @@
                             }).fail(function () {
                                 _this.context.invoke('editor.restoreRange');
                             });
-                        },
+                        }
                         /**
                          * show image dialog
                          *
@@ -9269,24 +8723,23 @@
                          */
 
                     }, {
-                        key: 'showImageDialog',
+                        key: "showImageDialog",
                         value: function showImageDialog() {
-                            const _this2 = this;
+                            var _this2 = this;
+
                             return external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.Deferred(function (deferred) {
-                                const $imageInput = _this2.$dialog.find('.note-image-input');
+                                var $imageInput = _this2.$dialog.find('.note-image-input');
 
-                                const $imageUrl = _this2.$dialog.find('.note-image-url');
+                                var $imageUrl = _this2.$dialog.find('.note-image-url');
 
-                                const $imageBtn = _this2.$dialog.find('.note-image-btn');
+                                var $imageBtn = _this2.$dialog.find('.note-image-btn');
 
                                 _this2.ui.onDialogShown(_this2.$dialog, function () {
                                     _this2.context.triggerEvent('dialog.shown'); // Cloning imageInput to clear element.
 
 
                                     $imageInput.replaceWith($imageInput.clone().on('change', function (event) {
-                                        console.log(event.target.value);
-                                        summerNoteImageUploader(deferred);
-                                        /* deferred.resolve(event.target.files || event.target.value);*/
+                                        deferred.resolve(event.target.files || event.target.value);
                                     }).val(''));
                                     $imageUrl.on('input paste propertychange', function () {
                                         _this2.ui.toggleBtn($imageBtn, $imageUrl.val());
@@ -9316,35 +8769,21 @@
 
                                 _this2.ui.showDialog(_this2.$dialog);
                             });
-                        },
+                        }
                     }]);
 
                     return ImageDialog;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/ImagePopover.js
-                function ImagePopover_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/ImagePopover.js
+                function ImagePopover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function ImagePopover_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function ImagePopover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function ImagePopover_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) ImagePopover_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) ImagePopover_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function ImagePopover_createClass(Constructor, protoProps, staticProps) { if (protoProps) ImagePopover_defineProperties(Constructor.prototype, protoProps); if (staticProps) ImagePopover_defineProperties(Constructor, staticProps); return Constructor; }
+
+
 
 
                 /**
@@ -9353,9 +8792,9 @@
                  *  Handle.js will receive the events and invoke 'imagePopover.update'.
                  */
 
-                const ImagePopover_ImagePopover = /* #__PURE__*/function () {
+                var ImagePopover_ImagePopover = /*#__PURE__*/function () {
                     function ImagePopover(context) {
-                        const _this = this;
+                        var _this = this;
 
                         ImagePopover_classCallCheck(this, ImagePopover);
 
@@ -9366,39 +8805,39 @@
                         this.events = {
                             'summernote.disable summernote.blur': function summernoteDisableSummernoteBlur() {
                                 _this.hide();
-                            },
+                            }
                         };
                     }
 
                     ImagePopover_createClass(ImagePopover, [{
-                        key: 'shouldInitialize',
+                        key: "shouldInitialize",
                         value: function shouldInitialize() {
                             return !lists.isEmpty(this.options.popover.image);
-                        },
+                        }
                     }, {
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
                             this.$popover = this.ui.popover({
-                                className: 'note-image-popover',
+                                className: 'note-image-popover'
                             }).render().appendTo(this.options.container);
-                            const $content = this.$popover.find('.popover-content,.note-popover-content');
+                            var $content = this.$popover.find('.popover-content,.note-popover-content');
                             this.context.invoke('buttons.build', $content, this.options.popover.image);
                             this.$popover.on('mousedown', function (e) {
                                 e.preventDefault();
                             });
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.$popover.remove();
-                        },
+                        }
                     }, {
-                        key: 'update',
+                        key: "update",
                         value: function update(target, event) {
                             if (dom.isImg(target)) {
-                                const position = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(target).offset();
-                                const containerOffset = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.container).offset();
-                                let pos = {};
+                                var position = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(target).offset();
+                                var containerOffset = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.container).offset();
+                                var pos = {};
 
                                 if (this.options.popatmouse) {
                                     pos.left = event.pageX - 20;
@@ -9412,50 +8851,38 @@
                                 this.$popover.css({
                                     display: 'block',
                                     left: pos.left,
-                                    top: pos.top,
+                                    top: pos.top
                                 });
                             } else {
                                 this.hide();
                             }
-                        },
+                        }
                     }, {
-                        key: 'hide',
+                        key: "hide",
                         value: function hide() {
                             this.$popover.hide();
-                        },
+                        }
                     }]);
 
                     return ImagePopover;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/TablePopover.js
-                function TablePopover_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/TablePopover.js
+                function TablePopover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function TablePopover_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function TablePopover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function TablePopover_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) TablePopover_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) TablePopover_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function TablePopover_createClass(Constructor, protoProps, staticProps) { if (protoProps) TablePopover_defineProperties(Constructor.prototype, protoProps); if (staticProps) TablePopover_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const TablePopover_TablePopover = /* #__PURE__*/function () {
+
+
+
+
+                var TablePopover_TablePopover = /*#__PURE__*/function () {
                     function TablePopover(context) {
-                        const _this = this;
+                        var _this = this;
 
                         TablePopover_classCallCheck(this, TablePopover);
 
@@ -9471,22 +8898,22 @@
                             },
                             'summernote.disable summernote.blur': function summernoteDisableSummernoteBlur() {
                                 _this.hide();
-                            },
+                            }
                         };
                     }
 
                     TablePopover_createClass(TablePopover, [{
-                        key: 'shouldInitialize',
+                        key: "shouldInitialize",
                         value: function shouldInitialize() {
                             return !lists.isEmpty(this.options.popover.table);
-                        },
+                        }
                     }, {
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
                             this.$popover = this.ui.popover({
-                                className: 'note-table-popover',
+                                className: 'note-table-popover'
                             }).render().appendTo(this.options.container);
-                            const $content = this.$popover.find('.popover-content,.note-popover-content');
+                            var $content = this.$popover.find('.popover-content,.note-popover-content');
                             this.context.invoke('buttons.build', $content, this.options.popover.table); // [workaround] Disable Firefox's default table editor
 
                             if (env.isFF) {
@@ -9496,73 +8923,60 @@
                             this.$popover.on('mousedown', function (e) {
                                 e.preventDefault();
                             });
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.$popover.remove();
-                        },
+                        }
                     }, {
-                        key: 'update',
+                        key: "update",
                         value: function update(target) {
                             if (this.context.isDisabled()) {
                                 return false;
                             }
 
-                            const isCell = dom.isCell(target);
+                            var isCell = dom.isCell(target);
 
                             if (isCell) {
-                                const pos = dom.posFromPlaceholder(target);
-                                const containerOffset = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.container).offset();
+                                var pos = dom.posFromPlaceholder(target);
+                                var containerOffset = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.container).offset();
                                 pos.top -= containerOffset.top;
                                 pos.left -= containerOffset.left;
                                 this.$popover.css({
                                     display: 'block',
                                     left: pos.left,
-                                    top: pos.top,
+                                    top: pos.top
                                 });
                             } else {
                                 this.hide();
                             }
 
                             return isCell;
-                        },
+                        }
                     }, {
-                        key: 'hide',
+                        key: "hide",
                         value: function hide() {
                             this.$popover.hide();
-                        },
+                        }
                     }]);
 
                     return TablePopover;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/VideoDialog.js
-                function VideoDialog_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/VideoDialog.js
+                function VideoDialog_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function VideoDialog_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function VideoDialog_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function VideoDialog_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) VideoDialog_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) VideoDialog_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function VideoDialog_createClass(Constructor, protoProps, staticProps) { if (protoProps) VideoDialog_defineProperties(Constructor.prototype, protoProps); if (staticProps) VideoDialog_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const VideoDialog_VideoDialog = /* #__PURE__*/function () {
+
+
+
+                var VideoDialog_VideoDialog = /*#__PURE__*/function () {
                     function VideoDialog(context) {
                         VideoDialog_classCallCheck(this, VideoDialog);
 
@@ -9575,27 +8989,27 @@
                     }
 
                     VideoDialog_createClass(VideoDialog, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const $container = this.options.dialogsInBody ? this.$body : this.options.container;
-                            const body = ['<div class="form-group note-form-group row-fluid">', '<label for="note-dialog-video-url-'.concat(this.options.id, '" class="note-form-label">').concat(this.lang.video.url, ' <small class="text-muted">').concat(this.lang.video.providers, '</small></label>'), '<input id="note-dialog-video-url-'.concat(this.options.id, '" class="note-video-url form-control note-form-control note-input" type="text"/>'), '</div>'].join('');
-                            const buttonClass = 'btn btn-primary note-btn note-btn-primary note-video-btn';
-                            const footer = '<input type="button" href="#" class="'.concat(buttonClass, '" value="').concat(this.lang.video.insert, '" disabled>');
+                            var $container = this.options.dialogsInBody ? this.$body : this.options.container;
+                            var body = ['<div class="form-group note-form-group row-fluid">', "<label for=\"note-dialog-video-url-".concat(this.options.id, "\" class=\"note-form-label\">").concat(this.lang.video.url, " <small class=\"text-muted\">").concat(this.lang.video.providers, "</small></label>"), "<input id=\"note-dialog-video-url-".concat(this.options.id, "\" class=\"note-video-url form-control note-form-control note-input\" type=\"text\"/>"), '</div>'].join('');
+                            var buttonClass = 'btn btn-primary note-btn note-btn-primary note-video-btn';
+                            var footer = "<input type=\"button\" href=\"#\" class=\"".concat(buttonClass, "\" value=\"").concat(this.lang.video.insert, "\" disabled>");
                             this.$dialog = this.ui.dialog({
                                 title: this.lang.video.insert,
                                 fade: this.options.dialogsFade,
                                 body: body,
-                                footer: footer,
+                                footer: footer
                             }).render().appendTo($container);
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.ui.hideDialog(this.$dialog);
                             this.$dialog.remove();
-                        },
+                        }
                     }, {
-                        key: 'bindEnterKey',
+                        key: "bindEnterKey",
                         value: function bindEnterKey($input, $btn) {
                             $input.on('keypress', function (event) {
                                 if (event.keyCode === core_key.code.ENTER) {
@@ -9603,47 +9017,47 @@
                                     $btn.trigger('click');
                                 }
                             });
-                        },
+                        }
                     }, {
-                        key: 'createVideoNode',
+                        key: "createVideoNode",
                         value: function createVideoNode(url) {
                             // video url patterns(youtube, instagram, vimeo, dailymotion, youku, mp4, ogg, webm)
-                            const ytRegExp = /\/\/(?:(?:www|m)\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w|-]{11})(?:(?:[\?&]t=)(\S+))?$/;
-                            const ytRegExpForStart = /^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/;
-                            const ytMatch = url.match(ytRegExp);
-                            const igRegExp = /(?:www\.|\/\/)instagram\.com\/p\/(.[a-zA-Z0-9_-]*)/;
-                            const igMatch = url.match(igRegExp);
-                            const vRegExp = /\/\/vine\.co\/v\/([a-zA-Z0-9]+)/;
-                            const vMatch = url.match(vRegExp);
-                            const vimRegExp = /\/\/(player\.)?vimeo\.com\/([a-z]*\/)*(\d+)[?]?.*/;
-                            const vimMatch = url.match(vimRegExp);
-                            const dmRegExp = /.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
-                            const dmMatch = url.match(dmRegExp);
-                            const youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.html/;
-                            const youkuMatch = url.match(youkuRegExp);
-                            const qqRegExp = /\/\/v\.qq\.com.*?vid=(.+)/;
-                            const qqMatch = url.match(qqRegExp);
-                            const qqRegExp2 = /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\.html\??.*/;
-                            const qqMatch2 = url.match(qqRegExp2);
-                            const mp4RegExp = /^.+.(mp4|m4v)$/;
-                            const mp4Match = url.match(mp4RegExp);
-                            const oggRegExp = /^.+.(ogg|ogv)$/;
-                            const oggMatch = url.match(oggRegExp);
-                            const webmRegExp = /^.+.(webm)$/;
-                            const webmMatch = url.match(webmRegExp);
-                            const fbRegExp = /(?:www\.|\/\/)facebook\.com\/([^\/]+)\/videos\/([0-9]+)/;
-                            const fbMatch = url.match(fbRegExp);
-                            let $video;
+                            var ytRegExp = /\/\/(?:(?:www|m)\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w|-]{11})(?:(?:[\?&]t=)(\S+))?$/;
+                            var ytRegExpForStart = /^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/;
+                            var ytMatch = url.match(ytRegExp);
+                            var igRegExp = /(?:www\.|\/\/)instagram\.com\/p\/(.[a-zA-Z0-9_-]*)/;
+                            var igMatch = url.match(igRegExp);
+                            var vRegExp = /\/\/vine\.co\/v\/([a-zA-Z0-9]+)/;
+                            var vMatch = url.match(vRegExp);
+                            var vimRegExp = /\/\/(player\.)?vimeo\.com\/([a-z]*\/)*(\d+)[?]?.*/;
+                            var vimMatch = url.match(vimRegExp);
+                            var dmRegExp = /.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
+                            var dmMatch = url.match(dmRegExp);
+                            var youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.html/;
+                            var youkuMatch = url.match(youkuRegExp);
+                            var qqRegExp = /\/\/v\.qq\.com.*?vid=(.+)/;
+                            var qqMatch = url.match(qqRegExp);
+                            var qqRegExp2 = /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\.html\??.*/;
+                            var qqMatch2 = url.match(qqRegExp2);
+                            var mp4RegExp = /^.+.(mp4|m4v)$/;
+                            var mp4Match = url.match(mp4RegExp);
+                            var oggRegExp = /^.+.(ogg|ogv)$/;
+                            var oggMatch = url.match(oggRegExp);
+                            var webmRegExp = /^.+.(webm)$/;
+                            var webmMatch = url.match(webmRegExp);
+                            var fbRegExp = /(?:www\.|\/\/)facebook\.com\/([^\/]+)\/videos\/([0-9]+)/;
+                            var fbMatch = url.match(fbRegExp);
+                            var $video;
 
                             if (ytMatch && ytMatch[1].length === 11) {
-                                const youtubeId = ytMatch[1];
-                                let start = 0;
+                                var youtubeId = ytMatch[1];
+                                var start = 0;
 
                                 if (typeof ytMatch[2] !== 'undefined') {
-                                    const ytMatchForStart = ytMatch[2].match(ytRegExpForStart);
+                                    var ytMatchForStart = ytMatch[2].match(ytRegExpForStart);
 
                                     if (ytMatchForStart) {
-                                        for (let n = [3600, 60, 1], i = 0, r = n.length; i < r; i++) {
+                                        for (var n = [3600, 60, 1], i = 0, r = n.length; i < r; i++) {
                                             start += typeof ytMatchForStart[i + 1] !== 'undefined' ? n[i] * parseInt(ytMatchForStart[i + 1], 10) : 0;
                                         }
                                     }
@@ -9661,7 +9075,7 @@
                             } else if (youkuMatch && youkuMatch[1].length) {
                                 $video = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>').attr('frameborder', 0).attr('height', '498').attr('width', '510').attr('src', '//player.youku.com/embed/' + youkuMatch[1]);
                             } else if (qqMatch && qqMatch[1].length || qqMatch2 && qqMatch2[2].length) {
-                                const vid = qqMatch && qqMatch[1].length ? qqMatch[1] : qqMatch2[2];
+                                var vid = qqMatch && qqMatch[1].length ? qqMatch[1] : qqMatch2[2];
                                 $video = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>').attr('frameborder', 0).attr('height', '310').attr('width', '500').attr('src', 'https://v.qq.com/txp/iframe/player.html?vid=' + vid + '&amp;auto=0');
                             } else if (mp4Match || oggMatch || webmMatch) {
                                 $video = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<video controls>').attr('src', url).attr('width', '640').attr('height', '360');
@@ -9674,13 +9088,13 @@
 
                             $video.addClass('note-video-clip');
                             return $video[0];
-                        },
+                        }
                     }, {
-                        key: 'show',
+                        key: "show",
                         value: function show() {
-                            const _this = this;
+                            var _this = this;
 
-                            const text = this.context.invoke('editor.getSelectedText');
+                            var text = this.context.invoke('editor.getSelectedText');
                             this.context.invoke('editor.saveRange');
                             this.showVideoDialog(text).then(function (url) {
                                 // [workaround] hide dialog before restore range for IE range focus
@@ -9689,7 +9103,7 @@
                                 _this.context.invoke('editor.restoreRange'); // build node
 
 
-                                const $node = _this.createVideoNode(url);
+                                var $node = _this.createVideoNode(url);
 
                                 if ($node) {
                                     // insert video node
@@ -9698,7 +9112,7 @@
                             }).fail(function () {
                                 _this.context.invoke('editor.restoreRange');
                             });
-                        },
+                        }
                         /**
                          * show video dialog
                          *
@@ -9707,15 +9121,16 @@
                          */
 
                     }, {
-                        key: 'showVideoDialog',
+                        key: "showVideoDialog",
                         value: function showVideoDialog()
-                            /* text */ {
-                            const _this2 = this;
+                            /* text */
+                        {
+                            var _this2 = this;
 
                             return external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.Deferred(function (deferred) {
-                                const $videoUrl = _this2.$dialog.find('.note-video-url');
+                                var $videoUrl = _this2.$dialog.find('.note-video-url');
 
-                                const $videoBtn = _this2.$dialog.find('.note-video-btn');
+                                var $videoBtn = _this2.$dialog.find('.note-video-btn');
 
                                 _this2.ui.onDialogShown(_this2.$dialog, function () {
                                     _this2.context.triggerEvent('dialog.shown');
@@ -9747,38 +9162,24 @@
 
                                 _this2.ui.showDialog(_this2.$dialog);
                             });
-                        },
+                        }
                     }]);
 
                     return VideoDialog;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/HelpDialog.js
-                function HelpDialog_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/HelpDialog.js
+                function HelpDialog_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function HelpDialog_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function HelpDialog_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function HelpDialog_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) HelpDialog_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) HelpDialog_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function HelpDialog_createClass(Constructor, protoProps, staticProps) { if (protoProps) HelpDialog_defineProperties(Constructor.prototype, protoProps); if (staticProps) HelpDialog_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const HelpDialog_HelpDialog = /* #__PURE__*/function () {
+
+
+                var HelpDialog_HelpDialog = /*#__PURE__*/function () {
                     function HelpDialog(context) {
                         HelpDialog_classCallCheck(this, HelpDialog);
 
@@ -9791,10 +9192,10 @@
                     }
 
                     HelpDialog_createClass(HelpDialog, [{
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const $container = this.options.dialogsInBody ? this.$body : this.options.container;
-                            const body = ['<p class="text-center">', '<a href="http://summernote.org/" target="_blank">Summernote 0.8.18</a> · ', '<a href="https://github.com/summernote/summernote" target="_blank">Project</a> · ', '<a href="https://github.com/summernote/summernote/issues" target="_blank">Issues</a>', '</p>'].join('');
+                            var $container = this.options.dialogsInBody ? this.$body : this.options.container;
+                            var body = ['<p class="text-center">', '<a href="http://summernote.org/" target="_blank">Summernote 0.8.18</a> · ', '<a href="https://github.com/summernote/summernote" target="_blank">Project</a> · ', '<a href="https://github.com/summernote/summernote/issues" target="_blank">Issues</a>', '</p>'].join('');
                             this.$dialog = this.ui.dialog({
                                 title: this.lang.options.help,
                                 fade: this.options.dialogsFade,
@@ -9803,33 +9204,33 @@
                                 callback: function callback($node) {
                                     $node.find('.modal-body,.note-modal-body').css({
                                         'max-height': 300,
-                                        'overflow': 'scroll',
+                                        'overflow': 'scroll'
                                     });
-                                },
+                                }
                             }).render().appendTo($container);
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.ui.hideDialog(this.$dialog);
                             this.$dialog.remove();
-                        },
+                        }
                     }, {
-                        key: 'createShortcutList',
+                        key: "createShortcutList",
                         value: function createShortcutList() {
-                            const _this = this;
+                            var _this = this;
 
-                            const keyMap = this.options.keyMap[env.isMac ? 'mac' : 'pc'];
+                            var keyMap = this.options.keyMap[env.isMac ? 'mac' : 'pc'];
                             return Object.keys(keyMap).map(function (key) {
-                                const command = keyMap[key];
-                                const $row = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div><div class="help-list-item"></div></div>');
+                                var command = keyMap[key];
+                                var $row = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div><div class="help-list-item"></div></div>');
                                 $row.append(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<label><kbd>' + key + '</kdb></label>').css({
                                     'width': 180,
-                                    'margin-right': 10,
+                                    'margin-right': 10
                                 })).append(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<span/>').html(_this.context.memo('help.' + command) || command));
                                 return $row.html();
                             }).join('');
-                        },
+                        }
                         /**
                          * show help dialog
                          *
@@ -9837,9 +9238,9 @@
                          */
 
                     }, {
-                        key: 'showHelpDialog',
+                        key: "showHelpDialog",
                         value: function showHelpDialog() {
-                            const _this2 = this;
+                            var _this2 = this;
 
                             return external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.Deferred(function (deferred) {
                                 _this2.ui.onDialogShown(_this2.$dialog, function () {
@@ -9850,53 +9251,38 @@
 
                                 _this2.ui.showDialog(_this2.$dialog);
                             }).promise();
-                        },
+                        }
                     }, {
-                        key: 'show',
+                        key: "show",
                         value: function show() {
-                            const _this3 = this;
+                            var _this3 = this;
 
                             this.context.invoke('editor.saveRange');
                             this.showHelpDialog().then(function () {
                                 _this3.context.invoke('editor.restoreRange');
                             });
-                        },
+                        }
                     }]);
 
                     return HelpDialog;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/AirPopover.js
-                function AirPopover_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/AirPopover.js
+                function AirPopover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function AirPopover_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function AirPopover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function AirPopover_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) AirPopover_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) AirPopover_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function AirPopover_createClass(Constructor, protoProps, staticProps) { if (protoProps) AirPopover_defineProperties(Constructor.prototype, protoProps); if (staticProps) AirPopover_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const AIRMODE_POPOVER_X_OFFSET = -5;
-                const AIRMODE_POPOVER_Y_OFFSET = 5;
 
-                const AirPopover_AirPopover = /* #__PURE__*/function () {
+                var AIRMODE_POPOVER_X_OFFSET = -5;
+                var AIRMODE_POPOVER_Y_OFFSET = 5;
+
+                var AirPopover_AirPopover = /*#__PURE__*/function () {
                     function AirPopover(context) {
-                        const _this = this;
+                        var _this = this;
 
                         AirPopover_classCallCheck(this, AirPopover);
 
@@ -9938,24 +9324,24 @@
                                 if (!_this.$popover.is(':active,:focus')) {
                                     _this.hide();
                                 }
-                            },
+                            }
                         };
                     }
 
                     AirPopover_createClass(AirPopover, [{
-                        key: 'shouldInitialize',
+                        key: "shouldInitialize",
                         value: function shouldInitialize() {
                             return this.options.airMode && !lists.isEmpty(this.options.popover.air);
-                        },
+                        }
                     }, {
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const _this2 = this;
+                            var _this2 = this;
 
                             this.$popover = this.ui.popover({
-                                className: 'note-air-popover',
+                                className: 'note-air-popover'
                             }).render().appendTo(this.options.container);
-                            const $content = this.$popover.find('.popover-content');
+                            var $content = this.$popover.find('.popover-content');
                             this.context.invoke('buttons.build', $content, this.options.popover.air); // disable hiding this popover preemptively by 'summernote.blur' event.
 
                             this.$popover.on('mousedown', function () {
@@ -9965,86 +9351,75 @@
                             this.$popover.on('mouseup', function () {
                                 _this2.hidable = true;
                             });
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.$popover.remove();
-                        },
+                        }
                     }, {
-                        key: 'update',
+                        key: "update",
                         value: function update(forcelyOpen) {
-                            const styleInfo = this.context.invoke('editor.currentStyle');
+                            var styleInfo = this.context.invoke('editor.currentStyle');
 
                             if (styleInfo.range && (!styleInfo.range.isCollapsed() || forcelyOpen)) {
-                                const rect = {
+                                var rect = {
                                     left: this.pageX,
-                                    top: this.pageY,
+                                    top: this.pageY
                                 };
-                                const containerOffset = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.container).offset();
+                                var containerOffset = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.container).offset();
                                 rect.top -= containerOffset.top;
                                 rect.left -= containerOffset.left;
                                 this.$popover.css({
                                     display: 'block',
                                     left: Math.max(rect.left, 0) + AIRMODE_POPOVER_X_OFFSET,
-                                    top: rect.top + AIRMODE_POPOVER_Y_OFFSET,
+                                    top: rect.top + AIRMODE_POPOVER_Y_OFFSET
                                 });
                                 this.context.invoke('buttons.updateCurrentStyle', this.$popover);
                             } else {
                                 this.hide();
                             }
-                        },
+                        }
                     }, {
-                        key: 'updateCodeview',
+                        key: "updateCodeview",
                         value: function updateCodeview(isCodeview) {
                             this.ui.toggleBtnActive(this.$popover.find('.btn-codeview'), isCodeview);
 
                             if (isCodeview) {
                                 this.hide();
                             }
-                        },
+                        }
                     }, {
-                        key: 'hide',
+                        key: "hide",
                         value: function hide() {
                             if (this.hidable) {
                                 this.$popover.hide();
                             }
-                        },
+                        }
                     }]);
 
                     return AirPopover;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/module/HintPopover.js
-                function HintPopover_classCallCheck(instance, Constructor) {
-                    if (!(instance instanceof Constructor)) {
-                        throw new TypeError('Cannot call a class as a function');
-                    }
-                }
+// CONCATENATED MODULE: ./src/js/base/module/HintPopover.js
+                function HintPopover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-                function HintPopover_defineProperties(target, props) {
-                    for (let i = 0; i < props.length; i++) {
-                        const descriptor = props[i];
-                        descriptor.enumerable = descriptor.enumerable || false;
-                        descriptor.configurable = true;
-                        if ('value' in descriptor) descriptor.writable = true;
-                        Object.defineProperty(target, descriptor.key, descriptor);
-                    }
-                }
+                function HintPopover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-                function HintPopover_createClass(Constructor, protoProps, staticProps) {
-                    if (protoProps) HintPopover_defineProperties(Constructor.prototype, protoProps);
-                    if (staticProps) HintPopover_defineProperties(Constructor, staticProps);
-                    return Constructor;
-                }
+                function HintPopover_createClass(Constructor, protoProps, staticProps) { if (protoProps) HintPopover_defineProperties(Constructor.prototype, protoProps); if (staticProps) HintPopover_defineProperties(Constructor, staticProps); return Constructor; }
 
 
-                const POPOVER_DIST = 5;
 
-                const HintPopover_HintPopover = /* #__PURE__*/function () {
+
+
+
+
+                var POPOVER_DIST = 5;
+
+                var HintPopover_HintPopover = /*#__PURE__*/function () {
                     function HintPopover(context) {
-                        const _this = this;
+                        var _this = this;
 
                         HintPopover_classCallCheck(this, HintPopover);
 
@@ -10066,26 +9441,26 @@
                             },
                             'summernote.disable summernote.dialog.shown summernote.blur': function summernoteDisableSummernoteDialogShownSummernoteBlur() {
                                 _this.hide();
-                            },
+                            }
                         };
                     }
 
                     HintPopover_createClass(HintPopover, [{
-                        key: 'shouldInitialize',
+                        key: "shouldInitialize",
                         value: function shouldInitialize() {
                             return this.hints.length > 0;
-                        },
+                        }
                     }, {
-                        key: 'initialize',
+                        key: "initialize",
                         value: function initialize() {
-                            const _this2 = this;
+                            var _this2 = this;
 
                             this.lastWordRange = null;
                             this.matchingWord = null;
                             this.$popover = this.ui.popover({
                                 className: 'note-hint-popover',
                                 hideArrow: true,
-                                direction: '',
+                                direction: ''
                             }).render().appendTo(this.options.container);
                             this.$popover.hide();
                             this.$content = this.$popover.find('.popover-content,.note-popover-content');
@@ -10099,29 +9474,29 @@
                             this.$popover.on('mousedown', function (e) {
                                 e.preventDefault();
                             });
-                        },
+                        }
                     }, {
-                        key: 'destroy',
+                        key: "destroy",
                         value: function destroy() {
                             this.$popover.remove();
-                        },
+                        }
                     }, {
-                        key: 'selectItem',
+                        key: "selectItem",
                         value: function selectItem($item) {
                             this.$content.find('.active').removeClass('active');
                             $item.addClass('active');
                             this.$content[0].scrollTop = $item[0].offsetTop - this.$content.innerHeight() / 2;
-                        },
+                        }
                     }, {
-                        key: 'moveDown',
+                        key: "moveDown",
                         value: function moveDown() {
-                            const $current = this.$content.find('.note-hint-item.active');
-                            const $next = $current.next();
+                            var $current = this.$content.find('.note-hint-item.active');
+                            var $next = $current.next();
 
                             if ($next.length) {
                                 this.selectItem($next);
                             } else {
-                                let $nextGroup = $current.parent().next();
+                                var $nextGroup = $current.parent().next();
 
                                 if (!$nextGroup.length) {
                                     $nextGroup = this.$content.find('.note-hint-group').first();
@@ -10129,17 +9504,17 @@
 
                                 this.selectItem($nextGroup.find('.note-hint-item').first());
                             }
-                        },
+                        }
                     }, {
-                        key: 'moveUp',
+                        key: "moveUp",
                         value: function moveUp() {
-                            const $current = this.$content.find('.note-hint-item.active');
-                            const $prev = $current.prev();
+                            var $current = this.$content.find('.note-hint-item.active');
+                            var $prev = $current.prev();
 
                             if ($prev.length) {
                                 this.selectItem($prev);
                             } else {
-                                let $prevGroup = $current.parent().prev();
+                                var $prevGroup = $current.parent().prev();
 
                                 if (!$prevGroup.length) {
                                     $prevGroup = this.$content.find('.note-hint-group').last();
@@ -10147,19 +9522,19 @@
 
                                 this.selectItem($prevGroup.find('.note-hint-item').last());
                             }
-                        },
+                        }
                     }, {
-                        key: 'replace',
+                        key: "replace",
                         value: function replace() {
-                            const $item = this.$content.find('.note-hint-item.active');
+                            var $item = this.$content.find('.note-hint-item.active');
 
                             if ($item.length) {
-                                const node = this.nodeFromItem($item); // If matchingWord length = 0 -> capture OK / open hint / but as mention capture "" (\w*)
+                                var node = this.nodeFromItem($item); // If matchingWord length = 0 -> capture OK / open hint / but as mention capture "" (\w*)
 
                                 if (this.matchingWord !== null && this.matchingWord.length === 0) {
                                     this.lastWordRange.so = this.lastWordRange.eo; // Else si > 0 and normal case -> adjust range "before" for correct position of insertion
                                 } else if (this.matchingWord !== null && this.matchingWord.length > 0 && !this.lastWordRange.isCollapsed()) {
-                                    const rangeCompute = this.lastWordRange.eo - this.lastWordRange.so - this.matchingWord.length;
+                                    var rangeCompute = this.lastWordRange.eo - this.lastWordRange.so - this.matchingWord.length;
 
                                     if (rangeCompute > 0) {
                                         this.lastWordRange.so += rangeCompute;
@@ -10169,7 +9544,7 @@
                                 this.lastWordRange.insertNode(node);
 
                                 if (this.options.hintSelect === 'next') {
-                                    const blank = document.createTextNode('');
+                                    var blank = document.createTextNode('');
                                     external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(node).after(blank);
                                     range.createFromNodeBefore(blank).select();
                                 } else {
@@ -10180,38 +9555,38 @@
                                 this.hide();
                                 this.context.invoke('editor.focus');
                             }
-                        },
+                        }
                     }, {
-                        key: 'nodeFromItem',
+                        key: "nodeFromItem",
                         value: function nodeFromItem($item) {
-                            const hint = this.hints[$item.data('index')];
-                            const item = $item.data('item');
-                            let node = hint.content ? hint.content(item) : item;
+                            var hint = this.hints[$item.data('index')];
+                            var item = $item.data('item');
+                            var node = hint.content ? hint.content(item) : item;
 
                             if (typeof node === 'string') {
                                 node = dom.createText(node);
                             }
 
                             return node;
-                        },
+                        }
                     }, {
-                        key: 'createItemTemplates',
+                        key: "createItemTemplates",
                         value: function createItemTemplates(hintIdx, items) {
-                            const hint = this.hints[hintIdx];
-                            return items.map(function (item,
-                                                       /* , idx */
+                            var hint = this.hints[hintIdx];
+                            return items.map(function (item
+                                                       /*, idx */
                             ) {
-                                const $item = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div class="note-hint-item"/>');
+                                var $item = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div class="note-hint-item"/>');
                                 $item.append(hint.template ? hint.template(item) : item + '');
                                 $item.data({
                                     'index': hintIdx,
-                                    'item': item,
+                                    'item': item
                                 });
                                 return $item;
                             });
-                        },
+                        }
                     }, {
-                        key: 'handleKeydown',
+                        key: "handleKeydown",
                         value: function handleKeydown(e) {
                             if (!this.$popover.is(':visible')) {
                                 return;
@@ -10227,26 +9602,26 @@
                                 e.preventDefault();
                                 this.moveDown();
                             }
-                        },
+                        }
                     }, {
-                        key: 'searchKeyword',
+                        key: "searchKeyword",
                         value: function searchKeyword(index, keyword, callback) {
-                            const hint = this.hints[index];
+                            var hint = this.hints[index];
 
                             if (hint && hint.match.test(keyword) && hint.search) {
-                                const matches = hint.match.exec(keyword);
+                                var matches = hint.match.exec(keyword);
                                 this.matchingWord = matches[0];
                                 hint.search(matches[1], callback);
                             } else {
                                 callback();
                             }
-                        },
+                        }
                     }, {
-                        key: 'createGroup',
+                        key: "createGroup",
                         value: function createGroup(idx, keyword) {
-                            const _this3 = this;
+                            var _this3 = this;
 
-                            const $group = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div class="note-hint-group note-hint-group-' + idx + '"></div>');
+                            var $group = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()('<div class="note-hint-group note-hint-group-' + idx + '"></div>');
                             this.searchKeyword(idx, keyword, function (items) {
                                 items = items || [];
 
@@ -10257,17 +9632,16 @@
                                 }
                             });
                             return $group;
-                        },
+                        }
                     }, {
-                        key: 'handleKeyup',
+                        key: "handleKeyup",
                         value: function handleKeyup(e) {
-                            const _this4 = this;
+                            var _this4 = this;
 
                             if (!lists.contains([core_key.code.ENTER, core_key.code.UP, core_key.code.DOWN], e.keyCode)) {
-                                const _range = this.context.invoke('editor.getLastRange');
+                                var _range = this.context.invoke('editor.getLastRange');
 
-                                let wordRange;
-                                let keyword;
+                                var wordRange, keyword;
 
                                 if (this.options.hintMode === 'words') {
                                     wordRange = _range.getWordsRange(_range);
@@ -10292,8 +9666,8 @@
 
                                 if (this.hints.length && keyword) {
                                     this.$content.empty();
-                                    const bnd = func.rect2bnd(lists.last(wordRange.getClientRects()));
-                                    const containerOffset = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.container).offset();
+                                    var bnd = func.rect2bnd(lists.last(wordRange.getClientRects()));
+                                    var containerOffset = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(this.options.container).offset();
 
                                     if (bnd) {
                                         bnd.top -= containerOffset.top;
@@ -10311,12 +9685,12 @@
                                         if (this.direction === 'top') {
                                             this.$popover.css({
                                                 left: bnd.left,
-                                                top: bnd.top - this.$popover.outerHeight() - POPOVER_DIST,
+                                                top: bnd.top - this.$popover.outerHeight() - POPOVER_DIST
                                             });
                                         } else {
                                             this.$popover.css({
                                                 left: bnd.left,
-                                                top: bnd.top + bnd.height + POPOVER_DIST,
+                                                top: bnd.top + bnd.height + POPOVER_DIST
                                             });
                                         }
                                     }
@@ -10324,24 +9698,50 @@
                                     this.hide();
                                 }
                             }
-                        },
+                        }
                     }, {
-                        key: 'show',
+                        key: "show",
                         value: function show() {
                             this.$popover.show();
-                        },
+                        }
                     }, {
-                        key: 'hide',
+                        key: "hide",
                         value: function hide() {
                             this.$popover.hide();
-                        },
+                        }
                     }]);
 
                     return HintPopover;
                 }();
 
 
-                // CONCATENATED MODULE: ./src/js/base/settings.js
+// CONCATENATED MODULE: ./src/js/base/settings.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote, {
@@ -10377,7 +9777,7 @@
                             'tablePopover': TablePopover_TablePopover,
                             'videoDialog': VideoDialog_VideoDialog,
                             'helpDialog': HelpDialog_HelpDialog,
-                            'airPopover': AirPopover_AirPopover,
+                            'airPopover': AirPopover_AirPopover
                         },
                         buttons: {},
                         lang: 'en-US',
@@ -10393,7 +9793,7 @@
                             image: [['resize', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']], ['float', ['floatLeft', 'floatRight', 'floatNone']], ['remove', ['removeMedia']]],
                             link: [['link', ['linkDialogShow', 'unlink']]],
                             table: [['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']], ['delete', ['deleteRow', 'deleteCol', 'deleteTable']]],
-                            air: [['color', ['color']], ['font', ['bold', 'underline', 'clear']], ['para', ['ul', 'paragraph']], ['table', ['table']], ['insert', ['link', 'picture']], ['view', ['fullscreen', 'codeview']]],
+                            air: [['color', ['color']], ['font', ['bold', 'underline', 'clear']], ['para', ['ul', 'paragraph']], ['table', ['table']], ['insert', ['link', 'picture']], ['view', ['fullscreen', 'codeview']]]
                         },
                         // air mode: inline editor
                         airMode: false,
@@ -10439,13 +9839,13 @@
                         colorsName: [['Black', 'Tundora', 'Dove Gray', 'Star Dust', 'Pale Slate', 'Gallery', 'Alabaster', 'White'], ['Red', 'Orange Peel', 'Yellow', 'Green', 'Cyan', 'Blue', 'Electric Violet', 'Magenta'], ['Azalea', 'Karry', 'Egg White', 'Zanah', 'Botticelli', 'Tropical Blue', 'Mischka', 'Twilight'], ['Tonys Pink', 'Peach Orange', 'Cream Brulee', 'Sprout', 'Casper', 'Perano', 'Cold Purple', 'Careys Pink'], ['Mandy', 'Rajah', 'Dandelion', 'Olivine', 'Gulf Stream', 'Viking', 'Blue Marguerite', 'Puce'], ['Guardsman Red', 'Fire Bush', 'Golden Dream', 'Chelsea Cucumber', 'Smalt Blue', 'Boston Blue', 'Butterfly Bush', 'Cadillac'], ['Sangria', 'Mai Tai', 'Buddha Gold', 'Forest Green', 'Eden', 'Venice Blue', 'Meteorite', 'Claret'], ['Rosewood', 'Cinnamon', 'Olive', 'Parsley', 'Tiber', 'Midnight Blue', 'Valentino', 'Loulou']],
                         colorButton: {
                             foreColor: '#000000',
-                            backColor: '#FFFF00',
+                            backColor: '#FFFF00'
                         },
                         lineHeights: ['1.0', '1.2', '1.4', '1.5', '1.6', '1.8', '2.0', '3.0'],
                         tableClassName: 'table table-bordered',
                         insertTableMaxSize: {
                             col: 10,
-                            row: 10,
+                            row: 10
                         },
                         // By default, dialogs are attached in container.
                         dialogsInBody: false,
@@ -10469,12 +9869,12 @@
                             onMousedown: null,
                             onMouseup: null,
                             onPaste: null,
-                            onScroll: null,
+                            onScroll: null
                         },
                         codemirror: {
                             mode: 'text/html',
                             htmlMode: true,
-                            lineNumbers: true,
+                            lineNumbers: true
                         },
                         codeviewFilter: false,
                         codeviewFilterRegex: /<\/*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|ilayer|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|t(?:itle|extarea)|xml)[^>]*?>/gi,
@@ -10510,7 +9910,7 @@
                                 'CTRL+NUM5': 'formatH5',
                                 'CTRL+NUM6': 'formatH6',
                                 'CTRL+ENTER': 'insertHorizontalRule',
-                                'CTRL+K': 'linkDialog.show',
+                                'CTRL+K': 'linkDialog.show'
                             },
                             mac: {
                                 'ESC': 'escape',
@@ -10540,8 +9940,8 @@
                                 'CMD+NUM5': 'formatH5',
                                 'CMD+NUM6': 'formatH6',
                                 'CMD+ENTER': 'insertHorizontalRule',
-                                'CMD+K': 'linkDialog.show',
-                            },
+                                'CMD+K': 'linkDialog.show'
+                            }
                         },
                         icons: {
                             'align': 'note-icon-align',
@@ -10590,71 +9990,59 @@
                             'underline': 'note-icon-underline',
                             'undo': 'note-icon-undo',
                             'unorderedlist': 'note-icon-unorderedlist',
-                            'video': 'note-icon-video',
-                        },
-                    },
+                            'video': 'note-icon-video'
+                        }
+                    }
                 });
 
-                /***/
-            }),
+                /***/ }),
 
             /***/ 5:
-            /***/ (function (module, exports, __webpack_require__) {
+            /***/ (function(module, exports, __webpack_require__) {
 
-                // extracted by mini-css-extract-plugin
+// extracted by mini-css-extract-plugin
 
-                /***/
-            }),
+                /***/ }),
 
             /***/ 53:
-            /***/ (function (module, __webpack_exports__, __webpack_require__) {
-                'use strict';
-                // ESM COMPAT FLAG
+            /***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+                "use strict";
+// ESM COMPAT FLAG
                 __webpack_require__.r(__webpack_exports__);
 
-                // EXTERNAL MODULE: external {"root":"jQuery","commonjs2":"jquery","commonjs":"jquery","amd":"jquery"}
-                const external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_ = __webpack_require__(0);
-                const external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default = /* #__PURE__*/__webpack_require__.n(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_);
+// EXTERNAL MODULE: external {"root":"jQuery","commonjs2":"jquery","commonjs":"jquery","amd":"jquery"}
+                var external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_ = __webpack_require__(0);
+                var external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default = /*#__PURE__*/__webpack_require__.n(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_);
 
-                // EXTERNAL MODULE: ./src/js/base/renderer.js
-                const renderer = __webpack_require__(1);
+// EXTERNAL MODULE: ./src/js/base/renderer.js
+                var renderer = __webpack_require__(1);
 
-                // CONCATENATED MODULE: ./src/js/bs4/ui.js
-                function _typeof(obj) {
-                    '@babel/helpers - typeof';
-                    if (typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol') {
-                        _typeof = function _typeof(obj) {
-                            return typeof obj;
-                        };
-                    } else {
-                        _typeof = function _typeof(obj) {
-                            return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj;
-                        };
-                    }
-                    return _typeof(obj);
-                }
+// CONCATENATED MODULE: ./src/js/bs4/ui.js
+                function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
-                const editor = renderer['a' /* default */].create('<div class="note-editor note-frame card"/>');
-                const toolbar = renderer['a' /* default */].create('<div class="note-toolbar card-header" role="toolbar"/>');
-                const editingArea = renderer['a' /* default */].create('<div class="note-editing-area"/>');
-                const codable = renderer['a' /* default */].create('<textarea class="note-codable" aria-multiline="true"/>');
-                const editable = renderer['a' /* default */].create('<div class="note-editable card-block" contentEditable="true" role="textbox" aria-multiline="true"/>');
-                const statusbar = renderer['a' /* default */].create(['<output class="note-status-output" role="status" aria-live="polite"></output>', '<div class="note-statusbar" role="status">', '<div class="note-resizebar" aria-label="Resize">', '<div class="note-icon-bar"></div>', '<div class="note-icon-bar"></div>', '<div class="note-icon-bar"></div>', '</div>', '</div>'].join(''));
-                const airEditor = renderer['a' /* default */].create('<div class="note-editor note-airframe"/>');
-                const airEditable = renderer['a' /* default */].create(['<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"></div>', '<output class="note-status-output" role="status" aria-live="polite"></output>'].join(''));
-                const buttonGroup = renderer['a' /* default */].create('<div class="note-btn-group btn-group">');
-                const dropdown = renderer['a' /* default */].create('<div class="note-dropdown-menu dropdown-menu" role="list">', function ($node, options) {
-                    const markup = Array.isArray(options.items) ? options.items.map(function (item) {
-                        const value = typeof item === 'string' ? item : item.value || '';
-                        const content = options.template ? options.template(item) : item;
-                        const option = _typeof(item) === 'object' ? item.option : undefined;
-                        const dataValue = 'data-value="' + value + '"';
-                        const dataOption = option !== undefined ? ' data-option="' + option + '"' : '';
+
+                var editor = renderer["a" /* default */].create('<div class="note-editor note-frame card"/>');
+                var toolbar = renderer["a" /* default */].create('<div class="note-toolbar card-header" role="toolbar"/>');
+                var editingArea = renderer["a" /* default */].create('<div class="note-editing-area"/>');
+                var codable = renderer["a" /* default */].create('<textarea class="note-codable" aria-multiline="true"/>');
+                var editable = renderer["a" /* default */].create('<div class="note-editable card-block" contentEditable="true" role="textbox" aria-multiline="true"/>');
+                var statusbar = renderer["a" /* default */].create(['<output class="note-status-output" role="status" aria-live="polite"></output>', '<div class="note-statusbar" role="status">', '<div class="note-resizebar" aria-label="Resize">', '<div class="note-icon-bar"></div>', '<div class="note-icon-bar"></div>', '<div class="note-icon-bar"></div>', '</div>', '</div>'].join(''));
+                var airEditor = renderer["a" /* default */].create('<div class="note-editor note-airframe"/>');
+                var airEditable = renderer["a" /* default */].create(['<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"></div>', '<output class="note-status-output" role="status" aria-live="polite"></output>'].join(''));
+                var buttonGroup = renderer["a" /* default */].create('<div class="note-btn-group btn-group">');
+                var dropdown = renderer["a" /* default */].create('<div class="note-dropdown-menu dropdown-menu" role="list">', function ($node, options) {
+                    var markup = Array.isArray(options.items) ? options.items.map(function (item) {
+                        var value = typeof item === 'string' ? item : item.value || '';
+                        var content = options.template ? options.template(item) : item;
+                        var option = _typeof(item) === 'object' ? item.option : undefined;
+                        var dataValue = 'data-value="' + value + '"';
+                        var dataOption = option !== undefined ? ' data-option="' + option + '"' : '';
                         return '<a class="dropdown-item" href="#" ' + (dataValue + dataOption) + ' role="listitem" aria-label="' + value + '">' + content + '</a>';
                     }).join('') : options.items;
                     $node.html(markup).attr({
-                        'aria-label': options.title,
+                        'aria-label': options.title
                     });
 
                     if (options && options.codeviewKeepButton) {
@@ -10662,43 +10050,43 @@
                     }
                 });
 
-                const dropdownButtonContents = function dropdownButtonContents(contents) {
+                var dropdownButtonContents = function dropdownButtonContents(contents) {
                     return contents;
                 };
 
-                const dropdownCheck = renderer['a' /* default */].create('<div class="note-dropdown-menu dropdown-menu note-check" role="list">', function ($node, options) {
-                    const markup = Array.isArray(options.items) ? options.items.map(function (item) {
-                        const value = typeof item === 'string' ? item : item.value || '';
-                        const content = options.template ? options.template(item) : item;
+                var dropdownCheck = renderer["a" /* default */].create('<div class="note-dropdown-menu dropdown-menu note-check" role="list">', function ($node, options) {
+                    var markup = Array.isArray(options.items) ? options.items.map(function (item) {
+                        var value = typeof item === 'string' ? item : item.value || '';
+                        var content = options.template ? options.template(item) : item;
                         return '<a class="dropdown-item" href="#" data-value="' + value + '" role="listitem" aria-label="' + item + '">' + icon(options.checkClassName) + ' ' + content + '</a>';
                     }).join('') : options.items;
                     $node.html(markup).attr({
-                        'aria-label': options.title,
+                        'aria-label': options.title
                     });
 
                     if (options && options.codeviewKeepButton) {
                         $node.addClass('note-codeview-keep');
                     }
                 });
-                const dialog = renderer['a' /* default */].create('<div class="modal note-modal" aria-hidden="false" tabindex="-1" role="dialog"/>', function ($node, options) {
+                var dialog = renderer["a" /* default */].create('<div class="modal note-modal" aria-hidden="false" tabindex="-1" role="dialog"/>', function ($node, options) {
                     if (options.fade) {
                         $node.addClass('fade');
                     }
 
                     $node.attr({
-                        'aria-label': options.title,
+                        'aria-label': options.title
                     });
                     $node.html(['<div class="modal-dialog">', '<div class="modal-content">', options.title ? '<div class="modal-header">' + '<h4 class="modal-title">' + options.title + '</h4>' + '<button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">&times;</button>' + '</div>' : '', '<div class="modal-body">' + options.body + '</div>', options.footer ? '<div class="modal-footer">' + options.footer + '</div>' : '', '</div>', '</div>'].join(''));
                 });
-                const popover = renderer['a' /* default */].create(['<div class="note-popover popover in">', '<div class="arrow"></div>', '<div class="popover-content note-children-container"></div>', '</div>'].join(''), function ($node, options) {
-                    const direction = typeof options.direction !== 'undefined' ? options.direction : 'bottom';
+                var popover = renderer["a" /* default */].create(['<div class="note-popover popover in">', '<div class="arrow"></div>', '<div class="popover-content note-children-container"></div>', '</div>'].join(''), function ($node, options) {
+                    var direction = typeof options.direction !== 'undefined' ? options.direction : 'bottom';
                     $node.addClass(direction);
 
                     if (options.hideArrow) {
                         $node.find('.arrow').hide();
                     }
                 });
-                const ui_checkbox = renderer['a' /* default */].create('<div class="form-check"></div>', function ($node, options) {
+                var ui_checkbox = renderer["a" /* default */].create('<div class="form-check"></div>', function ($node, options) {
                     $node.html(['<label class="form-check-label"' + (options.id ? ' for="note-' + options.id + '"' : '') + '>', '<input type="checkbox" class="form-check-input"' + (options.id ? ' id="note-' + options.id + '"' : ''), options.checked ? ' checked' : '', ' aria-label="' + (options.text ? options.text : '') + '"', ' aria-checked="' + (options.checked ? 'true' : 'false') + '"/>', ' ' + (options.text ? options.text : '') + '</label>'].join(''));
                 });
 
@@ -10707,7 +10095,7 @@
                     return '<' + tagName + ' class="' + iconClassName + '"></' + tagName + '>';
                 };
 
-                const ui_ui = function ui(editorOptions) {
+                var ui_ui = function ui(editorOptions) {
                     return {
                         editor: editor,
                         toolbar: toolbar,
@@ -10727,18 +10115,18 @@
                         checkbox: ui_checkbox,
                         options: editorOptions,
                         palette: function palette($node, options) {
-                            return renderer['a' /* default */].create('<div class="note-color-palette"/>', function ($node, options) {
-                                const contents = [];
+                            return renderer["a" /* default */].create('<div class="note-color-palette"/>', function ($node, options) {
+                                var contents = [];
 
-                                for (let row = 0, rowSize = options.colors.length; row < rowSize; row++) {
-                                    const eventName = options.eventName;
-                                    const colors = options.colors[row];
-                                    const colorsName = options.colorsName[row];
-                                    const buttons = [];
+                                for (var row = 0, rowSize = options.colors.length; row < rowSize; row++) {
+                                    var eventName = options.eventName;
+                                    var colors = options.colors[row];
+                                    var colorsName = options.colorsName[row];
+                                    var buttons = [];
 
-                                    for (let col = 0, colSize = colors.length; col < colSize; col++) {
-                                        const color = colors[col];
-                                        const colorName = colorsName[col];
+                                    for (var col = 0, colSize = colors.length; col < colSize; col++) {
+                                        var color = colors[col];
+                                        var colorName = colorsName[col];
                                         buttons.push(['<button type="button" class="note-color-btn"', 'style="background-color:', color, '" ', 'data-event="', eventName, '" ', 'data-value="', color, '" ', 'title="', colorName, '" ', 'aria-label="', colorName, '" ', 'data-toggle="button" tabindex="-1"></button>'].join(''));
                                     }
 
@@ -10751,21 +10139,21 @@
                                     $node.find('.note-color-btn').tooltip({
                                         container: options.container || editorOptions.container,
                                         trigger: 'hover',
-                                        placement: 'bottom',
+                                        placement: 'bottom'
                                     });
                                 }
                             })($node, options);
                         },
                         button: function button($node, options) {
-                            return renderer['a' /* default */].create('<button type="button" class="note-btn btn btn-light btn-sm" tabindex="-1">', function ($node, options) {
+                            return renderer["a" /* default */].create('<button type="button" class="note-btn btn btn-light btn-sm" tabindex="-1">', function ($node, options) {
                                 if (options && options.tooltip) {
                                     $node.attr({
-                                        'title': options.tooltip,
-                                        'aria-label': options.tooltip,
+                                        title: options.tooltip,
+                                        'aria-label': options.tooltip
                                     }).tooltip({
                                         container: options.container || editorOptions.container,
                                         trigger: 'hover',
-                                        placement: 'bottom',
+                                        placement: 'bottom'
                                     }).on('click', function (e) {
                                         external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default()(e.currentTarget).tooltip('hide');
                                     });
@@ -10791,16 +10179,12 @@
                         },
                         showDialog: function showDialog($dialog) {
                             $dialog.modal('show');
-                            $('.modal-backdrop').remove();
-                            const dialog = document.querySelector('.note-editor .modal-dialog');
-                            console.log(dialog);
-                            dialog.classList.add('summernote-dialog');
                         },
                         hideDialog: function hideDialog($dialog) {
                             $dialog.modal('hide');
                         },
                         createLayout: function createLayout($note) {
-                            const $editor = (editorOptions.airMode ? airEditor([editingArea([codable(), airEditable()])]) : editorOptions.toolbarPosition === 'bottom' ? editor([editingArea([codable(), editable()]), toolbar(), statusbar()]) : editor([toolbar(), editingArea([codable(), editable()]), statusbar()])).render();
+                            var $editor = (editorOptions.airMode ? airEditor([editingArea([codable(), airEditable()])]) : editorOptions.toolbarPosition === 'bottom' ? editor([editingArea([codable(), editable()]), toolbar(), statusbar()]) : editor([toolbar(), editingArea([codable(), editable()]), statusbar()])).render();
                             $editor.insertAfter($note);
                             return {
                                 note: $note,
@@ -10809,89 +10193,42 @@
                                 editingArea: $editor.find('.note-editing-area'),
                                 editable: $editor.find('.note-editable'),
                                 codable: $editor.find('.note-codable'),
-                                statusbar: $editor.find('.note-statusbar'),
+                                statusbar: $editor.find('.note-statusbar')
                             };
                         },
                         removeLayout: function removeLayout($note, layoutInfo) {
                             $note.html(layoutInfo.editable.html());
                             layoutInfo.editor.remove();
                             $note.show();
-                        },
+                        }
                     };
                 };
 
-                /* harmony default export */
-                const bs4_ui = (ui_ui);
-                // EXTERNAL MODULE: ./src/js/base/settings.js + 37 modules
-                const settings = __webpack_require__(3);
+                /* harmony default export */ var bs4_ui = (ui_ui);
+// EXTERNAL MODULE: ./src/js/base/settings.js + 37 modules
+                var settings = __webpack_require__(3);
 
-                // EXTERNAL MODULE: ./src/styles/summernote-bs4.scss
-                const summernote_bs4 = __webpack_require__(5);
+// EXTERNAL MODULE: ./src/styles/summernote-bs4.scss
+                var summernote_bs4 = __webpack_require__(5);
 
-                // CONCATENATED MODULE: ./src/js/bs4/settings.js
+// CONCATENATED MODULE: ./src/js/bs4/settings.js
+
+
 
 
                 external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote = external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.extend(external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote, {
-                    'ui_template': bs4_ui,
-                    'interface': 'bs4',
+                    ui_template: bs4_ui,
+                    "interface": 'bs4'
                 });
                 external_root_jQuery_commonjs2_jquery_commonjs_jquery_amd_jquery_default.a.summernote.options.styleTags = ['p', {
                     title: 'Blockquote',
                     tag: 'blockquote',
                     className: 'blockquote',
-                    value: 'blockquote',
+                    value: 'blockquote'
                 }, 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
-                /***/
-            }),
+                /***/ })
 
-            /** ****/
-        });
+            /******/ });
 });
-
-// # sourceMappingURL=summernote-bs4.js.map
-
-/**
- * SummerNoteImageUploader,
- * 스마트에디터 파일 업로더 함수,
- * file 변수와 url 주의 요망
- * @version a.2
- * @param {Object} deferred SummerNode SmartEditor 내부에 존재하는 변수
- * */
-function summerNoteImageUploader(deferred) {
-    const file = $('.note-image-input.form-control-file.note-form-control.note-input')[0].files[0];
-    const formData = new FormData(); // HTML5
-    formData.append('file', file);
-
-    $.ajax({
-        url: '/ajax/summernote/editor/upload',
-        processData: false,
-        contentType: false,
-        data: formData,
-        type: 'POST',
-        enctype: 'multipart/form-data',
-        beforeSend: function (xhr) {
-            // XHR Header를 포함해서 HTTP Request를 하기전에 호출됩니다.
-            xhr.setRequestHeader('ajax', true);
-            console.log('sample before');
-        },
-        success: function (data, status, xhr) {
-            console.log('sample success', data, status, xhr);
-            console.log(data.data);
-            deferred.resolve(data.data.url);
-            // 정상적으로 응답 받았을 경우에는 success 콜백이 호출되게 됩니다.
-            // 이 콜백 함수의 파라미터에서는 응답 바디, 응답 코드 그리고 XHR 헤더를 확인할 수 있습니다.
-        },
-        error: function (xhr, status, error) {
-            // 응답을 받지 못하였다거나 정상적인 응답이지만 데이터 형식을 확인할 수 없기 때문에 error 콜백이 호출될 수 있습니다.
-            // 예를 들어, dataType을 지정해서 응답 받을 데이터 형식을 지정하였지만, 서버에서는 다른 데이터형식으로 응답하면  error 콜백이 호출되게 됩니다.
-            deferred.reject(data.data.url);
-            throw new Error(`Error :: status : ${status}, error : ${error}`);
-        },
-        complete: function (xhr, status) {
-            console.log('sample complete', xhr, status);
-            // success와 error 콜백이 호출된 후에 반드시 호출됩니다.
-            // try - catch - finally의 finally 구문과 동일합니다.
-        },
-    });
-}
+//# sourceMappingURL=summernote-bs4.js.map

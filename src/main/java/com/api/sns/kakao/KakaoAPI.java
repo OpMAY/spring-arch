@@ -1,5 +1,7 @@
 package com.api.sns.kakao;
 
+import com.exception.LoginAPIException;
+import com.exception.enums.GlobalExceptionType;
 import com.transfer.ProtocolBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,14 +56,11 @@ public class KakaoAPI {
             kakaoAccess = protocolBuilder.openReader("UTF-8", KakaoAccess.class, true);
             return kakaoAccess;
         } catch (ProtocolException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.KAKAO_API_EXCEPTION);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.KAKAO_API_EXCEPTION);
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.KAKAO_API_EXCEPTION);
         }
     }
 
@@ -81,14 +80,11 @@ public class KakaoAPI {
             kakaoInfo = protocolBuilder.openReader("UTF-8", KakaoInfo.class, true);
             return kakaoInfo;
         } catch (ProtocolException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.KAKAO_API_EXCEPTION);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.KAKAO_API_EXCEPTION);
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.KAKAO_API_EXCEPTION);
         }
     }
 
@@ -109,14 +105,11 @@ public class KakaoAPI {
             String id = protocolBuilder.openReader("UTF-8", true);
             return id;
         } catch (ProtocolException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.KAKAO_API_EXCEPTION);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.KAKAO_API_EXCEPTION);
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.KAKAO_API_EXCEPTION);
         }
     }
 }

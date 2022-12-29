@@ -1,5 +1,6 @@
 package com.config;
 
+import com.util.Constant;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpSessionListener;
 public class SessionConfig implements HttpSessionListener {
 
     @NonNull
-    private int sessionInterval = 9999;
+    private int sessionInterval = Constant.SESSION_INTERVAL;
 
     public SessionConfig(int sessionInterval) {
         if (sessionInterval != 0) {

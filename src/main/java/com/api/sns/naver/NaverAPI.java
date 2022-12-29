@@ -1,5 +1,7 @@
 package com.api.sns.naver;
 
+import com.exception.LoginAPIException;
+import com.exception.enums.GlobalExceptionType;
 import com.transfer.ProtocolBuilder;
 import com.transfer.ProtocolBuilderHelper;
 import lombok.extern.slf4j.Slf4j;
@@ -48,14 +50,11 @@ public class NaverAPI {
             naverAccess = (NaverAccess) protocolBuilder.openReader("UTF-8", NaverAccess.class, true);
             return naverAccess;
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.NAVER_API_EXCEPTION);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.NAVER_API_EXCEPTION);
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.NAVER_API_EXCEPTION);
         }
     }
 
@@ -71,11 +70,9 @@ public class NaverAPI {
             naverInfo = (NaverInfo) protocolBuilder.openReader("UTF-8", NaverInfo.class, true);
             return naverInfo;
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.NAVER_API_EXCEPTION);
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.NAVER_API_EXCEPTION);
         }
     }
 
@@ -101,8 +98,7 @@ public class NaverAPI {
             NaverAccess naverAccess = (NaverAccess) protocolBuilder.openReader("UTF-8", NaverAccess.class, true);
             return naverAccess;
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            throw new LoginAPIException(GlobalExceptionType.NAVER_API_EXCEPTION);
         }
     }
 }

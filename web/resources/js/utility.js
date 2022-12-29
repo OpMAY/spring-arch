@@ -108,11 +108,7 @@ function replaceAll(str, search, replace) {
  * tokenGenerator(10);
  * */
 const tokenGenerator = (length = 11) => {
-    if (length > 2) {
-        return Math.random().toString(36).substring(0, length);
-    } else {
-        return Math.random().toString(36).substring(0, length);
-    }
+    return Math.random().toString(36).substring(2, length); // "twozs5xfni"
 };
 
 /**

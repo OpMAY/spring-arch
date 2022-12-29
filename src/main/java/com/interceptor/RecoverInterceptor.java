@@ -1,6 +1,5 @@
 package com.interceptor;
 
-import com.util.TokenGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,19 +23,18 @@ public class RecoverInterceptor extends HandlerInterceptorAdapter {
 
     @PostConstruct
     public void RecoverInterceptor() {
-        log.debug("Recover Interceptor Post Initialize");
         recovers = new ArrayList<String>();
-        log.info("RECOVER_URL_VALUE : {}", recover_urls);
-        StringTokenizer stringTokenizer = new StringTokenizer(recover_urls, ",");
-        while (stringTokenizer.hasMoreTokens()) {
-            recovers.add(stringTokenizer.nextToken());
+        if (recover_urls != null && recover_urls.length() != 0) {
+            StringTokenizer stringTokenizer = new StringTokenizer(recover_urls, ",");
+            while (stringTokenizer.hasMoreTokens()) {
+                recovers.add(stringTokenizer.nextToken());
+            }
         }
-        log.info("RECOVER_URLS : {}", recovers);
+        log.debug("Recover Interceptor Post Initialized -> urls : {}", recover_urls);
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.debug("Recover Interceptor preHandle : {}", recovers);
         if (recovers.contains(request.getRequestURI())) {
             response.sendRedirect("/test/recover");
             return false;
@@ -46,19 +44,16 @@ public class RecoverInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        log.debug("Recover Interceptor postHandle");
         super.postHandle(request, response, handler, modelAndView);
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        log.debug("Recover Interceptor afterCompletion");
         super.afterCompletion(request, response, handler, ex);
     }
 
     @Override
     public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.debug("Recover Interceptor afterConcurrentHandlingStarted");
         super.afterConcurrentHandlingStarted(request, response, handler);
     }
 }

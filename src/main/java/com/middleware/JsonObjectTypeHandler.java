@@ -45,12 +45,16 @@ public class JsonObjectTypeHandler<T> extends BaseTypeHandler<T> {
     }
 
     private T convertToObject(String jsonString) {
-        try {
-            Class<?> findClass = type;
-            return (T) new ObjectMapper().readValue(jsonString, findClass);
-        } catch (Exception e) {
-            log.error("JSONTypeHandler failed to casting jsonString to Object, JSON String : " + jsonString, e);
+        if (jsonString != null) {
+            try {
+                Class<?> findClass = type;
+                return (T) new ObjectMapper().readValue(jsonString, findClass);
+            } catch (Exception e) {
+                log.error("JSONTypeHandler failed to casting jsonString to Object, JSON String : " + jsonString, e);
+                return null;
+            }
+        } else {
+            return null;
         }
-        return (type.cast(new Object()));
     }
 }

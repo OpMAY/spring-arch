@@ -1,5 +1,6 @@
 package com.model.queue;
 
+import com.model.common.Time;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;

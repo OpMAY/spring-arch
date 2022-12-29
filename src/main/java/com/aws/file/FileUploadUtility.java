@@ -39,11 +39,9 @@ public class FileUploadUtility {
      * LocalFileUploadStrategy or awsFileUploadStrategy 중 선택
      */
     @Autowired
-    public FileUploadUtility(@Qualifier("AWSFileUploadStrategy") FileUploadStrategy fileUploadStrategy,
+    public FileUploadUtility(@Qualifier("LocalFileUploadStrategy") FileUploadStrategy fileUploadStrategy,
                              ConfigurableWebApplicationContext ctx) {
-        // Property Config 에서 무조건 걸어주기 떄문에 properties 세팅만 잘 되어있다면 오류 발생 X
         upload_path = (String) ctx.getEnvironment().getPropertySources().get("path_props").getProperty("UPLOAD_PATH");
-        log.info("FileUploadUtility -> {}", upload_path);
         this.fileUploadStrategy = fileUploadStrategy;
     }
 
@@ -59,10 +57,15 @@ public class FileUploadUtility {
 
             saved_name = fileUploadStrategy.getFileName(saved_name, cdn_path, target);
 
-            return new MFile(file, saved_name);
+            MFile mFile = new MFile();
+            mFile.setSize(file.getSize());
+            mFile.setName(file.getOriginalFilename());
+            mFile.setType(file.getContentType());
+            mFile.setUrl(saved_name);
+
+            return mFile;
         } catch (IOException e) {
-            log.error("ex : IOException");
-            return null;
+            throw new RuntimeException();
         }
     }
 
@@ -82,31 +85,6 @@ public class FileUploadUtility {
 
     public List<MFile> uploadFiles(MultipartFile[] files, String cdn_path) {
         if (files == null) return new ArrayList<>();
-
         return uploadFiles(new ArrayList<>(Arrays.asList(files)), cdn_path);
-    }
-
-
-    static final String SPLIT_STRING = ";base64,";
-
-    public boolean localMultiPartUpload(PartFile part_file_data) {
-        Folder.mkdirs(upload_path);
-        String file_path = upload_path + part_file_data.getFile_name();
-
-        int start_idx = part_file_data.getData().indexOf(SPLIT_STRING) + SPLIT_STRING.length();
-        String target_string = part_file_data.getData().substring(start_idx);
-        byte[] decoded_byte = Base64.getDecoder().decode(target_string);
-
-        try (FileOutputStream fos = new FileOutputStream(file_path, true)) {
-            fos.write(decoded_byte);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public void localMultiPartDelete(PartFile part_file_data) {
-        Folder.deleteFile(upload_path + part_file_data.getFile_name());
     }
 }

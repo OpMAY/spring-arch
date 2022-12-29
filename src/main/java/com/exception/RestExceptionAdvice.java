@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import javax.annotation.PostConstruct;
 import java.io.FileNotFoundException;
 
 @ComponentScan
@@ -22,12 +23,17 @@ import java.io.FileNotFoundException;
 @Slf4j
 public class RestExceptionAdvice {
 
+    @PostConstruct
+    public void RestExceptionAdvice() {
+        log.info("RestExceptionAdvice Initialized -> {}", "com.restcontroller");
+    }
+
     /**
      * JSON 파싱, 역파싱 관련 Exception 발생시
      */
     @ExceptionHandler(JSONException.class)
     protected ResponseEntity handleJSONException(JSONException e) {
-        e.printStackTrace();
+        log.error("handleJSONException -> {}", e.getMessage());
         return new ResponseEntity(DefaultRes.res(HttpStatus.INTERNAL_SERVER_ERROR), HttpStatus.OK);
     }
 
@@ -36,7 +42,7 @@ public class RestExceptionAdvice {
      */
     @ExceptionHandler(InterruptedException.class)
     protected void handleInterruptedException(InterruptedException e) {
-        e.printStackTrace();
+        log.error("handleInterruptedException -> {}", e.getMessage());
     }
 
     /**
@@ -44,8 +50,7 @@ public class RestExceptionAdvice {
      */
     @ExceptionHandler(NoHandlerFoundException.class)
     protected ResponseEntity handleNoHandlerFoundException(NoHandlerFoundException e) {
-        e.printStackTrace();
-        log.info("handleNoHandlerFoundException");
+        log.error("handleNoHandlerFoundException -> {}", e.getMessage());
         return new ResponseEntity(DefaultRes.res(HttpStatus.NOT_FOUND), HttpStatus.OK);
     }
 
@@ -54,8 +59,7 @@ public class RestExceptionAdvice {
      */
     @ExceptionHandler(GrantAccessDeniedException.class)
     protected ResponseEntity handleGrantAccessDeniedException(GrantAccessDeniedException e) {
-        e.printStackTrace();
-        log.info("handleGrantAccessDeniedException");
+        log.error("handleGrantAccessDeniedException -> {}", e.getMessage());
         return new ResponseEntity(DefaultRes.res(HttpStatus.FORBIDDEN), HttpStatus.OK);
     }
 
@@ -67,7 +71,7 @@ public class RestExceptionAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         e.printStackTrace();
-        log.info("handleMethodArgumentNotValidException");
+        log.error("handleMethodArgumentNotValidException -> {}", e.getMessage());
         return new ResponseEntity(DefaultRes.res(HttpStatus.BAD_REQUEST), HttpStatus.OK);
     }
 
@@ -77,8 +81,7 @@ public class RestExceptionAdvice {
      */
     @ExceptionHandler(BindException.class)
     protected ResponseEntity handleBindException(BindException e) {
-        e.printStackTrace();
-        log.info("handleBindException");
+        log.error("handleBindException -> {}", e.getMessage());
         return new ResponseEntity(DefaultRes.res(HttpStatus.BAD_REQUEST), HttpStatus.OK);
     }
 
@@ -88,8 +91,7 @@ public class RestExceptionAdvice {
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     protected ResponseEntity handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
-        e.printStackTrace();
-        log.info("handleMethodArgumentTypeMismatchException");
+        log.error("handleMethodArgumentTypeMismatchException -> {}", e.getMessage());
         return new ResponseEntity(DefaultRes.res(HttpStatus.BAD_REQUEST), HttpStatus.OK);
     }
 
@@ -98,29 +100,25 @@ public class RestExceptionAdvice {
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     protected ResponseEntity handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
-        e.printStackTrace();
-        log.info("handleHttpRequestMethodNotSupportedException");
+        log.error("handleHttpRequestMethodNotSupportedException -> {}", e.getMessage());
         return new ResponseEntity(DefaultRes.res(HttpStatus.BAD_REQUEST), HttpStatus.OK);
     }
 
     @ExceptionHandler(NullPointerException.class)
     protected ResponseEntity handleNullPointerException(Exception e) {
-        e.printStackTrace();
-        log.info("NullPointerException");
+        log.error("NullPointerException -> {}", e.getMessage());
         return new ResponseEntity(DefaultRes.res(HttpStatus.INTERNAL_SERVER_ERROR), HttpStatus.OK);
     }
 
     @ExceptionHandler(Exception.class)
     protected ResponseEntity handleException(Exception e) {
-        e.printStackTrace();
-        log.info("Global General Exception");
+        log.error("handleException -> {}", e.getMessage());
         return new ResponseEntity(DefaultRes.res(HttpStatus.INTERNAL_SERVER_ERROR), HttpStatus.OK);
     }
 
     @ExceptionHandler(FileNotFoundException.class)
     protected ResponseEntity handleFileNotFoundException(FileNotFoundException e) {
-        e.printStackTrace();
-        log.info("handleFileNotFoundException");
+        log.error("handleFileNotFoundException -> {}", e.getMessage());
         return new ResponseEntity(DefaultRes.res(HttpStatus.NO_CONTENT), HttpStatus.OK);
     }
 }

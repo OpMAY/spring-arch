@@ -1,0 +1,28 @@
+/*the container must be positioned relative:*/
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+.autocomplete-items div {
+    text-align: left !important;
+    padding: 10px;
+    cursor: pointer;
+    background-color: var(--basic-white);
+    color: var(--basic-black);
+    font-size: var(--font-12);
+    font-weight: 500;
+    line-height: var(--line-20);
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+    background-color: var(--brand-primary);
+    color: var(--basic-white);
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-items div.autocomplete-active {
+    background-color: var(--brand-primary) !important;
+    color: var(--basic-white);
+}

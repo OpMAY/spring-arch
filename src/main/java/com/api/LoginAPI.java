@@ -11,10 +11,9 @@ import com.api.sns.naver.NaverAccess;
 import com.api.sns.naver.NaverInfo;
 import com.model.User;
 import com.model.common.MFile;
-import com.util.TokenGenerator;
+import com.util.Utility;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +31,10 @@ public class LoginAPI {
     private String DEFAULT_PROFILE_IMAGE_URL;
     @Value("${DEFAULT.PROFILE.IMAGE.NAME}")
     private String DEFAULT_PROFILE_IMAGE_NAME;
+    @Value("${DEFAULT.PROFILE.IMAGE.SIZE}")
+    private String DEFAULT_PROFILE_IMAGE_SIZE;
+    @Value("${DEFAULT.PROFILE.IMAGE.TYPE}")
+    private String DEFAULT_PROFILE_IMAGE_TYPE;
 
     /**
      * @param req : req (request)
@@ -70,19 +73,14 @@ public class LoginAPI {
             user.setEmail(naverInfo.getResponse().getEmail());
             user.setId(naverInfo.getResponse().getId());
             user.setName(naverInfo.getResponse().getNickname());
-            profile_img.setUrl(naverInfo.getResponse().getProfile_image() != null ? naverInfo.getResponse().getProfile_image() :  null);
+            profile_img.setUrl(naverInfo.getResponse().getProfile_image() != null ? naverInfo.getResponse().getProfile_image() : null);
             if (profile_img.getUrl() == null) {
                 profile_img.setUrl(DEFAULT_PROFILE_IMAGE_URL);
                 profile_img.setName(DEFAULT_PROFILE_IMAGE_NAME);
+                profile_img.setSize(Long.parseLong(DEFAULT_PROFILE_IMAGE_SIZE));
+                profile_img.setType(DEFAULT_PROFILE_IMAGE_TYPE);
             }
             user.setProfile_img(profile_img);
-            /** Naver Logout*/
-            /*NaverAccess logoutAccess = naverAPI.logout(naverAccess.getAccess_token());
-            if (logoutAccess.getResult().equals("success")) {
-                log.info("logout");
-            } else {
-                log.info("logout failed");
-            }*/
             return user;
         }
 
@@ -113,22 +111,16 @@ public class LoginAPI {
                             kakaoInfo.getKakao_account().getProfile().getNickname() :
                             kakaoInfo.getProperties() != null ? kakaoInfo.getProperties().getNickname() : null : null);
             if (user.getName() == null) {
-                user.setName("user" + TokenGenerator.RandomIntegerToken(4));
+                user.setName("user" + Utility.RandomIntegerToken(4));
             }
             profile_img.setUrl(kakaoInfo.getKakao_account() != null ? kakaoInfo.getKakao_account().getProfile().getProfile_image_url() : kakaoInfo.getProperties().getProfile_image() != null ? kakaoInfo.getProperties().getProfile_image() : null);
             if (profile_img.getUrl() == null) {
                 profile_img.setUrl(DEFAULT_PROFILE_IMAGE_URL);
                 profile_img.setName(DEFAULT_PROFILE_IMAGE_NAME);
+                profile_img.setSize(Long.parseLong(DEFAULT_PROFILE_IMAGE_SIZE));
+                profile_img.setType(DEFAULT_PROFILE_IMAGE_TYPE);
             }
             user.setProfile_img(profile_img);
-            /** Kakao Logout*/
-            /*String id = kakaoAPI.logout(kakaoAccess.getAccess_token());
-            if (id.equals(user.getId())) {
-                log.info("logout");
-            } else {
-                log.info("logout failed");
-            }*/
-
             return user;
         }
 
@@ -159,15 +151,10 @@ public class LoginAPI {
             if (profile_img.getUrl() == null) {
                 profile_img.setUrl(DEFAULT_PROFILE_IMAGE_URL);
                 profile_img.setName(DEFAULT_PROFILE_IMAGE_NAME);
+                profile_img.setSize(Long.parseLong(DEFAULT_PROFILE_IMAGE_SIZE));
+                profile_img.setType(DEFAULT_PROFILE_IMAGE_TYPE);
             }
             user.setProfile_img(profile_img);
-            /** Google Logout*/
-            /*String result = googleAPI.logout(googleAccess.getAccess_token());
-            if (result != null) {
-                log.info("logout");
-            } else {
-                log.info("logout failed");
-            }*/
             return user;
         } else {
             if (error != null) {

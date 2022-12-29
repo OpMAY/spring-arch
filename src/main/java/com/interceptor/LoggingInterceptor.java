@@ -9,15 +9,11 @@ import java.io.InputStream;
 import java.util.Map;
 
 public interface LoggingInterceptor {
-    public Map<String, Object> getHeaders(ContentCachingRequestWrapper request);
+    Map<String, Object> getHeaders(ContentCachingRequestWrapper request);
 
-    String getPayload(String contentType, InputStream inputStream) throws IOException;
+    boolean isVisible(MediaType mediaType);
 
-    public boolean isVisible(MediaType mediaType);
+    String getRequestBody(ContentCachingRequestWrapper request);
 
-    public String getRequestBody(ContentCachingRequestWrapper request);
-
-    public String getResponseBody(ContentCachingResponseWrapper response) throws IOException;
-
-    public String getParameterMap(Map<String, String[]> parameterMap) throws IOException;
+    String getParameterMap(Map<String, String[]> parameterMap) throws IOException;
 }
