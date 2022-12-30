@@ -7,7 +7,8 @@ public enum GlobalExceptionType implements BaseExceptionType {
     LOGIN_API_EXCEPTION(1004, 200, "1004, SNS Login Exception"),
     NAVER_API_EXCEPTION(1005, 200, "1005, Naver API Exception"),
     KAKAO_API_EXCEPTION(1006, 200, "1006, Kakao API Exception"),
-    GOOGLE_API_EXCEPTION(1007, 200, "1007, Google API Exception");
+    GOOGLE_API_EXCEPTION(1007, 200, "1007, Google API Exception"),
+    ENCRYPTION_EXCEPTION(1008, 200, "1008, Encryption & Decryption Exception");
 
     private int errorCode;
     private int httpStatus;

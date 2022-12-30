@@ -12,6 +12,6 @@ import lombok.*;
 @ToString(callSuper = true)
 public class User extends RootUser {
     private String name;
-    private String access_token = "setting the password";
+    private String access_token;
     private MFile profile_img;
 }

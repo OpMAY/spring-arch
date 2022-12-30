@@ -1,6 +1,7 @@
 package com.config;
 
 import com.filter.LogFilter;
+import com.interceptor.AuthInterceptor;
 import com.interceptor.BaseInterceptor;
 import com.interceptor.LogInterceptor;
 import com.interceptor.RecoverInterceptor;
@@ -156,7 +157,7 @@ public class AppConfig implements WebApplicationInitializer, SchedulingConfigure
         multipartResolver.setDefaultEncoding("utf-8");
         multipartResolver.setMaxUploadSize(40_212_354_720L); // 전체 최대 45GB
         multipartResolver.setMaxUploadSizePerFile(13_737_418_240L); // 각 최대 15GB
-        log.info("MultipartResolver Initialized -> MaxUploadSize : {}, MaxUploadSizePerFile", 40_212_354_720L, 13_737_418_240L);
+        log.info("MultipartResolver Initialized -> MaxUploadSize : {}, MaxUploadSizePerFile : {}", 40_212_354_720L, 13_737_418_240L);
         return multipartResolver;
     }
 
@@ -184,6 +185,8 @@ public class AppConfig implements WebApplicationInitializer, SchedulingConfigure
     private BaseInterceptor baseInterceptor;
     @Autowired
     private RecoverInterceptor recoverInterceptor;
+    @Autowired
+    private AuthInterceptor authInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -199,6 +202,11 @@ public class AppConfig implements WebApplicationInitializer, SchedulingConfigure
                 .addPathPatterns("/**")
                 .excludePathPatterns("/resources/**")
                 .excludePathPatterns("/files/**");
+        /*registry.addInterceptor(authInterceptor).order(3)
+                .addPathPatterns("/**")
+                .excludePathPatterns("/test/jwt")
+                .excludePathPatterns("/resources/**")
+                .excludePathPatterns("/files/**");*/
     }
 
     @Bean

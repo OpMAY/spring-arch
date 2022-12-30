@@ -2,11 +2,16 @@ package com.controller;
 
 import com.exception.GrantAccessDeniedException;
 import com.exception.enums.GlobalExceptionType;
+import com.model.User;
+import com.util.Encryption.EncryptionService;
+import com.util.Encryption.JWTEnum;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @Controller
@@ -38,5 +43,24 @@ public class TestController {
             throw new GrantAccessDeniedException(GlobalExceptionType.GRANT_EXCEPTION);
         }
         return new ModelAndView("error/error");
+    }
+
+    /*
+     * JWT Token Test
+     * */
+    private final EncryptionService encryptionService;
+
+    @RequestMapping(value = "/test/jwt", method = RequestMethod.GET)
+    public ModelAndView testJwt(HttpServletRequest request) {
+        request.getSession().setAttribute(JWTEnum.JWTToken.name(), encryptionService.encryptJWT(new User()));
+        return new ModelAndView("sample");
+    }
+
+    /**
+     * Logic Test
+     */
+    @RequestMapping(value = "/test/logic", method = RequestMethod.GET)
+    public ModelAndView test(HttpServletRequest request) {
+        return new ModelAndView("test/file-test");
     }
 }

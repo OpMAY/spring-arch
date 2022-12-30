@@ -4,6 +4,42 @@ Okiwi의 Back-end Library 개편입니다. 해당 버전의 필요한 점은 아
 
 ## Updates
 
+### 2202-12-30
+
+1. 각종 Tags(formatDayOfWeek(요일 추출), formatFileSize(사이즈 시각변환), formatPrice(가격 포맷으로 변환))가 추가되었습니다. 해당 로직은 아래와 같은 선언을 통해
+   사용하실 수 있습니다.
+    ```html
+   <%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
+    ```
+2. CryptoException 클래스가 추가되었습니다. EncryptionService 클래스에서 사용됩니다.
+3. CryptoException 클래스가 추가됨에 따라 EncryptionService가 추가로 변경되었습니다.
+4. EncryptionService 클래스에서 예외처리가 추가되었습니다.
+5. AuthInterceptor 클래스가 추가되었습니다.
+6. FileRestController 클래스가 추가되었습니다. 해당 클래스에서 Download와 Upload 로직을 수행할 수 있습니다. 이에따라 api.js에 아래와 같은 로직이 추가되었습니다.
+   ```js
+   async function apiFileUpload(file) {
+    function apiFetch(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        let requestOptions = {
+            method: 'POST',
+            body: formData,
+        };
+        const response = fetch(`/file/upload`, requestOptions);
+        return response.then(res => res.json());
+    }
+
+    let result;
+    try {
+        result = await apiFetch(file);
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+   }
+   ```
+7. file-test.jsp가 추가되었습니다.
+8. sample.jsp가 변경되었습니다.
 ### 2022-12-29
 
 1. Utility 클래스가 추가되었습니다.

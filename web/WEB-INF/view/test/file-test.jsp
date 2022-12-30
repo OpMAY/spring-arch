@@ -58,6 +58,8 @@
     <link rel="stylesheet"
           href="/resources/css/component/components.css">
     <!-- Plugin -->
+    <link rel="stylesheet"
+          href="/resources/css/plugin/dropify.css">
 
     <!-- Module -->
     <link rel="stylesheet"
@@ -73,7 +75,21 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Sample Test</h1>
+            <h1>File Upload Test</h1>
+            <div>
+                <input type="file"
+                       class="dropify"
+                       multiple
+                       data-show-remove="true"
+                       data-show-errors="true"
+                       data-min-height="400"
+                       data-max-height="1000"
+                       data-max-width="1000"
+                       data-min-width="400"
+                       data-max-file-size="100M"
+                       data-default-file="https://via.placeholder.com/350x150"
+                       data-allowed-file-extensions="pdf png psd png svg jpg jpeg zip hwp ppt"/>
+            </div>
         </div>
     </div>
 </div>
@@ -111,6 +127,7 @@
 <script src="/resources/js/module/inspection.js"></script>
 <script src="/resources/js/module/validation.js"></script>
 <script src="/resources/js/module/auto-complete.js"></script>
+<script src="/resources/js/plugin/dropify.js"></script>
 <script>
     /**
      * Static JS
@@ -119,6 +136,36 @@
      * */
     $(document).ready(function () {
         console.log('Static JS is ready');
+        let input_file = document.querySelector('.dropify');
+        $(input_file).dropify({
+            messages: {
+                'default': 'Drag and drop a file here or click',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                error: {
+                    'fileSize': 'The file size is too big ({{ value }} max).',
+                    'minWidth': 'The image width is too small ({{ value }}}px min).',
+                    'maxWidth': 'The image width is too big ({{ value }}}px max).',
+                    'minHeight': 'The image height is too small ({{ value }}}px min).',
+                    'maxHeight': 'The image height is too big ({{ value }}px max).',
+                    'imageFormat': 'The image format is not allowed ({{ value }} only).'
+                }
+            }
+        });
+        input_file.addEventListener('change', function (event) {
+            if (event.target.files.length > 1) {
+                Array.from(event.target.files).forEach(function (file) {
+                    apiFileUpload(file).then((result) => {
+                        console.log('apiFileUpload', result);
+                    });
+                });
+            } else {
+                const file = event.target.files[0];
+                apiFileUpload(file).then((result) => {
+                    console.log('apiFileUpload', result);
+                });
+            }
+        });
     });
 </script>
 </body>

@@ -26,7 +26,7 @@ public class Constant {
          * @Author kimwoosik
          * @Description Database Connection Pool Size
          */
-        public static final int POOL_SIZE = 5;
+        public static final int POOL_SIZE = 10;
     }
 
     /**
@@ -37,7 +37,7 @@ public class Constant {
      * @Description Session 설정 시간 변수
      */
     public static int SESSION_INTERVAL = 9999;
-    public static final String VERSION = "0.1a";
+    public static final String VERSION = "0.1.1.b";
 
     /**
      * PR
@@ -47,7 +47,7 @@ public class Constant {
      * @Description LogInterceptor Logging
      */
     public static class LogSetting {
-        public static final boolean HEADER_LOG = Boolean.FALSE;
+        public static final boolean HEADER_LOG = Boolean.TRUE;
         public static final boolean PARAMETER_LOG = Boolean.TRUE;
         public static final boolean REQUEST_BODY_LOG = Boolean.TRUE;
     }

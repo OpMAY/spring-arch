@@ -115,4 +115,46 @@ public class TimeFormatter {
         }
         return TimeFormatLongToString("yyyy-MM-dd HH:mm:ss", diffTime);
     }
+
+    public static String StringDateFormatDayOfWeek(String date) {
+        Date time = null;
+        try {
+            time = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREAN).parse(date);
+        } catch (ParseException e) {
+            try {
+                time = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREAN).parse(date);
+            } catch (ParseException parseException) {
+                e.printStackTrace();
+                parseException.printStackTrace();
+            }
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(time);
+        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+        String korDayOfWeek = null;
+        switch (dayOfWeek) {
+            case 1:
+                korDayOfWeek = "일";
+                break;
+            case 2:
+                korDayOfWeek = "월";
+                break;
+            case 3:
+                korDayOfWeek = "화";
+                break;
+            case 4:
+                korDayOfWeek = "수";
+                break;
+            case 5:
+                korDayOfWeek = "목";
+                break;
+            case 6:
+                korDayOfWeek = "금";
+                break;
+            case 7:
+                korDayOfWeek = "토";
+                break;
+        }
+        return korDayOfWeek;
+    }
 }
