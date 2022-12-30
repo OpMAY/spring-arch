@@ -468,7 +468,86 @@ function isEmpty(value) {
 }
 
 class Time {
+    static StringDateFormatDayOfWeek(date) {
+        let new_date = new Date(date);
+        const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
+        let week = WEEKDAY[new_date.getDay()];
+        return week;
+    }
 
+    static formatLocalDatetime(datetime) {
+        if (datetime === undefined) return this.get_yyyy_mm_dd();
+        try {
+            const year = datetime.year;
+            const month = datetime.monthValue > 9 ? datetime.monthValue : '0' + datetime.monthValue;
+            const day = datetime.dayOfMonth > 9 ? datetime.dayOfMonth : '0' + datetime.dayOfMonth;
+            const hour = datetime.hour > 9 ? datetime.hour : '0' + datetime.hour;
+            const minute = datetime.minute > 9 ? datetime.minute : '0' + datetime.minute;
+            const second = datetime.second > 9 ? datetime.second : '0' + datetime.second;
+
+            return `${year}.${month}.${day} ${hour}:${minute}`;
+        } catch (e) {
+            console.error(e);
+            return '';
+        }
+    }
+
+    static formatLocalDate(datetime) {
+        if (datetime === undefined) return this.get_yyyy_mm_dd();
+        try {
+            const year = datetime.year;
+            const month = datetime.monthValue > 9 ? datetime.monthValue : '0' + datetime.monthValue;
+            const day = datetime.dayOfMonth > 9 ? datetime.dayOfMonth : '0' + datetime.dayOfMonth;
+
+            return `${year}-${month}-${day}`;
+        } catch (e) {
+            console.error(e);
+            return '';
+        }
+    }
+
+    static formatChatDateTime(datetime) {
+        if (datetime === undefined || datetime === null) return '방금 전';
+        try {
+            const time_gap = new Date().getTime() - this.getLocalDateTime(datetime);
+            if (time_gap < 1000 * 60) { // 1분 이내
+                return Math.floor(time_gap / (1000)) + '초전';
+            } else if (time_gap < 1000 * 60 * 60) { // 60분 이내
+                return Math.floor(time_gap / (1000 * 60)) + '분 전';
+            } else if (time_gap < 1000 * 60 * 60 * 24) { // 24시간 이내
+                return Math.floor(time_gap / (1000 * 60 * 60)) + '시간 전';
+            } else if (time_gap < 1000 * 60 * 60 * 24 * datetime.dayOfMonth) { // 한달 이내
+                return Math.floor(time_gap / (1000 * 60 * 60 * 24)) + '일 전';
+            } else if (time_gap < 1000 * 60 * 60 * 24 * 365) {
+                return Math.floor(time_gap / (1000 * 60 * 60 * 24 * 30)) + '개월 전';
+            } else if (time_gap < 1000 * 60 * 60 * 24 * 365 * 10) {
+                return Math.floor(time_gap / (1000 * 60 * 60 * 24 * 365)) + '년 전';
+            } else {
+                return this.formatLocalDate(datetime);
+            }
+        } catch (e) {
+            console.error(e);
+            return '';
+        }
+    }
+
+    static getLocalDateTime(datetime) {
+        const year = datetime.year;
+        const month = datetime.monthValue - 1;
+        const day = datetime.dayOfMonth;
+        const hour = datetime.hour;
+        const minute = datetime.minute;
+        const second = datetime.second;
+        return new Date(year, month, day, hour, minute, second).getTime();
+    }
+
+    static get_yyyy_mm_dd(target_date) {
+        if (!target_date) {
+            target_date = new Date();
+        }
+        const [year, month, date] = target_date.toLocaleDateString().replace(/\s/g, '').split('.');
+        return `${year}.${month > 9 ? month : '0' + month}.${date > 9 ? date : '0' + date}`;
+    }
 }
 
 function copyText(target, callback) {
@@ -492,9 +571,11 @@ function copyText(target, callback) {
 }
 
 const getURLParamByPrevAndNext = (find_first_slash_string, find_last_slash_string) => {
-    let path_name = location.pathname;
-    return path_name.substring(path_name.indexOf(find_first_slash_string) + (find_first_slash_string.length + 1), path_name.lastIndexOf(find_last_slash_string) - 1);
-}
+    const path_name = location.pathname;
+    if (find_last_slash_string)
+        return path_name.substring(path_name.indexOf(find_first_slash_string) + (find_first_slash_string.length + 1), path_name.lastIndexOf(find_last_slash_string) - 1);
+    return path_name.substring(path_name.indexOf(find_first_slash_string) + (find_first_slash_string.length + 1));
+};
 
 function debounce(callback, limit = 100) {
     let timeout;
@@ -506,6 +587,9 @@ function debounce(callback, limit = 100) {
     };
 }
 
+/**
+ * URL과 파일 이름으로 파일 다운로드
+ * */
 function downloadFileFromUrl(url, filename) {
     fetch(url)
         .then(response => response.blob())
@@ -516,4 +600,77 @@ function downloadFileFromUrl(url, filename) {
             link.click();
         })
         .catch(console.error);
+}
+
+/**
+ * FocusInputLastCarret,
+ * Input을 클릭시 생성되는 케럿을 맨 뒤로 이동시켜주는 함수
+ *
+ * @param {string} id 엘리먼트의 아이디, default = undefined
+ * @param {string} selector 엘리먼트의 셀렉터, default = undefined
+ * @param {HTMLElement} root 부모 엘리먼트, default = document.getElementsByTagName('body')[0]
+ */
+function focusInputLastCarret({id = undefined, selector = undefined, root = document.getElementsByTagName('body')[0]}) {
+    const inputField = id !== undefined ? root.getElementById(id) : root.querySelector(selector);
+    if (inputField != null && inputField.value.length != 0) {
+        if (inputField.createTextRange) {
+            const FieldRange = inputField.createTextRange();
+            FieldRange.moveStart('character', inputField.value.length);
+            FieldRange.collapse();
+            FieldRange.select();
+        } else if (inputField.selectionStart || inputField.selectionStart == '0') {
+            const elemLen = inputField.value.length;
+            inputField.selectionStart = elemLen;
+            inputField.selectionEnd = elemLen;
+            inputField.focus();
+        }
+    } else {
+        inputField.focus();
+    }
+}
+
+/**
+ * 오전 오후 추출
+ * */
+const changeLocalDateTimeToMeridian = (date) => {
+    let hours = date.hour;
+    let ampm = hours >= 12 ? '오후' : '오전';
+    return ampm;
+}
+/**
+ * MM:SS 부분으로 추출
+ * */
+const changeLocalDateTimeToMm_ss = (date) => {
+    let hours = date.hour;
+    let minutes = date.minute;
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours + ':' + minutes;
+    return strTime;
+}
+
+/**
+ * 해당 엘리먼트의 스크롤을 제일 아래로 내리기
+ * */
+const containerScrollDown = (element, targeted = false) => {
+    if (targeted) {
+        element.scrollIntoView();
+        return;
+    }
+    element.scrollTo({top: element.scrollHeight, behavior: 'smooth'});
+}
+
+/**
+ * 해당 노드의 앞쪽에 새로운 노드 삽입
+ * New Nod
+ * -----------------------
+ * ReferenceNode
+ * */
+function insertAfter(referenceNode, newNode) {
+    if (!!referenceNode.nextSibling) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    } else {
+        referenceNode.parentNode.appendChild(newNode);
+    }
 }
