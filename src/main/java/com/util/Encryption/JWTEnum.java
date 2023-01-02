@@ -8,5 +8,6 @@ public enum JWTEnum {
     ID,
     NO,
     SIGNATURE,
-    GRANT
+    GRANT,
+    NAME
 }

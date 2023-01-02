@@ -3,6 +3,8 @@ package com.controller;
 import com.exception.GrantAccessDeniedException;
 import com.exception.enums.GlobalExceptionType;
 import com.model.User;
+import com.model.grant.GrantType;
+import com.util.Constant;
 import com.util.Encryption.EncryptionService;
 import com.util.Encryption.JWTEnum;
 import lombok.RequiredArgsConstructor;
@@ -52,8 +54,23 @@ public class TestController {
 
     @RequestMapping(value = "/test/jwt", method = RequestMethod.GET)
     public ModelAndView testJwt(HttpServletRequest request) {
-        request.getSession().setAttribute(JWTEnum.JWTToken.name(), encryptionService.encryptJWT(new User()));
+        User user = new User();
+        user.setEmail("zlzldntlr@naver.com");
+        user.setName("김우식");
+        user.setId("2034943");
+        user.setGrant(GrantType.USER);
+        user.setVersion(Constant.VERSION);
+        user.setNo(324);
+        request.getSession().setAttribute(JWTEnum.JWTToken.name(), encryptionService.encryptJWT(user));
         return new ModelAndView("sample");
+    }
+
+    /**
+     * Test Websocket
+     * */
+    @RequestMapping(value = "/test/websocket", method = RequestMethod.GET)
+    public ModelAndView testWebsocket(HttpServletRequest request) {
+        return new ModelAndView("test/websocket-test");
     }
 
     /**
