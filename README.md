@@ -1,6 +1,6 @@
 # Back-end Architecture
 
-Okiwi의 Back-end Library 개편입니다. 해당 버전의 필요한 점은 아래와 같습니다.
+## Cloned on 2023-01-05 by OpMAY
 
 ## Updates
 
@@ -847,3 +847,4 @@ Please make sure to update tests as appropriate.
 
 1. [OKIWI](https://avouch.co.kr)
 2. [MIT](https://choosealicense.com/licenses/mit/)
+3. [OpMAY](https://github.com/OpMAY)
