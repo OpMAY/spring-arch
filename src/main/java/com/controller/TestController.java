@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
@@ -34,6 +35,11 @@ public class TestController {
     @RequestMapping(value = "/test/error", method = RequestMethod.GET)
     public ModelAndView testError() {
         return new ModelAndView("error/error");
+    }
+
+    @RequestMapping(value="/", method = RequestMethod.GET)
+    public ModelAndView home(){
+        return new ModelAndView("sample");
     }
 
     /**
