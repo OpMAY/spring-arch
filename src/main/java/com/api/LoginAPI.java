@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 @Service
 @RequiredArgsConstructor
 public class LoginAPI {
+
     private final KakaoAPI kakaoAPI;
     private final NaverAPI naverAPI;
     private final GoogleAPI googleAPI;

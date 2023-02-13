@@ -1,5 +1,22 @@
 package com.controller;
 
+import java.io.IOException;
+import java.nio.channels.SelectableChannel;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.api.sns.kakao.KakaoAPI;
+import com.api.sns.kakao.KakaoAccess;
+import com.model.common.MFile;
+import com.service.TestService;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.exception.GrantAccessDeniedException;
 import com.exception.enums.GlobalExceptionType;
 import com.model.User;
@@ -7,19 +24,23 @@ import com.model.grant.GrantType;
 import com.util.Constant;
 import com.util.Encryption.EncryptionService;
 import com.util.Encryption.JWTEnum;
+import com.api.*;
+
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.jws.WebParam;
-import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @Controller
 @RequiredArgsConstructor
+@Service
+
 public class TestController {
+
+    TestService testService;
+
+    private final  LoginAPI loginAPI;
+
     public static void main(String[] args) {
 
     }
@@ -27,6 +48,8 @@ public class TestController {
     /**
      * Recover Interceptor Active
      */
+    
+  
     @RequestMapping(value = "/test/recover", method = RequestMethod.GET)
     public ModelAndView testRecover() {
         return new ModelAndView("error/recover");
@@ -34,13 +57,42 @@ public class TestController {
 
     @RequestMapping(value = "/test/error", method = RequestMethod.GET)
     public ModelAndView testError() {
+    	
         return new ModelAndView("error/error");
     }
 
     @RequestMapping(value="/", method = RequestMethod.GET)
-    public ModelAndView home(){
+    public ModelAndView home( ){
+    
         return new ModelAndView("sample");
     }
+
+    @RequestMapping(value ="/login-test", method = RequestMethod.GET)
+    public ModelAndView loginTest(){
+
+        return new ModelAndView("test/login-test");
+    }
+
+
+    @RequestMapping(value = "/oauth/callback", method = RequestMethod.GET)
+    public ModelAndView kakaoLoginCallBack(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        ModelAndView VIEW = new ModelAndView("sample");
+        User user = loginAPI.apiLoginInit(request);
+
+        String userName = user.getName();
+        MFile profileImage  = user.getProfile_img();
+
+        VIEW.addObject("name",userName);
+        VIEW.addObject("profileImage",profileImage);
+
+
+        return VIEW;
+    }
+
+    private User apiLoginInit(HttpServletRequest request) {
+        return null;
+    }
+
 
     /**
      * Exception Error Test

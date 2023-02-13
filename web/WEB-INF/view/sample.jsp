@@ -74,6 +74,9 @@
     <div class="row">
         <div class="col-12">
             <h1>Sample Test</h1>
+            ${name} <br><br>
+            <img src="${profileImage.url}"/>
+<%--            ${profileImage}--%>
         </div>
     </div>
 </div>

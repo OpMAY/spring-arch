@@ -67,7 +67,7 @@ const APILogin = function (options = {
         getKey(this.options.type.name).then((result) => {
             console.log('getKey', result);
             if (result.status === 'OK') {
-                _options.key = result.data.key;
+                _options.key = result.data.javascript;
                 if (_options.type == LOGIN_TYPE.KAKAO) {
                     if (typeof Kakao === 'undefined') {
                         // CALL kakao login script
@@ -144,7 +144,7 @@ const APILogin = function (options = {
                 headers: myHeaders,
                 body: raw,
             };
-            if (_options.get_key_url == '/web/resources/assets/datas/getKey.json') {
+            if (_options.get_key_url === '/web/resources/assets/datas/getKey.json') {
                 const response = fetch(`${_options.get_key_url}`);
                 return response.then((res) => res.json());
             } else {

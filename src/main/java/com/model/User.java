@@ -11,7 +11,10 @@ import lombok.*;
 @JsonIgnoreProperties
 @ToString(callSuper = true)
 public class User extends RootUser {
+    private String id;
     private String name;
     private String access_token;
     private MFile profile_img;
+
+
 }

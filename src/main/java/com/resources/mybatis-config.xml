@@ -12,5 +12,6 @@
         <typeAlias alias="JsonArrayObjectTypeHandler" type="com.middleware.JsonArrayObjectTypeHandler"/>
         <typeAlias alias="JsonObjectTypeHandler" type="com.middleware.JsonObjectTypeHandler"/>
         <typeAlias alias="StringArrayListTypeHandler" type="com.middleware.StringArrayListTypeHandler"/>
+        <typeAlias alias="User" type="com.model.User"/>
     </typeAliases>
 </configuration>
